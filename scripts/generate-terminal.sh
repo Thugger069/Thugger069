@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Create assets directory if it doesn't exist
+mkdir -p assets
+
 # Create terminalizer config
 cat > config.yml <<EOF
 # Specify a command to be executed
@@ -56,8 +59,6 @@ frameBox:
     margin: 0px
 
 # Add a watermark image to the rendered gif
-# You need to specify an absolute path for
-# the image on your machine or a URL
 watermark:
   imagePath: null
   style:
@@ -72,7 +73,6 @@ watermark:
 cursorStyle: block
 
 # Font family
-# You can use any font that is installed on your machine
 fontFamily: "Monaco, Lucida Console, Ubuntu Mono, Monospace"
 
 # The size of the font
