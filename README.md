@@ -1,53 +1,37 @@
-<div align="center">
-  <img src="assets/terminal.gif" alt="Terminal" />
-</div>
+# Hi there! 👋 Welcome to my GitHub profile!
 
-# Hello, World! 👋
+![Terminal Animation](./assets/terminal.gif)
 
-I'm **Thugger069**, a passionate developer who loves to code and explore new technologies.
-
-## 🛠️ Technologies & Tools
-
-![](https://img.shields.io/badge/Code-JavaScript-informational?style=flat&logo=javascript&logoColor=white&color=2bbc8a)
-![](https://img.shields.io/badge/Code-Python-informational?style=flat&logo=python&logoColor=white&color=2bbc8a)
-![](https://img.shields.io/badge/Tools-Git-informational?style=flat&logo=git&logoColor=white&color=2bbc8a)
-![](https://img.shields.io/badge/Shell-Bash-informational?style=flat&logo=gnu-bash&logoColor=white&color=2bbc8a)
-
-## 📊 GitHub Stats
-
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=Thugger069&show_icons=true&theme=tokyonight" alt="GitHub Stats" />
-</p>
-
-## 🏆 GitHub Trophies
-
-<p align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=Thugger069&theme=nord&column=7" alt="GitHub Trophies" />
-</p>
-
-## 📈 Activity Graph
-
-<p align="center">
-  <img src="https://activity-graph.herokuapp.com/graph?username=Thugger069&theme=github" alt="Activity Graph" />
-</p>
-
-## 🌟 Featured Projects
-
-Here are some of my notable projects:
-
-<!-- Add your featured projects here -->
-
-## 📫 How to reach me
-
-<p align="center">
-  <!-- Add your social media links here -->
-  <a href="https://github.com/Thugger069" target="_blank">
-    <img src="https://img.shields.io/badge/-GitHub-181717?style=flat-square&logo=github" alt="GitHub" />
-  </a>
-</p>
+I'm **Thugger069**!  
+I'm passionate about **coding**, **technology**, and **building awesome projects**.  
+Feel free to explore my repositories, contribute, or just say hello!  
 
 ---
 
-<p align="center">
-  <img src="https://komarev.com/ghpvc/?username=Thugger069&color=blueviolet" alt="Profile views" />
-</p>
+## 🌟 About Me
+- 🔭 Currently working on: `Open Source Contributions`
+- 🌱 Learning: `Cloud Technologies`, `AI/ML`, and `Linux Administration`
+- 💬 Ask me about: Anything tech-related!
+- 📫 How to reach me: **[thugger069@example.com](mailto:thugger069@example.com)**
+
+---
+
+## 🚀 My Tech Stack
+Here are some of the technologies I work with:
+
+- **Languages:** Python, JavaScript, Bash
+- **Tools & Frameworks:** React, Docker, GitHub Actions
+- **Platforms:** Linux, AWS, Azure
+
+---
+
+## 📈 GitHub Stats
+![GitHub Stats](https://github-readme-stats.vercel.app/api?username=Thugger069&show_icons=true&theme=tokyonight)  
+![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=Thugger069&layout=compact&theme=tokyonight)
+
+---
+
+## 🔗 Let's Connect
+- 🌐 **Portfolio:** [YourPortfolio.com](#)
+- 🐦 **Twitter:** [@thugger069](https://twitter.com/thugger069)
+- 💼 **LinkedIn:** [Thugger069](https://linkedin.com/in/thugger069)
