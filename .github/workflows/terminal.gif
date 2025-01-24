@@ -23,7 +23,8 @@ jobs:
             figlet \
             lolcat \
             neofetch \
-            fonts-firacode
+            fonts-firacode \
+            containerd.io
 
       - name: Install Docker
         run: |
