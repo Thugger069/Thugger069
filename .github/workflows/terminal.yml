@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
-	
+
       - name: Setup Environment
         run: |
           sudo apt-get update
@@ -23,27 +23,24 @@ jobs:
             figlet \
             lolcat \
             neofetch \
-            fonts-firacode \
- 
-     - name: Install Docker
-       run: |
-        sudo apt-get remove -y docker docker-engine docker.io containerd runc
-        sudo mkdir -m 0755 -p /etc/apt/keyrings
-        curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-    echo \
-      "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
-      "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
-         sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-    
-    # Install Docker components
-         sudo apt-get update
-         sudo apt-get install -y \
-             docker-ce \
-             docker-ce-cli \
-             containerd.io \
-             docker-buildx-plugin \
-             docker-compose-plugin
-    
+            fonts-firacode
+
+      - name: Install Docker
+        run: |
+          sudo apt-get remove -y docker docker-engine docker.io containerd runc
+          sudo mkdir -m 0755 -p /etc/apt/keyrings
+          curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+          echo \
+            "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+            $(. /etc/os-release && echo $VERSION_CODENAME) stable" | \
+            sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+          sudo apt-get update
+          sudo apt-get install -y \
+            docker-ce \
+            docker-ce-cli \
+            containerd.io \
+            docker-buildx-plugin \
+            docker-compose-plugin
           sudo docker run hello-world
 
       - name: Install Dependencies
@@ -63,7 +60,6 @@ jobs:
             terminalizer record config/terminalizer.yml -k \
               --command "bash scripts/terminal_demo.sh" \
               --output terminal-raw.gif
-            
             # Optimize GIF
             gifsicle --optimize=3 --colors 128 -o assets/terminal.gif terminal-raw.gif
 
