@@ -8,6 +8,22 @@ fontFamily: "Fira Code"
 fontSize: 14
 lineHeight: 1.2
 letterSpacing: 0.5
+
+# Frame box configuration
+frameBox:
+  type: "solid"               # can be null, window, floating, or solid
+  title: null
+  style:
+    boxShadow: none
+    margin: 0px
+
+# Recording configuration
+records:
+  - delay: 1000
+    content: ""
+  - delay: 500
+    content: "\u001b[?25l"
+
 theme:
   background: "#0a0a12"
   foreground: "#7df9ff"       # Cyberpunk cyan
