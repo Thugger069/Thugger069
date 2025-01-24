@@ -4,10 +4,10 @@ on:
   push:
     branches: [ "main" ]
     paths-ignore:
-      - 'README.md'  # Prevent recursive updates
+      - 'README.md'
   schedule:
-    - cron: "0 0 * * *"  # Run once daily at midnight UTC
-  workflow_dispatch:  # Allow manual trigger
+    - cron: "0 0 * * *"
+  workflow_dispatch:
 
 jobs:
   update-readme:
@@ -17,15 +17,14 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          fetch-depth: 1  # Shallow clone for better performance
-        
+          fetch-depth: 1
+      
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '16'
-          cache: 'npm'
-          
-      - name: Install dependencies
+      
+      - name: Install system dependencies
         run: |
           sudo apt-get update && sudo apt-get install -y \
             figlet \
@@ -33,27 +32,25 @@ jobs:
             neofetch \
             boxes \
             cowsay \
-            fortune
-          npm install -g terminalizer
-          
+            fortune \
+            bc
+      
+      - name: Install npm packages
+        run: |
+          npm ci || npm install
+          sudo npm install -g terminalizer
+      
       - name: Generate Terminal Content
         env:
-          CURRENT_TIME: "2025-01-24 12:09:58"
+          CURRENT_TIME: "2025-01-24 12:48:26"
           USERNAME: "Thugger069"
         run: |
           chmod +x ./scripts/update-terminal.sh
           ./scripts/update-terminal.sh
-          
-      - name: Check for changes
-        id: check_changes
-        run: |
-          git diff --exit-code README.md || echo "changes=true" >> $GITHUB_OUTPUT
-          
+      
       - name: Commit and Push
-        if: steps.check_changes.outputs.changes == 'true'
         run: |
           git config --global user.name "Thugger069"
-          git config --global user.email "Thugger069@noreply.github.com"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add README.md
-          git commit -m "📟 Update terminal simulation [skip ci]"
-          git push
+          git diff --quiet && git diff --staged --quiet || (git commit -m "📟 Update terminal simulation [skip ci]" && git push)

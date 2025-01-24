@@ -1,35 +1,41 @@
 #!/bin/bash
 
+set -e  # Exit on any error
+
 # Use environment variables or defaults
 USERNAME=${USERNAME:-"Thugger069"}
-CURRENT_TIME=${CURRENT_TIME:-"2025-01-24 12:09:58"}
-SHELL_TYPE="zsh"
+CURRENT_TIME=${CURRENT_TIME:-"2025-01-24 12:48:26"}
 
 # Function to generate random load average
 generate_load_avg() {
+    if ! command -v bc &> /dev/null; then
+        echo "0.50 0.60 0.40"  # Fallback if bc is not available
+        return
+    fi
     printf "%.2f %.2f %.2f" \
         "$(echo "scale=2; ${RANDOM}/32767 + 0.1" | bc)" \
         "$(echo "scale=2; ${RANDOM}/32767 + 0.2" | bc)" \
         "$(echo "scale=2; ${RANDOM}/32767 + 0.1" | bc)"
 }
 
-# Generate dynamic terminal content
+# Generate dynamic terminal content with error handling
 generate_terminal_content() {
-    local LOAD_AVG=$(generate_load_avg)
+    local LOAD_AVG
+    LOAD_AVG=$(generate_load_avg)
     
-    cat << EOF > terminal_output.txt
+    cat > terminal_output.txt << EOF
 Last login: ${CURRENT_TIME} on ttys000
 ${USERNAME}@github ~ % uptime
-${CURRENT_TIME} up 12:09, 1 user, load average: ${LOAD_AVG}
+${CURRENT_TIME} up 12:48, 1 user, load average: ${LOAD_AVG}
 
 ${USERNAME}@github ~ % ls -la Projects/
 total 40
-drwxr-xr-x  8 ${USERNAME}  staff  256 Jan 24 12:09 .
-drwxr-xr-x  5 ${USERNAME}  staff  160 Jan 24 12:09 ..
-drwxr-xr-x  7 ${USERNAME}  staff  224 Jan 24 12:09 DevOps
-drwxr-xr-x  6 ${USERNAME}  staff  192 Jan 24 12:09 OpenSource
-drwxr-xr-x  5 ${USERNAME}  staff  160 Jan 24 12:09 Scripts
--rw-r--r--  1 ${USERNAME}  staff  925 Jan 24 12:09 TODO.md
+drwxr-xr-x  8 ${USERNAME}  staff  256 Jan 24 12:48 .
+drwxr-xr-x  5 ${USERNAME}  staff  160 Jan 24 12:48 ..
+drwxr-xr-x  7 ${USERNAME}  staff  224 Jan 24 12:48 DevOps
+drwxr-xr-x  6 ${USERNAME}  staff  192 Jan 24 12:48 OpenSource
+drwxr-xr-x  5 ${USERNAME}  staff  160 Jan 24 12:48 Scripts
+-rw-r--r--  1 ${USERNAME}  staff  925 Jan 24 12:48 TODO.md
 
 ${USERNAME}@github ~ % cat Projects/TODO.md
 # Current Projects 📋
@@ -38,19 +44,23 @@ ${USERNAME}@github ~ % cat Projects/TODO.md
 → Learning Kubernetes
 → Building shell script utilities
 
-${USERNAME}@github ~ % neofetch
+${USERNAME}@github ~ % fortune | cowsay
 EOF
 
-    # Add styled username using figlet and lolcat
-    figlet -f slant "${USERNAME}" | lolcat -f >> terminal_output.txt
+    # Add styled username with error handling
+    if ! figlet -f slant "${USERNAME}" | lolcat -f >> terminal_output.txt; then
+        echo "${USERNAME}" >> terminal_output.txt
+    fi
     
-    # Add system info
-    neofetch --stdout >> terminal_output.txt
+    # Add system info with error handling
+    if ! neofetch --stdout >> terminal_output.txt; then
+        echo "System information unavailable" >> terminal_output.txt
+    fi
 }
 
-# Generate the README content with cached API calls
+# Generate the README content
 generate_readme() {
-    cat << EOF > README.md
+    cat > README.md << EOF
 <div align="center">
   <h1>👨‍💻 Welcome to ${USERNAME}'s Terminal</h1>
   
@@ -97,12 +107,18 @@ $(cat terminal_output.txt)
 EOF
 }
 
-# Create necessary directories
-mkdir -p assets
+# Main execution
+main() {
+    # Create necessary directories
+    mkdir -p assets
 
-# Generate content
-generate_terminal_content
-generate_readme
+    # Generate content
+    generate_terminal_content
+    generate_readme
 
-# Clean up
-rm terminal_output.txt
+    # Clean up
+    rm -f terminal_output.txt
+}
+
+# Run main function
+main

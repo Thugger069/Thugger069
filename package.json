@@ -1,0 +1,16 @@
+{
+  "name": "github-profile-terminal",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Dynamic GitHub profile README with terminal simulation",
+  "dependencies": {
+    "terminalizer": "^0.12.0"
+  },
+  "scripts": {
+    "update": "bash scripts/update-terminal.sh"
+  },
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
