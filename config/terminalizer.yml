@@ -4,7 +4,6 @@
 # Global Configuration
 cols: 80
 rows: 25
-cursorStyle: block
 fontFamily: "Fira Code"
 fontSize: 14
 lineHeight: 1.2
@@ -73,14 +72,10 @@ typingEffect:
   variation: 0.2              # Speed variation
   cursorPulse: true
 
-cyberlarge
-
+# Commands Configuration
 commands:
   - command: "bash scripts/terminal_demo.sh"
     delay: 500
-
-# Advanced Command Configuration
-commands:
   - command: |
       # Initialize terminal session
       clear
@@ -95,7 +90,6 @@ commands:
       echo -e "\n\e[1;38;5;198m💻 DEMO STARTING...\e[0m\n"
       sleep 1
     delay: 300
-
   - command: |
       # Main demo sequence
       echo -e "\e[1;38;5;45m$ node -v\e[0m"
