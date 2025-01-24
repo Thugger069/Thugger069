@@ -1,30 +1,13 @@
-# Core Configuration
 cols: 80
-rows: 25
-frameDelay: 150  # Explicitly defined frame delay
+rows: 15
+frameDelay: 120
 repeat: 0
 quality: 100
-maxIdleTime: 2000
-cursorStyle: block
-fontFamily: "Fira Code"
-fontSize: 14
-
-# Theme Configuration
 theme:
-  background: "#0a0a12"
-  foreground: "#7df9ff"
-  cursor: "#ff003c"
-  selection: "#2d2d4d"
-
-# Window Settings
-window:
-  showFrame: true
-  frameType: "simple"
-  padding:
-    x: 20
-    y: 15
-
-# Command Configuration
+  background: "#2E86C1"
+  foreground: "#ffffff"
+  cursor: "#ffffff"
+cursorStyle: block
 commands:
-  - command: "./scripts/terminal_demo.sh"
+  - command: "bash scripts/terminal_demo.sh"
     delay: 500

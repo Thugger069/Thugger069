@@ -1,68 +1,36 @@
-name: CyberTerminal Animator
-
+name: Terminal Animation
 on:
   schedule:
-    - cron: '0 12 * * *'  # Daily at noon UTC
+    - cron: '0 0 * * *'  # Daily at midnight
   workflow_dispatch:
 
 jobs:
   generate-terminal:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
-    
     steps:
-      - name: Checkout Repository
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Setup Environment
+      - name: Setup environment
         run: |
           sudo apt-get update
-          sudo apt-get install -y \
-            xvfb \
-            imagemagick \
-            figlet \
-            lolcat \
-            neofetch \
-            fonts-firacode \
-            libgtk-3-0 \
-            libnotify4 \
-            libnss3 \
-            libxss1 \
-            libxtst6
+          sudo apt-get install -y xvfb lolcat figlet neofetch fonts-firacode
 
-      - name: Install Dependencies
+      - name: Install dependencies
         run: |
           npm install -g terminalizer@0.8.2
           pip install lolcat==1.4
 
-      - name: Verify Font Configuration
+      - name: Record terminal session
         run: |
-          fc-cache -f -v
-          fc-list | grep "Fira Code"
+          chmod +x scripts/terminal_demo.sh
+          xvfb-run terminalizer record -k -c config/terminalizer.yml
+          terminalizer render terminalizer-config.yml -o assets/terminal.gif
 
-      - name: Record Terminal Session
-        uses: GabrielBB/xvfb-action@v1
-        with:
-          run: |
-            chmod +x scripts/terminal_demo.sh
-            terminalizer record config/terminalizer.yml \
-              --command "./scripts/terminal_demo.sh" \
-              --output recording.json
-
-      - name: Render GIF Animation
-        run: |
-          terminalizer render recording.json \
-            --output terminal-raw.gif \
-            --config config/terminalizer.yml
-          
-          gifsicle --optimize=3 --colors 128 \
-            --output assets/terminal.gif \
-            terminal-raw.gif
-
-      - name: Commit and Push Changes
+      - name: Commit changes
         run: |
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
           git add assets/terminal.gif
-          git commit -m "🔄 Automated terminal animation update"
+          git commit -m "🔄 Update terminal animation"
           git push
