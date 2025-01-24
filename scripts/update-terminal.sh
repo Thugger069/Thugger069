@@ -58,6 +58,31 @@ EOF
     fi
 }
 
+# Update README content to include the welcome GIF
+generate_readme() {
+    cat > README.md << EOF
+<div align="center">
+  <h1>👨‍💻 Welcome to ${USERNAME}'s Terminal</h1>
+  
+  <!-- Welcome Message GIF -->
+  <img src="assets/welcome.gif" alt="Welcome Message" width="800"/>
+  
+  [![Profile Views](https://komarev.com/ghpvc/?username=${USERNAME}&color=blueviolet&style=flat-square&label=Profile%20Views)](https://github.com/${USERNAME})
+  [![Last Updated](https://img.shields.io/badge/Last%20Updated-${CURRENT_TIME//:/%3A}-blue.svg)](https://github.com/${USERNAME})
+
+  <a href="https://git.io/typing-svg">
+    <img src="https://readme-typing-svg.demolab.com?font=Ubuntu+Mono&duration=3000&pause=1000&color=00FF9C&center=true&vCenter=true&width=435&lines=Shell+Script+Enthusiast;Linux+%26+DevOps+Explorer;Open+Source+Contributor;Always+Learning+%F0%9F%92%A1" alt="Typing SVG" />
+  </a>
+</div>
+
+<pre class="terminal">
+$(cat terminal_output.txt)
+</pre>
+
+<!-- Rest of the README content remains the same -->
+EOF
+}
+
 # Generate the README content
 generate_readme() {
     cat > README.md << EOF
