@@ -54,13 +54,11 @@ jobs:
           ls -la config/
           ls -la scripts/
 
-      - name: Run Terminal Recording
+      - name: Render Terminal Recording
         uses: GabrielBB/xvfb-action@v1
         with:
           run: |
-            terminalizer record config/terminalizer.yml -k \
-              --command "bash scripts/terminal_demo.sh" \
-              --output terminal-raw.gif
+            terminalizer render config/terminalizer.yml -o terminal-raw.gif
             # Optimize GIF
             gifsicle --optimize=3 --colors 128 -o assets/terminal.gif terminal-raw.gif
 
