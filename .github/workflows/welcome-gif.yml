@@ -30,8 +30,14 @@ jobs:
             boxes \
             cowsay \
             fortune \
-            bc
+            bc \
+            xvfb
           npm install -g terminalizer
+          
+      - name: Fix Electron sandbox permissions
+        run: |
+          sudo chown root:root /opt/hostedtoolcache/node/16.20.2/x64/lib/node_modules/terminalizer/node_modules/electron/dist/chrome-sandbox
+          sudo chmod 4755 /opt/hostedtoolcache/node/16.20.2/x64/lib/node_modules/terminalizer/node_modules/electron/dist/chrome-sandbox
           
       - name: Create welcome message configuration
         run: |
@@ -84,38 +90,26 @@ jobs:
             - delay: 500
               content: "$ "
             - delay: 200
-              content: "e"
-            - delay: 100
-              content: "c"
-            - delay: 100
-              content: "h"
-            - delay: 100
-              content: "o"
-            - delay: 100
-              content: " "
-            - delay: 100
-              content: "'"
-            - delay: 300
-              content: "Hi there! I'm Thugger069."
+              content: "echo 'Hi there! I'm Thugger069.'"
             - delay: 1000
-              content: "\n$ "
+              content: "\nHi there! I'm Thugger069.\n$ "
             - delay: 200
               content: "echo 'I'm passionate about coding and technology.'"
             - delay: 1000
-              content: "\n$ "
+              content: "\nI'm passionate about coding and technology.\n$ "
             - delay: 200
               content: "echo 'Welcome to my profile!'"
             - delay: 1000
-              content: "\n$ "
+              content: "\nWelcome to my profile!\n$ "
             - delay: 200
-              content: "neofetch"
+              content: "date"
             - delay: 500
-              content: "\n"
+              content: "\nThu Jan 24 13:35:20 UTC 2025\n$ "
           EOF
           
-      - name: Generate Welcome GIF
+      - name: Generate Welcome GIF using xvfb
         run: |
-          terminalizer render config/welcome-config.yml -o assets/welcome.gif
+          xvfb-run --auto-servernum --server-args="-screen 0 1280x960x24" terminalizer render config/welcome-config.yml -o assets/welcome.gif
           
       - name: Optimize GIF
         run: |
@@ -127,4 +121,4 @@ jobs:
           git config --global user.name "Thugger069"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add assets/welcome.gif
-          git diff --quiet && git diff --staged --quiet || (git commit -m "🎬 Update welcome GIF" && git push)
+          git diff --quiet && git diff --staged --quiet || (git commit -m "🎬 Update welcome GIF [$(date -u '+%Y-%m-%d %H:%M:%S UTC')]" && git push)
