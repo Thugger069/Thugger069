@@ -1,4 +1,9 @@
 #!/bin/bash
+unset XDG_RUNTIME_DIR
+export DISPLAY=:99
+
+# Set Fira Code font explicitly
+echo -e "\e]710;xft:Fira Code:size=12\a"
 
 # CyberTerminal Demo Script
 clear

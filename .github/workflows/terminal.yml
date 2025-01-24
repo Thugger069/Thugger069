@@ -4,13 +4,6 @@ on:
   schedule:
     - cron: '0 12 * * *'  # Daily at noon UTC
   workflow_dispatch:
-  push:
-    paths:
-      - 'config/terminalizer.yml'
-      - 'scripts/**'
-
-env:
-  TERMINAL_FILE: "assets/terminal.gif"
 
 jobs:
   generate-terminal:
@@ -30,40 +23,34 @@ jobs:
             figlet \
             lolcat \
             neofetch \
-            fonts-firacode
+            fonts-firacode \
+            docker.io
 
       - name: Install Dependencies
         run: |
-          npm install -g terminalizer
+          npm install -g terminalizer@0.7.2
           pip install lolcat
 
-      - name: Generate Background
+      - name: Verify Config Files
         run: |
-          convert -size 800x600 xc:black -fill '#0a0a12' \
-          -draw 'rectangle 0,0,800,600' assets/cyber-bg.png
+          ls -la config/
+          ls -la scripts/
 
       - name: Run Terminal Recording
         uses: GabrielBB/xvfb-action@v1
         with:
           run: |
-            terminalizer record --config config/terminalizer.yml \
-            --script ./terminal-script.json --command "bash ./scripts/terminal_demo.sh"
-            terminalizer render ./terminal-script.json -o $TERMINAL_FILE
-            gifsicle --optimize=3 --colors 128 -o $TERMINAL_FILE $TERMINAL_FILE
+            terminalizer record config/terminalizer.yml -k \
+              --command "bash scripts/terminal_demo.sh" \
+              --output terminal-raw.gif
+            
+            # Optimize GIF
+            gifsicle --optimize=3 --colors 128 -o assets/terminal.gif terminal-raw.gif
 
-      - name: Deploy Animation
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          branch: main
-          folder: assets
-          clean: true
-
-      - name: Update README
+      - name: Commit and Push Changes
         run: |
-          bash scripts/generate_readme.sh
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
-          git add README.md
-          git commit -m "📄 Automated README update"
+          git add assets/terminal.gif
+          git commit -m "🔄 Automated terminal animation update"
           git push
-

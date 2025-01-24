@@ -2,12 +2,9 @@
 # Cyberpunk-themed Terminal Configuration
 
 # Global Configuration
-cols: 70
-rows: 20
-repeat: 0
-quality: 100
-frameDelay: 120
-maxIdleTime: 1500
+cols: 80
+rows: 25
+cursorStyle: block
 fontFamily: "Fira Code"
 fontSize: 14
 lineHeight: 1.2
@@ -75,6 +72,12 @@ typingEffect:
   speed: 0.8                  # Characters per second
   variation: 0.2              # Speed variation
   cursorPulse: true
+
+cyberlarge
+
+commands:
+  - command: "bash scripts/terminal_demo.sh"
+    delay: 500
 
 # Advanced Command Configuration
 commands:
