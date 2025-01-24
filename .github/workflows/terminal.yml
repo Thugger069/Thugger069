@@ -24,43 +24,40 @@ jobs:
             lolcat \
             neofetch \
             fonts-firacode \
-            containerd.io
-
-      - name: Install Docker
-        run: |
-          sudo apt-get remove -y docker docker-engine docker.io containerd runc
-          sudo mkdir -m 0755 -p /etc/apt/keyrings
-          curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-          echo \
-            "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
-            $(. /etc/os-release && echo $VERSION_CODENAME) stable" | \
-            sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-          sudo apt-get update
-          sudo apt-get install -y \
-            docker-ce \
-            docker-ce-cli \
-            containerd.io \
-            docker-buildx-plugin \
-            docker-compose-plugin
-          sudo docker run hello-world
+            libgtk-3-0 \
+            libnotify4 \
+            libnss3 \
+            libxss1 \
+            libxtst6
 
       - name: Install Dependencies
         run: |
-          npm install -g terminalizer@0.7.2
-          pip install lolcat
+          npm install -g terminalizer@0.8.2
+          pip install lolcat==1.4
 
-      - name: Verify Config Files
+      - name: Verify Font Configuration
         run: |
-          ls -la config/
-          ls -la scripts/
+          fc-cache -f -v
+          fc-list | grep "Fira Code"
 
-      - name: Render Terminal Recording
+      - name: Record Terminal Session
         uses: GabrielBB/xvfb-action@v1
         with:
           run: |
-            terminalizer render config/terminalizer.yml -o terminal-raw.gif
-            # Optimize GIF
-            gifsicle --optimize=3 --colors 128 -o assets/terminal.gif terminal-raw.gif
+            chmod +x scripts/terminal_demo.sh
+            terminalizer record config/terminalizer.yml \
+              --command "./scripts/terminal_demo.sh" \
+              --output recording.json
+
+      - name: Render GIF Animation
+        run: |
+          terminalizer render recording.json \
+            --output terminal-raw.gif \
+            --config config/terminalizer.yml
+          
+          gifsicle --optimize=3 --colors 128 \
+            --output assets/terminal.gif \
+            terminal-raw.gif
 
       - name: Commit and Push Changes
         run: |
