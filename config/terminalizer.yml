@@ -1,0 +1,122 @@
+# config/terminalizer.yml
+# Cyberpunk-themed Terminal Configuration
+
+# Global Configuration
+cols: 70
+rows: 20
+repeat: 0
+quality: 100
+frameDelay: 120
+maxIdleTime: 1500
+fontFamily: "Fira Code"
+fontSize: 14
+lineHeight: 1.2
+letterSpacing: 0.5
+theme:
+  background: "#0a0a12"
+  foreground: "#7df9ff"       # Cyberpunk cyan
+  cursor: "#ff003c"           # Neon red
+  cursorAccent: "#00ff9f"     # Neon green
+  selection: "#2d2d4d"
+  black: "#000000"
+  red: "#ff073a"
+  green: "#00ff9f"
+  yellow: "#f5d90a"
+  blue: "#00a3e0"
+  magenta: "#ff00ff"
+  cyan: "#00ffff"
+  white: "#ffffff"
+  brightBlack: "#686868"
+  brightRed: "#ff3860"
+  brightGreen: "#2de2a6"
+  brightYellow: "#ffd700"
+  brightBlue: "#1e90ff"
+  brightMagenta: "#ff69b4"
+  brightCyan: "#00ffff"
+  brightWhite: "#ffffff"
+
+# Window Customization
+window:
+  title: "Thugger069's Terminal"
+  showFrame: true
+  frameType: "rounded"        # Options: simple, rounded, double
+  frame:
+    width: 2
+    color: "#00ff9f"
+    alpha: 0.8
+  padding:
+    x: 20
+    y: 15
+  shadow:
+    blur: 20
+    color: "#ff003c55"
+  background:
+    type: "image"             # Options: color, image
+    src: "assets/cyber-bg.png"# Custom background image
+    opacity: 0.1
+
+# Cursor Customization
+cursorStyle: "block"          # Options: block, underline, bar
+cursorBlink: true
+cursorWidth: 2
+
+# Animation Effects
+effects:
+  - type: "glitch"
+    frequency: 0.1
+    intensity: 0.05
+  - type: "scanlines"
+    opacity: 0.08
+  - type: "noise"
+    opacity: 0.05
+
+# Typing Simulation
+typingEffect:
+  speed: 0.8                  # Characters per second
+  variation: 0.2              # Speed variation
+  cursorPulse: true
+
+# Advanced Command Configuration
+commands:
+  - command: |
+      # Initialize terminal session
+      clear
+      export PS1="\[\e[38;5;45m\]\u\[\e[0m\]@\[\e[38;5;198m\]\h\[\e[0m\]:\[\e[38;5;46m\]\w\[\e[0m\]\$ "
+      echo -e "\e[1;38;5;45m"
+      figlet -w 60 -f cyberlarge "THUGGER069" | lolcat
+      echo -e "\n\e[3;38;5;198m$(date '+%A, %B %d %Y %H:%M:%S')\e[0m\n"
+      sleep 1.5
+      echo -e "\e[1;38;5;46m🚀 SYSTEM STATUS:\e[0m"
+      neofetch --ascii_distro arch_small --off --color_blocks off | sed 's/:/: /g' | lolcat
+      sleep 2
+      echo -e "\n\e[1;38;5;198m💻 DEMO STARTING...\e[0m\n"
+      sleep 1
+    delay: 300
+
+  - command: |
+      # Main demo sequence
+      echo -e "\e[1;38;5;45m$ node -v\e[0m"
+      node -v
+      sleep 0.5
+      echo -e "\n\e[1;38;5;45m$ git status\e[0m"
+      git status
+      sleep 1
+      echo -e "\n\e[1;38;5;45m$ docker ps -a\e[0m"
+      docker ps -a
+      sleep 1.5
+      echo -e "\n\e[1;38;5;46m✅ DAILY UPDATE COMPLETE!\e[0m"
+      sleep 2
+    delay: 500
+
+# Post-processing Filters
+filters:
+  - name: "vignette"
+    options:
+      size: 0.15
+      amount: 0.6
+  - name: "contrast"
+    options:
+      contrast: 1.1
+  - name: "vibrance"
+    options:
+      vibrance: 1.2
