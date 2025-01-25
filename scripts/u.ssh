@@ -3,8 +3,42 @@
 set -e  # Exit on any error
 
 # Use environment variables or defaults
-USERNAME=${USERNAME:-"𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ"}
+USERNAME=${USERNAME:-"Thugger069"}
 CURRENT_TIME=${CURRENT_TIME:-"2025-01-24 12:48:26"}
+
+# Generate Terminalizer config
+cat > config/terminalizer.yml <<EOF
+cols: 80
+rows: 15
+frameDelay: 150
+repeat: 0
+quality: 100
+theme:
+  background: "$THEME_COLOR"
+  foreground: "#ffffff"
+  cursor: "#ffffff"
+cursorStyle: block
+commands:
+  - command: "bash scripts/terminal_demo.sh"
+    delay: 500
+EOF
+
+# Generate terminal demo script
+cat > scripts/terminal_demo.sh <<'EOF'
+#!/bin/bash
+
+echo -e "\033[1;36m"
+figlet -w 80 -f slant "Welcome!" | lolcat
+echo -e "\033[1;34m"
+echo "Hi there! I'm Thugger069"
+echo "I'm passionate about coding and technology"
+echo "Welcome to my GitHub profile!"
+echo -e "\n\033[0;33m$(date '+%A, %B %d %Y %H:%M:%S %Z')\033[0m"
+sleep 2
+clear
+neofetch --ascii_distro arch | lolcat
+sleep 3
+EOF
 
 
 # Function to generate random load average
@@ -108,7 +142,7 @@ $(cat terminal_output.txt)
 </pre>
 
 <div align="center">
-  <h2>🔧 𖢧𖤢ꛕꛅꛘ𖣠ꚳ𖣠ꚽꛈ𖤢ꕷ & 𖢧𖣠𖣠ꚳꕷ</h2>
+  <h2>🔧 Technologies & Tools</h2>
   
   ![Shell Script](https://img.shields.io/badge/Shell_Script-%23121011.svg?style=for-the-badge&logo=gnu-bash&logoColor=white)
   ![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
@@ -121,7 +155,7 @@ $(cat terminal_output.txt)
   <img src="https://github-readme-stats.vercel.app/api?username=${USERNAME}&show_icons=true&theme=radical&cache_seconds=86400" alt="GitHub Stats" height="170"/>
   <img src="https://github-readme-streak-stats.herokuapp.com/?user=${USERNAME}&theme=radical&cache_seconds=86400" alt="GitHub Streak" height="170"/>
 
-  <h2>🤝 ꛕ𖣠ꛘꛘ𖤢ꛕ𖢧 ꛃꛈ𖢧ꛅ 𖢑𖤢</h2>
+  <h2>🤝 Connect With Me</h2>
   
   [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/${USERNAME})
   [![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/${USERNAME})
