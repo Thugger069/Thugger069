@@ -1,8 +1,6 @@
 <div align="center">
-  <h1>👨‍💻 W/𝔚𝔢𝔩𝔠𝔬𝔪𝔢 𝔱𝔬 𝔊𝔩𝔦𝔱𝔠𝔥’𝔰 ℜ𝔢𝔞𝔩𝔪h1>
-  
+  <h1>👨‍💻 W/ωεℓ૮σɱε ƭσ ɠℓเƭ૮ɦ’ร ૨εαℓm<h1>
 
-```html
 <svg width="400" height="50">
   <text x="0" y="30" fill="white" font-family="monospace" font-size="20">
     <animate attributeName="text" from="Hi there!" to="Hi there! I'm Thugger069. I'm passionate about coding and technology. Welcome to my profile!" dur="10s" repeatCount="indefinite"/>
