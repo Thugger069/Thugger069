@@ -48,11 +48,6 @@ jobs:
           chmod +x ./scripts/update-terminal.sh
           ./scripts/update-terminal.sh
 
-      - name: Generate Terminal GIF
-        run: |
-          chmod +x ./scripts/generate-welcome-ascii.sh
-          ./scripts/generate-welcome-ascii.sh
-
       - name: Commit and Push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
