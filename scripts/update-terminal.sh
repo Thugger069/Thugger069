@@ -93,13 +93,13 @@ EOF
 generate_readme() {
     cat > README.md << EOF
 <div align="center">
-  <h1>👨‍💻 Welcome to ${USERNAME}'s Terminal</h1>
-  
+  <h1>👨‍💻 Welcome to 𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ's Ts Realm</h1>
+
   [![Profile Views](https://komarev.com/ghpvc/?username=${USERNAME}&color=blueviolet&style=flat-square&label=Profile%20Views)](https://github.com/${USERNAME})
   [![Last Updated](https://img.shields.io/badge/Last%20Updated-${CURRENT_TIME//:/%3A}-blue.svg)](https://github.com/${USERNAME})
 
   <a href="https://git.io/typing-svg">
-    <img src="https://readme-typing-svg.demolab.com?font=Ubuntu+Mono&duration=3000&pause=1000&color=00FF9C&center=true&vCenter=true&width=435&lines=Shell+Script+Enthusiast;Linux+%26+DevOps+Explorer;Open+Source+Contributor;Always+Learning+%F0%9F%92%A1" alt="Typing SVG" />
+    <img src="https://readme-typing-svg.demolab.com?font=Ubuntu+Mono&duration=3000&pause=1000&color=00FF9C&center=true&vCenter=true&width=435&lines=𝔖𝔥𝔢𝔩𝔩+𝔖𝔠𝔯𝔦𝔭𝔱+𝔈𝔫𝔱𝔥𝔲𝔰𝔦𝔞𝔰𝔱;𝔏𝔦𝔫𝔲𝔵+%26+𝔇𝔢𝔳𝔒𝔭𝔰+𝔈𝔵𝔭𝔩𝔬𝔯𝔢𝔯;𝔒𝔭𝔢𝔫+𝔖𝔬𝔲𝔯𝔠𝔢+ℭ𝔬𝔫𝔱𝔯𝔦𝔟𝔲𝔱𝔬𝔯;𝔄𝔩𝔴𝔞𝔶𝔰+𝔏𝔢𝔞𝔯𝔫𝔦𝔫𝔤+%F0%9F%92%A1" alt="Typing SVG" />
   </a>
 </div>
 
