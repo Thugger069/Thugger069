@@ -48,11 +48,6 @@ jobs:
           chmod +x ./scripts/update-terminal.sh
           ./scripts/update-terminal.sh
 
-      - name: Optimize GIF
-        run: |
-          sudo apt-get install -y gifsicle
-          gifsicle -O3 assets/welcome.gif -o assets/welcome.gif
-
       - name: Generate Terminal GIF
         run: |
           chmod +x ./scripts/generate-welcome-ascii.sh

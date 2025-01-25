@@ -6,6 +6,40 @@ set -e  # Exit on any error
 USERNAME=${USERNAME:-"Thugger069"}
 CURRENT_TIME=${CURRENT_TIME:-"2025-01-24 12:48:26"}
 
+# Generate Terminalizer config
+cat > config/terminalizer.yml <<EOF
+cols: 80
+rows: 15
+frameDelay: 150
+repeat: 0
+quality: 100
+theme:
+  background: "$THEME_COLOR"
+  foreground: "#ffffff"
+  cursor: "#ffffff"
+cursorStyle: block
+commands:
+  - command: "bash scripts/terminal_demo.sh"
+    delay: 500
+EOF
+
+# Generate terminal demo script
+cat > scripts/terminal_demo.sh <<'EOF'
+#!/bin/bash
+
+echo -e "\033[1;36m"
+figlet -w 80 -f slant "Welcome!" | lolcat
+echo -e "\033[1;34m"
+echo "Hi there! I'm Thugger069"
+echo "I'm passionate about coding and technology"
+echo "Welcome to my GitHub profile!"
+echo -e "\n\033[0;33m$(date '+%A, %B %d %Y %H:%M:%S %Z')\033[0m"
+sleep 2
+clear
+neofetch --ascii_distro arch | lolcat
+sleep 3
+EOF
+
 
 # Function to generate random load average
 generate_load_avg() {
