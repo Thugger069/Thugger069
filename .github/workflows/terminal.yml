@@ -1,0 +1,34 @@
+# 📁 .github/workflows/terminal.yml
+
+name: Update Terminal GIF
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Daily update
+  workflow_dispatch:
+
+jobs:
+  generate-terminal-gif:
+    runs-on: ubuntu-latest
+    container: debian:latest
+    
+    steps:
+    - name: Generate Terminal Animation
+      run: |
+        apt-get update && apt-get install -y \
+          ffmpeg \
+          screen \
+          ttyrec \
+          gifsicle
+        
+        script -q -c "echo '${{ secrets.TERMINAL_MESSAGE }}' && sleep 5" typescript
+        ttyrec -e "bash -c 'echo \"${{ secrets.TERMINAL_MESSAGE }}\"; sleep 5'"
+        
+        # Convert to GIF
+        ttygif -input recording.tty -output terminal.gif
+        
+        # Upload artifact
+        git config --global user.name "Thugger069"
+        git add terminal.gif
+        git commit -m "Update terminal GIF"
+        git push

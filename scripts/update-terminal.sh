@@ -6,6 +6,7 @@ set -e  # Exit on any error
 USERNAME=${USERNAME:-"Thugger069"}
 CURRENT_TIME=${CURRENT_TIME:-"2025-01-24 12:48:26"}
 
+
 # Function to generate random load average
 generate_load_avg() {
     if ! command -v bc &> /dev/null; then
@@ -62,8 +63,13 @@ EOF
 generate_readme() {
     cat > README.md << EOF
 <div align="center">
-  <h1>👨‍💻 Welcome to ${USERNAME}'s Terminal</h1>
-  
+  <h1>👨<200d>💻 𝔚𝔢𝔩𝔠𝔬𝔪𝔢 𝔱𝔬 𝔊𝔩𝔦𝔱𝔠𝔥’𝔰 ℜ𝔢𝔞𝔩𝔪’ș</h1>
+
+
+<!-- Header Section -->
+<div align="center">
+  <img src="./terminal.gif" alt="Live Terminal" width="600"/>
+
   <!-- Welcome Message GIF -->
   <img src="assets/welcome.gif" alt="Welcome Message" width="800"/>
   
