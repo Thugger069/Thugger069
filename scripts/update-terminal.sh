@@ -95,9 +95,9 @@ EOF
 generate_readme() {
     cat > README.md << EOF
 <div align="center">
-  <h1>👨‍💻 𝔚𝔢𝔩𝔠𝔬𝔪𝔢 𝔱𝔬 𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ's Th1>
+  <h1>👨‍💻  𖢧ꛅꚶꚽꚽ𖤢𖦪𖨦ꔿꛝ’ꕷ 𖦪𖤢ꛎꚳ𖢑</h1>
 
-  [![Profile Views](https://komarev.com/ghpvc/?username=${USERNAME}&color=blueviolet&style=flat-square&label=Profile%20Views)](https://github.com/thugger069)
+  [![Profile Views](https://komarev.com/ghpvc/?username=thugger069&color=blueviolet&style=flat-square&label=Profile%20Views)](https://github.com/thugger069)
   [![Last Updated](https://img.shields.io/badge/Last%20Updated-${CURRENT_TIME//:/%3A}-blue.svg)](https://github.com/thugger069)
 
   <a href="https://git.io/typing-svg">
@@ -121,8 +121,8 @@ $(cat terminal_output.txt)
 
   <h2>📊 ꚽꛈ𖢧ꛅꚶꔪ ꕷ𖢧ꛎ𖢧ꛈꕷ𖢧ꛈꛕꕷ<</h2>
   
-  <img src="https://github-readme-stats.vercel.app/api?username=${USERNAME}&show_icons=true&theme=radical&cache_seconds=86400" alt="GitHub Stats" height="170"/>
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=${USERNAME}&theme=radical&cache_seconds=86400" alt="GitHub Streak" height="170"/>
+  <img src="https://github-readme-stats.vercel.app/api?username=thugger069&show_icons=true&theme=radical&cache_seconds=86400" alt="GitHub Stats" height="170"/>
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=thugger069&theme=radical&cache_seconds=86400" alt="GitHub Streak" height="170"/>
 
   <h2>🤝 ꛕ𖣠ꛘꛘ𖤢ꛕ𖢧 ꛃꛈ𖢧ꛅ 𖢑𖤢</h2>
   
