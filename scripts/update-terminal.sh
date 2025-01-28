@@ -51,8 +51,8 @@ ${USERNAME}@github ~ % fortune | cowsay
 EOF
 
     # Add styled username with error handling
-    if ! figlet -f slant "${USERNAME}" | lolcat -f >> terminal_output.txt; then
-        echo "${USERNAME}" >> terminal_output.txt
+    if ! figlet -f slant "𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ" | lolcat -f >> terminal_output.txt; then
+        echo "𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ" >> terminal_output.txt
     fi
     
     # Add system info with error handling
@@ -74,14 +74,6 @@ generate_readme() {
 
   <!-- Welcome Message GIF -->
   <img src="assets/welcome.gif" alt="Welcome Message" width="800"/>
-  
-  [![Profile Views](https://komarev.com/ghpvc/?username=${USERNAME}&color=blueviolet&style=flat-square&label=Profile%20Views)](https://github.com/thugger069)
-  [![Last Updated](https://img.shields.io/badge/Last%20Updated-${CURRENT_TIME//:/%3A}-blue.svg)](https://github.com/thugger069)
-
-  <a href="https://git.io/typing-svg">
-    <img src="https://readme-typing-svg.demolab.com?font=Ubuntu+Mono&duration=3000&pause=1000&color=00FF9C&center=true&vCenter=true&width=435&lines=Shell+Script+Enthusiast;Linux+%26+DevOps+Explorer;Open+Source+Contributor;Always+Learning+%F0%9F%92%A1" alt="Typing SVG" />
-  </a>
-</div>
 
 <pre class="terminal">
 $(cat terminal_output.txt)
@@ -95,7 +87,7 @@ EOF
 generate_readme() {
     cat > README.md << EOF
 <div align="center">
-  <h1>👨‍💻  𖢧ꛅꚶꚽꚽ𖤢𖦪𖨦ꔿꛝ’ꕷ 𖦪𖤢ꛎꚳ𖢑</h1>
+  <h1>👨‍💻𖢧ꛅꚶꚽꚽ𖤢𖦪’ꕷ 𖦪𖤢ꛎꚳ𖢑</h1>
 
   [![Profile Views](https://komarev.com/ghpvc/?username=thugger069&color=blueviolet&style=flat-square&label=Profile%20Views)](https://github.com/thugger069)
   [![Last Updated](https://img.shields.io/badge/Last%20Updated-${CURRENT_TIME//:/%3A}-blue.svg)](https://github.com/thugger069)
