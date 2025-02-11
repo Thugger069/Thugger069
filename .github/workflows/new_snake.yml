@@ -1,4 +1,4 @@
-# .github/workflows/snake.yml
+# .github/workflows/new_snake.yml
 name: Update Snake Demo
 on:
   schedule:
@@ -9,24 +9,30 @@ jobs:
   render-snake:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v2
+      
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v2
         with:
-          node-version: 20
+          node-version: '16'
+      
       - name: Install Terminalizer and Dependencies
         run: |
+          sudo apt-get update
+          sudo apt-get install -y nsnake gifsicle
           npm install -g terminalizer
-          sudo apt-get install nsnake gifsicle
+      
       - name: Record and Render Snake Game
         run: |
-          terminalizer record snake-game -k "nsnake" --config ./snake-game.yml
-          terminalizer render snake-game.yml --output docs/snake.gif
+          mkdir -p docs
+          terminalizer record snake-game -c ./snake-game.yml -k "nsnake"
+          terminalizer render snake-game -o docs/snake.gif
           gifsicle --optimize=3 --lossy=50 docs/snake.gif -o docs/snake.gif
+      
       - name: Commit and Push
         run: |
-          git config --global user.name "GitHub Bot"
-          git config --global user.email "bot@github.com"
+          git config --global user.name "Thugger069"
+          git config --global user.email "Thugger069@noreply.github.com"
           git add docs/snake.gif
           git commit -m "Update snake demo"
           git push
