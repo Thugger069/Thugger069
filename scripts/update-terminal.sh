@@ -123,6 +123,8 @@ $(cat terminal_output.txt)
   [![Twitter](https://img.shields.io/badge/X-%23000000.svg?style=for-the-badge&logo=X&logoColor=white)](https://twitter.com/chuksgincaro)
 </div>
 
+![Snake animation](https://github.com/Thugger069/Thugger069/blob/output/github-contribution-grid-snake-dark.svg)
+
 <div align="center">
   <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=100&section=footer"/>
 </div>
