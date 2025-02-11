@@ -1,0 +1,32 @@
+# .github/workflows/snake.yml
+name: Update Snake Demo
+on:
+  schedule:
+    - cron: "0 0 * * 0"  # Every Sunday
+  workflow_dispatch:
+
+jobs:
+  render-snake:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install Terminalizer and Dependencies
+        run: |
+          npm install -g terminalizer
+          sudo apt-get install nsnake gifsicle
+      - name: Record and Render Snake Game
+        run: |
+          terminalizer record snake-game -k "nsnake" --config ./snake-game.yml
+          terminalizer render snake-game.yml --output docs/snake.gif
+          gifsicle --optimize=3 --lossy=50 docs/snake.gif -o docs/snake.gif
+      - name: Commit and Push
+        run: |
+          git config --global user.name "GitHub Bot"
+          git config --global user.email "bot@github.com"
+          git add docs/snake.gif
+          git commit -m "Update snake demo"
+          git push
