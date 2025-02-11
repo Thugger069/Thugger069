@@ -1,4 +1,3 @@
-# .github/workflows/new_snake.yml
 name: Update Snake Demo
 on:
   schedule:
@@ -9,30 +8,49 @@ jobs:
   render-snake:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      
+      - uses: actions/checkout@v4
+
       - name: Setup Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
-          node-version: '16'
-      
-      - name: Install Terminalizer and Dependencies
+          node-version: 20
+
+      - name: Install Dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y nsnake gifsicle
-          npm install -g terminalizer
-      
-      - name: Record and Render Snake Game
+          sudo apt-get install -y xvfb libgtk-3-0 libnss3 libxss1 libgbm-dev libxshmfence-dev gifsicle nsnake
+          pip install snake
+
+      - name: Install Terminalizer
         run: |
-          mkdir -p docs
-          terminalizer record snake-game -c ./snake-game.yml -k "nsnake"
-          terminalizer render snake-game -o docs/snake.gif
+          npm install -g terminalizer
+
+      - name: Record Snake Game
+        run: |
+          # Generate Terminalizer config (if not pre-committed)
+          terminalizer record snake-session --config ./snake-config.yml -k "nsnake"
+
+      - name: Fix Sandbox Permissions
+        run: |
+          # Grant permissions to the chrome-sandbox binary
+          sudo chmod 4755 /usr/local/lib/node_modules/terminalizer/node_modules/electron/dist/chrome-sandbox
+
+      - name: Start Xvfb and Render
+        run: |
+          Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
+          export DISPLAY=:99
+          # Disable Electron sandboxing (if permissions fail)
+          export ELECTRON_DISABLE_SANDBOX=1
+          terminalizer render snake-config.yml --output docs/snake.gif
+
+      - name: Optimize GIF
+        run: |
           gifsicle --optimize=3 --lossy=50 docs/snake.gif -o docs/snake.gif
-      
+
       - name: Commit and Push
         run: |
-          git config --global user.name "Thugger069"
+          git config --global user.name "GitHub Bot"
           git config --global user.email "Thugger069@noreply.github.com"
           git add docs/snake.gif
-          git commit -m "Update snake demo"
+          git commit -m "Update snake demo" || echo "No changes to commit"
           git push
