@@ -49,21 +49,21 @@ jobs:
           CONFIG_FILE=./snake-config.yml
           if [ ! -f "$CONFIG_FILE" ]; then
             echo "Creating default snake configuration..."
-            cat << 'EOF' > "$CONFIG_FILE"
-            command: nsnake
-            cols: 80
-            rows: 24
-            repeat: 0
-            quality: 100
-            frameDelay: auto
-            maxIdleTime: 2000
-            cursorStyle: block
-            theme:
-              background: "transparent"
-              foreground: "#FFFFFF"
-            EOF
+            cat > "$CONFIG_FILE" << 'EOF'
+          command: nsnake
+          cols: 80
+          rows: 24
+          repeat: 0
+          quality: 100
+          frameDelay: auto
+          maxIdleTime: 2000
+          cursorStyle: block
+          theme:
+            background: "transparent"
+            foreground: "#FFFFFF"
+          EOF
           fi
-          echo "Using configuration:"
+          echo "Configuration content:"
           cat "$CONFIG_FILE"
 
       - name: Record Game Session
@@ -72,7 +72,7 @@ jobs:
       - name: Render GIF
         run: |
           terminalizer render snake-session --output docs/snake.gif
-          echo "GIF size:"
+          echo "Generated GIF size:"
           ls -lh docs/snake.gif
 
       - name: Optimize GIF
