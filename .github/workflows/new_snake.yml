@@ -48,7 +48,7 @@ jobs:
 
       - name: Ensure Config Exists
         run: |
-          CONFIG_FILE=./snake-config.yml
+          CONFIG_FILE=../config/terminalizer.yml
           if [ ! -f "$CONFIG_FILE" ]; then
             echo "Creating valid snake configuration..."
             cat > "$CONFIG_FILE" << EOF
