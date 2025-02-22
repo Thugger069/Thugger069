@@ -1,4 +1,4 @@
-name: Update Snake Demo
+name: Update Snake
 on:
   schedule:
     - cron: "0 0 * * 0"  # Every Sunday
@@ -27,8 +27,12 @@ jobs:
 
       - name: Record Snake Game
         run: |
-          # Generate Terminalizer config (if not pre-committed)
-          terminalizer record snake-session --config ./snake-config.yml -k "nsnake"
+          # Check if snake-config.yml exists
+          if [ -f ./snake-config.yml ]; then
+            terminalizer record snake-session --config ./snake-config.yml -k "nsnake"
+          else
+            echo "snake-config.yml not found. Skipping recording."
+          fi
 
       - name: Fix Sandbox Permissions
         run: |
