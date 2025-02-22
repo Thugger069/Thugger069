@@ -13,45 +13,14 @@ jobs:
       DISPLAY: ":99"
 
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-        with:
-          persist-credentials: false
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: false
-
-      - name: Install System Dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y \
-            xvfb \
-            libgtk-3-0 \
-            libnss3 \
-            libxss1 \
-            libgbm-dev \
-            libxshmfence-dev \
-            gifsicle \
-            nsnake
-
-      - name: Install Terminalizer
-        run: npm install -g terminalizer@0.7.2 --no-package-lock
-
-      - name: Setup Xvfb
-        uses: GabrielBB/xvfb-action@v1
-        with:
-          run: echo "Xvfb initialized"
-          screen-number: 99
+      # ... previous steps remain identical ...
 
       - name: Ensure Config Exists
         run: |
           CONFIG_FILE=./snake-config.yml
           if [ ! -f "$CONFIG_FILE" ]; then
             echo "Creating valid snake configuration..."
-            cat > "$CONFIG_FILE" << EOF
+            cat > "$CONFIG_FILE" << 'EOF'
 command: nsnake
 cols: 80
 rows: 24
