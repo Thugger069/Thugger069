@@ -49,7 +49,7 @@ jobs:
       - name: Create Configuration
         run: |
           if [ ! -f ./snake-config.yml ]; then
-            cat > snake-config.yml << 'EOF'
+            cat > snake-config.yml << EOF
 command: nsnake
 cols: 80
 rows: 24
