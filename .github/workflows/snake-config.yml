@@ -63,16 +63,21 @@ jobs:
             foreground: "#FFFFFF"
           EOF
           fi
-          echo "Configuration content:"
+          # Fix YAML indentation
+          sed -i 's/^  //' "$CONFIG_FILE"
+          echo "Final configuration:"
           cat "$CONFIG_FILE"
 
       - name: Record Game Session
-        run: terminalizer record snake-session --config ./snake-config.yml -k "nsnake"
+        run: |
+          # Add delay before recording
+          sleep 5
+          terminalizer record snake-session --config ./snake-config.yml -k "nsnake" --skip-sharing
 
       - name: Render GIF
         run: |
           terminalizer render snake-session --output docs/snake.gif
-          echo "Generated GIF size:"
+          echo "GIF created with size:"
           ls -lh docs/snake.gif
 
       - name: Optimize GIF
