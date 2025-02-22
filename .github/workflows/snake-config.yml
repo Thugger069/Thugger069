@@ -10,6 +10,7 @@ jobs:
     timeout-minutes: 15
     env:
       ELECTRON_DISABLE_SANDBOX: 1
+      DISPLAY: ":99"
 
     steps:
       - name: Checkout Repository
@@ -21,10 +22,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
-
-      - name: Install Dependencies and Generate Lock File
-        run: npm install
+          cache: ''
 
       - name: Install System Dependencies
         run: |
@@ -46,41 +44,49 @@ jobs:
         uses: GabrielBB/xvfb-action@v1
         with:
           run: echo "Xvfb initialized"
+          screen-number: 99
 
       - name: Ensure Config Exists
         run: |
           CONFIG_FILE=./snake-config.yml
           if [ ! -f "$CONFIG_FILE" ]; then
-            echo "Creating default snake configuration..."
-            cat > "$CONFIG_FILE" << 'EOF'
-          command: nsnake
-          cols: 80
-          rows: 24
-          repeat: 0
-          quality: 100
-          frameDelay: auto
-          maxIdleTime: 2000
-          cursorStyle: block
-          theme:
-            background: "transparent"
-            foreground: "#FFFFFF"
-          EOF
+            echo "Creating valid snake configuration..."
+            cat > "$CONFIG_FILE" << EOF
+command: nsnake
+cols: 80
+rows: 24
+repeat: 0
+quality: 100
+frameDelay: auto
+maxIdleTime: 2000
+cursorStyle: block
+theme:
+  background: "transparent"
+  foreground: "#FFFFFF"
+EOF
           fi
-          # Fix YAML indentation
-          sed -i 's/^  //' "$CONFIG_FILE"
           echo "Final configuration:"
           cat "$CONFIG_FILE"
 
+      - name: Verify Environment
+        run: |
+          echo "Checking Xvfb status:"
+          xdpyinfo -display :99 > /dev/null
+          echo "Terminalizer version:"
+          terminalizer --version
+
       - name: Record Game Session
         run: |
-          # Add delay before recording
-          sleep 5
-          terminalizer record snake-session --config ./snake-config.yml -k "nsnake" --skip-sharing
+          terminalizer record snake-session \
+            --config ./snake-config.yml \
+            --command nsnake \
+            --skip-sharing
+          echo "Recording completed successfully"
 
       - name: Render GIF
         run: |
           terminalizer render snake-session --output docs/snake.gif
-          echo "GIF created with size:"
+          echo "GIF generated:"
           ls -lh docs/snake.gif
 
       - name: Optimize GIF
@@ -92,5 +98,5 @@ jobs:
         run: |
           git config --global user.name "GitHub Bot"
           git config --global user.email "Thugger069@noreply.github.com"
-          git add docs/snake.gif package-lock.json
-          git diff-index --quiet HEAD || (git commit -m "Update snake demo and lock file" && git push)
+          git add docs/snake.gif
+          git diff-index --quiet HEAD || (git commit -m "Update snake demo" && git push)
