@@ -31,7 +31,6 @@ jobs:
             libgtk-3-0 \
             libnss3 \
             libxss1 \
-            libasound2 \
             libgbm-dev \
             libxshmfence-dev \
             gifsicle \
