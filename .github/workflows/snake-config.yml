@@ -21,14 +21,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          # Disable automatic cache since we're not using project dependencies
-          cache: false
-
-      - name: Create dummy package.json
-        run: |
-          if [ ! -f package.json ]; then
-            echo '{"name": "snake-generator", "version": "1.0.0"}' > package.json
-          fi
+          # Properly disable caching with empty string
+          cache: ''
 
       - name: Install System Dependencies
         run: |
@@ -45,7 +39,6 @@ jobs:
 
       - name: Install Terminalizer
         run: |
-          # Install as global package without package-lock.json
           npm install -g terminalizer --no-package-lock
 
       - name: Setup Xvfb
