@@ -1,60 +1,102 @@
 name: Update Snake
 on:
   schedule:
-    - cron: "0 0 * * 0"  # Every Sunday
+    - cron: "0 0 * * 0"  # Every Sunday at midnight
   workflow_dispatch:
 
 jobs:
   render-snake:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      ELECTRON_DISABLE_SANDBOX: 1
+      DISPLAY: ":99"
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: ''
 
-      - name: Install Dependencies
+      - name: Install System Dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y xvfb libgtk-3-0 libnss3 libxss1 libgbm-dev libxshmfence-dev gifsicle nsnake
-          pip install snake
+          sudo apt-get install -y \
+            xvfb \
+            libgtk-3-0 \
+            libnss3 \
+            libxss1 \
+            libgbm-dev \
+            libxshmfence-dev \
+            gifsicle \
+            nsnake
 
       - name: Install Terminalizer
-        run: |
-          npm install -g terminalizer
+        run: npm install -g terminalizer@0.7.2 --no-package-lock
 
-      - name: Record Snake Game
+      - name: Setup Xvfb
+        uses: GabrielBB/xvfb-action@v1
+        with:
+          run: echo "Xvfb initialized"
+          screen-number: 99
+
+      - name: Ensure Config Exists
         run: |
-          # Check if snake-config.yml exists
-          if [ -f ./snake-config.yml ]; then
-            terminalizer record snake-session --config ./snake-config.yml -k "nsnake"
-          else
-            echo "snake-config.yml not found. Skipping recording."
+          CONFIG_FILE=./snake-config.yml
+          if [ ! -f "$CONFIG_FILE" ]; then
+            echo "Creating valid snake configuration..."
+            cat > "$CONFIG_FILE" << EOF
+command: nsnake
+cols: 80
+rows: 24
+repeat: 0
+quality: 100
+frameDelay: auto
+maxIdleTime: 2000
+cursorStyle: block
+theme:
+  background: "transparent"
+  foreground: "#FFFFFF"
+EOF
           fi
+          echo "Final configuration:"
+          cat "$CONFIG_FILE"
 
-      - name: Fix Sandbox Permissions
+      - name: Verify Environment
         run: |
-          # Grant permissions to the chrome-sandbox binary
-          sudo chmod 4755 /usr/local/lib/node_modules/terminalizer/node_modules/electron/dist/chrome-sandbox
+          echo "Checking Xvfb status:"
+          xdpyinfo -display :99 > /dev/null
+          echo "Terminalizer version:"
+          terminalizer --version
 
-      - name: Start Xvfb and Render
+      - name: Record Game Session
         run: |
-          Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
-          export DISPLAY=:99
-          # Disable Electron sandboxing (if permissions fail)
-          export ELECTRON_DISABLE_SANDBOX=1
-          terminalizer render snake-config.yml --output docs/snake.gif
+          terminalizer record snake-session \
+            --config ./snake-config.yml \
+            --command nsnake \
+            --skip-sharing
+          echo "Recording completed successfully"
+
+      - name: Render GIF
+        run: |
+          terminalizer render snake-session --output docs/snake.gif
+          echo "GIF generated:"
+          ls -lh docs/snake.gif
 
       - name: Optimize GIF
         run: |
-          gifsicle --optimize=3 --lossy=50 docs/snake.gif -o docs/snake.gif
+          gifsicle --optimize=3 --lossy=50 docs/snake.gif -o optimized.gif
+          mv optimized.gif docs/snake.gif
 
-      - name: Commit and Push
+      - name: Commit Changes
         run: |
           git config --global user.name "GitHub Bot"
           git config --global user.email "Thugger069@noreply.github.com"
           git add docs/snake.gif
-          git commit -m "Update snake demo" || echo "No changes to commit"
-          git push
+          git diff-index --quiet HEAD || (git commit -m "Update snake demo" && git push)
