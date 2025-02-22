@@ -1,0 +1,92 @@
+name: Automated Snake Demo
+on:
+  schedule:
+    - cron: "0 0 * * 0"  # Runs every Sunday at midnight UTC
+  workflow_dispatch:     # Manual trigger option
+
+jobs:
+  generate-snake-gif:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      ELECTRON_DISABLE_SANDBOX: 1  # Required for Terminalizer
+      DISPLAY: ":99"               # Xvfb display identifier
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false  # Required for secure git operations
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: false  # Disable caching for global installs
+
+      - name: Install System Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            xvfb \
+            libgtk-3-0 \
+            libnss3 \
+            libxss1 \
+            libgbm-dev \
+            libxshmfence-dev \
+            gifsicle \
+            nsnake
+
+      - name: Install Terminalizer
+        run: npm install -g terminalizer@0.7.2 --no-package-lock
+
+      - name: Start Virtual Display
+        uses: GabrielBB/xvfb-action@v1
+        with:
+          run: echo "Xvfb virtual display started"
+          screen-number: 99
+
+      - name: Create Configuration
+        run: |
+          if [ ! -f ./snake-config.yml ]; then
+            cat > snake-config.yml << 'EOF'
+command: nsnake
+cols: 80
+rows: 24
+repeat: 0
+quality: 100
+frameDelay: auto
+maxIdleTime: 2000
+cursorStyle: block
+theme:
+  background: "transparent"
+  foreground: "#FFFFFF"
+EOF
+          fi
+
+      - name: Record Gameplay
+        run: |
+          terminalizer record snake-session \
+            --config ./snake-config.yml \
+            --command nsnake \
+            --skip-sharing
+
+      - name: Generate GIF
+        run: |
+          terminalizer render snake-session \
+            --output docs/snake.gif
+
+      - name: Optimize GIF
+        run: |
+          gifsicle --optimize=3 --lossy=50 \
+            docs/snake.gif \
+            -o docs/snake-optimized.gif
+          mv docs/snake-optimized.gif docs/snake.gif
+
+      - name: Commit Changes
+        run: |
+          git config --global user.name "GitHub Bot"
+          git config --global user.email "Thugger069@noreply.github.com"
+          git add docs/snake.gif
+          git diff-index --quiet HEAD || \
+            (git commit -m "🔄 Auto-update snake demo" && git push)
