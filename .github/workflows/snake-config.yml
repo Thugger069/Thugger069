@@ -23,6 +23,9 @@ jobs:
           node-version: 20
           cache: 'npm'
 
+      - name: Install Dependencies and Generate Lock File
+        run: npm install
+
       - name: Install System Dependencies
         run: |
           sudo apt-get update
@@ -89,5 +92,5 @@ jobs:
         run: |
           git config --global user.name "GitHub Bot"
           git config --global user.email "Thugger069@noreply.github.com"
-          git add docs/snake.gif
-          git diff-index --quiet HEAD || (git commit -m "Update snake demo" && git push)
+          git add docs/snake.gif package-lock.json
+          git diff-index --quiet HEAD || (git commit -m "Update snake demo and lock file" && git push)
