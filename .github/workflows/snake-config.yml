@@ -42,17 +42,36 @@ jobs:
       - name: Setup Xvfb
         uses: GabrielBB/xvfb-action@v1
         with:
-          # Add required run parameter with dummy command
           run: echo "Xvfb server started"
+
+      - name: Create Default Config if Missing
+        run: |
+          if [ ! -f ./snake-config.yml ]; then
+            echo "Creating default snake-config.yml"
+            cat > snake-config.yml <<EOL
+            # Default Terminalizer config
+            cols: 80
+            rows: 24
+            repeat: 0
+            quality: 100
+            frameDelay: auto
+            maxIdleTime: 2000
+            frameBox:
+              type: solid
+              title: null
+              style:
+                boxShadow: none
+                borderColor: "#000000"
+            cursorStyle: block
+            fontFamily: "Fira Code, monospace"
+            theme:
+              background: "transparent"
+            EOL
+          fi
 
       - name: Record Game Session
         run: |
-          if [ -f ./snake-config.yml ]; then
-            terminalizer record snake-session --config ./snake-config.yml -k "nsnake"
-          else
-            echo "::error::snake-config.yml missing! Create this file to proceed"
-            exit 1
-          fi
+          terminalizer record snake-session --config ./snake-config.yml -k "nsnake"
 
       - name: Render GIF
         run: |
