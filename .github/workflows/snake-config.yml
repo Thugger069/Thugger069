@@ -62,8 +62,7 @@ jobs:
           terminalizer record snake-session \
             --config ./snake-config.yml \
             --command nsnake \
-            --skip-sharing \
-            --no-sandbox
+            --skip-sharing
 
       - name: Render GIF
         run: |
