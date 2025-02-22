@@ -13,7 +13,38 @@ jobs:
       DISPLAY: ":99"
 
     steps:
-      # ... previous steps remain identical ...
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: ''
+
+      - name: Install System Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            xvfb \
+            libgtk-3-0 \
+            libnss3 \
+            libxss1 \
+            libgbm-dev \
+            libxshmfence-dev \
+            gifsicle \
+            nsnake
+
+      - name: Install Terminalizer
+        run: npm install -g terminalizer@0.7.2 --no-package-lock
+
+      - name: Setup Xvfb
+        uses: GabrielBB/xvfb-action@v1
+        with:
+          run: echo "Xvfb initialized"
+          screen-number: 99
 
       - name: Ensure Config Exists
         run: |
@@ -34,6 +65,15 @@ theme:
   foreground: "#FFFFFF"
 EOF
           fi
+          echo "Final configuration:"
+          cat "$CONFIG_FILE"
+
+      - name: Verify Environment
+        run: |
+          echo "Checking Xvfb status:"
+          xdpyinfo -display :99 > /dev/null
+          echo "Terminalizer version:"
+          terminalizer --version
 
       - name: Record Game Session
         run: |
@@ -41,6 +81,7 @@ EOF
             --config ./snake-config.yml \
             --command nsnake \
             --skip-sharing
+          echo "Recording completed successfully"
 
       - name: Render GIF
         run: |
