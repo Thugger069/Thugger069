@@ -21,7 +21,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          # Properly disable caching with empty string
           cache: ''
 
       - name: Install System Dependencies
@@ -38,11 +37,13 @@ jobs:
             nsnake
 
       - name: Install Terminalizer
-        run: |
-          npm install -g terminalizer --no-package-lock
+        run: npm install -g terminalizer --no-package-lock
 
       - name: Setup Xvfb
         uses: GabrielBB/xvfb-action@v1
+        with:
+          # Add required run parameter with dummy command
+          run: echo "Xvfb server started"
 
       - name: Record Game Session
         run: |
