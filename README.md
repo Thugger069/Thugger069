@@ -12,7 +12,7 @@
 <pre class="terminal">
 Last login: 2025-01-28 12:48:26 on ttys000
 𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ@github ~ % uptime
-2025-01-28 12:48:26 up 12:48, 1 user, load average: 0.53 0.31 0.46
+2025-01-28 12:48:26 up 12:48, 1 user, load average: 0.82 0.35 0.13
 
 𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ@github ~ % ls -la Projects/
 total 40
