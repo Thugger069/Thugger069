@@ -20,9 +20,11 @@ jobs:
         with:
           fetch-depth: 1
       
-      # Generate Snake Animation First
-      - name: Create dist directory
-        run: mkdir -p dist
+      # Force create and track dist directory despite gitignore
+      - name: Create and track dist directory
+        run: |
+          mkdir -p dist
+          git add -f dist
         
       - name: Generate the Snake
         uses: Platane/snk@v3
@@ -58,7 +60,7 @@ jobs:
       
       - name: Generate Terminal Content
         env:
-          CURRENT_TIME: "2025-05-07 02:26:55"
+          CURRENT_TIME: "2025-05-07 02:36:42"
           USERNAME: "Thugger069"
         run: |
           chmod +x ./scripts/update-terminal.sh
@@ -68,8 +70,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add dist/github-snake*.svg README.md
-          git commit -m "🐍 Generate Snake & 📟 Update README (2025-05-07 02:26:55)" || echo "No changes to commit"
+          git config --local user.name "Thugger069"
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f dist/github-snake*.svg README.md
+          git commit -m "🐍 Generate Snake & 📟 Update README (2025-05-07 02:36:42)" || echo "No changes to commit"
           git push
