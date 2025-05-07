@@ -58,6 +58,12 @@ Thugger069@github ~ % fortune | cowsay
 
 ![Snake animation](https://github.com/Thugger069/Thugger069/blob/output/github-contribution-grid-snake-dark.svg)
 
+<!-- START SNAKE -->
+<div align="center">
+  <img src="dist/github-snake.svg" alt="Snake" style="max-width: 100%; height: auto;" />
+</div>
+<!-- END SNAKE -->
+
 <div align="center">
   <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=100&section=footer"/>
 </div>
