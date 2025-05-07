@@ -12,7 +12,7 @@
 <pre class="terminal">
 Last login: 2025-05-07 02:36:42 on ttys000
 𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ@github ~ % uptime
-2025-05-07 02:36:42 up 12:48, 1 user, load average: 0.68 0.51 1.08
+2025-05-07 02:36:42 up 12:48, 1 user, load average: 0.66 0.68 0.68
 
 𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ@github ~ % ls -la Projects/
 total 40
@@ -56,6 +56,7 @@ Thugger069@github ~ % fortune | cowsay
   [![Twitter](https://img.shields.io/badge/X-%23000000.svg?style=for-the-badge&logo=X&logoColor=white)](https://twitter.com/chuksgincaro)
 </div>
 
+<div align="center">
 <!-- START SNAKE -->
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="dist/github-snake-dark.svg" />
@@ -64,7 +65,8 @@ Thugger069@github ~ % fortune | cowsay
 </picture>
 <!-- END SNAKE -->
 
-![Snake](dist/github-snake.svg?ts=1746585671)
+![Snake](dist/github-snake.svg?ts=1746586268)
+</div>
 
 <div align="center">
   <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=100&section=footer"/>
