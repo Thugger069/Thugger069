@@ -1,0 +1,29 @@
+name: Snake Animation Overlord
+'on':
+  schedule:
+    - cron: 0 0 * * *
+  workflow_dispatch: 
+jobs:
+  generate-snake:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repo
+        uses: actions/checkout@v4
+      - name: Generate the Snake
+        uses: Platane/snk@master
+        with:
+          github_user_name: '${{ github.repository_owner }}'
+          outputs: dist/github-
+      - name: Shove the Snake into README
+        run: >
+          # Replace the old snake placeholder with the new SVG
+
+          sed -i '/<!-- START SNAKE -->/,/<!-- END SNAKE -->/c\<!-- START SNAKE
+          -->\n![Snake](dist/github-snake.svg)\n<!-- END SNAKE -->' README.md
+      - name: Commit the Chaos
+        run: |
+          git config --global user.name "Thugger069"
+          git config --global user.email "Thugger069@noreply.github.com"
+          git add -A
+          git commit -m "Update snake: $(date +'%Y-%m-%d')"
+          git push
