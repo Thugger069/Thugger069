@@ -115,9 +115,11 @@ $(cat terminal_output.txt)
 </div>
 
 <!-- START SNAKE -->
-<div align="center">
-  <img src="dist/github-snake.svg" alt="Snake" style="max-width: 100%; height: auto;" />
-</div>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="dist/github-snake-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="dist/github-snake.svg" />
+  <img alt="Github Contribution Snake Animation" src="dist/github-snake.svg" />
+</picture>
 <!-- END SNAKE -->
 
 ![Snake](dist/github-snake.svg?ts=$(date +%s))
