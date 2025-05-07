@@ -57,9 +57,7 @@ Thugger069@github ~ % fortune | cowsay
 </div>
 
 <!-- START SNAKE -->
-<div align="center">
-  <img src="dist/github-snake.svg" alt="Snake" style="max-width: 100%; height: auto;" />
-</div>
+![Snake](dist/github-snake.svg?ts=14873216019)
 <!-- END SNAKE -->
 
 ![Snake animation](https://github.com/Thugger069/Thugger069/blob/output/github-contribution-grid-snake-dark.svg)
