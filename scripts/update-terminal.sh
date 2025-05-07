@@ -114,6 +114,7 @@ $(cat terminal_output.txt)
   [![Twitter](https://img.shields.io/badge/X-%23000000.svg?style=for-the-badge&logo=X&logoColor=white)](https://twitter.com/chuksgincaro)
 </div>
 
+<div align="center">
 <!-- START SNAKE -->
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="dist/github-snake-dark.svg" />
@@ -123,6 +124,7 @@ $(cat terminal_output.txt)
 <!-- END SNAKE -->
 
 ![Snake](dist/github-snake.svg?ts=$(date +%s))
+</div>
 
 <div align="center">
   <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=100&section=footer"/>
