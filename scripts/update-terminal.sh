@@ -120,7 +120,7 @@ $(cat terminal_output.txt)
 </div>
 <!-- END SNAKE -->
 
-#![Snake animation](https://github.com/Thugger069/Thugger069/blob/output/github-contribution-grid-snake-dark.svg)
+![Snake](dist/github-snake.svg?ts=$(date +%s))
 
 <div align="center">
   <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=100&section=footer"/>
