@@ -114,6 +114,12 @@ $(cat terminal_output.txt)
   [![Twitter](https://img.shields.io/badge/X-%23000000.svg?style=for-the-badge&logo=X&logoColor=white)](https://twitter.com/chuksgincaro)
 </div>
 
+<!-- START SNAKE -->
+<div align="center">
+  <img src="dist/github-snake.svg" alt="Snake" style="max-width: 100%; height: auto;" />
+</div>
+<!-- END SNAKE -->
+
 ![Snake animation](https://github.com/Thugger069/Thugger069/blob/output/github-contribution-grid-snake-dark.svg)
 
 <div align="center">
