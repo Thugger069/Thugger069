@@ -11,7 +11,7 @@
 <pre class="terminal">
 Last login: 2025-05-07 02:36:42 on ttys000
 𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ@github ~ % uptime
-2025-05-07 02:36:42 up 02:51, 1 user, load average: 1.04 0.79 0.32
+2025-05-07 02:36:42 up 02:51, 1 user, load average: 0.13 0.91 0.36
 
 𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ@github ~ % ls -la Projects/
 total 40
@@ -32,6 +32,8 @@ drwxr-xr-x  5 Thugger069  staff  160 May 07 02:51 Scripts
 
 𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ@github ~ % 
 </pre>
+
+<div align="center">
 
   <h3>🧰 ꛤ𖦪ꛈ𖢑ꛎ𖦪ꚲ 𖢧𖤢ꛕꛅꛘ𖣠ꚳ𖣠ꚽꚲ ꕷ𖢧ꛎꛕ𖢉</h3>
   
@@ -107,8 +109,8 @@ drwxr-xr-x  5 Thugger069  staff  160 May 07 02:51 Scripts
 
   <h3>📈 ꚽꛈ𖢧ꛅꚶꔪ ꕷ𖢧ꛎ𖢧ꛈꕷ𖢧ꛈꛕꕷ</h3>
   
-  <img src="https://github-readme-stats-thugger069.vercel.app/api?username=thugger069&show_icons=true&theme=radical&cache_seconds=1800" alt="GitHub Stats" height="170"/>
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=thugger069&theme=radical&cache_seconds=1800" alt="GitHub Streak" height="170"/>
+ <img src="https://github-readme-stats.vercel.app/api?username=thugger069&show_icons=true&theme=radical&cache_seconds=86400" alt="GitHub Stats" height="170"/>
+ <img src="https://github-readme-streak-stats.herokuapp.com/?user=thugger069&theme=radical&cache_seconds=86400" alt="GitHub Streak" height="170"/>
 
   <h3>🤝 ꛕ𖣠ꛘꛘ𖤢ꛕ𖢧 ꛃꛈ𖢧ꛅ 𖢑𖤢</h3>
   
