@@ -67,6 +67,8 @@ generate_readme() {
 $(cat terminal_output.txt)
 </pre>
 
+<div align="center">
+
   <h3>🧰 ꛤ𖦪ꛈ𖢑ꛎ𖦪ꚲ 𖢧𖤢ꛕꛅꛘ𖣠ꚳ𖣠ꚽꚲ ꕷ𖢧ꛎꛕ𖢉</h3>
   
 ![Web3.js](https://img.shields.io/badge/web3.js-F16822?style=for-the-badge&logo=web3.js&logoColor=white)
@@ -141,8 +143,8 @@ $(cat terminal_output.txt)
 
   <h3>📈 ꚽꛈ𖢧ꛅꚶꔪ ꕷ𖢧ꛎ𖢧ꛈꕷ𖢧ꛈꛕꕷ</h3>
   
-  <img src="https://github-readme-stats-thugger069.vercel.app/api?username=thugger069&show_icons=true&theme=radical&cache_seconds=1800" alt="GitHub Stats" height="170"/>
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=thugger069&theme=radical&cache_seconds=1800" alt="GitHub Streak" height="170"/>
+ <img src="https://github-readme-stats.vercel.app/api?username=thugger069&show_icons=true&theme=radical&cache_seconds=86400" alt="GitHub Stats" height="170"/>
+ <img src="https://github-readme-streak-stats.herokuapp.com/?user=thugger069&theme=radical&cache_seconds=86400" alt="GitHub Streak" height="170"/>
 
   <h3>🤝 ꛕ𖣠ꛘꛘ𖤢ꛕ𖢧 ꛃꛈ𖢧ꛅ 𖢑𖤢</h3>
   
