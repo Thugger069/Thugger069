@@ -11,7 +11,7 @@
 <pre class="terminal">
 Last login: 2025-05-07 02:36:42 on ttys000
 𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ@github ~ % uptime
-2025-05-07 02:36:42 up 02:51, 1 user, load average: 0.34 0.98 0.84
+2025-05-07 02:36:42 up 02:51, 1 user, load average: 1.01 0.70 0.76
 
 𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ@github ~ % ls -la Projects/
 total 40
