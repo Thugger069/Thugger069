@@ -65,6 +65,11 @@ jobs:
         run: |
           chmod +x ./scripts/update-terminal.sh
           ./scripts/update-terminal.sh
+          
+      - name: Generate Header Content
+        run: |
+          chmod +x ./scripts/generate_header.sh
+          ./scripts/generate_header.sh
 
       - name: Commit and Push Changes
         env:
