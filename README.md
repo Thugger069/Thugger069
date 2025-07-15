@@ -1,4 +1,8 @@
-    <div align="center">
+    <!-- Holographic Quantum Tunnel -->
+<p align="center">
+  ![Quantum Tunnel](assets/quantum_tunnel.svg)
+</p
+    
   <h2>👨‍💻 𖢧ꛅꚶꚽꚽ𖤢𖦪'ꕷ 𖦪𖤢ꛎꚳ𖢑</h2>
 
   [![Profile Views](https://komarev.com/ghpvc/?username=thugger069&color=blueviolet&style=flat-square&label=Profile%20Views)](https://github.com/thugger069)
@@ -8,10 +12,15 @@
   </a>
 </div>
 
+<!-- Quantum Terminal Interface -->
+<p align="center">
+  <img src="assets/quantum_terminal.svg" alt="Quantum Terminal" width="100%"/>
+</p>
+
 <pre class="terminal">
 Last login: 2025-05-07 02:36:42 on ttys000
 𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ@github ~ % uptime
-2025-05-07 02:36:42 up 02:51, 1 user, load average: 0.65 0.72 0.65
+2025-05-07 02:36:42 up 02:51, 1 user, load average: 0.47 0.95 0.30
 
 𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ@github ~ % ls -la Projects/
 total 40
