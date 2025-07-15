@@ -53,7 +53,11 @@ EOF
 # Generate the README content
 generate_readme() {
     cat > README.md << EOF
-    <div align="center">
+    <!-- Holographic Quantum Tunnel -->
+<p align="center">
+  ![Quantum Tunnel](assets/quantum_tunnel.svg)
+</p
+    
   <h2>👨‍💻 𖢧ꛅꚶꚽꚽ𖤢𖦪'ꕷ 𖦪𖤢ꛎꚳ𖢑</h2>
 
   [![Profile Views](https://komarev.com/ghpvc/?username=thugger069&color=blueviolet&style=flat-square&label=Profile%20Views)](https://github.com/thugger069)
@@ -62,6 +66,11 @@ generate_readme() {
     <img src="https://readme-typing-svg.herokuapp.com?font=Ubuntu+Mono&duration=3000&pause=1000&color=00FF9C&center=true&vCenter=true&width=435&lines=ℌ𝔢𝔩𝔩𝔬+𝔗𝔥𝔢𝔯𝔢;ℑ’𝔪+𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ;𝔚𝔢𝔩𝔠𝔬𝔪𝔢+𝔱𝔬+𝔪𝔶+𝔯𝔢𝔞𝔩𝔪;𝔖𝔥𝔢𝔩𝔩+𝔖𝔠𝔯𝔦𝔭𝔱+𝔈𝔫𝔱𝔥𝔲𝔰𝔦𝔞𝔰𝔱;𝔏𝔦𝔫𝔲𝔵+%26+𝔇𝔢𝔳𝔒𝔭𝔰+𝔈𝔵𝔭𝔩𝔬𝔯𝔢𝔯;𝔒𝔭𝔢𝔫+𝔖𝔬𝔲𝔯𝔠𝔢+ℭ𝔬𝔫𝔱𝔯𝔦𝔟𝔲𝔱𝔬𝔯;𝔄𝔩𝔴𝔞𝔶𝔰+𝔏𝔢𝔞𝔯𝔫𝔦𝔫𝔤+%F0%9F%92%A1" alt="Typing SVG" />
   </a>
 </div>
+
+<!-- Quantum Terminal Interface -->
+<p align="center">
+  <img src="assets/quantum_terminal.svg" alt="Quantum Terminal" width="100%"/>
+</p>
 
 <pre class="terminal">
 $(cat terminal_output.txt)
@@ -175,6 +184,12 @@ EOF
 main() {
     # Create necessary directories
     mkdir -p assets
+
+echo "▶ Generating quantum tunnel SVG"
+  node scripts/generate-header.js
+
+  echo "▶ Generating quantum terminal interface"
+  node scripts/generate-terminal-svg.js   # <-- NEW
 
     # Generate content
     generate_terminal_content
