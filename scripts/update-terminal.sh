@@ -204,7 +204,7 @@ echo "▶ Generating quantum tunnel SVG"
   node scripts/generate-header.js
 
   echo "▶ Generating quantum terminal interface"
-  node scripts/generate-terminal.js   # <-- NEW
+  node scripts/generate-terminal-svg.js   # <-- NEW
 
     # Generate content
     generate_terminal_content
