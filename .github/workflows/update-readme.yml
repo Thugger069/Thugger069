@@ -63,13 +63,8 @@ jobs:
           CURRENT_TIME: "2025-05-07 02:36:42"
           USERNAME: "Thugger069"
         run: |
-          chmod +x ./scripts/generate-terminal.sh
-          ./scripts/generate-terminal.sh
-          
-      - name: Generate Header Content
-        run: |
-          chmod +x ./scripts/generate_header.sh
-          ./scripts/generate_header.sh
+          chmod +x ./scripts/update-terminal.sh
+          ./scripts/update-terminal.sh
 
       - name: Commit and Push Changes
         env:
@@ -77,6 +72,6 @@ jobs:
         run: |
           git config --local user.name "Thugger069"
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -f dist/github-snake*.svg README.md
+          git add -f dist/*.svg README.md
           git commit -m "🐍 Generate Snake & 📟 Update README (2025-05-07 02:36:42)" || echo "No changes to commit"
           git push
