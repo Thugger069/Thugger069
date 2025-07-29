@@ -1,9 +1,7 @@
-    <!-- ༼ つ ◕_◕ ༽つ QUANTUM REALITY INTERFACE v3.14 ༼ つ ◕_◕ ༽つ -->
-<div align="center">
-  <a href="https://github.com/thugger069">
-    <img src="assets/quantum_tunnel.svg" width="100%" alt="Quantum Tunnel"/>
-  </a>
-</div>
+    <!-- ༼ つ ◕_◕ ༽つ QUANTUM REALITY INTERFACE ༼ つ ◕_◕ ༽つ -->
+<p align="center">
+  <img src="dist/header.svg" alt="Header Glyphs" width="100%" />
+</p>
 
 <!-- 量子ターミナル -->
 <div align="center">
@@ -19,15 +17,14 @@
   </a>
 </div>
 
-<!-- Quantum Terminal Interface -->
 <p align="center">
-  <img src="assets/quantum_terminal.svg" alt="Quantum Terminal" width="100%"/>
+  <img src="dist/quote.svg" alt="Terminal quote" />
 </p>
 
 <pre class="terminal">
-Last login: 2025-07-29 08:01:55 on ttys000
+Last login: 2025-07-29 08:41:23 on ttys000
 𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ@github ~ % uptime
-2025-07-29 08:01:55 up 02:51, 1 user, load average: 0.72 0.71 1.03
+2025-07-29 08:41:23 up 02:51, 1 user, load average: 0.16 0.60 0.10
 
 𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ@github ~ % ls -la Projects/
 total 40
@@ -137,22 +134,22 @@ drwxr-xr-x  5 Thugger069  staff  160 May 07 02:51 Scripts
 
 <!-- START SNAKE -->
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="dist/github-snake-dark.svg?ts=2025-07-29 08%3A01%3A55" />
-  <source media="(prefers-color-scheme: light)" srcset="dist/github-snake.svg?ts=2025-07-29 08%3A01%3A55" />
-  <img alt="Github Contribution Snake Animation" src="dist/github-snake.svg?ts=2025-07-29 08%3A01%3A55" />
+  <source media="(prefers-color-scheme: dark)" srcset="dist/github-snake-dark.svg?ts=2025-07-29 08%3A41%3A23" />
+  <source media="(prefers-color-scheme: light)" srcset="dist/github-snake.svg?ts=2025-07-29 08%3A41%3A23" />
+  <img alt="Github Contribution Snake Animation" src="dist/github-snake.svg?ts=2025-07-29 08%3A41%3A23" />
 </picture>
 <!-- END SNAKE -->
 
 <!-- 量子署名 -->
 <div align="center">
-  
+  + Quantum signature verified: ꚩꚶꛎꛘ𖢧ꚶ𖢑 𖦪𖤢ꛎꚳ𖢑 ⚡
 </div>
----
+
 <sub align="center">🧿 Updated daily by <code>update_readme.sh</code> • 🧬 Maintained by 𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ</sub>
 <div align="center">
   <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=100&section=footer"/>
 </div>
 
 <div align="center">
-  <sub>Last Updated: 2025-07-29 08:01:55 UTC</sub>
+  <sub>Last Updated: 2025-07-29 08:41:23 UTC</sub>
 </div>
