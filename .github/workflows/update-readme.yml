@@ -63,8 +63,8 @@ jobs:
           CURRENT_TIME: "2025-05-07 02:36:42"
           USERNAME: "Thugger069"
         run: |
-          chmod +x ./scripts/update-terminal.sh
-          ./scripts/update-terminal.sh
+          chmod +x ./scripts/generate-terminal.sh
+          ./scripts/generate-terminal.sh
           
       - name: Generate Header Content
         run: |
