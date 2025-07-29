@@ -1,0 +1,63 @@
+name: Update Terminal Visuals
+
+on:
+  push:
+    branches: [ "main" ]
+    paths-ignore:
+      - 'README.md'
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  regenerate-assets:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: ⬇️ Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: 🧱 Ensure Output Directory
+        run: mkdir -p dist && git add -f dist
+
+      - name: 🛠 Install CLI Tools
+        run: |
+          sudo apt-get update && sudo apt-get install -y \
+            figlet lolcat neofetch boxes cowsay fortune bc
+
+      - name: 🧰 Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: 🔧 Install JS Dependencies
+        run: npm ci || npm install
+
+      - name: 💻 Update Terminal SVG
+        run: |
+          chmod +x ./scripts/update-terminal.sh
+          ./scripts/generate-terminal.sh
+
+      - name: 🌌 Generate Header SVG
+        run: |
+          chmod +x ./scripts/generate_header.sh
+          ./scripts/generate_header.sh
+
+      - name: ✨ Fetch and Render Quote
+        run: |
+          node ./scripts/fetch-quote.js
+
+      - name: 📥 Commit & Push Changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config --local user.name "Thugger069"
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f dist/*.svg README.md
+          git commit -m "🔁 Update terminal assets + quote: $(date)" || echo "No changes to commit"
+          git push
