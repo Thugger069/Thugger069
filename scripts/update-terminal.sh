@@ -58,12 +58,10 @@ EOF
 # Generate the README content
 generate_readme() {
     cat > README.md << EOF
-    <!-- ༼ つ ◕_◕ ༽つ QUANTUM REALITY INTERFACE v3.14 ༼ つ ◕_◕ ༽つ -->
-<div align="center">
-  <a href="https://github.com/${GITHUB_USER}">
-    <img src="assets/quantum_tunnel.svg" width="100%" alt="Quantum Tunnel"/>
-  </a>
-</div>
+    <!-- ༼ つ ◕_◕ ༽つ QUANTUM REALITY INTERFACE ༼ つ ◕_◕ ༽つ -->
+<p align="center">
+  <img src="dist/header.svg" alt="Header Glyphs" width="100%" />
+</p>
 
 <!-- 量子ターミナル -->
 <div align="center">
@@ -79,9 +77,8 @@ generate_readme() {
   </a>
 </div>
 
-<!-- Quantum Terminal Interface -->
 <p align="center">
-  <img src="assets/quantum_terminal.svg" alt="Quantum Terminal" width="100%"/>
+  <img src="dist/quote.svg" alt="Terminal quote" />
 </p>
 
 <pre class="terminal">
@@ -184,11 +181,9 @@ $(cat terminal_output.txt)
 
 <!-- 量子署名 -->
 <div align="center">
-  ```diff
   + Quantum signature verified: ${QUANTUM_SIGNATURE}
-  ```
 </div>
----
+
 <sub align="center">🧿 Updated daily by <code>update_readme.sh</code> • 🧬 Maintained by 𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ</sub>
 <div align="center">
   <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=100&section=footer"/>
@@ -209,7 +204,7 @@ echo "▶ Generating quantum tunnel SVG"
   node scripts/generate-header.js
 
   echo "▶ Generating quantum terminal interface"
-  node scripts/generate-terminal-svg.js   # <-- NEW
+  node scripts/generate-terminal.js   # <-- NEW
 
     # Generate content
     generate_terminal_content
