@@ -56,7 +56,7 @@ generate_readme() {
     <!-- Holographic Quantum Tunnel -->
 <p align="center">
   ![Quantum Tunnel](assets/quantum_tunnel.svg)
-</p
+</p>
     
   <h2>👨‍💻 𖢧ꛅꚶꚽꚽ𖤢𖦪'ꕷ 𖦪𖤢ꛎꚳ𖢑</h2>
 
@@ -170,6 +170,8 @@ $(cat terminal_output.txt)
 </picture>
 <!-- END SNAKE -->
 
+---
+<sub align="center">🧿 Updated daily by <code>update_readme.sh</code> • 🧬 Maintained by 𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ</sub>
 <div align="center">
   <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=100&section=footer"/>
 </div>
