@@ -58,19 +58,19 @@ EOF
 # Generate the README content
 generate_readme() {
     cat > README.md << EOF
-    <p align="center">
+    <div align="center">
   <img src="dist/header.svg" alt="Header Glyphs" width="100%" />
-</p>
+</div>
 
 <!-- 量子ターミナル -->
 <div align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Space+Mono&weight=600&size=26&duration=4000&pause=1000&color=39FF14&center=true&vCenter=true&width=460&lines=%E2%97%9F%EF%B8%8F+Welcome+to+%F0%96%9D%9F%EA%9A%B6%EA%9B%8E%EA%9B%98%F0%96%A2%A7%EA%9A%B6%F0%96%A2%91;%E2%97%9F%EF%B8%8F+%F0%96%A6%AA%F0%96%A4%A2%EA%9B%8E%EA%9A%B3%F0%96%A2%91+%E2%9A%A1;REALITY_%23B7D3F2" alt="Quantum Header" />
+  <img src="https://readme-typing-svg.demolab.com?font=Space+Mono&weight=600&size=26&duration=4000&pause=1000&color=39FF14&center=true&vCenter=true&width=460&lines=%E2%97%9F%EF%B8%8F+ƜЄԼƇƠMЄ;𖦪𖤢ꛎꚳꛈ𖢧ꚲ_%ꕫꛌꔪꛣ𖤀ꛌꘘꕫ"
 </div>
 
   [![Profile Views](https://komarev.com/ghpvc/?username=thugger069&color=blueviolet&style=flat-square&label=Profile%20Views)](https://github.com/thugger069)
 
   <a href="https://git.io/typing-svg">
-    <img src="https://readme-typing-svg.herokuapp.com?font=Ubuntu+Mono&duration=3000&pause=1000&color=00FF9C&center=true&vCenter=true&width=435&lines=ℌ𝔢𝔩𝔩𝔬+𝔗𝔥𝔢𝔯𝔢;ℑ’𝔪+𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ;𝔚𝔢𝔩𝔠𝔬𝔪𝔢+𝔱𝔬+𝔪𝔶+𝔯𝔢𝔞𝔩𝔪;𝔖𝔥𝔢𝔩𝔩+𝔖𝔠𝔯𝔦𝔭𝔱+𝔈𝔫𝔱𝔥𝔲𝔰𝔦𝔞𝔰𝔱;𝔏𝔦𝔫𝔲𝔵+%26+𝔇𝔢𝔳𝔒𝔭𝔰+𝔈𝔵𝔭𝔩𝔬𝔯𝔢𝔯;𝔒𝔭𝔢𝔫+𝔖𝔬𝔲𝔯𝔠𝔢+ℭ𝔬𝔫𝔱𝔯𝔦𝔟𝔲𝔱𝔬𝔯;𝔄𝔩𝔴𝔞𝔶𝔰+𝔏𝔢𝔞𝔯𝔫𝔦𝔫𝔤+%F0%9F%92%A1" alt="Typing SVG" />
+    <img src="https://readme-typing-svg.herokuapp.com?font=Ubuntu+Mono&duration=3000&pause=1000&color=00FF9C&center=true&vCenter=true&width=435&lines=ℌ𝔢𝔩𝔩𝔬+𝔗𝔥𝔢𝔯𝔢;ℑ’𝔪+𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ;𝔚𝔢𝔩𝔠𝔬𝔪𝔢+𝔱𝔬+𝔪𝔶+𝔯𝔢𝔞𝔩𝔪;𝔖𝔥𝔢𝔩𝔩+𝔖𝔠𝔯𝔦𝔭𝔱+𝔈𝔫𝔱𝔥𝔲𝔰𝔦𝔞𝔰𝔱;𝔏𝔦𝔫𝔲𝔵+%26+𝔇𝔢𝔳𝔒𝔭𝔰+𝔈𝔵𝔭𝔩𝔬𝔯𝔢𝔯;𝔒𝔭𝔢𝔫+𝔖𝔬𝔲𝔯𝔠𝔢+ℭ𝔬𝔫𝔱𝔯𝔦𝔟𝔲𝔱𝔬𝔯;𝔄𝔩𝔴𝔞𝔶𝔰+𝔏𝔢𝔞𝔯𝔫𝔦𝔫𝔤+%F0%9F%92%A1" alt="Typing SVG" />
   </a>
 </div>
 
@@ -177,14 +177,15 @@ $(cat terminal_output.txt)
 </picture>
 <!-- END SNAKE -->
 
+<div align="center">
+  <sub>Last Updated: ${CURRENT_TIME} UTC</sub>
+</div>
+
 <sub align="center">🧿 Updated daily by <code>update_readme.sh</code> • 🧬 Maintained by 𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ</sub>
 <div align="center">
   <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=100&section=footer"/>
 </div>
 
-<div align="center">
-  <sub>Last Updated: ${CURRENT_TIME} UTC</sub>
-</div>
 EOF
 }
 
