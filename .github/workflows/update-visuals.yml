@@ -40,7 +40,7 @@ jobs:
 
       - name: 💻 Update Terminal SVG
         run: |
-          chmod +x ./scripts/update-terminal.sh
+          chmod +x ./scripts/generate-terminal.sh
           ./scripts/generate-terminal.sh
 
       - name: 🌌 Generate Header SVG
