@@ -58,8 +58,7 @@ EOF
 # Generate the README content
 generate_readme() {
     cat > README.md << EOF
-    <!-- ༼ つ ◕_◕ ༽つ QUANTUM REALITY INTERFACE ༼ つ ◕_◕ ༽つ -->
-<p align="center">
+    <p align="center">
   <img src="dist/header.svg" alt="Header Glyphs" width="100%" />
 </p>
 
@@ -68,8 +67,6 @@ generate_readme() {
   <img src="https://readme-typing-svg.demolab.com?font=Space+Mono&weight=600&size=26&duration=4000&pause=1000&color=39FF14&center=true&vCenter=true&width=460&lines=%E2%97%9F%EF%B8%8F+Welcome+to+%F0%96%9D%9F%EA%9A%B6%EA%9B%8E%EA%9B%98%F0%96%A2%A7%EA%9A%B6%F0%96%A2%91;%E2%97%9F%EF%B8%8F+%F0%96%A6%AA%F0%96%A4%A2%EA%9B%8E%EA%9A%B3%F0%96%A2%91+%E2%9A%A1;REALITY_%23B7D3F2" alt="Quantum Header" />
 </div>
 
-  <h2>👨‍💻 𖢧ꛅꚶꚽꚽ𖤢𖦪'ꕷ 𖦪𖤢ꛎꚳ𖢑</h2>
-
   [![Profile Views](https://komarev.com/ghpvc/?username=thugger069&color=blueviolet&style=flat-square&label=Profile%20Views)](https://github.com/thugger069)
 
   <a href="https://git.io/typing-svg">
@@ -77,9 +74,6 @@ generate_readme() {
   </a>
 </div>
 
-<p align="center">
-  <img src="dist/quote.svg" alt="Terminal quote" />
-</p>
 
 <pre class="terminal">
 $(cat terminal_output.txt)
@@ -171,6 +165,10 @@ $(cat terminal_output.txt)
   [![Twitter](https://img.shields.io/badge/X-%23000000.svg?style=for-the-badge&logo=X&logoColor=white)](https://twitter.com/chuksgincaro)
 </div>
 
+<p align="center">
+  <img src="dist/quote.svg" alt="Terminal quote" />
+</p>
+
 <!-- START SNAKE -->
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="dist/github-snake-dark.svg?ts=${CURRENT_TIME//:/%3A}" />
@@ -179,12 +177,7 @@ $(cat terminal_output.txt)
 </picture>
 <!-- END SNAKE -->
 
-<!-- 量子署名 -->
-<div align="center">
-  + Quantum signature verified: ${QUANTUM_SIGNATURE}
-</div>
-
-<sub align="center">🧿 Updated daily by <code>update_readme.sh</code> • 🧬 Maintained by 𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ</sub>
+<sub align="center">🧿 Updated daily by <code>update_readme.sh</code> • 🧬 Maintained by 𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ</sub>
 <div align="center">
   <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=100&section=footer"/>
 </div>
