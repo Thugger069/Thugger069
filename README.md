@@ -1,8 +1,15 @@
-    <!-- Holographic Quantum Tunnel -->
-<p align="center">
-  ![Quantum Tunnel](assets/quantum_tunnel.svg)
-</p>
-    
+    <!-- ༼ つ ◕_◕ ༽つ QUANTUM REALITY INTERFACE v3.14 ༼ つ ◕_◕ ༽つ -->
+<div align="center">
+  <a href="https://github.com/thugger069">
+    <img src="assets/quantum_tunnel.svg" width="100%" alt="Quantum Tunnel"/>
+  </a>
+</div>
+
+<!-- 量子ターミナル -->
+<div align="center">
+  <img src="https://readme-typing-svg.demolab.com?font=Space+Mono&weight=600&size=26&duration=4000&pause=1000&color=39FF14&center=true&vCenter=true&width=460&lines=%E2%97%9F%EF%B8%8F+Welcome+to+%F0%96%9D%9F%EA%9A%B6%EA%9B%8E%EA%9B%98%F0%96%A2%A7%EA%9A%B6%F0%96%A2%91;%E2%97%9F%EF%B8%8F+%F0%96%A6%AA%F0%96%A4%A2%EA%9B%8E%EA%9A%B3%F0%96%A2%91+%E2%9A%A1;REALITY_%23B7D3F2" alt="Quantum Header" />
+</div>
+
   <h2>👨‍💻 𖢧ꛅꚶꚽꚽ𖤢𖦪'ꕷ 𖦪𖤢ꛎꚳ𖢑</h2>
 
   [![Profile Views](https://komarev.com/ghpvc/?username=thugger069&color=blueviolet&style=flat-square&label=Profile%20Views)](https://github.com/thugger069)
@@ -18,9 +25,9 @@
 </p>
 
 <pre class="terminal">
-Last login: 2025-05-07 02:36:42 on ttys000
+Last login: 2025-07-29 07:24:07 on ttys000
 𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ@github ~ % uptime
-2025-05-07 02:36:42 up 02:51, 1 user, load average: 0.26 0.66 0.15
+2025-07-29 07:24:07 up 02:51, 1 user, load average: 0.12 1.14 0.89
 
 𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ@github ~ % ls -la Projects/
 total 40
@@ -130,12 +137,16 @@ drwxr-xr-x  5 Thugger069  staff  160 May 07 02:51 Scripts
 
 <!-- START SNAKE -->
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="dist/github-snake-dark.svg?ts=2025-05-07 02%3A36%3A42" />
-  <source media="(prefers-color-scheme: light)" srcset="dist/github-snake.svg?ts=2025-05-07 02%3A36%3A42" />
-  <img alt="Github Contribution Snake Animation" src="dist/github-snake.svg?ts=2025-05-07 02%3A36%3A42" />
+  <source media="(prefers-color-scheme: dark)" srcset="dist/github-snake-dark.svg?ts=2025-07-29 07%3A24%3A07" />
+  <source media="(prefers-color-scheme: light)" srcset="dist/github-snake.svg?ts=2025-07-29 07%3A24%3A07" />
+  <img alt="Github Contribution Snake Animation" src="dist/github-snake.svg?ts=2025-07-29 07%3A24%3A07" />
 </picture>
 <!-- END SNAKE -->
 
+<!-- 量子署名 -->
+<div align="center">
+  
+</div>
 ---
 <sub align="center">🧿 Updated daily by <code>update_readme.sh</code> • 🧬 Maintained by 𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ</sub>
 <div align="center">
@@ -143,5 +154,5 @@ drwxr-xr-x  5 Thugger069  staff  160 May 07 02:51 Scripts
 </div>
 
 <div align="center">
-  <sub>Last Updated: 2025-05-07 02:36:42 UTC</sub>
+  <sub>Last Updated: 2025-07-29 07:24:07 UTC</sub>
 </div>
