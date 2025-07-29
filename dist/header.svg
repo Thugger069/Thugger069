@@ -1,0 +1,17 @@
+<svg viewBox="0 0 800 120" width="100%" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .glyphs {
+      font-family: 'Courier New', monospace;
+      font-size: 48px;
+      fill: #00ffcc;
+      animation: flicker 2s infinite alternate;
+    }
+    @keyframes flicker {
+      0% { opacity: 0.8; }
+      50% { opacity: 0.3; }
+      100% { opacity: 1; }
+    }
+  </style>
+  <rect width="100%" height="120" fill="black"/>
+  <text x="20" y="80" class="glyphs">ꚩꚶꛎꛘ𖢧ꚶ𖢑 𖦪𖤢ꛎꚳ𖢑 ⚡</text>
+</svg>
