@@ -6,6 +6,11 @@ set -e  # Exit on any error
 USERNAME=${USERNAME:-"𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ"}
 username=${username:-"thugger069"}
 CURRENT_TIME=${CURRENT_TIME:-"2025-05-07 02:51:55"}
+QUANTUM_USER="𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ"
+GITHUB_USER="thugger069"
+CURRENT_TIME=$(date -u +"%Y-%m-%d %T")
+QUANTUM_SIGNATURE="ꚩꚶꛎꛘ𖢧ꚶ𖢑 𖦪𖤢ꛎꚳ𖢑 ⚡"
+TERMINAL_THEME="hacker-green"
 
 # Function to generate random load average
 generate_load_avg() {
@@ -53,11 +58,18 @@ EOF
 # Generate the README content
 generate_readme() {
     cat > README.md << EOF
-    <!-- Holographic Quantum Tunnel -->
-<p align="center">
-  ![Quantum Tunnel](assets/quantum_tunnel.svg)
-</p>
-    
+    <!-- ༼ つ ◕_◕ ༽つ QUANTUM REALITY INTERFACE v3.14 ༼ つ ◕_◕ ༽つ -->
+<div align="center">
+  <a href="https://github.com/${GITHUB_USER}">
+    <img src="assets/quantum_tunnel.svg" width="100%" alt="Quantum Tunnel"/>
+  </a>
+</div>
+
+<!-- 量子ターミナル -->
+<div align="center">
+  <img src="https://readme-typing-svg.demolab.com?font=Space+Mono&weight=600&size=26&duration=4000&pause=1000&color=39FF14&center=true&vCenter=true&width=460&lines=%E2%97%9F%EF%B8%8F+Welcome+to+%F0%96%9D%9F%EA%9A%B6%EA%9B%8E%EA%9B%98%F0%96%A2%A7%EA%9A%B6%F0%96%A2%91;%E2%97%9F%EF%B8%8F+%F0%96%A6%AA%F0%96%A4%A2%EA%9B%8E%EA%9A%B3%F0%96%A2%91+%E2%9A%A1;REALITY_%23B7D3F2" alt="Quantum Header" />
+</div>
+
   <h2>👨‍💻 𖢧ꛅꚶꚽꚽ𖤢𖦪'ꕷ 𖦪𖤢ꛎꚳ𖢑</h2>
 
   [![Profile Views](https://komarev.com/ghpvc/?username=thugger069&color=blueviolet&style=flat-square&label=Profile%20Views)](https://github.com/thugger069)
@@ -170,6 +182,12 @@ $(cat terminal_output.txt)
 </picture>
 <!-- END SNAKE -->
 
+<!-- 量子署名 -->
+<div align="center">
+  ```diff
+  + Quantum signature verified: ${QUANTUM_SIGNATURE}
+  ```
+</div>
 ---
 <sub align="center">🧿 Updated daily by <code>update_readme.sh</code> • 🧬 Maintained by 𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ</sub>
 <div align="center">
