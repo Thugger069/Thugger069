@@ -1,7 +1,7 @@
     <!-- Holographic Quantum Tunnel -->
 <p align="center">
   ![Quantum Tunnel](assets/quantum_tunnel.svg)
-</p
+</p>
     
   <h2>👨‍💻 𖢧ꛅꚶꚽꚽ𖤢𖦪'ꕷ 𖦪𖤢ꛎꚳ𖢑</h2>
 
@@ -20,7 +20,7 @@
 <pre class="terminal">
 Last login: 2025-05-07 02:36:42 on ttys000
 𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ@github ~ % uptime
-2025-05-07 02:36:42 up 02:51, 1 user, load average: 0.69 0.62 0.22
+2025-05-07 02:36:42 up 02:51, 1 user, load average: 0.26 0.66 0.15
 
 𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ@github ~ % ls -la Projects/
 total 40
@@ -136,6 +136,8 @@ drwxr-xr-x  5 Thugger069  staff  160 May 07 02:51 Scripts
 </picture>
 <!-- END SNAKE -->
 
+---
+<sub align="center">🧿 Updated daily by <code>update_readme.sh</code> • 🧬 Maintained by 𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ</sub>
 <div align="center">
   <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=100&section=footer"/>
 </div>
