@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="900" height="500" viewBox="0 0 900 500" 
+     xmlns="http://www.w3.org/2000/svg">
+  
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0a0a"/>
+      <stop offset="50%" stop-color="#1a1a2e"/>
+      <stop offset="100%" stop-color="#16213e"/>
+    </linearGradient>
+    
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <pattern id="circuit" patternUnits="userSpaceOnUse" width="50" height="50">
+      <circle cx="25" cy="25" r="2" fill="#00ff41" opacity="0.3"/>
+      <line x1="0" y1="25" x2="50" y2="25" stroke="#00ff41" stroke-width="0.5" opacity="0.2"/>
+      <line x1="25" y1="0" x2="25" y2="50" stroke="#00ff41" stroke-width="0.5" opacity="0.2"/>
+    </pattern>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="url(#bgGrad)"/>
+  <rect width="100%" height="100%" fill="url(#circuit)" opacity="0.1"/>
+  
+  <!-- Main Insight Panel -->
+  <g transform="translate(20, 20)">
+    <rect x="0" y="0" width="860" height="120" rx="8" fill="#111" stroke="#00ff41" stroke-width="2" opacity="0.9"/>
+    
+    <!-- Header -->
+    <text x="430" y="25" font-family="monospace" font-size="18" fill="#00ff41" 
+          text-anchor="middle" font-weight="bold">
+      🧠 AI Tech Insights Engine
+    </text>
+    
+    <!-- Category Badge -->
+    <rect x="20" y="35" width="180" height="20" rx="10" fill="#00ff41" opacity="0.8"/>
+    <text x="110" y="48" font-family="monospace" font-size="12" fill="#000" 
+          text-anchor="middle" font-weight="bold">
+      DevOps & Automation
+    </text>
+    
+    <!-- Confidence & Sources -->
+    <text x="750" y="48" font-family="monospace" font-size="12" fill="#4CAF50" text-anchor="end">
+      Confidence: 91% | Sources: 36
+    </text>
+    
+    <!-- Main Insight Text -->
+    <foreignObject x="20" y="60" width="820" height="50">
+      <div xmlns="http://www.w3.org/1999/xhtml" style="color: #E0E0E0; font-family: monospace; font-size: 14px; line-height: 1.4;">
+        GitOps workflows reduce deployment errors by 75% through declarative infrastructure
+      </div>
+    </foreignObject>
+    
+    <!-- Animated pulse -->
+    <rect x="0" y="0" width="860" height="120" rx="8" fill="none" stroke="#00ff41" stroke-width="1" opacity="0.3">
+      <animate attributeName="opacity" values="0.3; 0.8; 0.3" dur="3s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+  
+  <!-- Tech Trends Section -->
+  <g transform="translate(20, 160)">
+    <text x="0" y="20" font-family="monospace" font-size="16" fill="#00ff41" font-weight="bold">
+      📈 Technology Growth Trends
+    </text>
+    
+    
+      <g transform="translate(0, 40)">
+        <!-- Trend Bar Background -->
+        <rect x="0" y="0" width="400" height="25" rx="12" fill="#1E1E1E" stroke="#333" stroke-width="1"/>
+        
+        <!-- Trend Bar Fill -->
+        <rect x="2" y="2" width="0" height="21" rx="10" fill="#00ff41" opacity="0.8">
+          <animate attributeName="width" from="0" to="68" 
+                   dur="2s" begin="0s" fill="freeze"/>
+        </rect>
+        
+        <!-- Technology Name -->
+        <text x="10" y="17" font-family="monospace" font-size="12" fill="#E0E0E0" font-weight="bold">
+          WebAssembly
+        </text>
+        
+        <!-- Growth Percentage -->
+        <text x="420" y="17" font-family="monospace" font-size="12" fill="#4CAF50" font-weight="bold">
+          +340%
+        </text>
+        
+        <!-- Impact Badge -->
+        <rect x="500" y="2" width="80" height="21" rx="10" fill="#FF4081" opacity="0.8"/>
+        <text x="540" y="15" font-family="monospace" font-size="10" fill="white" text-anchor="middle">
+          Revolutionary
+        </text>
+      </g>
+    
+      <g transform="translate(0, 80)">
+        <!-- Trend Bar Background -->
+        <rect x="0" y="0" width="400" height="25" rx="12" fill="#1E1E1E" stroke="#333" stroke-width="1"/>
+        
+        <!-- Trend Bar Fill -->
+        <rect x="2" y="2" width="0" height="21" rx="10" fill="#00ff41" opacity="0.8">
+          <animate attributeName="width" from="0" to="36" 
+                   dur="2s" begin="0.3s" fill="freeze"/>
+        </rect>
+        
+        <!-- Technology Name -->
+        <text x="10" y="17" font-family="monospace" font-size="12" fill="#E0E0E0" font-weight="bold">
+          Kubernetes
+        </text>
+        
+        <!-- Growth Percentage -->
+        <text x="420" y="17" font-family="monospace" font-size="12" fill="#4CAF50" font-weight="bold">
+          +180%
+        </text>
+        
+        <!-- Impact Badge -->
+        <rect x="500" y="2" width="80" height="21" rx="10" fill="#4CAF50" opacity="0.8"/>
+        <text x="540" y="15" font-family="monospace" font-size="10" fill="white" text-anchor="middle">
+          Mainstream
+        </text>
+      </g>
+    
+      <g transform="translate(0, 120)">
+        <!-- Trend Bar Background -->
+        <rect x="0" y="0" width="400" height="25" rx="12" fill="#1E1E1E" stroke="#333" stroke-width="1"/>
+        
+        <!-- Trend Bar Fill -->
+        <rect x="2" y="2" width="0" height="21" rx="10" fill="#00ff41" opacity="0.8">
+          <animate attributeName="width" from="0" to="64" 
+                   dur="2s" begin="0.6s" fill="freeze"/>
+        </rect>
+        
+        <!-- Technology Name -->
+        <text x="10" y="17" font-family="monospace" font-size="12" fill="#E0E0E0" font-weight="bold">
+          Svelte
+        </text>
+        
+        <!-- Growth Percentage -->
+        <text x="420" y="17" font-family="monospace" font-size="12" fill="#4CAF50" font-weight="bold">
+          +320%
+        </text>
+        
+        <!-- Impact Badge -->
+        <rect x="500" y="2" width="80" height="21" rx="10" fill="#FF5722" opacity="0.8"/>
+        <text x="540" y="15" font-family="monospace" font-size="10" fill="white" text-anchor="middle">
+          Competitive
+        </text>
+      </g>
+    
+      <g transform="translate(0, 160)">
+        <!-- Trend Bar Background -->
+        <rect x="0" y="0" width="400" height="25" rx="12" fill="#1E1E1E" stroke="#333" stroke-width="1"/>
+        
+        <!-- Trend Bar Fill -->
+        <rect x="2" y="2" width="0" height="21" rx="10" fill="#00ff41" opacity="0.8">
+          <animate attributeName="width" from="0" to="90" 
+                   dur="2s" begin="0.8999999999999999s" fill="freeze"/>
+        </rect>
+        
+        <!-- Technology Name -->
+        <text x="10" y="17" font-family="monospace" font-size="12" fill="#E0E0E0" font-weight="bold">
+          Deno
+        </text>
+        
+        <!-- Growth Percentage -->
+        <text x="420" y="17" font-family="monospace" font-size="12" fill="#4CAF50" font-weight="bold">
+          +450%
+        </text>
+        
+        <!-- Impact Badge -->
+        <rect x="500" y="2" width="80" height="21" rx="10" fill="#2196F3" opacity="0.8"/>
+        <text x="540" y="15" font-family="monospace" font-size="10" fill="white" text-anchor="middle">
+          Alternative
+        </text>
+      </g>
+    
+      <g transform="translate(0, 200)">
+        <!-- Trend Bar Background -->
+        <rect x="0" y="0" width="400" height="25" rx="12" fill="#1E1E1E" stroke="#333" stroke-width="1"/>
+        
+        <!-- Trend Bar Fill -->
+        <rect x="2" y="2" width="0" height="21" rx="10" fill="#00ff41" opacity="0.8">
+          <animate attributeName="width" from="0" to="178" 
+                   dur="2s" begin="1.2s" fill="freeze"/>
+        </rect>
+        
+        <!-- Technology Name -->
+        <text x="10" y="17" font-family="monospace" font-size="12" fill="#E0E0E0" font-weight="bold">
+          Rust
+        </text>
+        
+        <!-- Growth Percentage -->
+        <text x="420" y="17" font-family="monospace" font-size="12" fill="#4CAF50" font-weight="bold">
+          +890%
+        </text>
+        
+        <!-- Impact Badge -->
+        <rect x="500" y="2" width="80" height="21" rx="10" fill="#9C27B0" opacity="0.8"/>
+        <text x="540" y="15" font-family="monospace" font-size="10" fill="white" text-anchor="middle">
+          Emerging
+        </text>
+      </g>
+    
+  </g>
+  
+  <!-- Market Data Dashboard -->
+  <g transform="translate(650, 160)">
+    <rect x="0" y="0" width="230" height="180" rx="8" fill="#111" stroke="#333" stroke-width="1"/>
+    
+    <text x="115" y="20" font-family="monospace" font-size="14" fill="#00ff41" 
+          text-anchor="middle" font-weight="bold">
+      📊 Market Snapshot
+    </text>
+    
+    <text x="15" y="45" font-family="monospace" font-size="12" fill="#E0E0E0">
+      Global Developers: 28.7M
+    </text>
+    <text x="15" y="65" font-family="monospace" font-size="12" fill="#E0E0E0">
+      AI Adoption: 67%
+    </text>
+    <text x="15" y="85" font-family="monospace" font-size="12" fill="#E0E0E0">
+      Cloud-First: 89%
+    </text>
+    <text x="15" y="105" font-family="monospace" font-size="12" fill="#E0E0E0">
+      Remote Work: 42%
+    </text>
+    <text x="15" y="125" font-family="monospace" font-size="12" fill="#E0E0E0">
+      Open Source: 95%
+    </text>
+    
+    <!-- Live Update Indicator -->
+    <circle cx="200" cy="150" r="5" fill="#4CAF50">
+      <animate attributeName="opacity" values="1; 0.3; 1" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <text x="180" y="155" font-family="monospace" font-size="10" fill="#4CAF50" text-anchor="end">
+      LIVE
+    </text>
+  </g>
+  
+  <!-- Footer -->
+  <text x="450" y="480" font-family="monospace" font-size="10" fill="#666" text-anchor="middle">
+    Generated by AI Insights Engine • Updated: Sun, 03 Aug 2025 02:55:59 GMT
+  </text>
+  
+</svg>
