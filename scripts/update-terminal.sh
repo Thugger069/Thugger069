@@ -76,8 +76,40 @@ generate_readme() {
 
 
 <pre class="terminal">
-$(cat terminal_output.txt)
+$(cat /tmp/advanced_terminal_output.txt 2>/dev/null || cat terminal_output.txt)
 </pre>
+
+<!-- 🚀 CUTTING-EDGE ENHANCEMENTS -->
+
+<!-- AI Tech Insights -->
+<div align="center">
+  <img src="dist/ai-insights.svg" alt="AI Tech Insights Dashboard" width="100%" />
+</div>
+
+<!-- 3D Matrix Background -->
+<div align="center">
+  <img src="dist/matrix-bg.svg" alt="3D Matrix Background with Particle Effects" width="100%" />
+</div>
+
+<!-- Interactive Skills Visualization -->
+<div align="center">
+  <img src="dist/skills-viz.svg" alt="Interactive Skills & Expertise Matrix" width="100%" />
+</div>
+
+<!-- DevOps Performance Dashboard -->
+<div align="center">
+  <img src="dist/devops-dashboard.svg" alt="Real-time DevOps Performance Dashboard" width="100%" />
+</div>
+
+<!-- Coding Activity Tracker -->
+<div align="center">
+  <img src="dist/coding-activity.svg" alt="Interactive Coding Activity & Productivity Tracker" width="100%" />
+</div>
+
+<!-- System Performance Monitor -->
+<div align="center">
+  <img src="dist/system-monitor.svg" alt="Real-time System Performance Monitor" width="100%" />
+</div>
 
 <div align="center">
 
@@ -192,13 +224,39 @@ EOF
 # Main execution
 main() {
     # Create necessary directories
-    mkdir -p assets
+    mkdir -p assets dist
 
-echo "▶ Generating quantum tunnel SVG"
-  node scripts/generate-header.js
+    echo "▶ Generating quantum tunnel SVG"
+    node scripts/generate-header.js
 
-  echo "▶ Generating quantum terminal interface"
-  node scripts/generate-terminal-svg.js   # <-- NEW
+    echo "▶ Generating quantum terminal interface"
+    node scripts/generate-terminal-svg.js
+
+    echo "🚀 Generating cutting-edge enhancements..."
+    
+    echo "  ✨ Advanced terminal simulation with real data"
+    node scripts/advanced-terminal.js
+
+    echo "  🌌 3D Matrix background with particle effects"
+    node scripts/generate-matrix-bg.js
+
+    echo "  🎯 Interactive skills visualization"
+    node scripts/generate-skills-viz.js
+
+    echo "  🧠 AI-generated tech insights"
+    node scripts/ai-tech-insights.js
+
+    echo "  📊 DevOps performance dashboard"
+    node scripts/devops-dashboard.js
+
+    echo "  💻 Interactive coding activity tracker"
+    node scripts/coding-activity.js
+
+    echo "  💬 Enhanced inspirational quotes"
+    node scripts/fetch-quote-enhanced.js
+
+    echo "  🖥️ Real-time system performance monitor"
+    node scripts/system-monitor.js
 
     # Generate content
     generate_terminal_content
@@ -206,6 +264,8 @@ echo "▶ Generating quantum tunnel SVG"
 
     # Clean up
     rm -f terminal_output.txt
+    
+    echo "✅ All cutting-edge components generated successfully!"
 }
 
 # Run main function

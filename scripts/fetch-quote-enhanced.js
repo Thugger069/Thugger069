@@ -1,4 +1,30 @@
-<svg viewBox="0 0 900 200" width="100%" height="200" xmlns="http://www.w3.org/2000/svg">
+// scripts/fetch-quote.js - Enhanced with AI-style animations and effects
+
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+
+const fs = require('fs');
+const https = require('https');
+
+const techQuotes = [
+  "The future belongs to those who learn more skills and combine them in creative ways. — Robert Greene",
+  "Any sufficiently advanced technology is indistinguishable from magic. — Arthur C. Clarke", 
+  "The best way to predict the future is to invent it. — Alan Kay",
+  "Code is like humor. When you have to explain it, it's bad. — Cory House",
+  "First, solve the problem. Then, write the code. — John Johnson",
+  "Programming isn't about what you know; it's about what you can figure out. — Chris Pine",
+  "Innovation distinguishes between a leader and a follower. — Steve Jobs",
+  "Technology is best when it brings people together. — Matt Mullenweg"
+];
+
+function generateTechQuote() {
+  const quote = techQuotes[Math.floor(Math.random() * techQuotes.length)];
+  return { q: quote.split(' — ')[0], a: quote.split(' — ')[1] || 'Tech Wisdom' };
+}
+
+function createEnhancedQuoteSVG(quoteText) {
+  const cleanQuote = quoteText.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  
+  return `<svg viewBox="0 0 900 200" width="100%" height="200" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="terminalBg" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#0d1117"/>
@@ -36,7 +62,7 @@
   <!-- Quote content -->
   <foreignObject x="30" y="50" width="840" height="120">
     <div xmlns="http://www.w3.org/1999/xhtml" style="color: #00ff41; font-family: 'Courier New', monospace; font-size: 16px; line-height: 1.6; padding: 10px;">
-      "Innovation distinguishes between a leader and a follower. — Steve Jobs"
+      "${cleanQuote}"
     </div>
   </foreignObject>
   
@@ -65,4 +91,40 @@
       <animate attributeName="opacity" values="0.7; 1; 0.7" dur="2s" begin="1.5s" repeatCount="indefinite"/>
     </path>
   </g>
-</svg>
+</svg>`;
+}
+
+const endpoint = 'https://zenquotes.io/api/random';
+
+https.get(endpoint, (res) => {
+  let data = '';
+
+  res.on('data', chunk => data += chunk);
+  res.on('end', () => {
+    try {
+      const json = JSON.parse(data)[0];
+      const quoteText = `${json.q} — ${json.a}`;
+      const svg = createEnhancedQuoteSVG(quoteText);
+
+      fs.writeFileSync('dist/quote.svg', svg.trim());
+      console.log("✅ Enhanced quote with cutting-edge animations saved.");
+    } catch (e) {
+      console.log("🔄 Using fallback tech quote...");
+      const fallbackQuote = generateTechQuote();
+      const quoteText = `${fallbackQuote.q} — ${fallbackQuote.a}`;
+      const svg = createEnhancedQuoteSVG(quoteText);
+      
+      fs.writeFileSync('dist/quote.svg', svg.trim());
+      console.log("✅ Enhanced fallback quote saved.");
+    }
+  });
+
+}).on('error', (err) => {
+  console.log("🔄 Network error, using tech quote...");
+  const fallbackQuote = generateTechQuote();
+  const quoteText = `${fallbackQuote.q} — ${fallbackQuote.a}`;
+  const svg = createEnhancedQuoteSVG(quoteText);
+  
+  fs.writeFileSync('dist/quote.svg', svg.trim());
+  console.log("✅ Enhanced tech quote saved.");
+});

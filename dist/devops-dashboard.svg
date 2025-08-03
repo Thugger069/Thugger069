@@ -1,0 +1,598 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1000" height="700" viewBox="0 0 1000 700" 
+     xmlns="http://www.w3.org/2000/svg">
+  
+  <defs>
+    <linearGradient id="dashBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0a0a"/>
+      <stop offset="100%" stop-color="#1a1a1a"/>
+    </linearGradient>
+    
+    <filter id="dashGlow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="url(#dashBg)"/>
+  
+  <!-- Header -->
+  <g transform="translate(20, 20)">
+    <text x="0" y="25" font-family="monospace" font-size="24" fill="#00ff41" font-weight="bold">
+      ⚡ DevOps Performance Dashboard
+    </text>
+    <text x="0" y="45" font-family="monospace" font-size="14" fill="#888">
+      Real-time monitoring • Last updated: 2:55:59 AM
+    </text>
+    
+    <!-- Live indicator -->
+    <circle cx="950" cy="25" r="8" fill="#4CAF50">
+      <animate attributeName="opacity" values="1; 0.3; 1" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <text x="935" y="30" font-family="monospace" font-size="12" fill="#4CAF50" text-anchor="end">
+      LIVE
+    </text>
+  </g>
+  
+  <!-- Metrics Panels -->
+  
+      <g transform="translate(20, 80)">
+        <!-- Panel Background -->
+        <rect x="0" y="0" width="230" height="150" rx="8" 
+              fill="#1a1a1a" stroke="#333" stroke-width="1"/>
+        
+        <!-- Panel Title -->
+        <text x="115" y="25" font-family="monospace" font-size="14" 
+              fill="#00ff41" text-anchor="middle" font-weight="bold">
+          🚀 Deployment
+        </text>
+        
+        <!-- Metrics Content -->
+        
+          <g transform="translate(15, 45)">
+            <text x="0" y="0" font-family="monospace" font-size="11" fill="#ccc">
+              Frequency:
+            </text>
+            <text x="200" y="0" font-family="monospace" font-size="11" 
+                  fill="#00ff41" text-anchor="end" font-weight="bold">
+              47/day
+            </text>
+          </g>
+        
+          <g transform="translate(15, 70)">
+            <text x="0" y="0" font-family="monospace" font-size="11" fill="#ccc">
+              Success Rate:
+            </text>
+            <text x="200" y="0" font-family="monospace" font-size="11" 
+                  fill="#4CAF50" text-anchor="end" font-weight="bold">
+              99.2%
+            </text>
+          </g>
+        
+          <g transform="translate(15, 95)">
+            <text x="0" y="0" font-family="monospace" font-size="11" fill="#ccc">
+              Mean Time:
+            </text>
+            <text x="200" y="0" font-family="monospace" font-size="11" 
+                  fill="#F44336" text-anchor="end" font-weight="bold">
+              8.3min
+            </text>
+          </g>
+        
+          <g transform="translate(15, 120)">
+            <text x="0" y="0" font-family="monospace" font-size="11" fill="#ccc">
+              Rollbacks:
+            </text>
+            <text x="200" y="0" font-family="monospace" font-size="11" 
+                  fill="#00ff41" text-anchor="end" font-weight="bold">
+              2
+            </text>
+          </g>
+        
+      </g>
+  
+      <g transform="translate(270, 80)">
+        <!-- Panel Background -->
+        <rect x="0" y="0" width="230" height="150" rx="8" 
+              fill="#1a1a1a" stroke="#333" stroke-width="1"/>
+        
+        <!-- Panel Title -->
+        <text x="115" y="25" font-family="monospace" font-size="14" 
+              fill="#00ff41" text-anchor="middle" font-weight="bold">
+          🏗️ Infrastructure
+        </text>
+        
+        <!-- Metrics Content -->
+        
+          <g transform="translate(15, 45)">
+            <text x="0" y="0" font-family="monospace" font-size="11" fill="#ccc">
+              Uptime:
+            </text>
+            <text x="200" y="0" font-family="monospace" font-size="11" 
+                  fill="#4CAF50" text-anchor="end" font-weight="bold">
+              99.98
+            </text>
+          </g>
+        
+          <g transform="translate(15, 70)">
+            <text x="0" y="0" font-family="monospace" font-size="11" fill="#ccc">
+              Response Time:
+            </text>
+            <text x="200" y="0" font-family="monospace" font-size="11" 
+                  fill="#F44336" text-anchor="end" font-weight="bold">
+              42ms
+            </text>
+          </g>
+        
+          <g transform="translate(15, 95)">
+            <text x="0" y="0" font-family="monospace" font-size="11" fill="#ccc">
+              Throughput:
+            </text>
+            <text x="200" y="0" font-family="monospace" font-size="11" 
+                  fill="#00ff41" text-anchor="end" font-weight="bold">
+              15.2k req/s
+            </text>
+          </g>
+        
+          <g transform="translate(15, 120)">
+            <text x="0" y="0" font-family="monospace" font-size="11" fill="#ccc">
+              Error Rate:
+            </text>
+            <text x="200" y="0" font-family="monospace" font-size="11" 
+                  fill="#F44336" text-anchor="end" font-weight="bold">
+              0.02%
+            </text>
+          </g>
+        
+      </g>
+  
+      <g transform="translate(520, 80)">
+        <!-- Panel Background -->
+        <rect x="0" y="0" width="230" height="150" rx="8" 
+              fill="#1a1a1a" stroke="#333" stroke-width="1"/>
+        
+        <!-- Panel Title -->
+        <text x="115" y="25" font-family="monospace" font-size="14" 
+              fill="#00ff41" text-anchor="middle" font-weight="bold">
+          🔒 Security
+        </text>
+        
+        <!-- Metrics Content -->
+        
+          <g transform="translate(15, 45)">
+            <text x="0" y="0" font-family="monospace" font-size="11" fill="#ccc">
+              Vulnerabilities:
+            </text>
+            <text x="200" y="0" font-family="monospace" font-size="11" 
+                  fill="#00ff41" text-anchor="end" font-weight="bold">
+              3
+            </text>
+          </g>
+        
+          <g transform="translate(15, 70)">
+            <text x="0" y="0" font-family="monospace" font-size="11" fill="#ccc">
+              Compliance:
+            </text>
+            <text x="200" y="0" font-family="monospace" font-size="11" 
+                  fill="#4CAF50" text-anchor="end" font-weight="bold">
+              98.5
+            </text>
+          </g>
+        
+          <g transform="translate(15, 95)">
+            <text x="0" y="0" font-family="monospace" font-size="11" fill="#ccc">
+              Last Scan:
+            </text>
+            <text x="200" y="0" font-family="monospace" font-size="11" 
+                  fill="#00ff41" text-anchor="end" font-weight="bold">
+              2h ago
+            </text>
+          </g>
+        
+          <g transform="translate(15, 120)">
+            <text x="0" y="0" font-family="monospace" font-size="11" fill="#ccc">
+              Patch Level:
+            </text>
+            <text x="200" y="0" font-family="monospace" font-size="11" 
+                  fill="#00ff41" text-anchor="end" font-weight="bold">
+              Current
+            </text>
+          </g>
+        
+      </g>
+  
+      <g transform="translate(770, 80)">
+        <!-- Panel Background -->
+        <rect x="0" y="0" width="210" height="150" rx="8" 
+              fill="#1a1a1a" stroke="#333" stroke-width="1"/>
+        
+        <!-- Panel Title -->
+        <text x="105" y="25" font-family="monospace" font-size="14" 
+              fill="#00ff41" text-anchor="middle" font-weight="bold">
+          ⚡ Performance
+        </text>
+        
+        <!-- Metrics Content -->
+        
+          <g transform="translate(15, 45)">
+            <text x="0" y="0" font-family="monospace" font-size="11" fill="#ccc">
+              Cpu Usage:
+            </text>
+            <text x="180" y="0" font-family="monospace" font-size="11" 
+                  fill="#4CAF50" text-anchor="end" font-weight="bold">
+              23.5%
+            </text>
+          </g>
+        
+          <g transform="translate(15, 70)">
+            <text x="0" y="0" font-family="monospace" font-size="11" fill="#ccc">
+              Memory Usage:
+            </text>
+            <text x="180" y="0" font-family="monospace" font-size="11" 
+                  fill="#FF9800" text-anchor="end" font-weight="bold">
+              67.8%
+            </text>
+          </g>
+        
+          <g transform="translate(15, 95)">
+            <text x="0" y="0" font-family="monospace" font-size="11" fill="#ccc">
+              Disk Usage:
+            </text>
+            <text x="180" y="0" font-family="monospace" font-size="11" 
+                  fill="#4CAF50" text-anchor="end" font-weight="bold">
+              45.2%
+            </text>
+          </g>
+        
+          <g transform="translate(15, 120)">
+            <text x="0" y="0" font-family="monospace" font-size="11" fill="#ccc">
+              Network Latency:
+            </text>
+            <text x="180" y="0" font-family="monospace" font-size="11" 
+                  fill="#4CAF50" text-anchor="end" font-weight="bold">
+              8.3
+            </text>
+          </g>
+        
+      </g>
+  
+  <!-- Service Status -->
+  
+      <g transform="translate(20, 350)">
+        <text x="0" y="20" font-family="monospace" font-size="16" fill="#00ff41" font-weight="bold">
+          🔧 Service Health Monitor
+        </text>
+        
+        
+          <g transform="translate(0, 50)">
+            <!-- Service Card -->
+            <rect x="0" y="0" width="460" height="30" rx="4" 
+                  fill="#1e1e1e" stroke="#4CAF50" stroke-width="1"/>
+            
+            <!-- Status Indicator -->
+            <circle cx="15" cy="15" r="5" fill="#4CAF50">
+              <animate attributeName="opacity" values="1; 0.5; 1" dur="2s" repeatCount="indefinite"/>
+            </circle>
+            
+            <!-- Service Name -->
+            <text x="30" y="19" font-family="monospace" font-size="12" fill="#e0e0e0" font-weight="bold">
+              API Gateway
+            </text>
+            
+            <!-- Instances -->
+            <text x="180" y="19" font-family="monospace" font-size="11" fill="#888">
+              5 instances
+            </text>
+            
+            <!-- Response Time -->
+            <text x="300" y="19" font-family="monospace" font-size="11" fill="#4CAF50">
+              35ms
+            </text>
+            
+            <!-- Status Badge -->
+            <rect x="380" y="5" width="70" height="20" rx="10" 
+                  fill="#4CAF50" opacity="0.8"/>
+            <text x="415" y="17" font-family="monospace" font-size="10" 
+                  fill="white" text-anchor="middle" font-weight="bold">
+              HEALTHY
+            </text>
+          </g>
+        
+          <g transform="translate(0, 90)">
+            <!-- Service Card -->
+            <rect x="0" y="0" width="460" height="30" rx="4" 
+                  fill="#1e1e1e" stroke="#4CAF50" stroke-width="1"/>
+            
+            <!-- Status Indicator -->
+            <circle cx="15" cy="15" r="5" fill="#4CAF50">
+              <animate attributeName="opacity" values="1; 0.5; 1" dur="2s" repeatCount="indefinite"/>
+            </circle>
+            
+            <!-- Service Name -->
+            <text x="30" y="19" font-family="monospace" font-size="12" fill="#e0e0e0" font-weight="bold">
+              Auth Service
+            </text>
+            
+            <!-- Instances -->
+            <text x="180" y="19" font-family="monospace" font-size="11" fill="#888">
+              3 instances
+            </text>
+            
+            <!-- Response Time -->
+            <text x="300" y="19" font-family="monospace" font-size="11" fill="#4CAF50">
+              12ms
+            </text>
+            
+            <!-- Status Badge -->
+            <rect x="380" y="5" width="70" height="20" rx="10" 
+                  fill="#4CAF50" opacity="0.8"/>
+            <text x="415" y="17" font-family="monospace" font-size="10" 
+                  fill="white" text-anchor="middle" font-weight="bold">
+              HEALTHY
+            </text>
+          </g>
+        
+          <g transform="translate(0, 130)">
+            <!-- Service Card -->
+            <rect x="0" y="0" width="460" height="30" rx="4" 
+                  fill="#1e1e1e" stroke="#FF9800" stroke-width="1"/>
+            
+            <!-- Status Indicator -->
+            <circle cx="15" cy="15" r="5" fill="#FF9800">
+              <animate attributeName="opacity" values="1; 0.5; 1" dur="2s" repeatCount="indefinite"/>
+            </circle>
+            
+            <!-- Service Name -->
+            <text x="30" y="19" font-family="monospace" font-size="12" fill="#e0e0e0" font-weight="bold">
+              Data Pipeline
+            </text>
+            
+            <!-- Instances -->
+            <text x="180" y="19" font-family="monospace" font-size="11" fill="#888">
+              8 instances
+            </text>
+            
+            <!-- Response Time -->
+            <text x="300" y="19" font-family="monospace" font-size="11" fill="#4CAF50">
+              156ms
+            </text>
+            
+            <!-- Status Badge -->
+            <rect x="380" y="5" width="70" height="20" rx="10" 
+                  fill="#FF9800" opacity="0.8"/>
+            <text x="415" y="17" font-family="monospace" font-size="10" 
+                  fill="white" text-anchor="middle" font-weight="bold">
+              WARNING
+            </text>
+          </g>
+        
+          <g transform="translate(0, 170)">
+            <!-- Service Card -->
+            <rect x="0" y="0" width="460" height="30" rx="4" 
+                  fill="#1e1e1e" stroke="#4CAF50" stroke-width="1"/>
+            
+            <!-- Status Indicator -->
+            <circle cx="15" cy="15" r="5" fill="#4CAF50">
+              <animate attributeName="opacity" values="1; 0.5; 1" dur="2s" repeatCount="indefinite"/>
+            </circle>
+            
+            <!-- Service Name -->
+            <text x="30" y="19" font-family="monospace" font-size="12" fill="#e0e0e0" font-weight="bold">
+              ML Inference
+            </text>
+            
+            <!-- Instances -->
+            <text x="180" y="19" font-family="monospace" font-size="11" fill="#888">
+              12 instances
+            </text>
+            
+            <!-- Response Time -->
+            <text x="300" y="19" font-family="monospace" font-size="11" fill="#4CAF50">
+              89ms
+            </text>
+            
+            <!-- Status Badge -->
+            <rect x="380" y="5" width="70" height="20" rx="10" 
+                  fill="#4CAF50" opacity="0.8"/>
+            <text x="415" y="17" font-family="monospace" font-size="10" 
+                  fill="white" text-anchor="middle" font-weight="bold">
+              HEALTHY
+            </text>
+          </g>
+        
+          <g transform="translate(0, 210)">
+            <!-- Service Card -->
+            <rect x="0" y="0" width="460" height="30" rx="4" 
+                  fill="#1e1e1e" stroke="#4CAF50" stroke-width="1"/>
+            
+            <!-- Status Indicator -->
+            <circle cx="15" cy="15" r="5" fill="#4CAF50">
+              <animate attributeName="opacity" values="1; 0.5; 1" dur="2s" repeatCount="indefinite"/>
+            </circle>
+            
+            <!-- Service Name -->
+            <text x="30" y="19" font-family="monospace" font-size="12" fill="#e0e0e0" font-weight="bold">
+              Cache Layer
+            </text>
+            
+            <!-- Instances -->
+            <text x="180" y="19" font-family="monospace" font-size="11" fill="#888">
+              6 instances
+            </text>
+            
+            <!-- Response Time -->
+            <text x="300" y="19" font-family="monospace" font-size="11" fill="#4CAF50">
+              2ms
+            </text>
+            
+            <!-- Status Badge -->
+            <rect x="380" y="5" width="70" height="20" rx="10" 
+                  fill="#4CAF50" opacity="0.8"/>
+            <text x="415" y="17" font-family="monospace" font-size="10" 
+                  fill="white" text-anchor="middle" font-weight="bold">
+              HEALTHY
+            </text>
+          </g>
+        
+          <g transform="translate(0, 250)">
+            <!-- Service Card -->
+            <rect x="0" y="0" width="460" height="30" rx="4" 
+                  fill="#1e1e1e" stroke="#4CAF50" stroke-width="1"/>
+            
+            <!-- Status Indicator -->
+            <circle cx="15" cy="15" r="5" fill="#4CAF50">
+              <animate attributeName="opacity" values="1; 0.5; 1" dur="2s" repeatCount="indefinite"/>
+            </circle>
+            
+            <!-- Service Name -->
+            <text x="30" y="19" font-family="monospace" font-size="12" fill="#e0e0e0" font-weight="bold">
+              Message Queue
+            </text>
+            
+            <!-- Instances -->
+            <text x="180" y="19" font-family="monospace" font-size="11" fill="#888">
+              4 instances
+            </text>
+            
+            <!-- Response Time -->
+            <text x="300" y="19" font-family="monospace" font-size="11" fill="#4CAF50">
+              5ms
+            </text>
+            
+            <!-- Status Badge -->
+            <rect x="380" y="5" width="70" height="20" rx="10" 
+                  fill="#4CAF50" opacity="0.8"/>
+            <text x="415" y="17" font-family="monospace" font-size="10" 
+                  fill="white" text-anchor="middle" font-weight="bold">
+              HEALTHY
+            </text>
+          </g>
+        
+      </g>
+  
+  <!-- Performance Charts -->
+  
+      <g transform="translate(520, 350)">
+        <text x="0" y="20" font-family="monospace" font-size="16" fill="#00ff41" font-weight="bold">
+          📊 Performance Metrics
+        </text>
+        
+        <!-- CPU Usage Chart -->
+        <g transform="translate(0, 50)">
+          <rect x="0" y="0" width="400" height="100" rx="4" fill="#111" stroke="#333" stroke-width="1"/>
+          <text x="10" y="15" font-family="monospace" font-size="12" fill="#e0e0e0">
+            CPU Usage: 23.5%
+          </text>
+          
+          <!-- Chart Grid -->
+          <g stroke="#333" stroke-width="0.5" opacity="0.5">
+            <line x1="0" y1="25" x2="400" y2="25"/>
+            <line x1="0" y1="50" x2="400" y2="50"/>
+            <line x1="0" y1="75" x2="400" y2="75"/>
+            <line x1="0" y1="100" x2="400" y2="100"/>
+          </g>
+          
+          <!-- CPU Line Chart -->
+          <polyline points="0,47.06514879059435 20,45.71881310196656 40,45.65584381734952 60,71.3631106917813 80,67.80058017277997 100,68.82211101257475 120,66.21821495770453 140,67.69471392082642 160,66.92577803528931 180,55.550807141515065 200,61.58349782468591 220,60.6918474332231 240,64.66378879904218 260,51.50603151116243 280,63.88807744946966 300,46.314875472759745 320,42.070414924492965 340,71.41598542548044 360,52.412476720298095 380,55.04529077772973" fill="none" stroke="#FF6B6B" stroke-width="2" 
+                    transform="translate(20, 20)">
+            <animate attributeName="points" 
+                     values="0,47.06514879059435 20,45.71881310196656 40,45.65584381734952 60,71.3631106917813 80,67.80058017277997 100,68.82211101257475 120,66.21821495770453 140,67.69471392082642 160,66.92577803528931 180,55.550807141515065 200,61.58349782468591 220,60.6918474332231 240,64.66378879904218 260,51.50603151116243 280,63.88807744946966 300,46.314875472759745 320,42.070414924492965 340,71.41598542548044 360,52.412476720298095 380,55.04529077772973; 0,45.70624009659595 20,42.53599987108659 40,47.844909983981616 60,70.99502325157329 80,70.80253712295853 100,65.35865153725176 120,63.42183900083854 140,70.45857516159597 160,65.34564776899826 180,60.3108250235554 200,60.819482815778876 220,64.16052340707118 240,68.03729175237737 260,56.09928819995949 280,61.46942155604913 300,47.59208986946958 320,39.22607869387241 340,73.54105567878725 360,55.940114864294166 380,56.826235550489024; 0,47.06514879059435 20,45.71881310196656 40,45.65584381734952 60,71.3631106917813 80,67.80058017277997 100,68.82211101257475 120,66.21821495770453 140,67.69471392082642 160,66.92577803528931 180,55.550807141515065 200,61.58349782468591 220,60.6918474332231 240,64.66378879904218 260,51.50603151116243 280,63.88807744946966 300,46.314875472759745 320,42.070414924492965 340,71.41598542548044 360,52.412476720298095 380,55.04529077772973"
+                     dur="5s" repeatCount="indefinite"/>
+          </polyline>
+        </g>
+        
+        <!-- Memory Usage Chart -->
+        <g transform="translate(0, 170)">
+          <rect x="0" y="0" width="400" height="100" rx="4" fill="#111" stroke="#333" stroke-width="1"/>
+          <text x="10" y="15" font-family="monospace" font-size="12" fill="#e0e0e0">
+            Memory Usage: 67.8%
+          </text>
+          
+          <!-- Chart Grid -->
+          <g stroke="#333" stroke-width="0.5" opacity="0.5">
+            <line x1="0" y1="25" x2="400" y2="25"/>
+            <line x1="0" y1="50" x2="400" y2="50"/>
+            <line x1="0" y1="75" x2="400" y2="75"/>
+            <line x1="0" y1="100" x2="400" y2="100"/>
+          </g>
+          
+          <!-- Memory Area Chart -->
+          <polygon points="20,80 20,18.415784261275746 40,16.80682875412039 60,10 80,12.680764495550676 100,11.572582320842656 120,10 140,10 160,12.229523029389668 180,15.644009294388283 200,19.448110628693797 220,21.497732187595915 240,21.911999516731385 260,21.338786789679475 280,11.252876190173296 300,11.944439084438358 320,10 340,20.991636566469197 360,10 380,15.501900497137399 400,10 400,80" 
+                   fill="#4ECDC4" fill-opacity="0.3" stroke="#4ECDC4" stroke-width="2">
+            <animate attributeName="fill-opacity" values="0.3; 0.5; 0.3" dur="3s" repeatCount="indefinite"/>
+          </polygon>
+        </g>
+      </g>
+  
+  <!-- Alert System -->
+  
+      <g transform="translate(20, 600)">
+        <text x="0" y="20" font-family="monospace" font-size="16" fill="#00ff41" font-weight="bold">
+          🚨 System Alerts
+        </text>
+        
+        
+          <g transform="translate(0, 40)">
+            <rect x="0" y="0" width="950" height="20" rx="4" 
+                  fill="#1565C0" opacity="0.8"/>
+            
+            <circle cx="10" cy="10" r="3" fill="#2196F3">
+              <animate attributeName="opacity" values="1; 0.5; 1" dur="2s" repeatCount="indefinite"/>
+            </circle>
+            
+            <text x="25" y="14" font-family="monospace" font-size="11" fill="#e0e0e0">
+              Deployment #347 completed successfully
+            </text>
+            
+            <text x="930" y="14" font-family="monospace" font-size="10" fill="#888" text-anchor="end">
+              2m ago
+            </text>
+          </g>
+        
+          <g transform="translate(0, 65)">
+            <rect x="0" y="0" width="950" height="20" rx="4" 
+                  fill="#E65100" opacity="0.8"/>
+            
+            <circle cx="10" cy="10" r="3" fill="#FF9800">
+              <animate attributeName="opacity" values="1; 0.5; 1" dur="2s" repeatCount="indefinite"/>
+            </circle>
+            
+            <text x="25" y="14" font-family="monospace" font-size="11" fill="#e0e0e0">
+              High memory usage in Data Pipeline service
+            </text>
+            
+            <text x="930" y="14" font-family="monospace" font-size="10" fill="#888" text-anchor="end">
+              5m ago
+            </text>
+          </g>
+        
+          <g transform="translate(0, 90)">
+            <rect x="0" y="0" width="950" height="20" rx="4" 
+                  fill="#2E7D32" opacity="0.8"/>
+            
+            <circle cx="10" cy="10" r="3" fill="#4CAF50">
+              <animate attributeName="opacity" values="1; 0.5; 1" dur="2s" repeatCount="indefinite"/>
+            </circle>
+            
+            <text x="25" y="14" font-family="monospace" font-size="11" fill="#e0e0e0">
+              Security scan completed - 0 critical issues
+            </text>
+            
+            <text x="930" y="14" font-family="monospace" font-size="10" fill="#888" text-anchor="end">
+              15m ago
+            </text>
+          </g>
+        
+      </g>
+  
+  <!-- Border Animation -->
+  <rect x="2" y="2" width="996" height="696" 
+        fill="none" stroke="#00ff41" stroke-width="1" rx="8" opacity="0.3">
+    <animate attributeName="opacity" values="0.3; 0.7; 0.3" dur="4s" repeatCount="indefinite"/>
+  </rect>
+  
+</svg>

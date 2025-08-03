@@ -1,0 +1,1510 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" viewBox="0 0 800 600" 
+     xmlns="http://www.w3.org/2000/svg">
+  
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F0F23"/>
+      <stop offset="100%" stop-color="#1A1A2E"/>
+    </linearGradient>
+    
+    <filter id="skillGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="url(#bgGradient)"/>
+  
+  <!-- Title -->
+  <text x="400" y="30" font-family="monospace" font-size="24" fill="#00ff41" 
+        text-anchor="middle" font-weight="bold">
+    ⚡ Skills & Expertise Matrix ⚡
+  </text>
+  
+  <text x="400" y="55" font-family="monospace" font-size="14" fill="#E0E0E0" 
+        text-anchor="middle" opacity="0.8">
+    Real-time proficiency tracking with growth indicators
+  </text>
+  
+  <!-- Skills Bars -->
+  <g filter="url(#skillGlow)">
+    
+      <g transform="translate(20, 80)">
+        <!-- Skill Name -->
+        <text x="0" y="-5" font-family="monospace" font-size="14" fill="#E0E0E0" font-weight="bold">
+          JavaScript/TypeScript
+        </text>
+        
+        <!-- Category Badge -->
+        <rect x="200" y="-18" width="60" height="16" rx="8" fill="#61DAFB" opacity="0.8"/>
+        <text x="230" y="-8" font-family="monospace" font-size="10" fill="white" text-anchor="middle">
+          Frontend
+        </text>
+        
+        <!-- Trend Indicator -->
+        <text x="270" y="-5" font-family="monospace" font-size="12" fill="#4CAF50" font-weight="bold">
+          +5%
+        </text>
+        
+        <!-- Background Bar -->
+        <rect x="0" y="5" width="500" height="20" rx="10" fill="#1E1E1E" stroke="#333" stroke-width="1"/>
+        
+        <!-- Progress Bar -->
+        <rect x="0" y="5" width="0" height="20" rx="10" fill="#61DAFB" opacity="0.8">
+          <animate
+            attributeName="width"
+            from="0"
+            to="475"
+            dur="2s"
+            begin="0s"
+            fill="freeze"/>
+          <animate
+            attributeName="opacity"
+            values="0.8; 1; 0.8"
+            dur="3s"
+            begin="2s"
+            repeatCount="indefinite"/>
+        </rect>
+        
+        <!-- Skill Level Text -->
+        <text x="510" y="20" font-family="monospace" font-size="14" fill="#E0E0E0" text-anchor="start">
+          95%
+        </text>
+        
+        <!-- Progress Particles -->
+        <g opacity="0">
+          <animate
+            attributeName="opacity"
+            values="0; 1; 0"
+            dur="1s"
+            begin="1s"
+            repeatCount="3"/>
+          
+        <circle cx="84.36780727233268" cy="10.786989185083922" r="2.1683541604089367" fill="#61DAFB" opacity="0.6">
+          <animate
+            attributeName="r"
+            values="2.1683541604089367; 4.336708320817873; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+          <animate
+            attributeName="opacity"
+            values="0.6; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+        </circle>
+        <circle cx="238.1686020392001" cy="11.95041830740507" r="1.581383792523234" fill="#61DAFB" opacity="0.6">
+          <animate
+            attributeName="r"
+            values="1.581383792523234; 3.162767585046468; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+          <animate
+            attributeName="opacity"
+            values="0.6; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+        </circle>
+        <circle cx="302.9236644628734" cy="18.457787620000015" r="3.1023965129687356" fill="#61DAFB" opacity="0.6">
+          <animate
+            attributeName="r"
+            values="3.1023965129687356; 6.204793025937471; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+          <animate
+            attributeName="opacity"
+            values="0.6; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+        </circle>
+        <circle cx="378.9369573276923" cy="18.90416099357777" r="1.8910392026275367" fill="#61DAFB" opacity="0.6">
+          <animate
+            attributeName="r"
+            values="1.8910392026275367; 3.7820784052550733; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+          <animate
+            attributeName="opacity"
+            values="0.6; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+        </circle>
+        <circle cx="78.31523422676015" cy="6.689776066814406" r="1.4915473774061494" fill="#61DAFB" opacity="0.6">
+          <animate
+            attributeName="r"
+            values="1.4915473774061494; 2.983094754812299; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+          <animate
+            attributeName="opacity"
+            values="0.6; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+        </circle>
+        </g>
+        
+        <!-- Hover Effect -->
+        <rect x="0" y="-20" width="580" height="45" fill="transparent" class="skill-hover">
+          <animate
+            attributeName="fill"
+            values="transparent; rgba(255,255,255,0.05); transparent"
+            dur="0.3s"
+            begin="mouseover"
+            fill="freeze"/>
+          <animate
+            attributeName="fill"
+            values="rgba(255,255,255,0.05); transparent"
+            dur="0.3s"
+            begin="mouseout"
+            fill="freeze"/>
+        </rect>
+      </g>
+      <g transform="translate(20, 130)">
+        <!-- Skill Name -->
+        <text x="0" y="-5" font-family="monospace" font-size="14" fill="#E0E0E0" font-weight="bold">
+          React/Next.js
+        </text>
+        
+        <!-- Category Badge -->
+        <rect x="200" y="-18" width="60" height="16" rx="8" fill="#61DAFB" opacity="0.8"/>
+        <text x="230" y="-8" font-family="monospace" font-size="10" fill="white" text-anchor="middle">
+          Frontend
+        </text>
+        
+        <!-- Trend Indicator -->
+        <text x="270" y="-5" font-family="monospace" font-size="12" fill="#4CAF50" font-weight="bold">
+          +3%
+        </text>
+        
+        <!-- Background Bar -->
+        <rect x="0" y="5" width="500" height="20" rx="10" fill="#1E1E1E" stroke="#333" stroke-width="1"/>
+        
+        <!-- Progress Bar -->
+        <rect x="0" y="5" width="0" height="20" rx="10" fill="#61DAFB" opacity="0.8">
+          <animate
+            attributeName="width"
+            from="0"
+            to="450"
+            dur="2s"
+            begin="0.2s"
+            fill="freeze"/>
+          <animate
+            attributeName="opacity"
+            values="0.8; 1; 0.8"
+            dur="3s"
+            begin="2.2s"
+            repeatCount="indefinite"/>
+        </rect>
+        
+        <!-- Skill Level Text -->
+        <text x="510" y="20" font-family="monospace" font-size="14" fill="#E0E0E0" text-anchor="start">
+          90%
+        </text>
+        
+        <!-- Progress Particles -->
+        <g opacity="0">
+          <animate
+            attributeName="opacity"
+            values="0; 1; 0"
+            dur="1s"
+            begin="1.2s"
+            repeatCount="3"/>
+          
+        <circle cx="114.01778089339649" cy="24.827944234823388" r="1.1216820657026154" fill="#61DAFB" opacity="0.6">
+          <animate
+            attributeName="r"
+            values="1.1216820657026154; 2.243364131405231; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+          <animate
+            attributeName="opacity"
+            values="0.6; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+        </circle>
+        <circle cx="56.6740487746422" cy="7.497430347445904" r="2.214538340102292" fill="#61DAFB" opacity="0.6">
+          <animate
+            attributeName="r"
+            values="2.214538340102292; 4.429076680204584; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+          <animate
+            attributeName="opacity"
+            values="0.6; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+        </circle>
+        <circle cx="173.9206608341496" cy="8.936598814962956" r="3.7384859527088867" fill="#61DAFB" opacity="0.6">
+          <animate
+            attributeName="r"
+            values="3.7384859527088867; 7.4769719054177735; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+          <animate
+            attributeName="opacity"
+            values="0.6; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+        </circle>
+        <circle cx="46.10394131536752" cy="8.87278022271271" r="3.8171609134466937" fill="#61DAFB" opacity="0.6">
+          <animate
+            attributeName="r"
+            values="3.8171609134466937; 7.6343218268933875; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+          <animate
+            attributeName="opacity"
+            values="0.6; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+        </circle>
+        <circle cx="126.26195976651279" cy="8.13788801066185" r="1.4919504905386691" fill="#61DAFB" opacity="0.6">
+          <animate
+            attributeName="r"
+            values="1.4919504905386691; 2.9839009810773383; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+          <animate
+            attributeName="opacity"
+            values="0.6; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+        </circle>
+        </g>
+        
+        <!-- Hover Effect -->
+        <rect x="0" y="-20" width="580" height="45" fill="transparent" class="skill-hover">
+          <animate
+            attributeName="fill"
+            values="transparent; rgba(255,255,255,0.05); transparent"
+            dur="0.3s"
+            begin="mouseover"
+            fill="freeze"/>
+          <animate
+            attributeName="fill"
+            values="rgba(255,255,255,0.05); transparent"
+            dur="0.3s"
+            begin="mouseout"
+            fill="freeze"/>
+        </rect>
+      </g>
+      <g transform="translate(20, 180)">
+        <!-- Skill Name -->
+        <text x="0" y="-5" font-family="monospace" font-size="14" fill="#E0E0E0" font-weight="bold">
+          Node.js/Express
+        </text>
+        
+        <!-- Category Badge -->
+        <rect x="200" y="-18" width="60" height="16" rx="8" fill="#339933" opacity="0.8"/>
+        <text x="230" y="-8" font-family="monospace" font-size="10" fill="white" text-anchor="middle">
+          Backend
+        </text>
+        
+        <!-- Trend Indicator -->
+        <text x="270" y="-5" font-family="monospace" font-size="12" fill="#4CAF50" font-weight="bold">
+          +7%
+        </text>
+        
+        <!-- Background Bar -->
+        <rect x="0" y="5" width="500" height="20" rx="10" fill="#1E1E1E" stroke="#333" stroke-width="1"/>
+        
+        <!-- Progress Bar -->
+        <rect x="0" y="5" width="0" height="20" rx="10" fill="#339933" opacity="0.8">
+          <animate
+            attributeName="width"
+            from="0"
+            to="440"
+            dur="2s"
+            begin="0.4s"
+            fill="freeze"/>
+          <animate
+            attributeName="opacity"
+            values="0.8; 1; 0.8"
+            dur="3s"
+            begin="2.4s"
+            repeatCount="indefinite"/>
+        </rect>
+        
+        <!-- Skill Level Text -->
+        <text x="510" y="20" font-family="monospace" font-size="14" fill="#E0E0E0" text-anchor="start">
+          88%
+        </text>
+        
+        <!-- Progress Particles -->
+        <g opacity="0">
+          <animate
+            attributeName="opacity"
+            values="0; 1; 0"
+            dur="1s"
+            begin="1.4s"
+            repeatCount="3"/>
+          
+        <circle cx="63.19784924276406" cy="16.79326679368179" r="2.228098698411158" fill="#339933" opacity="0.6">
+          <animate
+            attributeName="r"
+            values="2.228098698411158; 4.456197396822316; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+          <animate
+            attributeName="opacity"
+            values="0.6; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+        </circle>
+        <circle cx="170.4867303259783" cy="19.82778480475332" r="2.4288959453058743" fill="#339933" opacity="0.6">
+          <animate
+            attributeName="r"
+            values="2.4288959453058743; 4.8577918906117485; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+          <animate
+            attributeName="opacity"
+            values="0.6; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+        </circle>
+        <circle cx="192.50848169544378" cy="13.502539146972481" r="3.593532236551716" fill="#339933" opacity="0.6">
+          <animate
+            attributeName="r"
+            values="3.593532236551716; 7.187064473103432; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+          <animate
+            attributeName="opacity"
+            values="0.6; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+        </circle>
+        <circle cx="392.5330814898176" cy="5.565786939676505" r="2.718561927749837" fill="#339933" opacity="0.6">
+          <animate
+            attributeName="r"
+            values="2.718561927749837; 5.437123855499674; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+          <animate
+            attributeName="opacity"
+            values="0.6; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+        </circle>
+        <circle cx="297.24305375599783" cy="5.3807574001342395" r="3.3233696572799856" fill="#339933" opacity="0.6">
+          <animate
+            attributeName="r"
+            values="3.3233696572799856; 6.646739314559971; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+          <animate
+            attributeName="opacity"
+            values="0.6; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+        </circle>
+        </g>
+        
+        <!-- Hover Effect -->
+        <rect x="0" y="-20" width="580" height="45" fill="transparent" class="skill-hover">
+          <animate
+            attributeName="fill"
+            values="transparent; rgba(255,255,255,0.05); transparent"
+            dur="0.3s"
+            begin="mouseover"
+            fill="freeze"/>
+          <animate
+            attributeName="fill"
+            values="rgba(255,255,255,0.05); transparent"
+            dur="0.3s"
+            begin="mouseout"
+            fill="freeze"/>
+        </rect>
+      </g>
+      <g transform="translate(20, 230)">
+        <!-- Skill Name -->
+        <text x="0" y="-5" font-family="monospace" font-size="14" fill="#E0E0E0" font-weight="bold">
+          Python/AI/ML
+        </text>
+        
+        <!-- Category Badge -->
+        <rect x="200" y="-18" width="60" height="16" rx="8" fill="#FF6F00" opacity="0.8"/>
+        <text x="230" y="-8" font-family="monospace" font-size="10" fill="white" text-anchor="middle">
+          AI/ML
+        </text>
+        
+        <!-- Trend Indicator -->
+        <text x="270" y="-5" font-family="monospace" font-size="12" fill="#4CAF50" font-weight="bold">
+          +12%
+        </text>
+        
+        <!-- Background Bar -->
+        <rect x="0" y="5" width="500" height="20" rx="10" fill="#1E1E1E" stroke="#333" stroke-width="1"/>
+        
+        <!-- Progress Bar -->
+        <rect x="0" y="5" width="0" height="20" rx="10" fill="#FF6F00" opacity="0.8">
+          <animate
+            attributeName="width"
+            from="0"
+            to="425"
+            dur="2s"
+            begin="0.6000000000000001s"
+            fill="freeze"/>
+          <animate
+            attributeName="opacity"
+            values="0.8; 1; 0.8"
+            dur="3s"
+            begin="2.6s"
+            repeatCount="indefinite"/>
+        </rect>
+        
+        <!-- Skill Level Text -->
+        <text x="510" y="20" font-family="monospace" font-size="14" fill="#E0E0E0" text-anchor="start">
+          85%
+        </text>
+        
+        <!-- Progress Particles -->
+        <g opacity="0">
+          <animate
+            attributeName="opacity"
+            values="0; 1; 0"
+            dur="1s"
+            begin="1.6s"
+            repeatCount="3"/>
+          
+        <circle cx="391.58536118231837" cy="22.471496930780518" r="2.5555770482386215" fill="#FF6F00" opacity="0.6">
+          <animate
+            attributeName="r"
+            values="2.5555770482386215; 5.111154096477243; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+          <animate
+            attributeName="opacity"
+            values="0.6; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+        </circle>
+        <circle cx="279.5724277746276" cy="24.76730065295831" r="1.7842028469791034" fill="#FF6F00" opacity="0.6">
+          <animate
+            attributeName="r"
+            values="1.7842028469791034; 3.5684056939582067; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+          <animate
+            attributeName="opacity"
+            values="0.6; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+        </circle>
+        <circle cx="387.3885207122674" cy="18.86815333915071" r="1.7536249504122219" fill="#FF6F00" opacity="0.6">
+          <animate
+            attributeName="r"
+            values="1.7536249504122219; 3.5072499008244438; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+          <animate
+            attributeName="opacity"
+            values="0.6; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+        </circle>
+        <circle cx="93.36021962754823" cy="5.206850719064189" r="2.553575065982798" fill="#FF6F00" opacity="0.6">
+          <animate
+            attributeName="r"
+            values="2.553575065982798; 5.107150131965596; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+          <animate
+            attributeName="opacity"
+            values="0.6; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+        </circle>
+        <circle cx="209.15688789129362" cy="7.874571957117893" r="3.4063715623386757" fill="#FF6F00" opacity="0.6">
+          <animate
+            attributeName="r"
+            values="3.4063715623386757; 6.812743124677351; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+          <animate
+            attributeName="opacity"
+            values="0.6; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+        </circle>
+        </g>
+        
+        <!-- Hover Effect -->
+        <rect x="0" y="-20" width="580" height="45" fill="transparent" class="skill-hover">
+          <animate
+            attributeName="fill"
+            values="transparent; rgba(255,255,255,0.05); transparent"
+            dur="0.3s"
+            begin="mouseover"
+            fill="freeze"/>
+          <animate
+            attributeName="fill"
+            values="rgba(255,255,255,0.05); transparent"
+            dur="0.3s"
+            begin="mouseout"
+            fill="freeze"/>
+        </rect>
+      </g>
+      <g transform="translate(20, 280)">
+        <!-- Skill Name -->
+        <text x="0" y="-5" font-family="monospace" font-size="14" fill="#E0E0E0" font-weight="bold">
+          Docker/Kubernetes
+        </text>
+        
+        <!-- Category Badge -->
+        <rect x="200" y="-18" width="60" height="16" rx="8" fill="#326CE5" opacity="0.8"/>
+        <text x="230" y="-8" font-family="monospace" font-size="10" fill="white" text-anchor="middle">
+          DevOps
+        </text>
+        
+        <!-- Trend Indicator -->
+        <text x="270" y="-5" font-family="monospace" font-size="12" fill="#4CAF50" font-weight="bold">
+          +8%
+        </text>
+        
+        <!-- Background Bar -->
+        <rect x="0" y="5" width="500" height="20" rx="10" fill="#1E1E1E" stroke="#333" stroke-width="1"/>
+        
+        <!-- Progress Bar -->
+        <rect x="0" y="5" width="0" height="20" rx="10" fill="#326CE5" opacity="0.8">
+          <animate
+            attributeName="width"
+            from="0"
+            to="410"
+            dur="2s"
+            begin="0.8s"
+            fill="freeze"/>
+          <animate
+            attributeName="opacity"
+            values="0.8; 1; 0.8"
+            dur="3s"
+            begin="2.8s"
+            repeatCount="indefinite"/>
+        </rect>
+        
+        <!-- Skill Level Text -->
+        <text x="510" y="20" font-family="monospace" font-size="14" fill="#E0E0E0" text-anchor="start">
+          82%
+        </text>
+        
+        <!-- Progress Particles -->
+        <g opacity="0">
+          <animate
+            attributeName="opacity"
+            values="0; 1; 0"
+            dur="1s"
+            begin="1.8s"
+            repeatCount="3"/>
+          
+        <circle cx="381.7112699127031" cy="17.760905030563038" r="2.157760567675864" fill="#326CE5" opacity="0.6">
+          <animate
+            attributeName="r"
+            values="2.157760567675864; 4.315521135351728; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+          <animate
+            attributeName="opacity"
+            values="0.6; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+        </circle>
+        <circle cx="284.62189074028856" cy="24.963552088552852" r="1.6759835140311214" fill="#326CE5" opacity="0.6">
+          <animate
+            attributeName="r"
+            values="1.6759835140311214; 3.351967028062243; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+          <animate
+            attributeName="opacity"
+            values="0.6; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+        </circle>
+        <circle cx="207.5822204210501" cy="17.62158894670922" r="1.4142682598362184" fill="#326CE5" opacity="0.6">
+          <animate
+            attributeName="r"
+            values="1.4142682598362184; 2.828536519672437; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+          <animate
+            attributeName="opacity"
+            values="0.6; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+        </circle>
+        <circle cx="143.64394204485208" cy="20.370978697571566" r="2.2962683265621617" fill="#326CE5" opacity="0.6">
+          <animate
+            attributeName="r"
+            values="2.2962683265621617; 4.5925366531243235; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+          <animate
+            attributeName="opacity"
+            values="0.6; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+        </circle>
+        <circle cx="323.466475000599" cy="21.381710681981797" r="1.9759089803302592" fill="#326CE5" opacity="0.6">
+          <animate
+            attributeName="r"
+            values="1.9759089803302592; 3.9518179606605184; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+          <animate
+            attributeName="opacity"
+            values="0.6; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+        </circle>
+        </g>
+        
+        <!-- Hover Effect -->
+        <rect x="0" y="-20" width="580" height="45" fill="transparent" class="skill-hover">
+          <animate
+            attributeName="fill"
+            values="transparent; rgba(255,255,255,0.05); transparent"
+            dur="0.3s"
+            begin="mouseover"
+            fill="freeze"/>
+          <animate
+            attributeName="fill"
+            values="rgba(255,255,255,0.05); transparent"
+            dur="0.3s"
+            begin="mouseout"
+            fill="freeze"/>
+        </rect>
+      </g>
+      <g transform="translate(20, 330)">
+        <!-- Skill Name -->
+        <text x="0" y="-5" font-family="monospace" font-size="14" fill="#E0E0E0" font-weight="bold">
+          AWS/Cloud
+        </text>
+        
+        <!-- Category Badge -->
+        <rect x="200" y="-18" width="60" height="16" rx="8" fill="#FF9900" opacity="0.8"/>
+        <text x="230" y="-8" font-family="monospace" font-size="10" fill="white" text-anchor="middle">
+          Cloud
+        </text>
+        
+        <!-- Trend Indicator -->
+        <text x="270" y="-5" font-family="monospace" font-size="12" fill="#4CAF50" font-weight="bold">
+          +6%
+        </text>
+        
+        <!-- Background Bar -->
+        <rect x="0" y="5" width="500" height="20" rx="10" fill="#1E1E1E" stroke="#333" stroke-width="1"/>
+        
+        <!-- Progress Bar -->
+        <rect x="0" y="5" width="0" height="20" rx="10" fill="#FF9900" opacity="0.8">
+          <animate
+            attributeName="width"
+            from="0"
+            to="400"
+            dur="2s"
+            begin="1s"
+            fill="freeze"/>
+          <animate
+            attributeName="opacity"
+            values="0.8; 1; 0.8"
+            dur="3s"
+            begin="3s"
+            repeatCount="indefinite"/>
+        </rect>
+        
+        <!-- Skill Level Text -->
+        <text x="510" y="20" font-family="monospace" font-size="14" fill="#E0E0E0" text-anchor="start">
+          80%
+        </text>
+        
+        <!-- Progress Particles -->
+        <g opacity="0">
+          <animate
+            attributeName="opacity"
+            values="0; 1; 0"
+            dur="1s"
+            begin="2s"
+            repeatCount="3"/>
+          
+        <circle cx="375.0596737264458" cy="15.175919840655418" r="3.2129153515361155" fill="#FF9900" opacity="0.6">
+          <animate
+            attributeName="r"
+            values="3.2129153515361155; 6.425830703072231; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+          <animate
+            attributeName="opacity"
+            values="0.6; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+        </circle>
+        <circle cx="14.705477652696608" cy="6.195990396221354" r="1.929261786977831" fill="#FF9900" opacity="0.6">
+          <animate
+            attributeName="r"
+            values="1.929261786977831; 3.858523573955662; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+          <animate
+            attributeName="opacity"
+            values="0.6; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+        </circle>
+        <circle cx="395.09047211082174" cy="19.309728189757614" r="1.173271514318177" fill="#FF9900" opacity="0.6">
+          <animate
+            attributeName="r"
+            values="1.173271514318177; 2.346543028636354; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+          <animate
+            attributeName="opacity"
+            values="0.6; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+        </circle>
+        <circle cx="182.1140195118514" cy="16.10513437895232" r="1.1142073689317202" fill="#FF9900" opacity="0.6">
+          <animate
+            attributeName="r"
+            values="1.1142073689317202; 2.2284147378634405; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+          <animate
+            attributeName="opacity"
+            values="0.6; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+        </circle>
+        <circle cx="208.7481979299973" cy="5.0273312301719075" r="2.795934597730346" fill="#FF9900" opacity="0.6">
+          <animate
+            attributeName="r"
+            values="2.795934597730346; 5.591869195460692; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+          <animate
+            attributeName="opacity"
+            values="0.6; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+        </circle>
+        </g>
+        
+        <!-- Hover Effect -->
+        <rect x="0" y="-20" width="580" height="45" fill="transparent" class="skill-hover">
+          <animate
+            attributeName="fill"
+            values="transparent; rgba(255,255,255,0.05); transparent"
+            dur="0.3s"
+            begin="mouseover"
+            fill="freeze"/>
+          <animate
+            attributeName="fill"
+            values="rgba(255,255,255,0.05); transparent"
+            dur="0.3s"
+            begin="mouseout"
+            fill="freeze"/>
+        </rect>
+      </g>
+      <g transform="translate(20, 380)">
+        <!-- Skill Name -->
+        <text x="0" y="-5" font-family="monospace" font-size="14" fill="#E0E0E0" font-weight="bold">
+          GraphQL/Apollo
+        </text>
+        
+        <!-- Category Badge -->
+        <rect x="200" y="-18" width="60" height="16" rx="8" fill="#E10098" opacity="0.8"/>
+        <text x="230" y="-8" font-family="monospace" font-size="10" fill="white" text-anchor="middle">
+          API
+        </text>
+        
+        <!-- Trend Indicator -->
+        <text x="270" y="-5" font-family="monospace" font-size="12" fill="#4CAF50" font-weight="bold">
+          +4%
+        </text>
+        
+        <!-- Background Bar -->
+        <rect x="0" y="5" width="500" height="20" rx="10" fill="#1E1E1E" stroke="#333" stroke-width="1"/>
+        
+        <!-- Progress Bar -->
+        <rect x="0" y="5" width="0" height="20" rx="10" fill="#E10098" opacity="0.8">
+          <animate
+            attributeName="width"
+            from="0"
+            to="390"
+            dur="2s"
+            begin="1.2000000000000002s"
+            fill="freeze"/>
+          <animate
+            attributeName="opacity"
+            values="0.8; 1; 0.8"
+            dur="3s"
+            begin="3.2s"
+            repeatCount="indefinite"/>
+        </rect>
+        
+        <!-- Skill Level Text -->
+        <text x="510" y="20" font-family="monospace" font-size="14" fill="#E0E0E0" text-anchor="start">
+          78%
+        </text>
+        
+        <!-- Progress Particles -->
+        <g opacity="0">
+          <animate
+            attributeName="opacity"
+            values="0; 1; 0"
+            dur="1s"
+            begin="2.2s"
+            repeatCount="3"/>
+          
+        <circle cx="44.16092920122107" cy="9.518558349599369" r="3.345603558716203" fill="#E10098" opacity="0.6">
+          <animate
+            attributeName="r"
+            values="3.345603558716203; 6.691207117432406; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+          <animate
+            attributeName="opacity"
+            values="0.6; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+        </circle>
+        <circle cx="83.11734126081598" cy="19.059925799394584" r="3.7784368066596126" fill="#E10098" opacity="0.6">
+          <animate
+            attributeName="r"
+            values="3.7784368066596126; 7.556873613319225; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+          <animate
+            attributeName="opacity"
+            values="0.6; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+        </circle>
+        <circle cx="225.41378765574075" cy="14.963209642098448" r="3.0204866828059496" fill="#E10098" opacity="0.6">
+          <animate
+            attributeName="r"
+            values="3.0204866828059496; 6.040973365611899; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+          <animate
+            attributeName="opacity"
+            values="0.6; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+        </circle>
+        <circle cx="114.79570182005118" cy="6.460297009952827" r="2.1350276077010406" fill="#E10098" opacity="0.6">
+          <animate
+            attributeName="r"
+            values="2.1350276077010406; 4.270055215402081; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+          <animate
+            attributeName="opacity"
+            values="0.6; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+        </circle>
+        <circle cx="200.7934115107272" cy="11.51434824295611" r="3.461614135600387" fill="#E10098" opacity="0.6">
+          <animate
+            attributeName="r"
+            values="3.461614135600387; 6.923228271200774; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+          <animate
+            attributeName="opacity"
+            values="0.6; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+        </circle>
+        </g>
+        
+        <!-- Hover Effect -->
+        <rect x="0" y="-20" width="580" height="45" fill="transparent" class="skill-hover">
+          <animate
+            attributeName="fill"
+            values="transparent; rgba(255,255,255,0.05); transparent"
+            dur="0.3s"
+            begin="mouseover"
+            fill="freeze"/>
+          <animate
+            attributeName="fill"
+            values="rgba(255,255,255,0.05); transparent"
+            dur="0.3s"
+            begin="mouseout"
+            fill="freeze"/>
+        </rect>
+      </g>
+      <g transform="translate(20, 430)">
+        <!-- Skill Name -->
+        <text x="0" y="-5" font-family="monospace" font-size="14" fill="#E0E0E0" font-weight="bold">
+          WebAssembly
+        </text>
+        
+        <!-- Category Badge -->
+        <rect x="200" y="-18" width="60" height="16" rx="8" fill="#FF4081" opacity="0.8"/>
+        <text x="230" y="-8" font-family="monospace" font-size="10" fill="white" text-anchor="middle">
+          Emerging
+        </text>
+        
+        <!-- Trend Indicator -->
+        <text x="270" y="-5" font-family="monospace" font-size="12" fill="#4CAF50" font-weight="bold">
+          +15%
+        </text>
+        
+        <!-- Background Bar -->
+        <rect x="0" y="5" width="500" height="20" rx="10" fill="#1E1E1E" stroke="#333" stroke-width="1"/>
+        
+        <!-- Progress Bar -->
+        <rect x="0" y="5" width="0" height="20" rx="10" fill="#FF4081" opacity="0.8">
+          <animate
+            attributeName="width"
+            from="0"
+            to="325"
+            dur="2s"
+            begin="1.4000000000000001s"
+            fill="freeze"/>
+          <animate
+            attributeName="opacity"
+            values="0.8; 1; 0.8"
+            dur="3s"
+            begin="3.4000000000000004s"
+            repeatCount="indefinite"/>
+        </rect>
+        
+        <!-- Skill Level Text -->
+        <text x="510" y="20" font-family="monospace" font-size="14" fill="#E0E0E0" text-anchor="start">
+          65%
+        </text>
+        
+        <!-- Progress Particles -->
+        <g opacity="0">
+          <animate
+            attributeName="opacity"
+            values="0; 1; 0"
+            dur="1s"
+            begin="2.4000000000000004s"
+            repeatCount="3"/>
+          
+        <circle cx="268.7439090247477" cy="15.292040128342318" r="1.4050923994968239" fill="#FF4081" opacity="0.6">
+          <animate
+            attributeName="r"
+            values="1.4050923994968239; 2.8101847989936477; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+          <animate
+            attributeName="opacity"
+            values="0.6; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+        </circle>
+        <circle cx="296.1489757229804" cy="18.946708378630504" r="1.1537346861273434" fill="#FF4081" opacity="0.6">
+          <animate
+            attributeName="r"
+            values="1.1537346861273434; 2.307469372254687; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+          <animate
+            attributeName="opacity"
+            values="0.6; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+        </circle>
+        <circle cx="109.54320989269442" cy="10.589926511531896" r="3.5355990365242436" fill="#FF4081" opacity="0.6">
+          <animate
+            attributeName="r"
+            values="3.5355990365242436; 7.071198073048487; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+          <animate
+            attributeName="opacity"
+            values="0.6; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+        </circle>
+        <circle cx="64.70718322271996" cy="10.628317917491588" r="1.832601395428491" fill="#FF4081" opacity="0.6">
+          <animate
+            attributeName="r"
+            values="1.832601395428491; 3.665202790856982; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+          <animate
+            attributeName="opacity"
+            values="0.6; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+        </circle>
+        <circle cx="150.56321673375743" cy="7.188787884683734" r="1.3529241520515505" fill="#FF4081" opacity="0.6">
+          <animate
+            attributeName="r"
+            values="1.3529241520515505; 2.705848304103101; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+          <animate
+            attributeName="opacity"
+            values="0.6; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+        </circle>
+        </g>
+        
+        <!-- Hover Effect -->
+        <rect x="0" y="-20" width="580" height="45" fill="transparent" class="skill-hover">
+          <animate
+            attributeName="fill"
+            values="transparent; rgba(255,255,255,0.05); transparent"
+            dur="0.3s"
+            begin="mouseover"
+            fill="freeze"/>
+          <animate
+            attributeName="fill"
+            values="rgba(255,255,255,0.05); transparent"
+            dur="0.3s"
+            begin="mouseout"
+            fill="freeze"/>
+        </rect>
+      </g>
+      <g transform="translate(20, 480)">
+        <!-- Skill Name -->
+        <text x="0" y="-5" font-family="monospace" font-size="14" fill="#E0E0E0" font-weight="bold">
+          Rust/Systems
+        </text>
+        
+        <!-- Category Badge -->
+        <rect x="200" y="-18" width="60" height="16" rx="8" fill="#DEA584" opacity="0.8"/>
+        <text x="230" y="-8" font-family="monospace" font-size="10" fill="white" text-anchor="middle">
+          Systems
+        </text>
+        
+        <!-- Trend Indicator -->
+        <text x="270" y="-5" font-family="monospace" font-size="12" fill="#4CAF50" font-weight="bold">
+          +20%
+        </text>
+        
+        <!-- Background Bar -->
+        <rect x="0" y="5" width="500" height="20" rx="10" fill="#1E1E1E" stroke="#333" stroke-width="1"/>
+        
+        <!-- Progress Bar -->
+        <rect x="0" y="5" width="0" height="20" rx="10" fill="#DEA584" opacity="0.8">
+          <animate
+            attributeName="width"
+            from="0"
+            to="300"
+            dur="2s"
+            begin="1.6s"
+            fill="freeze"/>
+          <animate
+            attributeName="opacity"
+            values="0.8; 1; 0.8"
+            dur="3s"
+            begin="3.6s"
+            repeatCount="indefinite"/>
+        </rect>
+        
+        <!-- Skill Level Text -->
+        <text x="510" y="20" font-family="monospace" font-size="14" fill="#E0E0E0" text-anchor="start">
+          60%
+        </text>
+        
+        <!-- Progress Particles -->
+        <g opacity="0">
+          <animate
+            attributeName="opacity"
+            values="0; 1; 0"
+            dur="1s"
+            begin="2.6s"
+            repeatCount="3"/>
+          
+        <circle cx="181.50202980773116" cy="7.081960722368694" r="1.7168832087229329" fill="#DEA584" opacity="0.6">
+          <animate
+            attributeName="r"
+            values="1.7168832087229329; 3.4337664174458657; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+          <animate
+            attributeName="opacity"
+            values="0.6; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+        </circle>
+        <circle cx="93.06319033090207" cy="6.93306784127405" r="2.466717422471228" fill="#DEA584" opacity="0.6">
+          <animate
+            attributeName="r"
+            values="2.466717422471228; 4.933434844942456; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+          <animate
+            attributeName="opacity"
+            values="0.6; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+        </circle>
+        <circle cx="247.1575397294001" cy="11.808130674916569" r="1.7294545251987976" fill="#DEA584" opacity="0.6">
+          <animate
+            attributeName="r"
+            values="1.7294545251987976; 3.458909050397595; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+          <animate
+            attributeName="opacity"
+            values="0.6; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+        </circle>
+        <circle cx="122.37208509973891" cy="9.895514035381368" r="3.6302030254694517" fill="#DEA584" opacity="0.6">
+          <animate
+            attributeName="r"
+            values="3.6302030254694517; 7.2604060509389035; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+          <animate
+            attributeName="opacity"
+            values="0.6; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+        </circle>
+        <circle cx="0.5679799209033387" cy="8.151318508752077" r="3.2428383556491926" fill="#DEA584" opacity="0.6">
+          <animate
+            attributeName="r"
+            values="3.2428383556491926; 6.485676711298385; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+          <animate
+            attributeName="opacity"
+            values="0.6; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+        </circle>
+        </g>
+        
+        <!-- Hover Effect -->
+        <rect x="0" y="-20" width="580" height="45" fill="transparent" class="skill-hover">
+          <animate
+            attributeName="fill"
+            values="transparent; rgba(255,255,255,0.05); transparent"
+            dur="0.3s"
+            begin="mouseover"
+            fill="freeze"/>
+          <animate
+            attributeName="fill"
+            values="rgba(255,255,255,0.05); transparent"
+            dur="0.3s"
+            begin="mouseout"
+            fill="freeze"/>
+        </rect>
+      </g>
+      <g transform="translate(20, 530)">
+        <!-- Skill Name -->
+        <text x="0" y="-5" font-family="monospace" font-size="14" fill="#E0E0E0" font-weight="bold">
+          Quantum Computing
+        </text>
+        
+        <!-- Category Badge -->
+        <rect x="200" y="-18" width="60" height="16" rx="8" fill="#9C27B0" opacity="0.8"/>
+        <text x="230" y="-8" font-family="monospace" font-size="10" fill="white" text-anchor="middle">
+          Research
+        </text>
+        
+        <!-- Trend Indicator -->
+        <text x="270" y="-5" font-family="monospace" font-size="12" fill="#4CAF50" font-weight="bold">
+          +25%
+        </text>
+        
+        <!-- Background Bar -->
+        <rect x="0" y="5" width="500" height="20" rx="10" fill="#1E1E1E" stroke="#333" stroke-width="1"/>
+        
+        <!-- Progress Bar -->
+        <rect x="0" y="5" width="0" height="20" rx="10" fill="#9C27B0" opacity="0.8">
+          <animate
+            attributeName="width"
+            from="0"
+            to="225"
+            dur="2s"
+            begin="1.8s"
+            fill="freeze"/>
+          <animate
+            attributeName="opacity"
+            values="0.8; 1; 0.8"
+            dur="3s"
+            begin="3.8s"
+            repeatCount="indefinite"/>
+        </rect>
+        
+        <!-- Skill Level Text -->
+        <text x="510" y="20" font-family="monospace" font-size="14" fill="#E0E0E0" text-anchor="start">
+          45%
+        </text>
+        
+        <!-- Progress Particles -->
+        <g opacity="0">
+          <animate
+            attributeName="opacity"
+            values="0; 1; 0"
+            dur="1s"
+            begin="2.8s"
+            repeatCount="3"/>
+          
+        <circle cx="124.27093066349019" cy="22.581567345636643" r="1.48830197067347" fill="#9C27B0" opacity="0.6">
+          <animate
+            attributeName="r"
+            values="1.48830197067347; 2.97660394134694; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+          <animate
+            attributeName="opacity"
+            values="0.6; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+        </circle>
+        <circle cx="30.279348062201382" cy="7.625961697363679" r="3.4045924454037904" fill="#9C27B0" opacity="0.6">
+          <animate
+            attributeName="r"
+            values="3.4045924454037904; 6.809184890807581; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+          <animate
+            attributeName="opacity"
+            values="0.6; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+        </circle>
+        <circle cx="182.93057718611797" cy="21.199802926602015" r="3.412985261393031" fill="#9C27B0" opacity="0.6">
+          <animate
+            attributeName="r"
+            values="3.412985261393031; 6.825970522786062; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+          <animate
+            attributeName="opacity"
+            values="0.6; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+        </circle>
+        <circle cx="40.59716929464917" cy="13.807739200055554" r="3.541789123446147" fill="#9C27B0" opacity="0.6">
+          <animate
+            attributeName="r"
+            values="3.541789123446147; 7.083578246892294; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+          <animate
+            attributeName="opacity"
+            values="0.6; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+        </circle>
+        <circle cx="52.105305107415056" cy="9.678685295423612" r="2.9018026481627617" fill="#9C27B0" opacity="0.6">
+          <animate
+            attributeName="r"
+            values="2.9018026481627617; 5.803605296325523; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+          <animate
+            attributeName="opacity"
+            values="0.6; 0"
+            dur="1s"
+            repeatCount="indefinite"/>
+        </circle>
+        </g>
+        
+        <!-- Hover Effect -->
+        <rect x="0" y="-20" width="580" height="45" fill="transparent" class="skill-hover">
+          <animate
+            attributeName="fill"
+            values="transparent; rgba(255,255,255,0.05); transparent"
+            dur="0.3s"
+            begin="mouseover"
+            fill="freeze"/>
+          <animate
+            attributeName="fill"
+            values="rgba(255,255,255,0.05); transparent"
+            dur="0.3s"
+            begin="mouseout"
+            fill="freeze"/>
+        </rect>
+      </g>
+  </g>
+  
+  <!-- Radar Chart -->
+  
+      <g transform="translate(650, 200)">
+        <!-- Background Circles -->
+        <circle r="30" fill="none" stroke="#333" stroke-width="1" opacity="0.5"/>
+        <circle r="60" fill="none" stroke="#333" stroke-width="1" opacity="0.5"/>
+        <circle r="90" fill="none" stroke="#333" stroke-width="1" opacity="0.5"/>
+        <circle r="120" fill="none" stroke="#333" stroke-width="1" opacity="0.5"/>
+        
+        <!-- Axis Lines -->
+        <line x1="0" y1="0" x2="7.34788079488412e-15" y2="-120" stroke="#333" stroke-width="1" opacity="0.5"/>
+        <text x="8.817456953860943e-15" y="-144" font-family="monospace" font-size="12" 
+              fill="#E0E0E0" text-anchor="middle" dominant-baseline="middle">
+          Frontend
+        </text>
+        <line x1="0" y1="0" x2="114.12678195541842" y2="-37.08203932499369" stroke="#333" stroke-width="1" opacity="0.5"/>
+        <text x="136.9521383465021" y="-44.498447189992426" font-family="monospace" font-size="12" 
+              fill="#E0E0E0" text-anchor="middle" dominant-baseline="middle">
+          Backend
+        </text>
+        <line x1="0" y1="0" x2="70.53423027509677" y2="97.0820393249937" stroke="#333" stroke-width="1" opacity="0.5"/>
+        <text x="84.64107633011612" y="116.49844718999243" font-family="monospace" font-size="12" 
+              fill="#E0E0E0" text-anchor="middle" dominant-baseline="middle">
+          DevOps
+        </text>
+        <line x1="0" y1="0" x2="-70.53423027509676" y2="97.0820393249937" stroke="#333" stroke-width="1" opacity="0.5"/>
+        <text x="-84.6410763301161" y="116.49844718999243" font-family="monospace" font-size="12" 
+              fill="#E0E0E0" text-anchor="middle" dominant-baseline="middle">
+          AI/ML
+        </text>
+        <line x1="0" y1="0" x2="-114.12678195541842" y2="-37.08203932499373" stroke="#333" stroke-width="1" opacity="0.5"/>
+        <text x="-136.9521383465021" y="-44.498447189992476" font-family="monospace" font-size="12" 
+              fill="#E0E0E0" text-anchor="middle" dominant-baseline="middle">
+          Cloud
+        </text>
+        <!-- Data Area -->
+        <polygon points="6.76005033129339e-15,-110.4 97.00776466210566,-31.519733426244635 57.83806882557935,79.60727224649482 -56.427384220077414,77.66563145999496 -89.01888992522638,-28.92399067349511 " fill="#00ff41" fill-opacity="0.2" 
+                 stroke="#00ff41" stroke-width="2">
+          <animate
+            attributeName="fill-opacity"
+            values="0; 0.2; 0.3; 0.2"
+            dur="3s"
+            repeatCount="indefinite"/>
+        </polygon>
+        
+        <!-- Data Points -->
+        <circle cx="6.76005033129339e-15" cy="-110.4" r="4" fill="#00ff41">
+          <animate
+            attributeName="r"
+            values="4; 6; 4"
+            dur="2s"
+            begin="0s"
+            repeatCount="indefinite"/>
+        </circle>
+        <circle cx="97.00776466210566" cy="-31.519733426244635" r="4" fill="#00ff41">
+          <animate
+            attributeName="r"
+            values="4; 6; 4"
+            dur="2s"
+            begin="0.3s"
+            repeatCount="indefinite"/>
+        </circle>
+        <circle cx="57.83806882557935" cy="79.60727224649482" r="4" fill="#00ff41">
+          <animate
+            attributeName="r"
+            values="4; 6; 4"
+            dur="2s"
+            begin="0.6s"
+            repeatCount="indefinite"/>
+        </circle>
+        <circle cx="-56.427384220077414" cy="77.66563145999496" r="4" fill="#00ff41">
+          <animate
+            attributeName="r"
+            values="4; 6; 4"
+            dur="2s"
+            begin="0.8999999999999999s"
+            repeatCount="indefinite"/>
+        </circle>
+        <circle cx="-89.01888992522638" cy="-28.92399067349511" r="4" fill="#00ff41">
+          <animate
+            attributeName="r"
+            values="4; 6; 4"
+            dur="2s"
+            begin="1.2s"
+            repeatCount="indefinite"/>
+        </circle></g>
+  
+  <!-- Legend -->
+  <text x="20" y="510" font-family="monospace" font-size="16" fill="#00ff41" font-weight="bold">
+    Categories:
+  </text>
+  
+        <g transform="translate(20, 520)">
+          <rect x="0" y="0" width="15" height="15" rx="3" fill="#61DAFB"/>
+          <text x="25" y="12" font-family="monospace" font-size="12" fill="#E0E0E0">
+            Frontend
+          </text>
+        </g>
+        <g transform="translate(20, 545)">
+          <rect x="0" y="0" width="15" height="15" rx="3" fill="#339933"/>
+          <text x="25" y="12" font-family="monospace" font-size="12" fill="#E0E0E0">
+            Backend
+          </text>
+        </g>
+        <g transform="translate(20, 570)">
+          <rect x="0" y="0" width="15" height="15" rx="3" fill="#FF6F00"/>
+          <text x="25" y="12" font-family="monospace" font-size="12" fill="#E0E0E0">
+            AI/ML
+          </text>
+        </g>
+        <g transform="translate(20, 595)">
+          <rect x="0" y="0" width="15" height="15" rx="3" fill="#326CE5"/>
+          <text x="25" y="12" font-family="monospace" font-size="12" fill="#E0E0E0">
+            DevOps
+          </text>
+        </g>
+        <g transform="translate(20, 620)">
+          <rect x="0" y="0" width="15" height="15" rx="3" fill="#FF9900"/>
+          <text x="25" y="12" font-family="monospace" font-size="12" fill="#E0E0E0">
+            Cloud
+          </text>
+        </g>
+        <g transform="translate(20, 645)">
+          <rect x="0" y="0" width="15" height="15" rx="3" fill="#E10098"/>
+          <text x="25" y="12" font-family="monospace" font-size="12" fill="#E0E0E0">
+            API
+          </text>
+        </g>
+        <g transform="translate(20, 670)">
+          <rect x="0" y="0" width="15" height="15" rx="3" fill="#FF4081"/>
+          <text x="25" y="12" font-family="monospace" font-size="12" fill="#E0E0E0">
+            Emerging
+          </text>
+        </g>
+        <g transform="translate(20, 695)">
+          <rect x="0" y="0" width="15" height="15" rx="3" fill="#DEA584"/>
+          <text x="25" y="12" font-family="monospace" font-size="12" fill="#E0E0E0">
+            Systems
+          </text>
+        </g>
+        <g transform="translate(20, 720)">
+          <rect x="0" y="0" width="15" height="15" rx="3" fill="#9C27B0"/>
+          <text x="25" y="12" font-family="monospace" font-size="12" fill="#E0E0E0">
+            Research
+          </text>
+        </g>
+  
+  <!-- Performance Metrics -->
+  <g transform="translate(550, 350)">
+    <rect x="0" y="0" width="230" height="120" rx="8" fill="#1E1E1E" stroke="#333" stroke-width="1"/>
+    <text x="115" y="20" font-family="monospace" font-size="14" fill="#00ff41" 
+          text-anchor="middle" font-weight="bold">
+      📊 Growth Metrics
+    </text>
+    <text x="10" y="40" font-family="monospace" font-size="12" fill="#E0E0E0">
+      • Average Growth: +9.8%/quarter
+    </text>
+    <text x="10" y="55" font-family="monospace" font-size="12" fill="#E0E0E0">
+      • Fastest Growing: Quantum (+25%)
+    </text>
+    <text x="10" y="70" font-family="monospace" font-size="12" fill="#E0E0E0">
+      • Total Skills: 10 technologies
+    </text>
+    <text x="10" y="85" font-family="monospace" font-size="12" fill="#E0E0E0">
+      • Expertise Level: Senior+
+    </text>
+    <text x="10" y="100" font-family="monospace" font-size="12" fill="#4CAF50">
+      • Status: Actively Learning ✨
+    </text>
+  </g>
+  
+  <!-- Animated Border -->
+  <rect x="2" y="2" width="796" height="596" 
+        fill="none" stroke="#00ff41" stroke-width="1" rx="8" opacity="0.5">
+    <animate
+      attributeName="opacity"
+      values="0.5; 1; 0.5"
+      dur="4s"
+      repeatCount="indefinite"/>
+  </rect>
+  
+</svg>

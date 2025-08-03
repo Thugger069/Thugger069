@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1000" height="300" viewBox="0 0 1000 300" 
+     xmlns="http://www.w3.org/2000/svg">
+  
+  <defs>
+    <linearGradient id="monitorBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f0f23"/>
+      <stop offset="100%" stop-color="#1a1a2e"/>
+    </linearGradient>
+    
+    <filter id="monitorGlow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="url(#monitorBg)"/>
+  
+  <!-- Title and header -->
+  <text x="500" y="30" font-family="monospace" font-size="20" fill="#00ff41" 
+        text-anchor="middle" font-weight="bold">
+    🖥️ Real-time System Performance Monitor
+  </text>
+  
+  <text x="20" y="55" font-family="monospace" font-size="12" fill="#e0e0e0">
+    System Status: Online • Uptime: 72h 43m • Last Update: 2:55:59 AM
+  </text>
+  
+  <!-- Live indicator -->
+  <circle cx="970" cy="50" r="6" fill="#00ff41">
+    <animate attributeName="opacity" values="1; 0.3; 1" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  <text x="950" y="55" font-family="monospace" font-size="12" fill="#00ff41" text-anchor="end">
+    LIVE
+  </text>
+  
+  <!-- CPU Cores section -->
+  <text x="20" y="85" font-family="monospace" font-size="14" fill="#e0e0e0" font-weight="bold">
+    CPU Cores (37% avg)
+  </text>
+  
+  <g filter="url(#monitorGlow)">
+    
+        <g transform="translate(50, 100)">
+          <rect width="25" height="25" rx="4" fill="#48dbfb" opacity="0.8">
+            <animate attributeName="opacity" values="0.8; 1; 0.8" dur="2s" repeatCount="indefinite"/>
+          </rect>
+          <text x="12.5" y="16.5" font-family="monospace" font-size="10" 
+                fill="white" text-anchor="middle" font-weight="bold">
+            0
+          </text>
+          <text x="12.5" y="40" font-family="monospace" font-size="8" 
+                fill="#e0e0e0" text-anchor="middle">
+            24%
+          </text>
+        </g>
+        <g transform="translate(85, 100)">
+          <rect width="25" height="25" rx="4" fill="#48dbfb" opacity="0.8">
+            <animate attributeName="opacity" values="0.8; 1; 0.8" dur="2s" repeatCount="indefinite"/>
+          </rect>
+          <text x="12.5" y="16.5" font-family="monospace" font-size="10" 
+                fill="white" text-anchor="middle" font-weight="bold">
+            1
+          </text>
+          <text x="12.5" y="40" font-family="monospace" font-size="8" 
+                fill="#e0e0e0" text-anchor="middle">
+            35%
+          </text>
+        </g>
+        <g transform="translate(120, 100)">
+          <rect width="25" height="25" rx="4" fill="#48dbfb" opacity="0.8">
+            <animate attributeName="opacity" values="0.8; 1; 0.8" dur="2s" repeatCount="indefinite"/>
+          </rect>
+          <text x="12.5" y="16.5" font-family="monospace" font-size="10" 
+                fill="white" text-anchor="middle" font-weight="bold">
+            2
+          </text>
+          <text x="12.5" y="40" font-family="monospace" font-size="8" 
+                fill="#e0e0e0" text-anchor="middle">
+            23%
+          </text>
+        </g>
+        <g transform="translate(155, 100)">
+          <rect width="25" height="25" rx="4" fill="#48dbfb" opacity="0.8">
+            <animate attributeName="opacity" values="0.8; 1; 0.8" dur="2s" repeatCount="indefinite"/>
+          </rect>
+          <text x="12.5" y="16.5" font-family="monospace" font-size="10" 
+                fill="white" text-anchor="middle" font-weight="bold">
+            3
+          </text>
+          <text x="12.5" y="40" font-family="monospace" font-size="8" 
+                fill="#e0e0e0" text-anchor="middle">
+            34%
+          </text>
+        </g>
+        <g transform="translate(50, 135)">
+          <rect width="25" height="25" rx="4" fill="#48dbfb" opacity="0.8">
+            <animate attributeName="opacity" values="0.8; 1; 0.8" dur="2s" repeatCount="indefinite"/>
+          </rect>
+          <text x="12.5" y="16.5" font-family="monospace" font-size="10" 
+                fill="white" text-anchor="middle" font-weight="bold">
+            4
+          </text>
+          <text x="12.5" y="40" font-family="monospace" font-size="8" 
+                fill="#e0e0e0" text-anchor="middle">
+            31%
+          </text>
+        </g>
+        <g transform="translate(85, 135)">
+          <rect width="25" height="25" rx="4" fill="#ff6b6b" opacity="0.8">
+            <animate attributeName="opacity" values="0.8; 1; 0.8" dur="2s" repeatCount="indefinite"/>
+          </rect>
+          <text x="12.5" y="16.5" font-family="monospace" font-size="10" 
+                fill="white" text-anchor="middle" font-weight="bold">
+            5
+          </text>
+          <text x="12.5" y="40" font-family="monospace" font-size="8" 
+                fill="#e0e0e0" text-anchor="middle">
+            79%
+          </text>
+        </g>
+        <g transform="translate(120, 135)">
+          <rect width="25" height="25" rx="4" fill="#ff6b6b" opacity="0.8">
+            <animate attributeName="opacity" values="0.8; 1; 0.8" dur="2s" repeatCount="indefinite"/>
+          </rect>
+          <text x="12.5" y="16.5" font-family="monospace" font-size="10" 
+                fill="white" text-anchor="middle" font-weight="bold">
+            6
+          </text>
+          <text x="12.5" y="40" font-family="monospace" font-size="8" 
+                fill="#e0e0e0" text-anchor="middle">
+            78%
+          </text>
+        </g>
+        <g transform="translate(155, 135)">
+          <rect width="25" height="25" rx="4" fill="#48dbfb" opacity="0.8">
+            <animate attributeName="opacity" values="0.8; 1; 0.8" dur="2s" repeatCount="indefinite"/>
+          </rect>
+          <text x="12.5" y="16.5" font-family="monospace" font-size="10" 
+                fill="white" text-anchor="middle" font-weight="bold">
+            7
+          </text>
+          <text x="12.5" y="40" font-family="monospace" font-size="8" 
+                fill="#e0e0e0" text-anchor="middle">
+            32%
+          </text>
+        </g>
+  </g>
+  
+  <!-- Memory section -->
+  <text x="280" y="85" font-family="monospace" font-size="14" fill="#e0e0e0" font-weight="bold">
+    Memory Usage
+  </text>
+  
+  
+        <g transform="translate(300, 100)">
+          <!-- Background bar -->
+          <rect width="200" height="20" rx="10" fill="#2c2c54" stroke="#40407a" stroke-width="1"/>
+          
+          <!-- Fill bar -->
+          <rect width="0" height="20" rx="10" fill="#ff6b6b" opacity="0.8">
+            <animate attributeName="width" from="0" to="125" dur="2s" fill="freeze"/>
+            <animate attributeName="opacity" values="0.8; 1; 0.8" dur="3s" repeatCount="indefinite"/>
+          </rect>
+          
+          <!-- Label -->
+          <text x="-10" y="15" font-family="monospace" font-size="12" fill="#e0e0e0" text-anchor="end">
+            Used:
+          </text>
+          
+          <!-- Value -->
+          <text x="210" y="15" font-family="monospace" font-size="12" fill="#ff6b6b" font-weight="bold">
+            20/32GB (62.5%)
+          </text>
+        </g>
+        <g transform="translate(300, 130)">
+          <!-- Background bar -->
+          <rect width="200" height="20" rx="10" fill="#2c2c54" stroke="#40407a" stroke-width="1"/>
+          
+          <!-- Fill bar -->
+          <rect width="0" height="20" rx="10" fill="#feca57" opacity="0.8">
+            <animate attributeName="width" from="0" to="31.25" dur="2s" fill="freeze"/>
+            <animate attributeName="opacity" values="0.8; 1; 0.8" dur="3s" repeatCount="indefinite"/>
+          </rect>
+          
+          <!-- Label -->
+          <text x="-10" y="15" font-family="monospace" font-size="12" fill="#e0e0e0" text-anchor="end">
+            Cache:
+          </text>
+          
+          <!-- Value -->
+          <text x="210" y="15" font-family="monospace" font-size="12" fill="#feca57" font-weight="bold">
+            5/32GB (15.6%)
+          </text>
+        </g>
+        <g transform="translate(300, 160)">
+          <!-- Background bar -->
+          <rect width="200" height="20" rx="10" fill="#2c2c54" stroke="#40407a" stroke-width="1"/>
+          
+          <!-- Fill bar -->
+          <rect width="0" height="20" rx="10" fill="#ff9ff3" opacity="0.8">
+            <animate attributeName="width" from="0" to="50" dur="2s" fill="freeze"/>
+            <animate attributeName="opacity" values="0.8; 1; 0.8" dur="3s" repeatCount="indefinite"/>
+          </rect>
+          
+          <!-- Label -->
+          <text x="-10" y="15" font-family="monospace" font-size="12" fill="#e0e0e0" text-anchor="end">
+            Swap:
+          </text>
+          
+          <!-- Value -->
+          <text x="210" y="15" font-family="monospace" font-size="12" fill="#ff9ff3" font-weight="bold">
+            1GB (25.0%)
+          </text>
+        </g>
+  
+  <!-- Network section -->
+  
+      <g transform="translate(600, 100)">
+        <!-- Network status panel -->
+        <rect x="0" y="0" width="180" height="120" rx="8" fill="#0f3460" stroke="#16537e" stroke-width="2"/>
+        
+        <text x="90" y="20" font-family="monospace" font-size="14" fill="#0abde3" 
+              text-anchor="middle" font-weight="bold">
+          Network Status
+        </text>
+        
+        <!-- Upload indicator -->
+        <g transform="translate(10, 35)">
+          <polygon points="0,10 10,0 20,10 15,10 15,20 5,20 5,10" fill="#00d2d3"/>
+          <text x="30" y="12" font-family="monospace" font-size="11" fill="#e0e0e0">
+            Up: 12.5 Mbps
+          </text>
+        </g>
+        
+        <!-- Download indicator -->
+        <g transform="translate(10, 55)">
+          <polygon points="0,0 10,10 20,0 15,0 15,-10 5,-10 5,0" fill="#ff6348" transform="translate(0,10)"/>
+          <text x="30" y="12" font-family="monospace" font-size="11" fill="#e0e0e0">
+            Down: 79.1 Mbps
+          </text>
+        </g>
+        
+        <!-- Latency -->
+        <text x="10" y="85" font-family="monospace" font-size="11" fill="#feca57">
+          Latency: 29ms
+        </text>
+        
+        <!-- Packets -->
+        <text x="10" y="100" font-family="monospace" font-size="11" fill="#48dbfb">
+          Packets: 1430/s
+        </text>
+        
+        <!-- Signal strength animation -->
+        <g transform="translate(150, 80)">
+          
+            <rect x="0" y="15" width="4" height="5" 
+                  fill="#00d2d3" opacity="0.8">
+              <animate attributeName="opacity" 
+                       values="0.8; 1; 0.8" 
+                       dur="1s" 
+                       repeatCount="indefinite"/>
+            </rect>
+          
+            <rect x="6" y="12" width="4" height="8" 
+                  fill="#00d2d3" opacity="0.8">
+              <animate attributeName="opacity" 
+                       values="0.8; 1; 0.8" 
+                       dur="1.2s" 
+                       repeatCount="indefinite"/>
+            </rect>
+          
+            <rect x="12" y="9" width="4" height="11" 
+                  fill="#00d2d3" opacity="0.8">
+              <animate attributeName="opacity" 
+                       values="0.8; 1; 0.8" 
+                       dur="1.4s" 
+                       repeatCount="indefinite"/>
+            </rect>
+          
+            <rect x="18" y="6" width="4" height="14" 
+                  fill="#00d2d3" opacity="0.8">
+              <animate attributeName="opacity" 
+                       values="0.8; 1; 0.8" 
+                       dur="1.6s" 
+                       repeatCount="indefinite"/>
+            </rect>
+          
+        </g>
+      </g>
+  
+  <!-- System info -->
+  
+      <g transform="translate(50, 220)">
+        <rect x="0" y="0" width="170" height="40" rx="6" fill="#2c2c54" stroke="#40407a" stroke-width="1"/>
+        
+        <text x="10" y="17" font-family="monospace" font-size="11" fill="#e0e0e0">
+          CPU Freq:
+        </text>
+        
+        <text x="10" y="32" font-family="monospace" font-size="13" fill="#48dbfb" font-weight="bold">
+          3.25 GHz
+        </text>
+        
+        <!-- Status indicator -->
+        <circle cx="150" cy="20" r="4" fill="#48dbfb" opacity="0.8">
+          <animate attributeName="opacity" values="0.8; 1; 0.8" dur="2s" repeatCount="indefinite"/>
+        </circle>
+      </g>
+    
+      <g transform="translate(230, 220)">
+        <rect x="0" y="0" width="170" height="40" rx="6" fill="#2c2c54" stroke="#40407a" stroke-width="1"/>
+        
+        <text x="10" y="17" font-family="monospace" font-size="11" fill="#e0e0e0">
+          CPU Temp:
+        </text>
+        
+        <text x="10" y="32" font-family="monospace" font-size="13" fill="#ff6b6b" font-weight="bold">
+          64°C
+        </text>
+        
+        <!-- Status indicator -->
+        <circle cx="150" cy="20" r="4" fill="#ff6b6b" opacity="0.8">
+          <animate attributeName="opacity" values="0.8; 1; 0.8" dur="2s" repeatCount="indefinite"/>
+        </circle>
+      </g>
+    
+      <g transform="translate(410, 220)">
+        <rect x="0" y="0" width="170" height="40" rx="6" fill="#2c2c54" stroke="#40407a" stroke-width="1"/>
+        
+        <text x="10" y="17" font-family="monospace" font-size="11" fill="#e0e0e0">
+          Disk R/W:
+        </text>
+        
+        <text x="10" y="32" font-family="monospace" font-size="13" fill="#feca57" font-weight="bold">
+          131/315 MB/s
+        </text>
+        
+        <!-- Status indicator -->
+        <circle cx="150" cy="20" r="4" fill="#feca57" opacity="0.8">
+          <animate attributeName="opacity" values="0.8; 1; 0.8" dur="2s" repeatCount="indefinite"/>
+        </circle>
+      </g>
+    
+      <g transform="translate(590, 220)">
+        <rect x="0" y="0" width="170" height="40" rx="6" fill="#2c2c54" stroke="#40407a" stroke-width="1"/>
+        
+        <text x="10" y="17" font-family="monospace" font-size="11" fill="#e0e0e0">
+          Disk Usage:
+        </text>
+        
+        <text x="10" y="32" font-family="monospace" font-size="13" fill="#48dbfb" font-weight="bold">
+          54%
+        </text>
+        
+        <!-- Status indicator -->
+        <circle cx="150" cy="20" r="4" fill="#48dbfb" opacity="0.8">
+          <animate attributeName="opacity" values="0.8; 1; 0.8" dur="2s" repeatCount="indefinite"/>
+        </circle>
+      </g>
+    
+      <g transform="translate(770, 220)">
+        <rect x="0" y="0" width="170" height="40" rx="6" fill="#2c2c54" stroke="#40407a" stroke-width="1"/>
+        
+        <text x="10" y="17" font-family="monospace" font-size="11" fill="#e0e0e0">
+          Disk Temp:
+        </text>
+        
+        <text x="10" y="32" font-family="monospace" font-size="13" fill="#48dbfb" font-weight="bold">
+          40°C
+        </text>
+        
+        <!-- Status indicator -->
+        <circle cx="150" cy="20" r="4" fill="#48dbfb" opacity="0.8">
+          <animate attributeName="opacity" values="0.8; 1; 0.8" dur="2s" repeatCount="indefinite"/>
+        </circle>
+      </g>
+    
+  
+  <!-- Performance graph placeholder -->
+  <g transform="translate(800, 100)">
+    <rect x="0" y="0" width="180" height="100" rx="6" fill="#2c2c54" stroke="#40407a" stroke-width="1"/>
+    <text x="90" y="20" font-family="monospace" font-size="12" fill="#e0e0e0" text-anchor="middle">
+      Performance Graph
+    </text>
+    
+    <!-- Simple performance line -->
+    <polyline points="10,80 30,60 50,70 70,45 90,55 110,40 130,50 150,35 170,45" 
+              fill="none" stroke="#00ff41" stroke-width="2" opacity="0.8">
+      <animate attributeName="stroke-opacity" values="0.8; 1; 0.8" dur="3s" repeatCount="indefinite"/>
+    </polyline>
+  </g>
+  
+  <!-- Border animation -->
+  <rect x="2" y="2" width="996" height="296" 
+        fill="none" stroke="#00ff41" stroke-width="1" rx="8" opacity="0.4">
+    <animate attributeName="opacity" values="0.4; 0.8; 0.4" dur="4s" repeatCount="indefinite"/>
+  </rect>
+  
+</svg>

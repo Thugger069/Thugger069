@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<svg width="800" height="300" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .term-bg { fill: #0e0e1a; }
+    .term-text {
+      font-family: 'Courier New', monospace;
+      font-size: 16px;
+      fill: #00ffee;
+    }
+    .cursor {
+      animation: blink 1s steps(2, start) infinite;
+    }
+    @keyframes blink { to { visibility: hidden; } }
+  </style>
+
+  <rect class="term-bg" width="800" height="300" rx="12" ry="12"/>
+
+  <g>
+    
+    <text class="term-text" x="20" y="45">
+      <tspan textLength="0">
+        <animate attributeName="textLength" values="0;25" dur="1s" begin="0s" repeatCount="1" fill="freeze"/>
+        [QUANTUM TERMINAL v1.4.2]
+      </tspan>
+    </text>
+  
+
+    <text class="term-text" x="20" y="71">
+      <tspan textLength="0">
+        <animate attributeName="textLength" values="0;41" dur="1s" begin="1.2s" repeatCount="1" fill="freeze"/>
+        Last login: Sun, 03 Aug 2025 02:55:58 GMT
+      </tspan>
+    </text>
+  
+
+    <text class="term-text" x="20" y="97">
+      <tspan textLength="0">
+        <animate attributeName="textLength" values="0;18" dur="1s" begin="2.4s" repeatCount="1" fill="freeze"/>
+        > uptime --quantum
+      </tspan>
+    </text>
+  
+
+    <text class="term-text" x="20" y="123">
+      <tspan textLength="0">
+        <animate attributeName="textLength" values="0;32" dur="1s" begin="3.5999999999999996s" repeatCount="1" fill="freeze"/>
+        ⏱ load average: 0.34  0.32  0.55
+      </tspan>
+    </text>
+  
+
+    <text class="term-text" x="20" y="149">
+      <tspan textLength="0">
+        <animate attributeName="textLength" values="0;16" dur="1s" begin="4.8s" repeatCount="1" fill="freeze"/>
+        > measure qubits
+      </tspan>
+    </text>
+  
+
+    <text class="term-text" x="20" y="175">
+      <tspan textLength="0">
+        <animate attributeName="textLength" values="0;15" dur="1s" begin="6s" repeatCount="1" fill="freeze"/>
+        Qubit[0]: |0⟩ ⇅
+      </tspan>
+    </text>
+  
+
+    <text class="term-text" x="20" y="201">
+      <tspan textLength="0">
+        <animate attributeName="textLength" values="0;15" dur="1s" begin="7.199999999999999s" repeatCount="1" fill="freeze"/>
+        Qubit[1]: |1⟩ ↻
+      </tspan>
+    </text>
+  
+
+    <text class="term-text" x="20" y="227">
+      <tspan textLength="0">
+        <animate attributeName="textLength" values="0;15" dur="1s" begin="8.4s" repeatCount="1" fill="freeze"/>
+        Qubit[2]: |ψ⟩ ⇄
+      </tspan>
+    </text>
+  
+    <text class="term-text cursor" x="20" y="263">▌</text>
+
+    <!-- Loop fade out and reset -->
+    <animateTransform
+      attributeName="transform"
+      type="translate"
+      values="0 0; -800 0; 0 0"
+      begin="0s;reset.end"
+      dur="0.1s"
+      repeatCount="indefinite"
+      id="reset"
+      fill="remove"
+    />
+  </g>
+</svg>
