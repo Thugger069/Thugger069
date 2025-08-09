@@ -25,7 +25,7 @@
     }
 
     .typing {
-      animation: typing 4s steps(72, end) 1;
+      animation: typing 4s steps(104, end) 1;
       overflow: hidden;
       white-space: nowrap;
       width: 0;
@@ -33,7 +33,7 @@
 
     @keyframes typing {
       from { width: 0 }
-      to { width: 72ch; }
+      to { width: 104ch; }
     }
 
     @media (prefers-color-scheme: light) {
@@ -55,7 +55,7 @@
   <rect x="10" y="10" width="780" height="140" rx="16" class="bg"/>
   <foreignObject x="30" y="30" width="740" height="100">
     <div xmlns="http://www.w3.org/1999/xhtml" style="color: inherit;">
-      <span class="text typing">There are as many opinions as there are experts. — Franklin D. Roosevelt</span><span class="text cursor">█</span>
+      <span class="text typing">If you want to know what God thinks about money just look at the people He gives it to. — Alexander Pope</span><span class="text cursor">█</span>
     </div>
   </foreignObject>
 </svg>
