@@ -25,7 +25,7 @@
     }
 
     .typing {
-      animation: typing 4s steps(105, end) 1;
+      animation: typing 4s steps(71, end) 1;
       overflow: hidden;
       white-space: nowrap;
       width: 0;
@@ -33,7 +33,7 @@
 
     @keyframes typing {
       from { width: 0 }
-      to { width: 105ch; }
+      to { width: 71ch; }
     }
 
     @media (prefers-color-scheme: light) {
@@ -55,7 +55,7 @@
   <rect x="10" y="10" width="780" height="140" rx="16" class="bg"/>
   <foreignObject x="30" y="30" width="740" height="100">
     <div xmlns="http://www.w3.org/1999/xhtml" style="color: inherit;">
-      <span class="text typing">I think self-awareness is probably the most important thing towards being a champion.  — Billie Jean King</span><span class="text cursor">█</span>
+      <span class="text typing">You can only be afraid of what you think you know. — Jiddu Krishnamurti</span><span class="text cursor">█</span>
     </div>
   </foreignObject>
 </svg>
