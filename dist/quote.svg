@@ -25,7 +25,7 @@
     }
 
     .typing {
-      animation: typing 4s steps(80, end) 1;
+      animation: typing 4s steps(103, end) 1;
       overflow: hidden;
       white-space: nowrap;
       width: 0;
@@ -33,7 +33,7 @@
 
     @keyframes typing {
       from { width: 0 }
-      to { width: 80ch; }
+      to { width: 103ch; }
     }
 
     @media (prefers-color-scheme: light) {
@@ -55,7 +55,7 @@
   <rect x="10" y="10" width="780" height="140" rx="16" class="bg"/>
   <foreignObject x="30" y="30" width="740" height="100">
     <div xmlns="http://www.w3.org/1999/xhtml" style="color: inherit;">
-      <span class="text typing">In peace, sons bury their fathers. In war, fathers bury their sons.  — Herodotus</span><span class="text cursor">█</span>
+      <span class="text typing">You can start changing our world for the better daily, no matter how small the action. — Nelson Mandela</span><span class="text cursor">█</span>
     </div>
   </foreignObject>
 </svg>
