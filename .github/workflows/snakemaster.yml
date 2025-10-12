@@ -1,7 +1,8 @@
 name: Snake Overlord
-'on':
+
+on:
   schedule:
-    - cron: '0 0 * * *'
+    - cron: '0 0 * * *'  # Daily at midnight UTC
   workflow_dispatch:
 
 permissions:
@@ -10,37 +11,38 @@ permissions:
 jobs:
   generate-snake:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout the repo
+      - name: Checkout repository
         uses: actions/checkout@v4
-        
-      - name: Create dist directory
+
+      - name: Ensure dist directory exists
         run: mkdir -p dist
-        
-      - name: Generate the Snake
+
+      - name: Generate Contribution Snake Animations
         uses: Platane/snk@v3
         with:
           github_user_name: ${{ github.repository_owner }}
           outputs: |
             dist/github-snake.svg
             dist/github-snake-dark.svg?palette=github-dark
-          color_snake: '#ff0000'
-          color_dots: '#00ff00'
-          
-      - name: Update README with Snake
+          color_snake: '#FF4500'
+          color_dots: '#00FF9C'
+
+      - name: Update README Snake Section
         run: |
-          # Create a backup of the README
+          # Backup README before modifying
           cp README.md README.md.bak
           
-          # Update the snake animation section
-          sed -i '/<!-- START SNAKE -->/,/<!-- END SNAKE -->/c\<!-- START SNAKE -->\n<picture>\n  <source media="(prefers-color-scheme: dark)" srcset="dist/github-snake-dark.svg?ts=${{ github.run_id }}" />\n  <source media="(prefers-color-scheme: light)" srcset="dist/github-snake.svg?ts=${{ github.run_id }}" />\n  <img alt="Github Contribution Snake Animation" src="dist/github-snake.svg?ts=${{ github.run_id }}" />\n</picture>\n<!-- END SNAKE -->' README.md
-          
-      - name: Commit Changes
+          # Replace snake section with updated SVGs and cache-busting run_id
+          sed -i '/<!-- START SNAKE -->/,/<!-- END SNAKE -->/c\<!-- START SNAKE -->\n<picture>\n  <source media="(prefers-color-scheme: dark)" srcset="dist/github-snake-dark.svg?ts=${{ github.run_id }}" />\n  <source media="(prefers-color-scheme: light)" srcset="dist/github-snake.svg?ts=${{ github.run_id }}" />\n  <img alt="GitHub Contribution Snake Animation" src="dist/github-snake.svg?ts=${{ github.run_id }}" />\n</picture>\n<!-- END SNAKE -->' README.md
+
+      - name: Commit and Push Updates
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add dist/github-snake*.svg README.md
-          git commit -m "🐍 Update contribution snake animation ($(date +'%Y-%m-%d'))"
+          git commit -m "🐍 Snake Overlord: Update contribution snake animation ($(date +'%Y-%m-%d'))" || echo "No changes to commit"
           git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
