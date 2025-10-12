@@ -1,87 +1,51 @@
-// generate-terminal-svg.js
 const fs = require('fs');
-const path = require('path');
-const DIST_DIR = path.resolve(__dirname, '../dist');
 
-if (!fs.existsSync(DIST_DIR)) fs.mkdirSync(DIST_DIR);
+const terminalSVG = `
+<svg width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
 
-// Quantum user signature
-const QUANTUM_USER = '𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ ⚡';
+  <rect width="800" height="400" rx="16" fill="#0d0d0d" stroke="#00fff0" stroke-width="2" filter="url(#glow)" />
 
-// Terminal prompt colors
-const FG_COLOR = '#39FF14';
-const BG_COLOR = '#0f0f0f';
-const FONT_FAMILY = 'Share Tech Mono, monospace';
+  <foreignObject x="20" y="20" width="760" height="360">
+    <div xmlns="http://www.w3.org/1999/xhtml" style="color:#00fff0;font-family:'Fira Code', monospace;font-size:16px;white-space:pre;">
+      <span id="typing">Last login: 𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ on ttys000
+𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ@github ~ % uptime
+02:51 up 1 user, load average: 0.50 0.60 0.40
 
-// Simulate dynamic load average
-const generateLoadAvg = () => {
-  const rand = () => (Math.random() * 2 + 0.1).toFixed(2);
-  return `${rand()} ${rand()} ${rand()}`;
-};
+𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ@github ~ % ls -la Projects/
+drwxr-xr-x  8 𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ staff 256 May 07 02:51 .
+-rw-r--r--  1 𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ staff 925 May 07 02:51 TODO.md
 
-// Simulate file listing
-const generateFileList = () => {
-  const files = [
-    'DevOps', 'OpenSource', 'Scripts', 'TODO.md'
-  ];
-  return files.map(f => `- ${f}`).join('\n');
-};
-
-// Simulate TODO content
-const generateTodo = () => `
+𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ@github ~ % cat Projects/TODO.md
 # ℭ𝔲𝔯𝔯𝔢𝔫𝔱 𝔓𝔯𝔬𝔧𝔢𝔠𝔱𝔰 📋
-
 → Automating deployment workflows
 → Contributing to open source
 → Learning Kubernetes
 → Building shell script utilities
-`;
+</span>
+      <span class="cursor">█</span>
+    </div>
+  </foreignObject>
 
-// Current UTC timestamp
-const timestamp = new Date().toISOString();
-
-// Generate terminal-style SVG
-const svgContent = `
-<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="400" viewBox="0 0 1200 400">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
-    .background { fill: ${BG_COLOR}; }
-    .text { font-family: ${FONT_FAMILY}; font-size: 16px; fill: ${FG_COLOR}; white-space: pre; }
-    .prompt { font-weight: bold; }
-    .cursor { animation: blink 1s infinite; fill: ${FG_COLOR}; }
-    @keyframes blink {
-      0%, 50%, 100% { opacity: 1; }
-      25%, 75% { opacity: 0; }
+    .cursor {
+      animation: blink 1s steps(1) infinite;
     }
-    .flicker { animation: flicker 2s infinite; }
-    @keyframes flicker {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.6; }
+    @keyframes blink {
+      0%,49% { opacity: 1; }
+      50%,100% { opacity: 0; }
     }
   </style>
-
-  <!-- Background -->
-  <rect width="1200" height="400" class="background" />
-
-  <!-- Terminal prompt and content -->
-  <text x="20" y="40" class="text prompt">${QUANTUM_USER}@github ~ % uptime</text>
-  <text x="20" y="70" class="text flicker">load average: ${generateLoadAvg()}</text>
-
-  <text x="20" y="110" class="text prompt">${QUANTUM_USER}@github ~ % ls -la Projects/</text>
-  <text x="20" y="140" class="text flicker">${generateFileList()}</text>
-
-  <text x="20" y="180" class="text prompt">${QUANTUM_USER}@github ~ % cat Projects/TODO.md</text>
-  <text x="20" y="210" class="text flicker">${generateTodo()}</text>
-
-  <!-- Blinking cursor -->
-  <text x="20" y="360" class="text cursor">█</text>
-
-  <!-- Timestamp for cache-busting -->
-  <text x="1050" y="390" class="text" font-size="10px" fill="#00FF9C">${timestamp}</text>
 </svg>
 `;
 
-// Write SVG file
-const outputPath = path.join(DIST_DIR, 'terminal.svg');
-fs.writeFileSync(outputPath, svgContent, 'utf-8');
-console.log(`✔ Quantum terminal SVG generated at ${outputPath}`);
+fs.writeFileSync('dist/terminal.svg', terminalSVG.trim());
+console.log("✅ Terminal SVG generated with blinking cursor & typewriter effect.");
