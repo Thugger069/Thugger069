@@ -1,4 +1,4 @@
-name: Q.R.L.P ALL-IN: Update README
+name: "Q.R.L.P ALL-IN: Daily README Update"
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
     paths-ignore:
       - 'README.md'
   schedule:
-    - cron: "0 0 * * *" # daily at 00:00 UTC
+    - cron: "0 0 * * *"   # daily at 00:00 UTC
   workflow_dispatch:
 
 permissions:
@@ -17,13 +17,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Checkout Repository
+      # 1️⃣ Checkout repository
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 1
 
-      # 2️⃣ Ensure dist directory
+      # 2️⃣ Ensure dist directory exists
       - name: Create dist Directory
         run: mkdir -p dist
 
@@ -40,44 +40,47 @@ jobs:
             figlet lolcat neofetch boxes cowsay fortune bc
 
       # 5️⃣ Install npm packages
-      - name: Install npm Packages
+      - name: Install NPM Packages
         run: |
           npm ci || npm install
           sudo npm install -g terminalizer
 
-      # 6️⃣ Generate SVG Assets
-      - name: Generate SVG Assets
+      # 6️⃣ Generate Header, Terminal, Quote, and Badges SVGs
+      - name: Generate README Section SVGs
         run: |
           node scripts/generate-header.js
           node scripts/generate-terminal-svg.js
           node scripts/fetch-quote.js
+          node scripts/generate-badges.js
 
-      # 7️⃣ Generate Contribution Snake
-      - name: Generate Contribution Snake
-        run: |
-          npx snk@v3 \
-            --github_user_name ${{ github.repository_owner }} \
-            --outputs "dist/github-snake.svg,dist/github-snake-dark.svg?palette=github-dark" \
-            --color_snake "#ff0000" \
-            --color_dots "#00ff00"
-
-      # 8️⃣ Update README
-      - name: Update README
+      # 7️⃣ Generate Terminal Output & Full README
+      - name: Generate README Content
         env:
           USERNAME: "𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ"
           GITHUB_USER: "thugger069"
-          CURRENT_TIME: "$(date -u +'%Y-%m-%dT%H:%M:%S')"
+          CURRENT_TIME: "$(date -u +"%Y-%m-%d %T")"
         run: |
-          chmod +x ./update_readme.sh
-          ./update_readme.sh
+          chmod +x ./scripts/update-terminal.sh
+          ./scripts/update-terminal.sh
+
+      # 8️⃣ Generate Contribution Snake Animation
+      - name: Generate GitHub Snake
+        uses: Platane/snk@v3
+        with:
+          github_user_name: ${{ github.repository_owner }}
+          outputs: |
+            dist/github-snake.svg
+            dist/github-snake-dark.svg?palette=github-dark
+          color_snake: '#ff0000'
+          color_dots: '#00ff00'
 
       # 9️⃣ Commit & Push Changes
-      - name: Commit & Push
+      - name: Commit & Push README Updates
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config --local user.name "Thugger069"
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -f dist/*.svg README.md
-          git commit -m "🧬 Q.R.L.P ALL-IN: Daily README Update ($CURRENT_TIME)" || echo "No changes to commit"
+          git commit -m "🧬 Q.R.L.P ALL-IN: Daily README Update ($(date +'%Y-%m-%d %H:%M:%S'))" || echo "No changes to commit"
           git push
