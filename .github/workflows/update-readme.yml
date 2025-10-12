@@ -37,13 +37,13 @@ jobs:
       - name: Install System Dependencies
         run: |
           sudo apt-get update && sudo apt-get install -y \
-          figlet lolcat neofetch boxes cowsay fortune bc
+            figlet lolcat neofetch boxes cowsay fortune bc
 
-      # 5️⃣ Install npm packages globally & locally
+      # 5️⃣ Install npm packages (local only)
       - name: Install npm Packages
         run: |
           npm ci || npm install
-          sudo npm install -g terminalizer snk
+          sudo npm install -g terminalizer
 
       # 6️⃣ Generate README Assets & SVGs
       - name: Generate README Content
@@ -54,7 +54,18 @@ jobs:
           chmod +x ./scripts/update-terminal.sh
           ./scripts/update-terminal.sh
 
-      # 7️⃣ Commit & Push Changes
+      # 7️⃣ Generate GitHub Snake Animation
+      - name: Generate Contribution Snake
+        uses: Platane/snk@v3
+        with:
+          github_user_name: ${{ github.repository_owner }}
+          outputs: |
+            dist/github-snake.svg
+            dist/github-snake-dark.svg?palette=github-dark
+          color_snake: '#ff0000'
+          color_dots: '#00ff00'
+
+      # 8️⃣ Commit & Push README Updates
       - name: Commit & Push README Updates
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
