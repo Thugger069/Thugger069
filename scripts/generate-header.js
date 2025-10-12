@@ -1,58 +1,48 @@
-// scripts/generate-header.js
 const fs = require('fs');
+const path = require('path');
 
-const width = 1000;
-const height = 200;
+const DIST_DIR = path.resolve(__dirname, '../dist');
+if (!fs.existsSync(DIST_DIR)) fs.mkdirSync(DIST_DIR, { recursive: true });
 
-const headerSVG = `
-<svg viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg">
+// Header text & glyphs
+const headerText = "𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ";
+const tagline = "Walking The Path Where Bits & Dreams Intersect ®";
+
+const svg = `
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 160" width="100%" height="160">
   <defs>
-    <linearGradient id="neonGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+    <linearGradient id="neon-header" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="#39FF14"/>
       <stop offset="50%" stop-color="#00FFF0"/>
       <stop offset="100%" stop-color="#FF00FF"/>
-      <animate attributeName="x1" values="0%;100%;0%" dur="6s" repeatCount="indefinite"/>
-      <animate attributeName="x2" values="100%;0%;100%" dur="6s" repeatCount="indefinite"/>
     </linearGradient>
-
     <filter id="glow">
-      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feGaussianBlur stdDeviation="4" result="blur"/>
       <feMerge>
-        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="blur"/>
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
   </defs>
 
-  <rect width="100%" height="100%" fill="#0d0d0d" />
+  <rect x="0" y="0" width="800" height="160" rx="20" fill="#0d0d0d" filter="url(#glow)"/>
   
-  <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle"
-        font-family="Fira Code, monospace" font-size="60" fill="url(#neonGradient)"
-        filter="url(#glow)">
-    𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ
+  <text x="50%" y="55" text-anchor="middle" class="header-text" font-family="Fira Code, monospace" font-size="32" fill="url(#neon-header)" filter="url(#glow)">
+    ${headerText}
   </text>
-
-  <!-- Particle Overlay -->
-  <g id="particles">
-    ${Array.from({ length: 80 }).map(() => {
-      const cx = Math.random() * width;
-      const cy = Math.random() * height;
-      const r = Math.random() * 2 + 1;
-      return `<circle cx="${cx}" cy="${cy}" r="${r}" fill="#39FF14" opacity="0.3">
-        <animate attributeName="cy" values="${cy};${cy-20};${cy}" dur="${2+Math.random()*3}s" repeatCount="indefinite"/>
-      </circle>`;
-    }).join('')}
-  </g>
+  <text x="50%" y="110" text-anchor="middle" class="tagline-text" font-family="Fira Code, monospace" font-size="16" fill="#00FFF0">
+    ${tagline}
+  </text>
 
   <style>
     @media (prefers-color-scheme: light) {
       rect { fill: #ffffff; }
-      text { fill: #0d0d0d; }
-      circle { fill: #0d0d0d; opacity: 0.2; }
+      .header-text { fill: #0d0d0d; }
+      .tagline-text { fill: #333333; }
     }
   </style>
 </svg>
 `;
 
-fs.writeFileSync('dist/header.svg', headerSVG.trim());
-console.log("✅ Enhanced header.svg generated successfully.");
+fs.writeFileSync(path.join(DIST_DIR, 'header.svg'), svg.trim());
+console.log("✅ Enhanced neon cyberpunk header SVG generated.");
