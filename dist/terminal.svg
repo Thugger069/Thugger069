@@ -1,32 +1,54 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 524" width="100%" height="524">
+<svg viewBox="0 0 800 160" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .bg { fill: #0d0d0d; rx: 16; filter: url(#glow); }
+    .text { font-family: 'Fira Code', monospace; font-size: 16px; fill: url(#gradient); white-space: pre; overflow: hidden; display: inline-block; }
+    .cursor { animation: blink 1s steps(1) infinite; fill: #ff00ff; }
+    
+    @keyframes blink { 0%,49%{opacity:1}50%,100%{opacity:0} }
+
+    .typing {
+      animation: typing 4s steps(126, end) 1 forwards;
+      width: 0ch;
+    }
+
+    @keyframes typing {
+      from { width: 0ch; }
+      to { width: 126ch; }
+    }
+
+    /* Dynamic neon gradient */
+    @keyframes neonShift {
+      0% { stop-color: #00fff0; }
+      25% { stop-color: #ff00ff; }
+      50% { stop-color: #ff0000; }
+      75% { stop-color: #00ff00; }
+      100% { stop-color: #00fff0; }
+    }
+
+    stop { animation: neonShift 8s infinite alternate; }
+  </style>
+
   <defs>
-    <filter id="glow">
-      <feGaussianBlur stdDeviation="2" result="blur1"/>
+    <linearGradient id="gradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#00fff0"/>
+      <stop offset="50%" stop-color="#ff00ff"/>
+      <stop offset="100%" stop-color="#ff0000"/>
+    </linearGradient>
+
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
       <feMerge>
-        <feMergeNode in="blur1"/>
+        <feMergeNode in="blur"/>
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
   </defs>
 
-  <!-- Background -->
-  <rect x="0" y="0" width="800" height="524" rx="16" fill="#0d0d0d" filter="url(#glow)"/>
+  <rect x="0" y="0" width="800" height="160" class="bg"/>
 
-  <!-- Terminal text -->
-  <text x="20" y="30" font-family="Fira Code, monospace" font-size="18" fill="#00fff0">
-    <tspan x="20" dy="0"></tspan><tspan x="20" dy="22">Last login: 2025-10-12 04:02:58 on ttys000</tspan><tspan x="20" dy="22">𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ@github ~ % uptime</tspan><tspan x="20" dy="22">2025-10-12 04:02:58 up 02:51, 1 user, load average: 0.56 0.62 0.48</tspan><tspan x="20" dy="22"></tspan><tspan x="20" dy="22">𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ@github ~ % ls -la Projects/</tspan><tspan x="20" dy="22">total 40</tspan><tspan x="20" dy="22">drwxr-xr-x  8 𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ  staff  256 May 07 02:51 .</tspan><tspan x="20" dy="22">drwxr-xr-x  5 𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ  staff  160 May 07 02:51 ..</tspan><tspan x="20" dy="22">drwxr-xr-x  7 𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ  staff  224 May 07 02:51 DevOps</tspan><tspan x="20" dy="22">drwxr-xr-x  6 𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ  staff  192 May 07 02:51 OpenSource</tspan><tspan x="20" dy="22">drwxr-xr-x  5 𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ  staff  160 May 07 02:51 Scripts</tspan><tspan x="20" dy="22">-rw-r--r--  1 𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ  staff  925 May 07 02:51 TODO.md</tspan><tspan x="20" dy="22"></tspan><tspan x="20" dy="22">𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ@github ~ % cat Projects/TODO.md</tspan><tspan x="20" dy="22"># ℭ𝔲𝔯𝔯𝔢𝔫𝔱 𝔓𝔯𝔬𝔧𝔢𝔠𝔱𝔰 📋</tspan><tspan x="20" dy="22"></tspan><tspan x="20" dy="22">→ Automating deployment workflows</tspan><tspan x="20" dy="22">→ Contributing to open source</tspan><tspan x="20" dy="22">→ Learning Kubernetes</tspan><tspan x="20" dy="22">→ Building shell script utilities</tspan><tspan x="20" dy="22"></tspan>
-  </text>
-
-  <!-- Blinking cursor -->
-  <text x="20" y="494" font-family="Fira Code, monospace" font-size="18" fill="#00fff0">
-    <tspan class="cursor">█</tspan>
-    <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite"/>
-  </text>
-
-  <style>
-    @media (prefers-color-scheme: light) {
-      rect { fill: #f5f5f5; filter: none; }
-      text { fill: #0d0d0d; }
-    }
-  </style>
+  <text x="20" y="40" class="text typing">Last login: $(date) on ttys000
+𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ@github ~ % uptime
+load average: 0.56 0.62 0.48
+Projects/DevOps Scripts OpenSource</text>
+  <text x="1028" y="40" class="cursor">█</text>
 </svg>
