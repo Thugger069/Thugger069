@@ -1,51 +1,48 @@
+// scripts/generate-terminal-svg.js
 const fs = require('fs');
 
-const terminalSVG = `
-<svg width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <filter id="glow">
-      <feGaussianBlur stdDeviation="3" result="blur"/>
-      <feMerge>
-        <feMergeNode in="blur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
-  </defs>
-
-  <rect width="800" height="400" rx="16" fill="#0d0d0d" stroke="#00fff0" stroke-width="2" filter="url(#glow)" />
-
-  <foreignObject x="20" y="20" width="760" height="360">
-    <div xmlns="http://www.w3.org/1999/xhtml" style="color:#00fff0;font-family:'Fira Code', monospace;font-size:16px;white-space:pre;">
-      <span id="typing">Last login: 𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ on ttys000
+const terminalOutput = `
+Last login: ${new Date().toUTCString()} on ttys000
 𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ@github ~ % uptime
-02:51 up 1 user, load average: 0.50 0.60 0.40
+  14:02  up 2:51, 1 user, load averages: 0.56 0.62 0.48
 
 𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ@github ~ % ls -la Projects/
-drwxr-xr-x  8 𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ staff 256 May 07 02:51 .
--rw-r--r--  1 𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ staff 925 May 07 02:51 TODO.md
+total 40
+drwxr-xr-x  8 user  staff  256 May 07 02:51 .
+drwxr-xr-x  5 user  staff  160 May 07 02:51 ..
+drwxr-xr-x  7 user  staff  224 May 07 02:51 DevOps
+drwxr-xr-x  6 user  staff  192 May 07 02:51 OpenSource
+drwxr-xr-x  5 user  staff  160 May 07 02:51 Scripts
+-rw-r--r--  1 user  staff  925 May 07 02:51 TODO.md
+`;
 
-𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ@github ~ % cat Projects/TODO.md
-# ℭ𝔲𝔯𝔯𝔢𝔫𝔱 𝔓𝔯𝔬𝔧𝔢𝔠𝔱𝔰 📋
-→ Automating deployment workflows
-→ Contributing to open source
-→ Learning Kubernetes
-→ Building shell script utilities
-</span>
-      <span class="cursor">█</span>
-    </div>
-  </foreignObject>
-
+const svg = `
+<svg viewBox="0 0 800 320" xmlns="http://www.w3.org/2000/svg">
   <style>
-    .cursor {
-      animation: blink 1s steps(1) infinite;
-    }
-    @keyframes blink {
-      0%,49% { opacity: 1; }
-      50%,100% { opacity: 0; }
+    .bg { fill: #0d0d0d; stroke: #00fff0; stroke-width: 2; rx: 16; filter: url(#glow); }
+    .text { font-family: 'Fira Code', monospace; font-size: 14px; fill: #00fff0; white-space: pre; }
+    .cursor { animation: blink 1s steps(1) infinite; }
+    .typing { animation: typing 6s steps(${terminalOutput.length}, end) 1; overflow: hidden; white-space: nowrap; width: 0; }
+    @keyframes blink { 0%,49%{opacity:1}50%,100%{opacity:0} }
+    @keyframes typing { from{width:0} to{width:${terminalOutput.length}ch} }
+    @media (prefers-color-scheme: light) {
+      .bg { fill: #ffffff; stroke: #0d0d0d; }
+      .text { fill: #0d0d0d; }
     }
   </style>
+  <defs>
+    <filter id="glow"><feGaussianBlur stdDeviation="3.5" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect x="10" y="10" width="780" height="300" rx="16" class="bg"/>
+  <foreignObject x="20" y="20" width="760" height="280">
+    <div xmlns="http://www.w3.org/1999/xhtml" style="color: inherit;">
+      <span class="text typing">${terminalOutput}</span><span class="text cursor">█</span>
+    </div>
+  </foreignObject>
 </svg>
 `;
 
-fs.writeFileSync('dist/terminal.svg', terminalSVG.trim());
-console.log("✅ Terminal SVG generated with blinking cursor & typewriter effect.");
+fs.writeFileSync('dist/terminal.svg', svg.trim());
+console.log("✅ Enhanced terminal.svg generated successfully.");
