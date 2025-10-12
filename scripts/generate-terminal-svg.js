@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const DIST_DIR = path.resolve(__dirname, '../assets');
+const DIST_DIR = path.resolve(__dirname, '../dist');
 const CURRENT_TIME = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '');
 const USERNAME = process.env.USERNAME || "𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ";
 
