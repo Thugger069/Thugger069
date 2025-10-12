@@ -1,4 +1,4 @@
-name: Q.R.I.P ALL-IN: Update README
+name: Q.R.I.P ALL-IN: Update README # Corrected line
 
 on:
   push:
@@ -63,5 +63,5 @@ jobs:
           git config --local user.name "Thugger069"
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -f dist/*.svg README.md
-          git commit -m "🧬 Daily README Update ($TIMESTAMP)" || echo "No changes to commit"
+          git commit -m "🧬 Q.R.I.P ALL-IN: Daily README Update ($TIMESTAMP)" || echo "No changes to commit"
           git push
