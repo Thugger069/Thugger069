@@ -1,58 +1,87 @@
-#!/usr/bin/env node
-// Minimal animated terminal panel (separate from text block)
-// Env: NODE_THEME (unused here but kept for future styling)
-
+// generate-terminal-svg.js
 const fs = require('fs');
 const path = require('path');
+const DIST_DIR = path.resolve(__dirname, '../dist');
 
-const outDir = process.argv[2] || 'dist';
-fs.mkdirSync(outDir, { recursive: true });
+if (!fs.existsSync(DIST_DIR)) fs.mkdirSync(DIST_DIR);
 
-const W = 940, H = 220, pad = 16;
-const now = new Date().toISOString().replace('T',' ').replace('Z',' UTC');
+// Quantum user signature
+const QUANTUM_USER = '𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ ⚡';
 
-const svg = `<?xml version="1.0" encoding="UTF-8"?>
-<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Terminal panel">
-  <defs>
-    <linearGradient id="bar" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#00ffcc"/><stop offset="50%" stop-color="#66ff66"/><stop offset="100%" stop-color="#00e6ff"/>
-      <animate attributeName="x1" values="0%;-40%;0%" dur="10s" repeatCount="indefinite"/>
-      <animate attributeName="x2" values="100%;140%;100%" dur="10s" repeatCount="indefinite"/>
-    </linearGradient>
-    <filter id="noise" x="0" y="0" width="100%" height="100%">
-      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="2" stitchTiles="stitch">
-        <animate attributeName="seed" values="1;2;3;1" dur="6s" repeatCount="indefinite"/>
-      </feTurbulence>
-      <feColorMatrix type="saturate" values="0"/>
-      <feComponentTransfer><feFuncA type="table" tableValues="0 0 0 0 0.05 0.10 0.05 0"/></feComponentTransfer>
-    </filter>
-  </defs>
+// Terminal prompt colors
+const FG_COLOR = '#39FF14';
+const BG_COLOR = '#0f0f0f';
+const FONT_FAMILY = 'Share Tech Mono, monospace';
 
-  <rect x="${pad}" y="${pad}" rx="10" ry="10" width="${W - pad*2}" height="${H - pad*2}" fill="#0b0f14" stroke="#122637" stroke-width="1.2"/>
-  <rect x="${pad}" y="${pad}" width="${W - pad*2}" height="${H - pad*2}" filter="url(#noise)" opacity="0.15"/>
+// Simulate dynamic load average
+const generateLoadAvg = () => {
+  const rand = () => (Math.random() * 2 + 0.1).toFixed(2);
+  return `${rand()} ${rand()} ${rand()}`;
+};
 
-  <text x="${pad + 12}" y="${pad + 18}" fill="#9bd6ff" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12">
-    cyber-shell :: terminal · ${now}
-  </text>
+// Simulate file listing
+const generateFileList = () => {
+  const files = [
+    'DevOps', 'OpenSource', 'Scripts', 'TODO.md'
+  ];
+  return files.map(f => `- ${f}`).join('\n');
+};
 
-  <g transform="translate(${pad + 12} ${pad + 32})">
-    <text fill="#a8ffec" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13">
-      $ echo "hello, world"
-      <animate attributeName="opacity" values="1;0.96;1;0.98;1" dur="7s" repeatCount="indefinite"/>
-    </text>
-    <text y="22" fill="#b0c4d4" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13">
-      hello, world
-    </text>
-  </g>
+// Simulate TODO content
+const generateTodo = () => `
+# ℭ𝔲𝔯𝔯𝔢𝔫𝔱 𝔓𝔯𝔬𝔧𝔢𝔠𝔱𝔰 📋
 
-  <g transform="translate(${pad + 12} ${H - pad - 24})">
-    <rect x="0" y="-10" width="${W - pad*3}" height="6" rx="3" fill="#0f1f2e" stroke="#122637"/>
-    <rect x="0" y="-10" width="${W - pad*3 - 200}" height="6" rx="3" fill="url(#bar)">
-      <animate attributeName="width" values="${W - pad*3 - 200};${W - pad*3 - 230};${W - pad*3 - 200}" dur="3.6s" repeatCount="indefinite"/>
-    </rect>
-  </g>
+→ Automating deployment workflows
+→ Contributing to open source
+→ Learning Kubernetes
+→ Building shell script utilities
+`;
+
+// Current UTC timestamp
+const timestamp = new Date().toISOString();
+
+// Generate terminal-style SVG
+const svgContent = `
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="400" viewBox="0 0 1200 400">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+    .background { fill: ${BG_COLOR}; }
+    .text { font-family: ${FONT_FAMILY}; font-size: 16px; fill: ${FG_COLOR}; white-space: pre; }
+    .prompt { font-weight: bold; }
+    .cursor { animation: blink 1s infinite; fill: ${FG_COLOR}; }
+    @keyframes blink {
+      0%, 50%, 100% { opacity: 1; }
+      25%, 75% { opacity: 0; }
+    }
+    .flicker { animation: flicker 2s infinite; }
+    @keyframes flicker {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
+    }
+  </style>
+
+  <!-- Background -->
+  <rect width="1200" height="400" class="background" />
+
+  <!-- Terminal prompt and content -->
+  <text x="20" y="40" class="text prompt">${QUANTUM_USER}@github ~ % uptime</text>
+  <text x="20" y="70" class="text flicker">load average: ${generateLoadAvg()}</text>
+
+  <text x="20" y="110" class="text prompt">${QUANTUM_USER}@github ~ % ls -la Projects/</text>
+  <text x="20" y="140" class="text flicker">${generateFileList()}</text>
+
+  <text x="20" y="180" class="text prompt">${QUANTUM_USER}@github ~ % cat Projects/TODO.md</text>
+  <text x="20" y="210" class="text flicker">${generateTodo()}</text>
+
+  <!-- Blinking cursor -->
+  <text x="20" y="360" class="text cursor">█</text>
+
+  <!-- Timestamp for cache-busting -->
+  <text x="1050" y="390" class="text" font-size="10px" fill="#00FF9C">${timestamp}</text>
 </svg>
 `;
 
-fs.writeFileSync(path.join(outDir, 'terminal.svg'), svg, 'utf8');
-console.log('[terminal] generated terminal.svg');
+// Write SVG file
+const outputPath = path.join(DIST_DIR, 'terminal.svg');
+fs.writeFileSync(outputPath, svgContent, 'utf-8');
+console.log(`✔ Quantum terminal SVG generated at ${outputPath}`);
