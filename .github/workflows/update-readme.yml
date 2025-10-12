@@ -1,66 +1,77 @@
-name: README Update
+# ╔════════════════════════════════════════════════════════════════╗
+# ║   Q.R.I.P ALL-IN: README Auto-Regenerator ⚡                    ║
+# ║   Project: Thugger069 / 𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ                           ║
+# ║   Function: Regenerate SVG assets, merge content, push updates  ║
+# ╚════════════════════════════════════════════════════════════════╝
+
+name: Q.R.I.P ALL-IN — README Regeneration
 
 on:
-  push:
-    branches: [ "main" ]
-    paths-ignore:
-      - 'README.md'
   schedule:
-    - cron: '0 0 * * *' # Daily at midnight UTC
-  workflow_dispatch:
+    - cron: '33 3 * * *'        # Daily regeneration at 03:33 UTC
+  workflow_dispatch:             # Manual trigger
+  push:
+    branches: [ main ]
 
 permissions:
   contents: write
 
 jobs:
-  update-readme:
+  regenerate:
     runs-on: ubuntu-latest
+    name: "Quantum README Rebuild"
 
     steps:
-      # 1️⃣ Checkout repository
-      - name: Checkout Repository
+      # ╭──────────────────────────────╮
+      # │ STEP 1: Checkout Repository  │
+      # ╰──────────────────────────────╯
+      - name: 🌀 Checkout repo
         uses: actions/checkout@v4
         with:
-          fetch-depth: 1
+          persist-credentials: false
 
-      # 2️⃣ Ensure required directories
-      - name: Create directories
-        run: mkdir -p assets dist scripts
-
-      # 3️⃣ Setup Node.js
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      # ╭──────────────────────────────╮
+      # │ STEP 2: Setup Node.js        │
+      # ╰──────────────────────────────╯
+      - name: ⚙️ Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
+          cache: 'npm'
 
-      # 4️⃣ Install system dependencies
-      - name: Install system dependencies
+      # ╭──────────────────────────────╮
+      # │ STEP 3: Install Dependencies │
+      # ╰──────────────────────────────╯
+      - name: 📦 Install dependencies
         run: |
-          sudo apt-get update && sudo apt-get install -y figlet lolcat neofetch boxes cowsay fortune bc
+          npm install --no-fund --no-audit
 
-      # 5️⃣ Install npm packages
-      - name: Install npm packages
-        run: |
-          npm ci || npm install
-          sudo npm install -g terminalizer snk
-
-      # 6️⃣ Generate README assets (header, terminal, quote, particles, snake)
-      - name: Generate README Content
-        env:
-          USERNAME: "𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ"
-          GITHUB_USER: "thugger069"
+      # ╭──────────────────────────────╮
+      # │ STEP 4: Run Update Script    │
+      # ╰──────────────────────────────╯
+      - name: 🜂 Run Q.R.I.P Regenerator
         run: |
           chmod +x ./scripts/update-terminal.sh
           ./scripts/update-terminal.sh
+          node ./scripts/merge-readme.js
 
-      # 7️⃣ Commit & push generated assets
-      - name: Commit & Push README Updates
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # ╭──────────────────────────────╮
+      # │ STEP 5: Commit & Push        │
+      # ╰──────────────────────────────╯
+      - name: 🔄 Commit & push if changed
         run: |
-          TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M:%S")
-          git config --local user.name "Thugger069"
-          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -f assets/*.svg dist/*.svg README.md
-          git commit -m "🧬 Q.R.I.P ALL-IN: Daily README Update ($TIMESTAMP)" || echo "No changes to commit"
-          git push origin main
+          git config --global user.name "Q.R.I.P Bot"
+          git config --global user.email "action@github.com"
+          if [[ `git status --porcelain` ]]; then
+            git add README.md logs/*
+            git commit -m "⚡ Q.R.I.P ALL-IN: README regenerated ($(date -u))"
+            git push
+          else
+            echo "✅ No changes detected — skipping commit."
+          fi
+
+      # ╭──────────────────────────────╮
+      # │ STEP 6: Log Completion       │
+      # ╰──────────────────────────────╯
+      - name: 📜 Log completion
+        run: echo "Q.R.I.P regeneration completed successfully ⚡"
