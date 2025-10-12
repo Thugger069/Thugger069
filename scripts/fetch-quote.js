@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const QUOTE_SVG = path.join(__dirname, '../assets/quote.svg');
+const QUOTE_SVG = path.join(__dirname, '../dist/quote.svg');
 
 const svg = `
 <svg width="700" height="100" xmlns="http://www.w3.org/2000/svg">
