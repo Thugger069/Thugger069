@@ -1,51 +1,43 @@
 <div align="center">
-  <img src="dist/header.svg" alt="Signature Header" width="100%" />
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="/home/runner/work/Thugger069/Thugger069/scripts/assets/header.svg"/>
+    <source media="(prefers-color-scheme: light)" srcset="/home/runner/work/Thugger069/Thugger069/scripts/assets/header.svg"/>
+    <img alt="Quantum Header" src="/home/runner/work/Thugger069/Thugger069/scripts/assets/header.svg"/>
+  </picture>
 </div>
 
 <div align="center">
-  <img src="dist/terminal.svg" alt="Terminal Output" width="100%" />
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="/home/runner/work/Thugger069/Thugger069/scripts/assets/terminal.svg"/>
+    <source media="(prefers-color-scheme: light)" srcset="/home/runner/work/Thugger069/Thugger069/scripts/assets/terminal.svg"/>
+    <img alt="Terminal Output" src="/home/runner/work/Thugger069/Thugger069/scripts/assets/terminal.svg"/>
+  </picture>
 </div>
 
-<pre class="terminal">
-Last login: 2025-10-12 04:10:50 on ttys000
-𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ@github ~ % uptime
-2025-10-12 04:10:50 up 02:51, 1 user, load average: 0.56 0.62 0.48
-
-𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ@github ~ % ls -la Projects/
-total 40
-drwxr-xr-x  8 𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ  staff  256 May 07 02:51 .
-drwxr-xr-x  5 𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ  staff  160 May 07 02:51 ..
-drwxr-xr-x  7 𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ  staff  224 May 07 02:51 DevOps
-drwxr-xr-x  6 𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ  staff  192 May 07 02:51 OpenSource
-drwxr-xr-x  5 𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ  staff  160 May 07 02:51 Scripts
--rw-r--r--  1 𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ  staff  925 May 07 02:51 TODO.md
-
-𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ@github ~ % cat Projects/TODO.md
-# ℭ𝔲𝔯𝔯𝔢𝔫𝔱 𝔓𝔯𝔬𝔧𝔢𝔠𝔱𝔰 📋
-
-→ Automating deployment workflows
-→ Contributing to open source
-→ Learning Kubernetes
-→ Building shell script utilities
-</pre>
-
 <div align="center">
-  <img src="dist/quote.svg" alt="Typewriter Quote" />
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="/home/runner/work/Thugger069/Thugger069/scripts/assets/quote.svg"/>
+    <source media="(prefers-color-scheme: light)" srcset="/home/runner/work/Thugger069/Thugger069/scripts/assets/quote.svg"/>
+    <img alt="Quote" src="/home/runner/work/Thugger069/Thugger069/scripts/assets/quote.svg"/>
+  </picture>
 </div>
 
-<!-- START SNAKE -->
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="dist/github-snake-dark.svg?ts=2025-10-12 04%3A10%3A50" />
-  <source media="(prefers-color-scheme: light)" srcset="dist/github-snake.svg?ts=2025-10-12 04%3A10%3A50" />
-  <img alt="GitHub Contribution Snake Animation" src="dist/github-snake.svg?ts=2025-10-12 04%3A10%3A50" />
-</picture>
-<!-- END SNAKE -->
-
 <div align="center">
-  <sub>Last Updated: 2025-10-12 04:10:50 UTC</sub>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="/home/runner/work/Thugger069/Thugger069/scripts/assets/particles.svg"/>
+    <source media="(prefers-color-scheme: light)" srcset="/home/runner/work/Thugger069/Thugger069/scripts/assets/particles.svg"/>
+    <img alt="Particles" src="/home/runner/work/Thugger069/Thugger069/scripts/assets/particles.svg"/>
+  </picture>
 </div>
 
-<sub align="center">🧿 Updated daily by <code>update_readme.sh</code> • 🧬 Maintained by 𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ</sub>
 <div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=100&section=footer"/>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="/home/runner/work/Thugger069/Thugger069/scripts/dist/snake.svg"/>
+    <source media="(prefers-color-scheme: light)" srcset="/home/runner/work/Thugger069/Thugger069/scripts/dist/snake.svg"/>
+    <img alt="GitHub Snake Animation" src="/home/runner/work/Thugger069/Thugger069/scripts/dist/snake.svg?ts=2025-10-12 05%3A50%3A25"/>
+  </picture>
+</div>
+
+<div align="center">
+  <sub>Last Updated: 2025-10-12 05:50:25 UTC • 🧬 Maintained by 𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ</sub>
 </div>
