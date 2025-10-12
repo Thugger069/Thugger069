@@ -8,7 +8,7 @@ const fs = require('fs');
 const WIDTH = 800;
 const HEIGHT = 200;
 const NUM_PARTICLES = 60;
-const DIST_DIR = 'dist';
+const DIST_DIR = '../dist';
 
 // Generate random particles with positions, radius, and colors
 function randomParticles() {
