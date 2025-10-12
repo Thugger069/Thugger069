@@ -1,38 +1,44 @@
-<svg viewBox="0 0 900 480" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+<svg width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="800" height="400" rx="16" fill="#0d0d0d" stroke="#00fff0" stroke-width="2" filter="url(#glow)" />
+
+  <foreignObject x="20" y="20" width="760" height="360">
+    <div xmlns="http://www.w3.org/1999/xhtml" style="color:#00fff0;font-family:'Fira Code', monospace;font-size:16px;white-space:pre;">
+      <span id="typing">Last login: 𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ on ttys000
+𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ@github ~ % uptime
+02:51 up 1 user, load average: 0.50 0.60 0.40
+
+𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ@github ~ % ls -la Projects/
+drwxr-xr-x  8 𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ staff 256 May 07 02:51 .
+-rw-r--r--  1 𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ staff 925 May 07 02:51 TODO.md
+
+𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ@github ~ % cat Projects/TODO.md
+# ℭ𝔲𝔯𝔯𝔢𝔫𝔱 𝔓𝔯𝔬𝔧𝔢𝔠𝔱𝔰 📋
+→ Automating deployment workflows
+→ Contributing to open source
+→ Learning Kubernetes
+→ Building shell script utilities
+</span>
+      <span class="cursor">█</span>
+    </div>
+  </foreignObject>
+
   <style>
-    text {
-      font-family: 'Fira Code', monospace;
-      font-size: 14px;
-      white-space: pre;
-      fill: #00ff99;
+    .cursor {
+      animation: blink 1s steps(1) infinite;
     }
-    @media (prefers-color-scheme: dark) {
-      text { fill: #00ffcc; }
+    @keyframes blink {
+      0%,49% { opacity: 1; }
+      50%,100% { opacity: 0; }
     }
   </style>
-  <rect width="100%" height="100%" fill="#0d0d0d"/>
-  <text x="20" y="40">
-      /\/\    _    __  //\   //\   //\  ____  _____                   _             _ 
-      &gt;  &lt;   | | _/ _)|/_\| |/_\| |/_\||__ / |_   _|__ _ __ _ __ ___ (_)_ __   __ _| |
-     _\/\ | / __) \ \ / _ \ / _ \ / _ \ |_ \   | |/ _ \ '__| '_ ` _ \| | '_ \ / _` | |
-    / __` || (__\ \\ \  __/|  __/|  __/|___/   | |  __/ |  | | | | | | | | | | (_| | |
-    \____/  \   )\ \_/\___| \___| \___|        |_|\___|_|  |_| |_| |_|_|_| |_|\__,_|_|
-             |_|(__/                                                                  
-    User: thugger069
-    Host: quantum-hub
-    OS: GitHub Linux • Bash
-    Time: Sun Oct 12 03:31:44 UTC 2025
-    Uptime: up 3 minutes
-    Status: 🔥 Rebuilding the matrix...
-    
-     _________________________________________
-    / Your reasoning powers are good, and you \
-    \ are a fairly good planner.              /
-     -----------------------------------------
-            \   ^__^
-             \  (oo)\_______
-                (__)\       )\/\
-                    ||----w |
-                    ||     ||
-  </text>
 </svg>
