@@ -1,118 +1,113 @@
-#!/bin/bash
+#!/usr/bin/env bash
+#
+# ╔════════════════════════════════════════════════════════════════╗
+# ║   Q.R.I.P ALL-IN: Quantum README Auto-Regenerator ⚡            ║
+# ║   Thugger069 / 𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ                                  ║
+# ║   Dynamic terminal splash, quote, snake, particles, sync       ║
+# ╚════════════════════════════════════════════════════════════════╝
+#
 set -e
 
-# -------------------------------
-# Q.R.I.P ALL-IN: README Update
-# -------------------------------
+echo ""
+echo "🜂 Initializing Q.R.I.P Regeneration Sequence..."
+echo "──────────────────────────────────────────────"
 
-# Environment variables
-USERNAME=${USERNAME:-"𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ"}
-GITHUB_USER=${GITHUB_USER:-"thugger069"}
-CURRENT_TIME=$(date -u +"%Y-%m-%d %T")
-DIST_DIR="dist"
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ASSETS_DIR="$ROOT_DIR/assets"
+DIST_DIR="$ROOT_DIR/dist"
+SCRIPTS_DIR="$ROOT_DIR/scripts"
+LOG_FILE="$ROOT_DIR/logs/readme_update.log"
 
-# Ensure dist directory exists
-mkdir -p "$DIST_DIR"
+mkdir -p "$ASSETS_DIR" "$DIST_DIR" "$SCRIPTS_DIR" "$(dirname "$LOG_FILE")"
 
-# -------------------------------
-# 1️⃣ Generate Header SVG (Signature Block)
-# -------------------------------
-echo "▶ Generating signature header..."
-node scripts/generate-header.js
+# ╭───────────────────────────────╮
+# │ STEP 1: Generate Neon Palette │
+# ╰───────────────────────────────╯
+COLORS=(
+  "#39FF14,#00FFF0"   # green → cyan
+  "#FF00FF,#FFDD00"   # magenta → yellow
+  "#00FFFF,#FF00FF"   # cyan → magenta
+  "#FF4D00,#39FF14"   # orange → green
+)
+RANDOM_INDEX=$(( RANDOM % ${#COLORS[@]} ))
+PALETTE="${COLORS[$RANDOM_INDEX]}"
+COLOR1=$(echo "$PALETTE" | cut -d',' -f1)
+COLOR2=$(echo "$PALETTE" | cut -d',' -f2)
+echo "🎨 Selected neon palette → $COLOR1 → $COLOR2"
 
-# -------------------------------
-# 2️⃣ Generate Terminal SVG with Typewriter Effect
-# -------------------------------
-echo "▶ Generating animated terminal SVG..."
-node scripts/generate-terminal-svg.js
-
-# -------------------------------
-# 3️⃣ Fetch & Generate Quote SVG
-# -------------------------------
-echo "▶ Fetching random quote..."
-node scripts/fetch-quote.js
-
-# -------------------------------
-# 4️⃣ Generate GitHub Snake Animation
-# -------------------------------
-echo "▶ Generating GitHub snake animation..."
-mkdir -p "$DIST_DIR"
-snk_output_dark="$DIST_DIR/github-snake-dark.svg"
-snk_output_light="$DIST_DIR/github-snake.svg"
-npx snk --user="$GITHUB_USER" --output="$snk_output_light" --output-dark="$snk_output_dark" --color-snake="#ff0000" --color-dots="#00ff00"
-
-# -------------------------------
-# 5️⃣ Generate Terminal Output (Text)
-# -------------------------------
-echo "▶ Generating terminal output text..."
-TERMINAL_OUTPUT="$DIST_DIR/terminal_output.txt"
-
-cat > "$TERMINAL_OUTPUT" <<EOF
-Last login: ${CURRENT_TIME} on ttys000
-${USERNAME}@github ~ % uptime
-${CURRENT_TIME} up 02:51, 1 user, load average: 0.56 0.62 0.48
-
-${USERNAME}@github ~ % ls -la Projects/
-total 40
-drwxr-xr-x  8 ${USERNAME}  staff  256 May 07 02:51 .
-drwxr-xr-x  5 ${USERNAME}  staff  160 May 07 02:51 ..
-drwxr-xr-x  7 ${USERNAME}  staff  224 May 07 02:51 DevOps
-drwxr-xr-x  6 ${USERNAME}  staff  192 May 07 02:51 OpenSource
-drwxr-xr-x  5 ${USERNAME}  staff  160 May 07 02:51 Scripts
--rw-r--r--  1 ${USERNAME}  staff  925 May 07 02:51 TODO.md
-
-${USERNAME}@github ~ % cat Projects/TODO.md
-# ℭ𝔲𝔯𝔯𝔢𝔫𝔱 𝔓𝔯𝔬𝔧𝔢𝔠𝔱𝔰 📋
-
-→ Automating deployment workflows
-→ Contributing to open source
-→ Learning Kubernetes
-→ Building shell script utilities
+# ╭───────────────────────────────────────╮
+# │ STEP 2: Generate Animated Quote SVG   │
+# ╰───────────────────────────────────────╯
+echo "🪶 Generating Quantum Quote..."
+cat > "$ASSETS_DIR/quote.svg" <<EOF
+<svg width="600" height="80" xmlns="http://www.w3.org/2000/svg">
+  <rect width="600" height="80" fill="transparent"/>
+  <text x="50%" y="50%" fill="$COLOR1" font-size="20" text-anchor="middle" alignment-baseline="middle" font-family="monospace">
+    “Walking the Path Where Bits & Dreams Intersect.”
+  </text>
+  <text x="50%" y="70%" fill="$COLOR2" font-size="14" text-anchor="middle" alignment-baseline="middle" font-family="monospace">
+    — 𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ
+  </text>
+</svg>
 EOF
 
-# -------------------------------
-# 6️⃣ Generate README.md
-# -------------------------------
-echo "▶ Generating README.md..."
-cat > README.md <<EOF
-<div align="center">
-  <img src="${DIST_DIR}/header.svg" alt="Signature Header" width="100%" />
-</div>
-
-<div align="center">
-  <img src="${DIST_DIR}/quote.svg" alt="Typewriter Quote" width="80%" />
-</div>
-
-<div align="center">
-  <img src="${DIST_DIR}/terminal.svg" alt="Terminal Output" width="90%" />
-</div>
-
-<div align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="${DIST_DIR}/github-snake-dark.svg?ts=${CURRENT_TIME//:/%3A}" />
-    <source media="(prefers-color-scheme: light)" srcset="${DIST_DIR}/github-snake.svg?ts=${CURRENT_TIME//:/%3A}" />
-    <img alt="Github Contribution Snake" src="${DIST_DIR}/github-snake.svg?ts=${CURRENT_TIME//:/%3A}" />
-  </picture>
-</div>
-
-<div align="center">
-  [![Profile Views](https://komarev.com/ghpvc/?username=${GITHUB_USER}&color=blueviolet&style=flat-square)](https://github.com/${GITHUB_USER})
-</div>
-
-<div align="center">
-  <sub>Last Updated: ${CURRENT_TIME} UTC</sub>
-</div>
-
-<div align="center">
-  <sub>🧿 Updated daily by <code>update_readme.sh</code> • 🧬 Maintained by ${USERNAME}</sub>
-</div>
-
-<div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=100&section=footer"/>
-</div>
+# ╭──────────────────────────────────────────────╮
+# │ STEP 3: Generate Quantum Terminal Banner SVG │
+# ╰──────────────────────────────────────────────╯
+echo "🖥️  Generating Terminal Splash..."
+cat > "$ASSETS_DIR/terminal.svg" <<EOF
+<svg width="700" height="120" xmlns="http://www.w3.org/2000/svg">
+  <rect width="700" height="120" rx="8" ry="8" fill="#0d0d0d" stroke="$COLOR2" stroke-width="1"/>
+  <text x="50%" y="50%" fill="$COLOR1" font-size="22" text-anchor="middle" alignment-baseline="middle" font-family="monospace">
+    > Initializing Quantum Matrix Shell...
+  </text>
+  <text x="50%" y="75%" fill="$COLOR2" font-size="16" text-anchor="middle" alignment-baseline="middle" font-family="monospace">
+    ꚩꚶꛎꛘ𖢧ꚶ𖢑 𖦪𖤢ꛎꚳ𖢑 ⚡ ACTIVE
+  </text>
+</svg>
 EOF
 
-# -------------------------------
-# 7️⃣ Cleanup
-# -------------------------------
-rm -f "$TERMINAL_OUTPUT"
+# ╭───────────────────────────────────────────────╮
+# │ STEP 4: Generate Particle Field Background    │
+# ╰───────────────────────────────────────────────╯
+echo "🌌 Generating Particle Field..."
+cat > "$ASSETS_DIR/particles.svg" <<EOF
+<svg width="800" height="160" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="160" fill="#000000"/>
+  <g fill="$COLOR1">
+    $(for i in $(seq 1 60); do
+      X=$(( RANDOM % 800 ))
+      Y=$(( RANDOM % 160 ))
+      echo "<circle cx='$X' cy='$Y' r='1.5' opacity='0.$((RANDOM % 8 + 2))'/>"
+    done)
+  </g>
+</svg>
+EOF
+
+# ╭────────────────────────────────────────────╮
+# │ STEP 5: Generate Snake Animation (snk)     │
+# ╰────────────────────────────────────────────╯
+echo "🐍 Generating Snake Animations..."
+npx --yes snk@0.1.2 generate \
+  --user "$GITHUB_ACTOR" \
+  --output "$DIST_DIR/snake.svg" \
+  --palette "$COLOR1,$COLOR2" \
+  || echo "⚠️ Snake generation skipped (local run mode)."
+
+# ╭────────────────────────────────────────────╮
+# │ STEP 6: Commit + Push to Repo              │
+# ╰────────────────────────────────────────────╯
+echo "🌀 Committing changes..."
+cd "$ROOT_DIR"
+git config user.name "GitHub Action"
+git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+git add assets/*.svg dist/*.svg README.md || true
+git commit -m "🜂 Q.R.I.P Auto-Update: $(date -u)" || echo "No changes to commit"
+git push origin main || echo "⚠️ Push skipped (local execution)"
+
+# ╭────────────────────────────────────────────╮
+# │ STEP 7: Log completion                     │
+# ╰────────────────────────────────────────────╯
+echo "✅ Regeneration complete at $(date -u)" | tee -a "$LOG_FILE"
+echo "──────────────────────────────────────────────"
+echo "Q.R.I.P ALL-IN sequence completed successfully ⚡"
