@@ -1,30 +1,26 @@
 #!/usr/bin/env bash
 #
-# ╔══════════════════════════════════════════════════════════════════════╗
-# ║   Q.R.I.P ALL-IN: Quantum README Auto-Regenerator ⚡ (Enhanced v2.0)  ║
-# ║   Author: 𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ                                        ║
-# ║   Modules: header ▪ terminal ▪ particles ▪ quote ▪ snake ▪ merge     ║
-# ╚══════════════════════════════════════════════════════════════════════╝
+# ╔════════════════════════════════════════════════════════════════╗
+# ║   Q.R.I.P ALL-IN v3: Quantum README Auto-Regenerator ⚡         ║
+# ║   Thugger069 / 𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ                                   ║
+# ║   Dynamic terminal splash · quote · snake · particles · badges  ║
+# ╚════════════════════════════════════════════════════════════════╝
 #
-set -e
+set -euo pipefail
 
 echo ""
 echo "🜂 Initializing Q.R.I.P Regeneration Sequence..."
-echo "───────────────────────────────────────────────────────────────"
+echo "──────────────────────────────────────────────"
 
-# ╭───────────────────────────────╮
-# │ Environment + Directories     │
-# ╰───────────────────────────────╯
-ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")"/.. && pwd)"
-SCRIPTS_DIR="$ROOT_DIR/scripts"
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ASSETS_DIR="$ROOT_DIR/assets"
 DIST_DIR="$ROOT_DIR/dist"
-LOG_DIR="$ROOT_DIR/logs"
-LOG_FILE="$LOG_DIR/readme_update.log"
-
-mkdir -p "$DIST_DIR" "$LOG_DIR"
+SCRIPTS_DIR="$ROOT_DIR/scripts"
+LOG_FILE="$ROOT_DIR/logs/readme_update.log"
+mkdir -p "$ASSETS_DIR" "$DIST_DIR" "$SCRIPTS_DIR" "$(dirname "$LOG_FILE")"
 
 # ╭───────────────────────────────╮
-# │ STEP 1: Select Neon Palette   │
+# │ STEP 1: Generate Neon Palette │
 # ╰───────────────────────────────╯
 COLORS=(
   "#39FF14,#00FFF0"   # green → cyan
@@ -34,65 +30,60 @@ COLORS=(
 )
 RANDOM_INDEX=$(( RANDOM % ${#COLORS[@]} ))
 PALETTE="${COLORS[$RANDOM_INDEX]}"
-export COLOR1="$(echo "$PALETTE" | cut -d',' -f1)"
-export COLOR2="$(echo "$PALETTE" | cut -d',' -f2)"
+COLOR1=$(echo "$PALETTE" | cut -d',' -f1)
+COLOR2=$(echo "$PALETTE" | cut -d',' -f2)
+echo "🎨 Selected neon palette → $COLOR1 → $COLOR2"
 
-echo "🎨 Selected Neon Palette → $COLOR1 → $COLOR2"
-echo ""
+# Save palette for reuse
+echo "$COLOR1,$COLOR2" > "$DIST_DIR/.last_palette"
+echo "🧩 Palette persisted for next regeneration."
 
-# ╭───────────────────────────────╮
-# │ STEP 2: Generate SVG Assets   │
-# ╰───────────────────────────────╯
-run_node() {
-  local script="$1"
-  if [ -f "$SCRIPTS_DIR/$script" ]; then
-    echo "⚙️  Running $script ..."
-    node "$SCRIPTS_DIR/$script" || echo "⚠️  $script failed gracefully."
-  else
-    echo "❌ Missing $SCRIPTS_DIR/$script"
-  fi
-}
+# ╭──────────────────────────────────────────────╮
+# │ STEP 2: Generate SVG Components              │
+# ╰──────────────────────────────────────────────╯
+echo "🖌️  Generating Header SVG..."
+node "$SCRIPTS_DIR/generate-header.js" || echo "⚠️ Header generation skipped."
 
-run_node "generate-header.js"
-run_node "generate-terminal-svg.js"
-run_node "generate-particles.js"
-run_node "fetch-quote.js"
+echo "🖥️  Generating Terminal SVG..."
+node "$SCRIPTS_DIR/generate-terminal-svg.js" || echo "⚠️ Terminal generation skipped."
 
-# ╭───────────────────────────────╮
-# │ STEP 3: Snake Contribution    │
-# ╰───────────────────────────────╯
+echo "🌌 Generating Particle Field..."
+node "$SCRIPTS_DIR/generate-particles.js" || echo "⚠️ Particle field generation skipped."
+
+echo "💬 Generating Quote SVG..."
+node "$SCRIPTS_DIR/fetch-quote.js" || echo "⚠️ Quote generation skipped."
+
+echo "🏷️  Generating Badges..."
+node "$SCRIPTS_DIR/generate-badges.js" || echo "⚠️ Badges generation skipped."
+
+# ╭────────────────────────────────────────────╮
+# │ STEP 3: Generate Snake Animation (snk)     │
+# ╰────────────────────────────────────────────╯
+echo "🐍 Generating Snake Animations..."
 if command -v npx &>/dev/null; then
-  echo "🐍 Generating contribution snake ..."
   npx --yes snk@0.1.2 generate \
-    --user "${GITHUB_ACTOR:-Thugger069}" \
+    --user "${GITHUB_ACTOR:-thugger069}" \
     --output "$DIST_DIR/snake.svg" \
     --palette "$COLOR1,$COLOR2" \
-    || echo "⚠️  Snake generation skipped (local/offline mode)."
+    || echo "⚠️ Snake generation skipped (local mode)."
 else
-  echo "⚠️  npx not found – skipping snake generation."
+  echo "⚠️ NPX unavailable, skipping snake generation."
 fi
 
-# ╭───────────────────────────────╮
-# │ STEP 4: Merge README Template │
-# ╰───────────────────────────────╯
-run_node "merge-readme.js"
-
-# ╭───────────────────────────────╮
-# │ STEP 5: Commit (if in CI)     │
-# ╰───────────────────────────────╯
-if [ -n "$GITHUB_ACTIONS" ]; then
-  echo "🌀 Auto-committing regenerated README..."
-  git config user.name "Q.R.I.P Bot"
-  git config user.email "actions@github.com"
-  git add README.md dist/
-  git commit -m "🔁 Q.R.I.P ALL-IN README regeneration [$(date -u)]" || true
-  git push
+# ╭──────────────────────────────────────────────╮
+# │ STEP 4: Merge Dist Assets into README.md     │
+# ╰──────────────────────────────────────────────╯
+if [ -f "$SCRIPTS_DIR/merge-readme.js" ]; then
+  echo "🔁 Merging updated assets into README.md..."
+  node "$SCRIPTS_DIR/merge-readme.js" && echo "✅ README merged successfully."
+else
+  echo "⚠️ Merge script missing — skipping README update."
 fi
 
-# ╭───────────────────────────────╮
-# │ STEP 6: Logging & Summary     │
-# ╰───────────────────────────────╯
-echo "✅ Regeneration completed at $(date -u)" | tee -a "$LOG_FILE"
-echo "───────────────────────────────────────────────────────────────"
-echo "Q.R.I.P ALL-IN sequence finalized successfully ⚡"
-echo ""
+# ╭────────────────────────────────────────────╮
+# │ STEP 5: Log completion                     │
+# ╰────────────────────────────────────────────╯
+TIMESTAMP="$(date -u '+%Y-%m-%d %H:%M:%S UTC')"
+echo "✅ Q.R.I.P Regeneration complete at $TIMESTAMP" | tee -a "$LOG_FILE"
+echo "──────────────────────────────────────────────"
+echo "Q.R.I.P ALL-IN sequence completed successfully ⚡"
