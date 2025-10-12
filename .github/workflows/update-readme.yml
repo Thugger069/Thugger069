@@ -1,4 +1,4 @@
-name: Update README
+name: Master README Update
 
 on:
   push:
@@ -6,42 +6,45 @@ on:
     paths-ignore:
       - 'README.md'
   schedule:
-    - cron: "0 0 * * *"
+    - cron: "0 0 * * *"  # Daily at midnight UTC
   workflow_dispatch:
 
 permissions:
   contents: write
 
 jobs:
-  update-content:
+  update-readme:
     runs-on: ubuntu-latest
     steps:
+      # Checkout repo
       - uses: actions/checkout@v4
         with:
           fetch-depth: 1
-      
-      # Force create and track dist directory despite gitignore
-      - name: Create and track dist directory
+
+      # Ensure dist directory exists and tracked
+      - name: Create and track dist
         run: |
           mkdir -p dist
           git add -f dist
-        
-      - name: Generate the Snake
+
+      # Generate Snake animations
+      - name: Generate Snake Animation
         uses: Platane/snk@v3
         with:
           github_user_name: ${{ github.repository_owner }}
           outputs: |
             dist/github-snake.svg
             dist/github-snake-dark.svg?palette=github-dark
-          color_snake: '#ff0000'
-          color_dots: '#00ff00'
-      
-      # Then Update README
+          color_snake: '#FF4500'
+          color_dots: '#00FF9C'
+
+      # Set up Node.js
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '16'
-      
+
+      # Install system dependencies for terminal effects
       - name: Install system dependencies
         run: |
           sudo apt-get update && sudo apt-get install -y \
@@ -52,26 +55,42 @@ jobs:
             cowsay \
             fortune \
             bc
-      
+
+      # Install npm packages
       - name: Install npm packages
         run: |
           npm ci || npm install
           sudo npm install -g terminalizer
-      
-      - name: Generate Terminal Content
+
+      # Generate Quantum Terminal SVG
+      - name: Generate Terminal Interface
         env:
-          CURRENT_TIME: "2025-05-07 02:36:42"
+          CURRENT_TIME: "${{ github.event.workflow_run?.run_started_at || '2025-05-07 02:36:42' }}"
           USERNAME: "Thugger069"
         run: |
           chmod +x ./scripts/update-terminal.sh
           ./scripts/update-terminal.sh
 
-      - name: Commit and Push Changes
+      # Fetch and generate Quote SVG
+      - name: Fetch Quote & Generate SVG
+        run: |
+          node ./scripts/fetch-quote.js
+
+      # Regenerate full README
+      - name: Regenerate README
+        env:
+          CURRENT_TIME: "${{ github.event.workflow_run?.run_started_at || '2025-05-07 02:36:42' }}"
+        run: |
+          chmod +x ./scripts/update_readme.sh
+          ./scripts/update_readme.sh
+
+      # Commit and push all changes safely
+      - name: Commit & Push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config --local user.name "Thugger069"
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -f dist/*.svg README.md
-          git commit -m "🐍 Generate Snake & 📟 Update README (2025-05-07 02:36:42)" || echo "No changes to commit"
+          git commit -m "🐍🖥️📜 Master README Update ($(date -u +'%Y-%m-%d %H:%M:%S UTC'))" || echo "No changes to commit"
           git push
