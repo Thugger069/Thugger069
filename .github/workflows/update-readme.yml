@@ -1,4 +1,4 @@
-name: Master README Update
+name: Q.R.L.P ALL-IN: Update README
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
     paths-ignore:
       - 'README.md'
   schedule:
-    - cron: "0 0 * * *"  # Daily at midnight UTC
+    - cron: "0 0 * * *"   # daily at 00:00 UTC
   workflow_dispatch:
 
 permissions:
@@ -15,82 +15,71 @@ permissions:
 jobs:
   update-readme:
     runs-on: ubuntu-latest
+
     steps:
-      # Checkout repo
-      - uses: actions/checkout@v4
+      # 1️⃣ Checkout repo
+      - name: Checkout Repository
+        uses: actions/checkout@v4
         with:
           fetch-depth: 1
 
-      # Ensure dist directory exists and tracked
-      - name: Create and track dist
-        run: |
-          mkdir -p dist
-          git add -f dist
+      # 2️⃣ Ensure dist directory exists
+      - name: Create dist Directory
+        run: mkdir -p dist
 
-      # Generate Snake animations
-      - name: Generate Snake Animation
+      # 3️⃣ Set up Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      # 4️⃣ Install system dependencies
+      - name: Install System Dependencies
+        run: |
+          sudo apt-get update && sudo apt-get install -y \
+          figlet lolcat neofetch boxes cowsay fortune bc
+
+      # 5️⃣ Install npm packages globally & locally
+      - name: Install npm packages
+        run: |
+          npm ci || npm install
+          sudo npm install -g terminalizer
+
+      # 6️⃣ Generate Header, Terminal, and Quote SVGs
+      - name: Generate SVG Assets
+        run: |
+          node scripts/generate-header.js
+          node scripts/generate-terminal-svg.js
+          node scripts/fetch-quote.js
+
+      # 7️⃣ Generate Terminal Output & README
+      - name: Update README
+        env:
+          USERNAME: "𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ"
+          GITHUB_USER: "thugger069"
+          CURRENT_TIME: "$(date -u +"%Y-%m-%d %T")"
+        run: |
+          chmod +x ./scripts/update-terminal.sh
+          ./scripts/update-terminal.sh
+
+      # 8️⃣ Generate GitHub Snake Animation
+      - name: Generate Contribution Snake
         uses: Platane/snk@v3
         with:
           github_user_name: ${{ github.repository_owner }}
           outputs: |
             dist/github-snake.svg
             dist/github-snake-dark.svg?palette=github-dark
-          color_snake: '#FF4500'
-          color_dots: '#00FF9C'
+          color_snake: '#ff0000'
+          color_dots: '#00ff00'
 
-      # Set up Node.js
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '16'
-
-      # Install system dependencies for terminal effects
-      - name: Install system dependencies
-        run: |
-          sudo apt-get update && sudo apt-get install -y \
-            figlet \
-            lolcat \
-            neofetch \
-            boxes \
-            cowsay \
-            fortune \
-            bc
-
-      # Install npm packages
-      - name: Install npm packages
-        run: |
-          npm ci || npm install
-          sudo npm install -g terminalizer
-
-      # Generate Quantum Terminal SVG
-      - name: Generate Terminal Interface
-        env:
-          CURRENT_TIME: "${{ github.event.workflow_run?.run_started_at || '2025-05-07 02:36:42' }}"
-          USERNAME: "Thugger069"
-        run: |
-          chmod +x ./scripts/update-terminal.sh
-          ./scripts/update-terminal.sh
-
-      # Fetch and generate Quote SVG
-      - name: Fetch Quote & Generate SVG
-        run: |
-          node ./scripts/fetch-quote.js
-
-      # Regenerate full README
-      - name: Regenerate README
-        env:
-          CURRENT_TIME: "${{ github.event.workflow_run?.run_started_at || '2025-05-07 02:36:42' }}"
-        run: |
-          chmod +x ./scripts/update_readme.sh
-          ./scripts/update_readme.sh
-
-      # Commit and push all changes safely
-      - name: Commit & Push
+      # 9️⃣ Commit and push changes
+      - name: Commit & Push README Updates
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config --local user.name "Thugger069"
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -f dist/*.svg README.md
-          git commit -m "🐍🖥️📜 Master README Update ($(date -u +'%Y-%m-%d %H:%M:%S UTC'))" || echo "No changes to commit"
+          git commit -m "🧬 Q.R.L.P ALL-IN: Daily README Update ($(date +'%Y-%m-%d %H:%M:%S'))" || echo "No changes to commit"
           git push
