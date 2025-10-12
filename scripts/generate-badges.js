@@ -1,45 +1,69 @@
-// scripts/generate-badges.js
-const fs = require('fs');
-const path = require('path');
+/**
+ * Q.R.I.P ALL-IN: generate-badges.js
+ * Generates dynamic neon badges for README.md
+ */
 
-const DIST_DIR = path.join(__dirname, '../dist');
+import fs from 'fs';
+import { makeBadge } from 'badge-maker';
+import fetch from 'node-fetch';
+
+const DIST_DIR = 'dist';
 if (!fs.existsSync(DIST_DIR)) fs.mkdirSync(DIST_DIR);
 
-const badges = [
-  { label: 'Commits', value: '145', color: '#39FF14' },
-  { label: 'PRs', value: '58', color: '#00fff0' },
-  { label: 'Issues', value: '12', color: '#ff00ff' },
-  { label: 'Stars', value: '420', color: '#ff0000' }
-];
+// Neon badge template
+const template = {
+  labelColor: '#0d0d0d',
+  color: '#39FF14', // Neon green
+  style: 'flat',
+  fontFamily: 'Fira Code',
+};
 
-const svgContent = `
-<svg xmlns="http://www.w3.org/2000/svg" width="600" height="${badges.length * 50}" viewBox="0 0 600 ${badges.length * 50}">
-  <defs>
-    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#39FF14">
-        <animate attributeName="stop-color" values="#39FF14;#00fff0;#ff00ff;#ff0000;#39FF14" dur="8s" repeatCount="indefinite"/>
-      </stop>
-      <stop offset="100%" stop-color="#ff00ff">
-        <animate attributeName="stop-color" values="#ff00ff;#ff0000;#39FF14;#00fff0;#ff00ff" dur="8s" repeatCount="indefinite"/>
-      </stop>
-    </linearGradient>
-    <style>
-      .label { font-family: 'Fira Code', monospace; font-size: 16px; fill: #ffffff; }
-      .value { font-family: 'Fira Code', monospace; font-size: 16px; fill: url(#grad); font-weight: bold; }
-      @media (prefers-color-scheme: light) {
-        .label { fill: #0d0d0d; }
-      }
-    </style>
-  </defs>
+// ----------------------------
+// Generate GitHub Stats Badge
+// ----------------------------
+async function generateGitHubStatsBadge(username) {
+  const url = `https://img.shields.io/github/followers/${username}?label=Followers&style=flat&color=39FF14&labelColor=0d0d0d`;
+  const res = await fetch(url);
+  const svg = await res.text();
+  fs.writeFileSync(`${DIST_DIR}/github-followers.svg`, svg);
+  console.log('✅ Generated github-followers.svg');
+}
 
-  ${badges.map((b, i) => `
-    <g transform="translate(10, ${i * 50 + 30})">
-      <text class="label">${b.label}:</text>
-      <text class="value" x="120">${b.value}</text>
-    </g>
-  `).join('')}
-</svg>
-`;
+// ----------------------------
+// Generate Stars Badge
+// ----------------------------
+async function generateStarsBadge(username) {
+  const url = `https://img.shields.io/github/stars/${username}?label=Stars&style=flat&color=FF00FF&labelColor=0d0d0d`;
+  const res = await fetch(url);
+  const svg = await res.text();
+  fs.writeFileSync(`${DIST_DIR}/github-stars.svg`, svg);
+  console.log('✅ Generated github-stars.svg');
+}
 
-fs.writeFileSync(path.join(DIST_DIR, 'badges.svg'), svgContent.trim());
-console.log("✅ Dynamic neon badges generated at dist/badges.svg");
+// ----------------------------
+// Generate Custom Neon Badge
+// ----------------------------
+function generateCustomBadge(label, message, color) {
+  const svg = makeBadge({
+    ...template,
+    label,
+    message,
+    color,
+  });
+  fs.writeFileSync(`${DIST_DIR}/badge-${label.toLowerCase()}.svg`, svg);
+  console.log(`✅ Generated badge-${label.toLowerCase()}.svg`);
+}
+
+// ----------------------------
+// Main Execution
+// ----------------------------
+async function main() {
+  const username = process.env.GITHUB_USER || 'thugger069';
+
+  await generateGitHubStatsBadge(username);
+  await generateStarsBadge(username);
+  generateCustomBadge('Q.R.I.P', 'ALL-IN', '#39FF14');
+  generateCustomBadge('Status', 'Quantum Ready', '#00FFF0');
+}
+
+main();
