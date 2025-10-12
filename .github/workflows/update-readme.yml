@@ -2,11 +2,11 @@ name: Q.R.L.P ALL-IN: Update README
 
 on:
   push:
-    branches: ["main"]
+    branches: [ "main" ]
     paths-ignore:
       - 'README.md'
   schedule:
-    - cron: "0 0 * * *"
+    - cron: "0 0 * * *" # daily at 00:00 UTC
   workflow_dispatch:
 
 permissions:
@@ -15,47 +15,69 @@ permissions:
 jobs:
   update-readme:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with: fetch-depth: 1
 
+    steps:
+      # 1️⃣ Checkout Repository
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      # 2️⃣ Ensure dist directory
       - name: Create dist Directory
         run: mkdir -p dist
 
+      # 3️⃣ Setup Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v3
-        with: node-version: '18'
+        with:
+          node-version: '18'
 
-      - name: Install Dependencies
+      # 4️⃣ Install system dependencies
+      - name: Install System Dependencies
         run: |
-          sudo apt-get update && sudo apt-get install -y figlet lolcat neofetch boxes cowsay fortune bc
+          sudo apt-get update && sudo apt-get install -y \
+            figlet lolcat neofetch boxes cowsay fortune bc
+
+      # 5️⃣ Install npm packages
+      - name: Install npm Packages
+        run: |
           npm ci || npm install
           sudo npm install -g terminalizer
 
-      - name: Generate Assets & README
+      # 6️⃣ Generate SVG Assets
+      - name: Generate SVG Assets
+        run: |
+          node scripts/generate-header.js
+          node scripts/generate-terminal-svg.js
+          node scripts/fetch-quote.js
+
+      # 7️⃣ Generate Contribution Snake
+      - name: Generate Contribution Snake
+        run: |
+          npx snk@v3 \
+            --github_user_name ${{ github.repository_owner }} \
+            --outputs "dist/github-snake.svg,dist/github-snake-dark.svg?palette=github-dark" \
+            --color_snake "#ff0000" \
+            --color_dots "#00ff00"
+
+      # 8️⃣ Update README
+      - name: Update README
         env:
           USERNAME: "𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ"
           GITHUB_USER: "thugger069"
+          CURRENT_TIME: "$(date -u +'%Y-%m-%dT%H:%M:%S')"
         run: |
-          chmod +x ./scripts/update-terminal.sh
-          ./scripts/update-terminal.sh
+          chmod +x ./update_readme.sh
+          ./update_readme.sh
 
-      - name: Generate GitHub Snake
-        uses: Platane/snk@v3
-        with:
-          github_user_name: ${{ github.repository_owner }}
-          outputs: |
-            dist/github-snake.svg
-            dist/github-snake-dark.svg?palette=github-dark
-          color_snake: '#ff0000'
-          color_dots: '#00ff00'
-
-      - name: Commit & Push Changes
+      # 9️⃣ Commit & Push Changes
+      - name: Commit & Push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config --local user.name "Thugger069"
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -f dist/*.svg README.md
-          git commit -m "🧬 Q.R.L.P ALL-IN: Daily README Update ($(date +'%Y-%m-%d %H:%M:%S'))" || echo "No changes to commit"
+          git commit -m "🧬 Q.R.L.P ALL-IN: Daily README Update ($CURRENT_TIME)" || echo "No changes to commit"
           git push
