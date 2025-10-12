@@ -7,7 +7,7 @@ import fs from 'fs';
 import { makeBadge } from 'badge-maker';
 import fetch from 'node-fetch';
 
-const DIST_DIR = 'dist';
+const DIST_DIR = '../dist';
 if (!fs.existsSync(DIST_DIR)) fs.mkdirSync(DIST_DIR);
 
 // Neon badge template
