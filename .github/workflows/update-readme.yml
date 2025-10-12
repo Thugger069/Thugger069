@@ -1,45 +1,81 @@
-# .github/workflows/update-readme.yml
-name: Q.R.I.P README Auto-Regenerator
+#!/usr/bin/env bash
+#
+# ╔════════════════════════════════════════════════════════════════╗
+# ║   Q.R.I.P ALL-IN: Quantum README Auto-Regenerator ⚡            ║
+# ║   Thugger069 / 𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ                                  ║
+# ║   Generates dynamic README, terminal mockups, snake, quote,    ║
+# ║   particles, and badges with neon style                        ║
+# ╚════════════════════════════════════════════════════════════════╝
 
-on:
-  push:
-    branches:
-      - main
-  schedule:
-    - cron: '0 0 * * 0'  # every Sunday at 00:00 UTC
-  workflow_dispatch:     # manual trigger
+set -euo pipefail
 
-jobs:
-  regenerate-readme:
-    name: Regenerate README
-    runs-on: ubuntu-latest
+# ---------------------------
+# Terminal-style Header
+# ---------------------------
+echo ""
+echo "🜂 Initializing Q.R.I.P Regeneration Sequence..."
+echo "──────────────────────────────────────────────"
 
-    steps:
-      # Step 1: Checkout repository
-      - name: Checkout repo
-        uses: actions/checkout@v3
+# ---------------------------
+# Directory Setup
+# ---------------------------
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ASSETS_DIR="$ROOT_DIR/assets"
+DIST_DIR="$ROOT_DIR/dist"
+LOG_FILE="$ROOT_DIR/logs/readme_update.log"
+SCRIPTS_DIR="$ROOT_DIR/scripts"
 
-      # Step 2: Setup Node.js
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '20'
+mkdir -p "$ASSETS_DIR" "$DIST_DIR" "$SCRIPTS_DIR" "$(dirname "$LOG_FILE")"
 
-      # Step 3: Install dependencies
-      - name: Install dependencies
-        run: npm ci || npm install
+# ---------------------------
+# Step 1: Select Neon Palette
+# ---------------------------
+COLORS=(
+  "#39FF14,#00FFF0"   # green → cyan
+  "#FF00FF,#FFDD00"   # magenta → yellow
+  "#00FFFF,#FF00FF"   # cyan → magenta
+  "#FF4D00,#39FF14"   # orange → green
+)
+RANDOM_INDEX=$(( RANDOM % ${#COLORS[@]} ))
+PALETTE="${COLORS[$RANDOM_INDEX]}"
+COLOR1=$(echo "$PALETTE" | cut -d',' -f1)
+COLOR2=$(echo "$PALETTE" | cut -d',' -f2)
+echo "🎨 Selected neon palette → $COLOR1 → $COLOR2"
 
-      # Step 4: Run README regeneration
-      - name: Regenerate README
-        env:
-          GITHUB_ACTOR: ${{ github.actor }}
-        run: bash ./scripts/update-terminal.sh
+# ---------------------------
+# Step 2: Generate SVG Components
+# ---------------------------
+echo "🖌️  Generating Header SVG..."
+node "$SCRIPTS_DIR/generate-header.js" || echo "⚠️ Header generation skipped"
 
-      # Step 5: Commit and push changes
-      - name: Commit updated README & assets
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add README.md dist/ assets/
-          git diff --cached --quiet || git commit -m "chore: auto-update README & assets [Q.R.I.P]"
-          git push origin main
+echo "🖥️  Generating Terminal SVG..."
+node "$SCRIPTS_DIR/generate-terminal-svg.js" || echo "⚠️ Terminal SVG generation skipped"
+
+echo "🌌 Generating Particle Field..."
+node "$SCRIPTS_DIR/generate-particles.js" || echo "⚠️ Particle field generation skipped"
+
+echo "💬 Generating Quote Banner..."
+node "$SCRIPTS_DIR/fetch-quote.js" || echo "⚠️ Quote banner generation skipped"
+
+# ---------------------------
+# Step 3: Generate Snake Animation
+# ---------------------------
+echo "🐍 Generating Snake Animation..."
+npx --yes snk@0.1.2 generate \
+  --user "${GITHUB_ACTOR:-local}" \
+  --output "$DIST_DIR/snake.svg" \
+  --palette "$COLOR1,$COLOR2" \
+  || echo "⚠️ Snake generation skipped (local run or missing package)"
+
+# ---------------------------
+# Step 4: Generate Badges
+# ---------------------------
+echo "🏷️  Generating Neon Badges..."
+node "$SCRIPTS_DIR/generate-badges.js" || echo "⚠️ Badge generation skipped"
+
+# ---------------------------
+# Step 5: Log Completion
+# ---------------------------
+echo "✅ Regeneration complete at $(date -u)" | tee -a "$LOG_FILE"
+echo "──────────────────────────────────────────────"
+echo "Q.R.I.P ALL-IN sequence completed successfully ⚡"
