@@ -1,87 +1,88 @@
 #!/usr/bin/env bash
+#
+# ╔════════════════════════════════════════════════════════════════╗
+# ║   Q.R.I.P ALL-IN: Quantum README Auto-Regenerator ⚡            ║
+# ║   Thugger069 / 𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ                                  ║
+# ║   Dynamic terminal splash, quote, snake, particles             ║
+# ╚════════════════════════════════════════════════════════════════╝
+#
 set -e
 
-# -------------------------------
-# Q.R.I.P ALL-IN: README Update
-# -------------------------------
+echo ""
+echo "🜂 Initializing Q.R.I.P Regeneration Sequence..."
+echo "──────────────────────────────────────────────"
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ASSETS_DIR="$ROOT_DIR/assets"
 DIST_DIR="$ROOT_DIR/dist"
+SCRIPTS_DIR="$ROOT_DIR/scripts"
+
 mkdir -p "$ASSETS_DIR" "$DIST_DIR"
 
-# Environment variables
-USERNAME=${USERNAME:-"𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ"}
-GITHUB_USER=${GITHUB_USER:-"thugger069"}
-CURRENT_TIME=$(date -u +"%Y-%m-%d %T")
+# ╭───────────────────────────────╮
+# │ STEP 1: Generate Neon Palette │
+# ╰───────────────────────────────╯
+COLORS=(
+  "#39FF14,#00FFF0"   # green → cyan
+  "#FF00FF,#FFDD00"   # magenta → yellow
+  "#00FFFF,#FF00FF"   # cyan → magenta
+  "#FF4D00,#39FF14"   # orange → green
+)
+RANDOM_INDEX=$(( RANDOM % ${#COLORS[@]} ))
+PALETTE="${COLORS[$RANDOM_INDEX]}"
+COLOR1=$(echo "$PALETTE" | cut -d',' -f1)
+COLOR2=$(echo "$PALETTE" | cut -d',' -f2)
+echo "🎨 Selected neon palette → $COLOR1 → $COLOR2"
 
-# -------------------------------
-# 1️⃣ Generate Signature Header SVG
-# -------------------------------
-echo "▶ Generating signature header..."
-cat > "$ASSETS_DIR/header.svg" <<EOF
-<svg width="800" height="120" xmlns="http://www.w3.org/2000/svg">
-  <rect width="800" height="120" rx="12" ry="12" fill="#0d0d0d"/>
-  <text x="50%" y="40%" fill="#39FF14" font-size="24" text-anchor="middle" font-family="monospace">
-    ${USERNAME}
-  </text>
-  <text x="50%" y="70%" fill="#00FFF0" font-size="16" text-anchor="middle" font-family="monospace">
-    • Walking The Path Where Bits & Dreams Intersect ®
-  </text>
-</svg>
-EOF
+# ╭───────────────────────────────────────╮
+# │ STEP 2: Generate Header SVG           │
+# ╰───────────────────────────────────────╯
+echo "🖌️  Generating Header SVG..."
+node "$SCRIPTS_DIR/generate-header.js"
 
-# -------------------------------
-# 2️⃣ Generate Particle Background SVG
-# -------------------------------
-echo "▶ Generating particle background..."
+# ╭───────────────────────────────────────╮
+# │ STEP 3: Generate Terminal SVG          │
+# ╰───────────────────────────────────────╯
+echo "▶ Generating terminal SVG with typewriter animation..."
+node "$SCRIPTS_DIR/generate-terminal-svg.js"
+
+# ╭───────────────────────────────────────╮
+# │ STEP 4: Generate Quote SVG             │
+# ╰───────────────────────────────────────╯
+echo "🪶 Generating Quantum Quote..."
+node "$SCRIPTS_DIR/fetch-quote.js"
+
+# ╭────────────────────────────────────────────╮
+# │ STEP 5: Generate Particle Background SVG │
+# ╰────────────────────────────────────────────╯
+echo "🌌 Generating Particle Field..."
 cat > "$ASSETS_DIR/particles.svg" <<EOF
-<svg width="800" height="120" xmlns="http://www.w3.org/2000/svg">
-  <rect width="800" height="120" fill="#000000"/>
-  <g fill="#39FF14">
-    $(for i in $(seq 1 50); do
+<svg width="800" height="160" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="160" fill="#000000"/>
+  <g fill="$COLOR1">
+    $(for i in $(seq 1 60); do
       X=$(( RANDOM % 800 ))
-      Y=$(( RANDOM % 120 ))
+      Y=$(( RANDOM % 160 ))
       echo "<circle cx='$X' cy='$Y' r='1.5' opacity='0.$((RANDOM % 8 + 2))'/>"
     done)
   </g>
 </svg>
 EOF
 
-# -------------------------------
-# 3️⃣ Generate Terminal SVG
-# -------------------------------
-echo "▶ Generating terminal SVG with typewriter animation..."
-node "$ROOT_DIR/scripts/generate-terminal-svg.js"
+# ╭────────────────────────────────────────────╮
+# │ STEP 6: Generate GitHub Snake Animation    │
+# ╰────────────────────────────────────────────╯
+echo "🐍 Generating Snake Animation..."
+npx --yes snk@0.1.2 generate \
+  --user "$GITHUB_ACTOR" \
+  --output "$DIST_DIR/github-snake.svg" \
+  --palette "$COLOR1,$COLOR2" \
+  || echo "⚠️ Snake generation skipped (local run mode)."
 
-# -------------------------------
-# 4️⃣ Generate Quote SVG
-# -------------------------------
-echo "▶ Generating animated quote SVG..."
-node "$ROOT_DIR/scripts/fetch-quote.js"
+npx --yes snk@0.1.2 generate \
+  --user "$GITHUB_ACTOR" \
+  --output "$DIST_DIR/github-snake-dark.svg?palette=github-dark" \
+  --palette "$COLOR1,$COLOR2" \
+  || echo "⚠️ Dark snake generation skipped."
 
-# -------------------------------
-# 5️⃣ Generate README.md
-# -------------------------------
-echo "▶ Generating README.md..."
-cat > "$ROOT_DIR/README.md" <<EOF
-<div align="center">
-  <img src="${ASSETS_DIR}/header.svg" alt="Signature Header" width="100%"/>
-  <img src="${ASSETS_DIR}/particles.svg" alt="Particle Field" width="100%"/>
-  <img src="${ASSETS_DIR}/terminal.svg" alt="Quantum Terminal" width="100%"/>
-</div>
-
-<div align="center">
-  <img src="${ASSETS_DIR}/quote.svg" alt="Quantum Quote" width="80%"/>
-</div>
-
-[![Profile Views](https://komarev.com/ghpvc/?username=${GITHUB_USER}&color=blueviolet&style=flat-square)](https://github.com/${GITHUB_USER})
-
-<div align="center">
-  <sub>Last Updated: ${CURRENT_TIME} UTC</sub>
-</div>
-
-<sub align="center">🧿 Auto-updated daily by <code>update_readme.sh</code> • 🧬 Maintained by ${USERNAME}</sub>
-EOF
-
-echo "✅ README.md updated successfully with particles + signature header."
+echo "✅ README assets generated successfully."
