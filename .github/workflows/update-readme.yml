@@ -32,7 +32,7 @@ jobs:
       - name: Install Dependencies
         run: |
           npm install -g snk@0.1.2
-          chmod +x ./update-terminal.sh
+          chmod +x ./scripts/update-terminal.sh
 
       # 4️⃣ Execute Regeneration Script
       - name: Run Q.R.I.P Regenerator
@@ -41,7 +41,7 @@ jobs:
           GITHUB_ACTOR: ${{ github.repository_owner }}
         run: |
           echo "⚡ Running full Q.R.I.P ALL-IN regeneration..."
-          bash ./update-terminal.sh
+          bash ./scripts/update-terminal.sh
 
       # 5️⃣ Auto-Commit & Push
       - name: Commit & Push README Updates
