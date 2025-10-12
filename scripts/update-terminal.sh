@@ -116,15 +116,3 @@ EOF
 # 7️⃣ Cleanup
 # -------------------------------
 rm -f "$TERMINAL_OUTPUT"
-
-# -------------------------------
-# 8️⃣ Commit & Push Changes
-# -------------------------------
-echo "▶ Committing and pushing changes..."
-git config --local user.name "${USERNAME}"
-git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-git add -f dist/*.svg README.md
-git commit -m "🧬 Q.R.L.P ALL-IN: Daily README Update (${CURRENT_TIME})" || echo "No changes to commit"
-git push
-
-echo "✅ README.md updated successfully with Q.R.I.P ALL-IN enhancements."
