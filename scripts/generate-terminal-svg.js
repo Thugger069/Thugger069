@@ -1,71 +1,68 @@
+// scripts/generate-terminal-svg.js
 const fs = require('fs');
-const path = require('path');
 
-const DIST_DIR = path.resolve(__dirname, '../dist');
-if (!fs.existsSync(DIST_DIR)) fs.mkdirSync(DIST_DIR, { recursive: true });
+const lines = [
+  "Last login: $(date) on ttys000",
+  "𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ@github ~ % uptime",
+  "load average: 0.56 0.62 0.48",
+  "Projects/DevOps Scripts OpenSource"
+];
 
-const username = process.env.USERNAME || "𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ";
-const currentTime = new Date().toISOString().replace('T', ' ').split('.')[0];
-
-const terminalContent = `
-Last login: ${currentTime} on ttys000
-${username}@github ~ % uptime
-${currentTime} up 02:51, 1 user, load average: 0.56 0.62 0.48
-
-${username}@github ~ % ls -la Projects/
-total 40
-drwxr-xr-x  8 ${username}  staff  256 May 07 02:51 .
-drwxr-xr-x  5 ${username}  staff  160 May 07 02:51 ..
-drwxr-xr-x  7 ${username}  staff  224 May 07 02:51 DevOps
-drwxr-xr-x  6 ${username}  staff  192 May 07 02:51 OpenSource
-drwxr-xr-x  5 ${username}  staff  160 May 07 02:51 Scripts
--rw-r--r--  1 ${username}  staff  925 May 07 02:51 TODO.md
-
-${username}@github ~ % cat Projects/TODO.md
-# ℭ𝔲𝔯𝔯𝔢𝔫𝔱 𝔓𝔯𝔬𝔧𝔢𝔠𝔱𝔰 📋
-
-→ Automating deployment workflows
-→ Contributing to open source
-→ Learning Kubernetes
-→ Building shell script utilities
-`;
-
-const lines = terminalContent.split('\n');
+const fullText = lines.join('\n');
 
 const svg = `
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 ${lines.length * 22 + 40}" width="100%" height="${lines.length * 22 + 40}">
+<svg viewBox="0 0 800 160" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .bg { fill: #0d0d0d; rx: 16; filter: url(#glow); }
+    .text { font-family: 'Fira Code', monospace; font-size: 16px; fill: url(#gradient); white-space: pre; overflow: hidden; display: inline-block; }
+    .cursor { animation: blink 1s steps(1) infinite; fill: #ff00ff; }
+    
+    @keyframes blink { 0%,49%{opacity:1}50%,100%{opacity:0} }
+
+    .typing {
+      animation: typing 4s steps(${fullText.length}, end) 1 forwards;
+      width: 0ch;
+    }
+
+    @keyframes typing {
+      from { width: 0ch; }
+      to { width: ${fullText.length}ch; }
+    }
+
+    /* Dynamic neon gradient */
+    @keyframes neonShift {
+      0% { stop-color: #00fff0; }
+      25% { stop-color: #ff00ff; }
+      50% { stop-color: #ff0000; }
+      75% { stop-color: #00ff00; }
+      100% { stop-color: #00fff0; }
+    }
+
+    stop { animation: neonShift 8s infinite alternate; }
+  </style>
+
   <defs>
-    <filter id="glow">
-      <feGaussianBlur stdDeviation="2" result="blur1"/>
+    <linearGradient id="gradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#00fff0"/>
+      <stop offset="50%" stop-color="#ff00ff"/>
+      <stop offset="100%" stop-color="#ff0000"/>
+    </linearGradient>
+
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
       <feMerge>
-        <feMergeNode in="blur1"/>
+        <feMergeNode in="blur"/>
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
   </defs>
 
-  <!-- Background -->
-  <rect x="0" y="0" width="800" height="${lines.length * 22 + 40}" rx="16" fill="#0d0d0d" filter="url(#glow)"/>
+  <rect x="0" y="0" width="800" height="160" class="bg"/>
 
-  <!-- Terminal text -->
-  <text x="20" y="30" font-family="Fira Code, monospace" font-size="18" fill="#00fff0">
-    ${lines.map((line, i) => `<tspan x="20" dy="${i === 0 ? 0 : 22}">${line.replace(/&/g, '&amp;')}</tspan>`).join('')}
-  </text>
-
-  <!-- Blinking cursor -->
-  <text x="20" y="${lines.length * 22 + 10}" font-family="Fira Code, monospace" font-size="18" fill="#00fff0">
-    <tspan class="cursor">█</tspan>
-    <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite"/>
-  </text>
-
-  <style>
-    @media (prefers-color-scheme: light) {
-      rect { fill: #f5f5f5; filter: none; }
-      text { fill: #0d0d0d; }
-    }
-  </style>
+  <text x="20" y="40" class="text typing">${fullText}</text>
+  <text x="${20 + fullText.length * 8}" y="40" class="cursor">█</text>
 </svg>
 `;
 
-fs.writeFileSync(path.join(DIST_DIR, 'terminal.svg'), svg.trim());
-console.log("✅ Terminal SVG updated with neon cyberpunk style!");
+fs.writeFileSync('dist/terminal.svg', svg.trim());
+console.log("✅ Animated terminal.svg generated with typewriter & neon gradient.");
