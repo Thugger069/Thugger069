@@ -1,66 +1,53 @@
 const fs = require('fs');
 const path = require('path');
 
-const DIST_DIR = path.resolve(__dirname, '../dist');
-if (!fs.existsSync(DIST_DIR)) fs.mkdirSync(DIST_DIR);
+const DIST_DIR = path.resolve(__dirname, '../assets');
+const CURRENT_TIME = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '');
+const USERNAME = process.env.USERNAME || "𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ";
 
-const terminalLines = [
-  "Last login: 𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ on ttys000",
-  "🜂 Walking the Path Where Bits & Dreams Intersect ®",
-  "user@github ~ % uptime",
-  "user@github ~ % ls -la Projects/",
-  "user@github ~ % cat Projects/TODO.md"
+// Terminal lines
+const lines = [
+  `Last login: ${CURRENT_TIME} on ttys000`,
+  `${USERNAME}@github ~ % uptime`,
+  `${CURRENT_TIME} up 02:51, 1 user, load average: 0.56 0.62 0.48`,
+  `${USERNAME}@github ~ % ls -la Projects/`,
+  `total 40`,
+  `drwxr-xr-x  8 ${USERNAME}  staff  256 May 07 02:51 .`,
+  `drwxr-xr-x  5 ${USERNAME}  staff  160 May 07 02:51 ..`,
+  `drwxr-xr-x  7 ${USERNAME}  staff  224 May 07 02:51 DevOps`,
+  `drwxr-xr-x  6 ${USERNAME}  staff  192 May 07 02:51 OpenSource`,
+  `drwxr-xr-x  5 ${USERNAME}  staff  160 May 07 02:51 Scripts`,
+  `-rw-r--r--  1 ${USERNAME}  staff  925 May 07 02:51 TODO.md`
 ];
 
-const neonColors = ["#39FF14", "#00FFF0", "#FF00FF", "#FFDD00"]; // cycling neon palette
+// Neon colors
+const color1 = "#39FF14";
+const color2 = "#00FFF0";
 
-// Generate typewriter content
-const typingContent = terminalLines.map(line => `<span class="line">${line}</span>`).join("\n");
-
-const svg = `
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="200">
-  <defs>
-    <linearGradient id="neonGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="${neonColors[0]}" />
-      <stop offset="50%" stop-color="${neonColors[1]}" />
-      <stop offset="100%" stop-color="${neonColors[2]}" />
-      <animate attributeName="x1" values="0%;100%;0%" dur="10s" repeatCount="indefinite"/>
-      <animate attributeName="x2" values="100%;0%;100%" dur="10s" repeatCount="indefinite"/>
-    </linearGradient>
-    <filter id="glow">
-      <feGaussianBlur stdDeviation="2.5" result="blur"/>
-      <feMerge>
-        <feMergeNode in="blur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
-  </defs>
-  <rect x="0" y="0" width="800" height="200" fill="#0d0d0d" rx="12"/>
-  <foreignObject x="20" y="20" width="760" height="160">
-    <div xmlns="http://www.w3.org/1999/xhtml" style="font-family: 'Fira Code', monospace; font-size: 16px; color: url(#neonGradient); filter: url(#glow); white-space: pre;">
-      <span class="typing">${terminalLines.join("\n")}</span>
-      <span class="cursor">█</span>
-    </div>
-  </foreignObject>
+// Generate SVG with typewriter effect
+let svgContent = `
+<svg width="700" height="${lines.length * 22 + 20}" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100%" height="100%" rx="8" ry="8" fill="#0d0d0d" stroke="${color2}" stroke-width="1"/>
   <style>
-    .cursor {
-      animation: blink 1s steps(1) infinite;
-    }
-    @keyframes blink {
-      0%,49% { opacity:1; } 50%,100% { opacity:0; }
-    }
-    .typing {
-      animation: typing ${terminalLines.join("\n").length/2}s steps(${terminalLines.join("\n").length}, end) 1;
-      overflow: hidden;
-      white-space: pre;
-      display: inline-block;
-    }
-    @keyframes typing {
-      from { width: 0; } to { width: 100%; }
-    }
+    .line { font-family: monospace; font-size: 16px; fill: ${color1}; white-space: pre; }
+    .cursor { fill: ${color2}; }
+    .typing { animation: typing 4s steps(40, end) forwards; }
+    @keyframes typing { from { width: 0 } to { width: 100% } }
   </style>
+`;
+
+lines.forEach((line, idx) => {
+  const y = 20 + idx * 20;
+  svgContent += `
+  <text x="10" y="${y}" class="line typing">${line}</text>
+  `;
+});
+
+// Add blinking cursor
+svgContent += `
+  <text x="10" y="${20 + lines.length * 20}" class="line cursor">_</text>
 </svg>
 `;
 
-fs.writeFileSync(path.join(DIST_DIR, 'terminal.svg'), svg);
-console.log("✅ Neon typewriter terminal SVG generated!");
+fs.writeFileSync(path.join(DIST_DIR, 'terminal.svg'), svgContent);
+console.log("✅ Terminal SVG generated with typewriter animation.");
