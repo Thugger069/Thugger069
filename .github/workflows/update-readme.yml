@@ -1,4 +1,4 @@
-name: README Update 
+name: README Update
 
 on:
   push:
@@ -6,14 +6,14 @@ on:
     paths-ignore:
       - 'README.md'
   schedule:
-    - cron: '0 0 * * *' # daily at midnight UTC
+    - cron: '0 0 * * *' # Daily at midnight UTC
   workflow_dispatch:
 
 permissions:
   contents: write
 
 jobs:
-  full-readme-update:
+  update-readme:
     runs-on: ubuntu-latest
 
     steps:
@@ -24,38 +24,37 @@ jobs:
           fetch-depth: 1
 
       # 2️⃣ Ensure required directories
-      - name: Create Directories
-        run: mkdir -p assets dist logs
+      - name: Create directories
+        run: mkdir -p assets dist scripts
 
-      # 3️⃣ Setup Node.js environment
+      # 3️⃣ Setup Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18'
 
       # 4️⃣ Install system dependencies
-      - name: Install System Dependencies
+      - name: Install system dependencies
         run: |
-          sudo apt-get update && sudo apt-get install -y \
-          figlet lolcat neofetch boxes cowsay fortune bc
+          sudo apt-get update && sudo apt-get install -y figlet lolcat neofetch boxes cowsay fortune bc
 
       # 5️⃣ Install npm packages
-      - name: Install npm Packages
+      - name: Install npm packages
         run: |
           npm ci || npm install
-          sudo npm install -g snk
+          sudo npm install -g terminalizer snk
 
-      # 6️⃣ Generate all assets (header, terminal, quote, particles, badges, snake)
-      - name: Generate README Assets
+      # 6️⃣ Generate README assets (header, terminal, quote, particles, snake)
+      - name: Generate README Content
         env:
-          GITHUB_ACTOR: ${{ github.actor }}
+          USERNAME: "𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ"
+          GITHUB_USER: "thugger069"
         run: |
           chmod +x ./scripts/update-terminal.sh
           ./scripts/update-terminal.sh
-          echo "✅ All README assets generated."
 
-      # 7️⃣ Commit and push all updates
-      - name: Commit & Push Updates
+      # 7️⃣ Commit & push generated assets
+      - name: Commit & Push README Updates
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -63,5 +62,5 @@ jobs:
           git config --local user.name "Thugger069"
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -f assets/*.svg dist/*.svg README.md
-          git commit -m "🜂 Q.R.I.P ALL-IN Auto-Update: $TIMESTAMP" || echo "No changes to commit"
-          git push
+          git commit -m "🧬 Q.R.I.P ALL-IN: Daily README Update ($TIMESTAMP)" || echo "No changes to commit"
+          git push origin main
