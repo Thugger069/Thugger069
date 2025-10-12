@@ -1,8 +1,8 @@
-name: "Q.R.L.P ALL-IN: Update README"
+name: Q.R.L.P ALL-IN: Update README
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
     paths-ignore:
       - 'README.md'
   schedule:
@@ -15,47 +15,32 @@ permissions:
 jobs:
   update-readme:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 1
+      - uses: actions/checkout@v4
+        with: fetch-depth: 1
 
       - name: Create dist Directory
         run: mkdir -p dist
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
-        with:
-          node-version: '16'
+        with: node-version: '18'
 
-      - name: Install System Dependencies
+      - name: Install Dependencies
         run: |
-          sudo apt-get update && sudo apt-get install -y \
-          figlet lolcat neofetch boxes cowsay fortune bc
-
-      - name: Install npm packages
-        run: |
+          sudo apt-get update && sudo apt-get install -y figlet lolcat neofetch boxes cowsay fortune bc
           npm ci || npm install
           sudo npm install -g terminalizer
 
-      - name: Generate SVG Assets
-        run: |
-          node scripts/generate-header.js
-          node scripts/generate-terminal-svg.js
-          node scripts/fetch-quote.js
-
-      - name: Update README
+      - name: Generate Assets & README
         env:
           USERNAME: "𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ"
           GITHUB_USER: "thugger069"
         run: |
-          CURRENT_TIME=$(date -u +"%Y-%m-%d %T")
           chmod +x ./scripts/update-terminal.sh
           ./scripts/update-terminal.sh
 
-      - name: Generate Contribution Snake
+      - name: Generate GitHub Snake
         uses: Platane/snk@v3
         with:
           github_user_name: ${{ github.repository_owner }}
@@ -65,7 +50,7 @@ jobs:
           color_snake: '#ff0000'
           color_dots: '#00ff00'
 
-      - name: Commit & Push README Updates
+      - name: Commit & Push Changes
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
