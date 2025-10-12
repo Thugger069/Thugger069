@@ -1,48 +1,47 @@
-name: Snake Overlord
+name: Q.R.L.P Neon Snake Update
 
 on:
   schedule:
-    - cron: '0 0 * * *'  # Daily at midnight UTC
+    - cron: '0 0 * * *' # daily at midnight UTC
   workflow_dispatch:
 
 permissions:
   contents: write
 
 jobs:
-  generate-snake:
+  generate-neon-snake:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      # 1️⃣ Checkout repo
+      - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
 
-      - name: Ensure dist directory exists
+      # 2️⃣ Ensure dist folder exists
+      - name: Create dist Directory
         run: mkdir -p dist
 
-      - name: Generate Contribution Snake Animations
+      # 3️⃣ Generate Neon Contribution Snake
+      - name: Generate Neon Snake Animation
         uses: Platane/snk@v3
         with:
           github_user_name: ${{ github.repository_owner }}
           outputs: |
             dist/github-snake.svg
             dist/github-snake-dark.svg?palette=github-dark
-          color_snake: '#FF4500'
-          color_dots: '#00FF9C'
+          color_snake: '#39FF14'      # Neon green main snake
+          color_dots: '#00FFF0'       # Neon cyan contribution dots
+          color_background: '#0d0d0d' # Dark background for snake
 
-      - name: Update README Snake Section
-        run: |
-          # Backup README before modifying
-          cp README.md README.md.bak
-          
-          # Replace snake section with updated SVGs and cache-busting run_id
-          sed -i '/<!-- START SNAKE -->/,/<!-- END SNAKE -->/c\<!-- START SNAKE -->\n<picture>\n  <source media="(prefers-color-scheme: dark)" srcset="dist/github-snake-dark.svg?ts=${{ github.run_id }}" />\n  <source media="(prefers-color-scheme: light)" srcset="dist/github-snake.svg?ts=${{ github.run_id }}" />\n  <img alt="GitHub Contribution Snake Animation" src="dist/github-snake.svg?ts=${{ github.run_id }}" />\n</picture>\n<!-- END SNAKE -->' README.md
-
-      - name: Commit and Push Updates
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add dist/github-snake*.svg README.md
-          git commit -m "🐍 Snake Overlord: Update contribution snake animation ($(date +'%Y-%m-%d'))" || echo "No changes to commit"
-          git push
+      # 4️⃣ Commit & push updates
+      - name: Commit & Push Snake Update
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config --local user.name "Thugger069"
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f dist/github-snake*.svg
+          git commit -m "🧬 Q.R.L.P Neon Snake Update ($(date +'%Y-%m-%d %H:%M:%S'))" || echo "No changes to commit"
+          git push
