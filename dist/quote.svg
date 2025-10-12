@@ -22,14 +22,14 @@
       50%, 100% { opacity: 0; }
     }
     .typing {
-      animation: typing 4s steps(34, end) 1;
+      animation: typing 4s steps(64, end) 1;
       overflow: hidden;
       white-space: nowrap;
       width: 0;
     }
     @keyframes typing {
       from { width: 0; }
-      to { width: 34ch; }
+      to { width: 64ch; }
     }
     @media (prefers-color-scheme: light) {
       .bg { fill: #ffffff; stroke: #0d0d0d; }
@@ -50,10 +50,10 @@
   <rect x="10" y="10" width="780" height="140" rx="16" class="bg"/>
   <foreignObject x="30" y="30" width="740" height="100">
     <div xmlns="http://www.w3.org/1999/xhtml">
-      <span class="text typing">Genius is patience. — Isaac Newton</span><span class="text cursor">█</span>
+      <span class="text typing">The road to success is always under construction. — Steve Harvey</span><span class="text cursor">█</span>
     </div>
   </foreignObject>
 
   <!-- Timestamp for cache-busting -->
-  <text x="650" y="150" font-family="Fira Code, monospace" font-size="10px" fill="#00FF9C">2025-10-12T03:20:33.343Z</text>
+  <text x="650" y="150" font-family="Fira Code, monospace" font-size="10px" fill="#00FF9C">2025-10-12T03:24:20.997Z</text>
 </svg>
