@@ -1,11 +1,18 @@
 // scripts/fetch-quote.js
-
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
 const fs = require('fs');
 const https = require('https');
+const path = require('path');
+
+const DIST_DIR = path.resolve(__dirname, '../dist');
+if (!fs.existsSync(DIST_DIR)) fs.mkdirSync(DIST_DIR);
 
 const endpoint = 'https://zenquotes.io/api/random';
+
+function escapeSVG(text) {
+  return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
 
 https.get(endpoint, (res) => {
   let data = '';
@@ -15,11 +22,12 @@ https.get(endpoint, (res) => {
     try {
       const json = JSON.parse(data)[0];
       const quoteText = `${json.q} — ${json.a}`;
-      const cleanQuote = quoteText.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+      const cleanQuote = escapeSVG(quoteText);
 
       const svg = `
 <svg viewBox="0 0 800 160" width="100%" height="160" xmlns="http://www.w3.org/2000/svg">
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
     .bg {
       fill: #0d0d0d;
       stroke: #00fff0;
@@ -27,35 +35,29 @@ https.get(endpoint, (res) => {
       rx: 20;
       filter: url(#glow);
     }
-
     .text {
       font-family: 'Fira Code', monospace;
       font-size: 18px;
       fill: #00fff0;
       white-space: pre;
     }
-
     .cursor {
       animation: blink 1s steps(1) infinite;
     }
-
     @keyframes blink {
       0%, 49% { opacity: 1; }
       50%, 100% { opacity: 0; }
     }
-
     .typing {
       animation: typing 4s steps(${cleanQuote.length}, end) 1;
       overflow: hidden;
       white-space: nowrap;
       width: 0;
     }
-
     @keyframes typing {
-      from { width: 0 }
+      from { width: 0; }
       to { width: ${cleanQuote.length}ch; }
     }
-
     @media (prefers-color-scheme: light) {
       .bg { fill: #ffffff; stroke: #0d0d0d; }
       .text { fill: #0d0d0d; }
@@ -74,15 +76,19 @@ https.get(endpoint, (res) => {
 
   <rect x="10" y="10" width="780" height="140" rx="16" class="bg"/>
   <foreignObject x="30" y="30" width="740" height="100">
-    <div xmlns="http://www.w3.org/1999/xhtml" style="color: inherit;">
+    <div xmlns="http://www.w3.org/1999/xhtml">
       <span class="text typing">${cleanQuote}</span><span class="text cursor">█</span>
     </div>
   </foreignObject>
+
+  <!-- Timestamp for cache-busting -->
+  <text x="650" y="150" font-family="Fira Code, monospace" font-size="10px" fill="#00FF9C">${new Date().toISOString()}</text>
 </svg>
 `;
 
-      fs.writeFileSync('dist/quote.svg', svg.trim());
-      console.log("✅ Quote with typewriter & blinking cursor saved.");
+      const outputPath = path.join(DIST_DIR, 'quote.svg');
+      fs.writeFileSync(outputPath, svg.trim());
+      console.log(`✅ Quote with typewriter & blinking cursor saved at ${outputPath}`);
     } catch (e) {
       console.error("❌ Failed to parse quote:", e.message);
       process.exit(1);
