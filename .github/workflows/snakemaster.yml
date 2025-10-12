@@ -1,8 +1,8 @@
-name: Q.R.L.P Neon Snake Update
+name: Q.R.I.P ALL-IN: Neon Snake Update
 
 on:
   schedule:
-    - cron: '0 0 * * *' # daily at midnight UTC
+    - cron: '0 0 * * *' # Daily at midnight UTC
   workflow_dispatch:
 
 permissions:
@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Checkout repo
+      # 1️⃣ Checkout repository
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
@@ -23,7 +23,21 @@ jobs:
       - name: Create dist Directory
         run: mkdir -p dist
 
-      # 3️⃣ Generate Neon Contribution Snake
+      # 3️⃣ Set dynamic neon colors
+      - name: Set Neon Gradient Colors
+        id: neon
+        run: |
+          # Pick a random neon palette
+          COLORS=(
+            "#39FF14,#00FFF0"   # green → cyan
+            "#FF00FF,#FFDD00"   # magenta → yellow
+            "#00FFFF,#FF00FF"   # cyan → magenta
+            "#FF4D00,#39FF14"   # orange → green
+          )
+          RANDOM_INDEX=$(( RANDOM % ${#COLORS[@]} ))
+          echo "colors=${COLORS[$RANDOM_INDEX]}" >> $GITHUB_OUTPUT
+
+      # 4️⃣ Generate Neon Snake Animations (light + dark)
       - name: Generate Neon Snake Animation
         uses: Platane/snk@v3
         with:
@@ -31,17 +45,18 @@ jobs:
           outputs: |
             dist/github-snake.svg
             dist/github-snake-dark.svg?palette=github-dark
-          color_snake: '#39FF14'      # Neon green main snake
-          color_dots: '#00FFF0'       # Neon cyan contribution dots
-          color_background: '#0d0d0d' # Dark background for snake
+          color_snake: "${{ steps.neon.outputs.colors.split(',')[0] }}"
+          color_dots: "${{ steps.neon.outputs.colors.split(',')[1] }}"
+          color_background: '#0d0d0d'
 
-      # 4️⃣ Commit & push updates
+      # 5️⃣ Commit & push updates
       - name: Commit & Push Snake Update
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M:%S")
           git config --local user.name "Thugger069"
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -f dist/github-snake*.svg
-          git commit -m "🧬 Q.R.L.P Neon Snake Update ($(date +'%Y-%m-%d %H:%M:%S'))" || echo "No changes to commit"
+          git commit -m "🧬 Q.R.I.P Neon Snake Update ($TIMESTAMP)" || echo "No changes to commit"
           git push
