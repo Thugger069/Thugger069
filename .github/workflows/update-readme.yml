@@ -1,78 +1,60 @@
-name: Update README
+name: Q.R.I.P ALL-IN: Quantum README Regeneration ⚡
 
 on:
-  push:
-    branches: [ "main" ]
-    paths-ignore:
-      - 'README.md'
   schedule:
-    - cron: "0 0 * * *"   # Daily at 00:00 UTC
+    - cron: '0 */12 * * *'   # Every 12 hours
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:
   contents: write
 
 jobs:
-  update-readme:
+  regenerate-readme:
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Checkout repository
+      # 1️⃣ Checkout Repository
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 1
 
-      # 2️⃣ Ensure dist directory exists
-      - name: Create dist Directory
-        run: mkdir -p dist
-
-      # 3️⃣ Setup Node.js
+      # 2️⃣ Setup Node Environment
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
 
-      # 4️⃣ Install system dependencies
-      - name: Install System Dependencies
+      # 3️⃣ Install Dependencies
+      - name: Install Dependencies
         run: |
-          sudo apt-get update && sudo apt-get install -y \
-            figlet lolcat neofetch boxes cowsay fortune bc
+          npm install -g snk@0.1.2
+          chmod +x ./update-terminal.sh
 
-      # 5️⃣ Install npm packages (local only)
-      - name: Install npm Packages
-        run: |
-          npm ci || npm install
-          sudo npm install -g terminalizer
-
-      # 6️⃣ Generate README Assets & SVGs
-      - name: Generate README Content
+      # 4️⃣ Execute Regeneration Script
+      - name: Run Q.R.I.P Regenerator
         env:
-          USERNAME: "𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ"
-          GITHUB_USER: "thugger069"
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_ACTOR: ${{ github.repository_owner }}
         run: |
-          chmod +x ./scripts/update-terminal.sh
-          ./scripts/update-terminal.sh
+          echo "⚡ Running full Q.R.I.P ALL-IN regeneration..."
+          bash ./update-terminal.sh
 
-      # 7️⃣ Generate GitHub Snake Animation
-      - name: Generate Contribution Snake
-        uses: Platane/snk@v3
-        with:
-          github_user_name: ${{ github.repository_owner }}
-          outputs: |
-            dist/github-snake.svg
-            dist/github-snake-dark.svg?palette=github-dark
-          color_snake: '#ff0000'
-          color_dots: '#00ff00'
-
-      # 8️⃣ Commit & Push README Updates
+      # 5️⃣ Auto-Commit & Push
       - name: Commit & Push README Updates
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M:%S")
           git config --local user.name "Thugger069"
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -f dist/*.svg README.md
-          git commit -m "🧬 Q.R.I.P ALL-IN: Daily README Update ($TIMESTAMP)" || echo "No changes to commit"
-          git push
+          git add README.md assets/*.svg dist/*.svg || true
+          git commit -m "⚙️ Quantum README Sync ($(date -u +"%Y-%m-%d %H:%M:%S"))" || echo "No changes detected"
+          git push origin main || echo "No push required"
+
+      # 6️⃣ Log Completion
+      - name: Log Workflow Completion
+        run: |
+          echo "✅ Q.R.I.P ALL-IN: Quantum README Regeneration complete ⚡"
