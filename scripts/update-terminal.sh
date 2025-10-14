@@ -1,21 +1,18 @@
 #!/bin/bash
-set -e
+set -euo pipefail
 
-# ───────────────────────────────
-# QRLP ALL-IN: Update Terminal + README + Particle Field
-# ───────────────────────────────
+# ================================
+# 🜂 Q.R.I.P ALL-IN Update Terminal Script
+# ================================
 
+# Environment defaults
 USERNAME=${USERNAME:-"𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ"}
-CURRENT_TIME=${CURRENT_TIME:-"$(date -u +"%Y-%m-%d %H:%M:%S")"}
+username=${username:-"thugger069"}
+CURRENT_TIME=${CURRENT_TIME:-$(date -u +"%Y-%m-%d %H:%M:%S")}
 
-TERMINAL_FILE="terminal_output.txt"
-PARTICLES_FILE="assets/particles.svg"
-
-mkdir -p assets dist
-
-# ───────────────────────────────
-# Function: Generate random load average
-# ───────────────────────────────
+# ------------------------
+# Helper: Generate random load average
+# ------------------------
 generate_load_avg() {
     if ! command -v bc &> /dev/null; then
         echo "0.50 0.60 0.40"
@@ -27,12 +24,14 @@ generate_load_avg() {
         "$(echo "scale=2; ${RANDOM}/32767 + 0.1" | bc)"
 }
 
-# ───────────────────────────────
-# Generate terminal simulation
-# ───────────────────────────────
-LOAD_AVG=$(generate_load_avg)
+# ------------------------
+# Generate Terminal Content
+# ------------------------
+generate_terminal_content() {
+    local LOAD_AVG
+    LOAD_AVG=$(generate_load_avg)
 
-cat > "$TERMINAL_FILE" << EOF
+    cat > terminal_output.txt << EOF
 Last login: ${CURRENT_TIME} on ttys000
 ${USERNAME}@github ~ % uptime
 ${CURRENT_TIME} up 02:51, 1 user, load average: ${LOAD_AVG}
@@ -56,62 +55,85 @@ ${USERNAME}@github ~ % cat Projects/TODO.md
 
 ${USERNAME}@github ~ %
 EOF
+}
 
-# ───────────────────────────────
-# Generate particle SVG
-# ───────────────────────────────
-PARTICLE_COLOR1="#39FF14"
-PARTICLE_COLOR2="#00FFF0"
-
-cat > "$PARTICLES_FILE" << EOF
-<svg width="800" height="160" xmlns="http://www.w3.org/2000/svg">
-  <rect width="800" height="160" fill="#000000"/>
-  <g fill="$PARTICLE_COLOR1">
-EOF
-
-# Map dots from terminal content to particles
-while read -r line; do
-    for (( i=0; i<${#line}; i++ )); do
-        char="${line:$i:1}"
-        if [[ "$char" == "•" ]]; then
-            X=$(( RANDOM % 800 ))
-            Y=$(( RANDOM % 160 ))
-            OPACITY=$(awk -v min=0.2 -v max=0.8 'BEGIN{srand(); print min+rand()*(max-min)}')
-            echo "<circle cx='$X' cy='$Y' r='1.5' opacity='$OPACITY'/>" >> "$PARTICLES_FILE"
-        fi
-    done
-done < "$TERMINAL_FILE"
-
-cat >> "$PARTICLES_FILE" << EOF
-  </g>
-</svg>
-EOF
-
-# ───────────────────────────────
+# ------------------------
 # Generate README.md
-# ───────────────────────────────
-cat > README.md << EOF
+# ------------------------
+generate_readme() {
+    mkdir -p assets dist
+
+    cat > README.md << EOF
 <div align="center">
-  <h2>👨‍💻 ${USERNAME}</h2>
+  <h2>👨‍💻 𖢧ꛅꚶꚽꚽ𖤢𖦪'ꕷ 𖦪𖤢ꛎꚳ𖢑</h2>
 
-  <pre class="terminal">
-$(cat $TERMINAL_FILE)
-  </pre>
+  [![Profile Views](https://komarev.com/ghpvc/?username=${username}&color=blueviolet&style=flat-square)](https://github.com/${username})
 
-  <h3>🌌 Quantum Particle Field</h3>
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="$PARTICLES_FILE"/>
-    <source media="(prefers-color-scheme: light)" srcset="$PARTICLES_FILE"/>
-    <img alt="Dynamic Particle Field" src="$PARTICLES_FILE"/>
-  </picture>
+  <a href="https://git.io/typing-svg">
+    <img src="https://readme-typing-svg.herokuapp.com?font=Ubuntu+Mono&duration=3000&pause=1000&color=00FF9C&center=true&vCenter=true&width=435&lines=ℌ𝔢𝔩𝔩𝔬+𝔗𝔥𝔢𝔯𝔢;ℑ’𝔪+${USERNAME};𝔚𝔢𝔩𝔠𝔬𝔪ｅ+𝔱𝔬+𝔪𝔶+𝔯𝔢𝔞𝔩𝔪;𝔖𝔥𝔢𝔩𝔩+𝔖𝔠𝔯𝔦𝔭𝔱+𝔈𝔫𝔱𝔥𝔲𝔰𝔦𝔞𝔰𝔱;𝔏𝔦𝔫𝔲𝔵+%26+𝔇𝔢𝔳𝔒𝔭𝔰+𝔈𝔵𝔭𝔩𝔬𝔯𝔢𝔯;𝔒𝔭𝔢𝔫+𝔖𝔬𝔲𝔯𝔠𝔢+ℭ𝔬𝔫𝔱𝔯𝔦𝔟𝔲𝔱𝔬𝔯;𝔄𝔩𝔴𝔞𝔶𝔰+𝔏𝔢𝔞𝔯𝔫𝔦𝔫𝔤+%F0%9F%92%A1" alt="Typing SVG" />
+  </a>
+</div>
 
-  <div align="center">
-    <sub>Last Updated: ${CURRENT_TIME} UTC</sub>
-  </div>
+<pre class="terminal">
+$(cat terminal_output.txt)
+</pre>
+
+<!-- Snake animation -->
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="dist/github-snake-dark.svg?ts=${CURRENT_TIME//:/%3A}" />
+  <source media="(prefers-color-scheme: light)" srcset="dist/github-snake.svg?ts=${CURRENT_TIME//:/%3A}" />
+  <img alt="Github Contribution Snake Animation" src="dist/github-snake.svg?ts=${CURRENT_TIME//:/%3A}" />
+</picture>
+
+<div align="center">
+  <sub>Last Updated: ${CURRENT_TIME} UTC</sub>
 </div>
 EOF
+}
 
-# Clean up
-rm -f "$TERMINAL_FILE"
+# ------------------------
+# Install dependencies safely
+# ------------------------
+install_dependencies() {
+    echo "Installing system packages..."
+    sudo apt-get update
+    sudo apt-get install -y figlet lolcat neofetch boxes cowsay fortune bc || true
 
-echo "✅ README.md updated with dynamic terminal + particle field."
+    echo "Installing npm packages..."
+    if [ -f package-lock.json ]; then
+        npm ci
+    else
+        npm install
+    fi
+
+    sudo npm install -g terminalizer || echo "Terminalizer already installed"
+}
+
+# ------------------------
+# Generate GitHub Snake
+# ------------------------
+generate_snake() {
+    echo "Generating GitHub Snake..."
+    if ! command -v snk &> /dev/null; then
+        echo "Installing Platane/snk CLI..."
+        npm install -g snk
+    fi
+    snk --github-user-name "$username" \
+        --outputs "dist/github-snake.svg" "dist/github-snake-dark.svg?palette=github-dark" \
+        --color-snake "#ff0000" \
+        --color-dots "#00ff00"
+}
+
+# ------------------------
+# Main execution
+# ------------------------
+main() {
+    install_dependencies
+    generate_terminal_content
+    generate_snake
+    generate_readme
+    rm -f terminal_output.txt
+    echo "✅ README and terminal content updated successfully!"
+}
+
+main
