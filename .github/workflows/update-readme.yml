@@ -1,4 +1,4 @@
-name: Update README
+name: Update README & Terminal
 
 on:
   push:
@@ -15,67 +15,65 @@ permissions:
 jobs:
   update-content:
     runs-on: ubuntu-latest
-    env:
-      USERNAME: "𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ"
-      CURRENT_TIME: "${{ github.event.head_commit.timestamp || github.event.workflow_run.created_at || github.run_attempt }}"
     steps:
+      # Checkout repo
       - uses: actions/checkout@v4
         with:
           fetch-depth: 1
 
-      # Force create and track dist directory despite gitignore
-      - name: Create and track dist directory
+      # Force create and track dist directory
+      - name: Create dist directory
         run: |
           mkdir -p dist
-          git add -f dist
+          git add -f dist || true
 
       # Generate GitHub Snake
-      - name: Generate the Snake
+      - name: Generate Snake
         uses: Platane/snk@v3
         with:
           github_user_name: ${{ github.repository_owner }}
           outputs: |
             dist/github-snake.svg
             dist/github-snake-dark.svg?palette=github-dark
-          args: "--snake-color #ff0000 --dots-color #00ff00"
+
+      # Install system dependencies for terminal content
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update && sudo apt-get install -y \
+            figlet lolcat neofetch boxes cowsay fortune bc
 
       # Setup Node.js
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: '18'
 
-      # Install system dependencies
-      - name: Install system dependencies
-        run: |
-          sudo apt-get update && sudo apt-get install -y \
-            figlet \
-            lolcat \
-            neofetch \
-            boxes \
-            cowsay \
-            fortune \
-            bc
-
-      # Install npm packages (terminal SVG generator)
+      # Install npm packages without CI errors
       - name: Install npm packages
         run: |
-          npm install
-          sudo npm install -g terminalizer
+          if [ -f package-lock.json ]; then
+            npm ci
+          else
+            npm install
+          fi
+          sudo npm install -g terminalizer || true
 
-      # Generate Terminal & README content
-      - name: Generate Terminal and README
+      # Run the merged terminal + README script
+      - name: Generate Terminal & README
+        env:
+          CURRENT_TIME: ${{ github.event.workflow_run.updated_at }}
+          USERNAME: "𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ"
         run: |
           chmod +x ./scripts/update-terminal.sh
           ./scripts/update-terminal.sh
 
-      # Commit & push changes
-      - name: Commit and Push Changes
+      # Commit & Push changes if any
+      - name: Commit & Push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config --local user.name "Thugger069"
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -f dist/github-snake*.svg README.md
-          git commit -m "🐍 Generate Snake & 📟 Update README (${CURRENT_TIME})" || echo "No changes to commit"
+          git add -f dist/github-snake*.svg README.md || true
+          git commit -m "🐍 Update Snake & 📟 Terminal README (${GITHUB_RUN_ID})" || echo "No changes to commit"
           git push
