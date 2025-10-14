@@ -1,150 +1,117 @@
-#!/usr/bin/env bash
-#
-# ╔════════════════════════════════════════════════════════════════╗
-# ║   Q.R.I.P ALL-IN V2: Quantum README Auto-Regenerator ⚡         ║
-# ║   Thugger069 / 𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ                                  ║
-# ║   Animated terminal, snake, particles, dynamic quotes, repos   ║
-# ╚════════════════════════════════════════════════════════════════╝
-#
+#!/bin/bash
 set -e
 
-echo ""
-echo "🜂 Initializing Q.R.I.P V2 Regeneration Sequence..."
-echo "──────────────────────────────────────────────"
+# ───────────────────────────────
+# QRLP ALL-IN: Update Terminal + README + Particle Field
+# ───────────────────────────────
 
-ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-ASSETS_DIR="$ROOT_DIR/assets"
-DIST_DIR="$ROOT_DIR/dist"
-SCRIPTS_DIR="$ROOT_DIR/scripts"
-LOG_FILE="$ROOT_DIR/logs/readme_update.log"
+USERNAME=${USERNAME:-"𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ"}
+CURRENT_TIME=${CURRENT_TIME:-"$(date -u +"%Y-%m-%d %H:%M:%S")"}
 
-mkdir -p "$ASSETS_DIR" "$DIST_DIR" "$SCRIPTS_DIR" "$(dirname "$LOG_FILE")"
+TERMINAL_FILE="terminal_output.txt"
+PARTICLES_FILE="assets/particles.svg"
 
-# ╭───────────────────────────────╮
-# │ STEP 1: Generate Neon Palette │
-# ╰───────────────────────────────╯
-COLORS=(
-  "#39FF14,#00FFF0"   # green → cyan
-  "#FF00FF,#FFDD00"   # magenta → yellow
-  "#00FFFF,#FF00FF"   # cyan → magenta
-  "#FF4D00,#39FF14"   # orange → green
-)
-RANDOM_INDEX=$(( RANDOM % ${#COLORS[@]} ))
-PALETTE="${COLORS[$RANDOM_INDEX]}"
-COLOR1=$(echo "$PALETTE" | cut -d',' -f1)
-COLOR2=$(echo "$PALETTE" | cut -d',' -f2)
-echo "🎨 Selected neon palette → $COLOR1 → $COLOR2"
+mkdir -p assets dist
 
-# ╭───────────────────────────────╮
-# │ STEP 2: Generate Dynamic Quote│
-# ╰───────────────────────────────╯
-QUOTES=(
-  "Walking the Path Where Bits & Dreams Intersect."
-  "Code, Chaos & Quantum Creativity."
-  "Automate Everything, Question Nothing."
-  "In Neon We Trust, In Code We Live."
-)
-RANDOM_QUOTE=${QUOTES[$((RANDOM % ${#QUOTES[@]}))]}
+# ───────────────────────────────
+# Function: Generate random load average
+# ───────────────────────────────
+generate_load_avg() {
+    if ! command -v bc &> /dev/null; then
+        echo "0.50 0.60 0.40"
+        return
+    fi
+    printf "%.2f %.2f %.2f" \
+        "$(echo "scale=2; ${RANDOM}/32767 + 0.1" | bc)" \
+        "$(echo "scale=2; ${RANDOM}/32767 + 0.2" | bc)" \
+        "$(echo "scale=2; ${RANDOM}/32767 + 0.1" | bc)"
+}
 
-cat > "$ASSETS_DIR/quote.svg" <<EOF
-<svg width="600" height="80" xmlns="http://www.w3.org/2000/svg">
-  <rect width="600" height="80" fill="transparent"/>
-  <text x="50%" y="50%" fill="$COLOR1" font-size="20" text-anchor="middle" alignment-baseline="middle" font-family="monospace">
-    "$RANDOM_QUOTE"
-  </text>
-  <text x="50%" y="70%" fill="$COLOR2" font-size="14" text-anchor="middle" alignment-baseline="middle" font-family="monospace">
-    — 𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ
-  </text>
-</svg>
+# ───────────────────────────────
+# Generate terminal simulation
+# ───────────────────────────────
+LOAD_AVG=$(generate_load_avg)
+
+cat > "$TERMINAL_FILE" << EOF
+Last login: ${CURRENT_TIME} on ttys000
+${USERNAME}@github ~ % uptime
+${CURRENT_TIME} up 02:51, 1 user, load average: ${LOAD_AVG}
+
+${USERNAME}@github ~ % ls -la Projects/
+total 40
+drwxr-xr-x  8 ${USERNAME}  staff  256 May 07 02:51 .
+drwxr-xr-x  5 ${USERNAME}  staff  160 May 07 02:51 ..
+drwxr-xr-x  7 ${USERNAME}  staff  224 May 07 02:51 DevOps
+drwxr-xr-x  6 ${USERNAME}  staff  192 May 07 02:51 OpenSource
+drwxr-xr-x  5 ${USERNAME}  staff  160 May 07 02:51 Scripts
+-rw-r--r--  1 ${USERNAME}  staff  925 May 07 02:51 TODO.md
+
+${USERNAME}@github ~ % cat Projects/TODO.md
+# ℭ𝔲𝔯𝔯𝔢𝔫𝔱 𝔓𝔯𝔬𝔧𝔢𝔠𝔱𝔰 📋
+
+→ Automating deployment workflows
+→ Contributing to open source
+→ Learning Kubernetes
+→ Building shell script utilities
+
+${USERNAME}@github ~ %
 EOF
 
-# ╭───────────────────────────────────────╮
-# │ STEP 3: Generate Particle Field       │
-# ╰───────────────────────────────────────╯
-cat > "$ASSETS_DIR/particles.svg" <<EOF
+# ───────────────────────────────
+# Generate particle SVG
+# ───────────────────────────────
+PARTICLE_COLOR1="#39FF14"
+PARTICLE_COLOR2="#00FFF0"
+
+cat > "$PARTICLES_FILE" << EOF
 <svg width="800" height="160" xmlns="http://www.w3.org/2000/svg">
-  <rect width="800" height="160" fill="#000"/>
-  <g fill="$COLOR1">
-    $(for i in $(seq 1 60); do
-      X=$(( RANDOM % 800 ))
-      Y=$(( RANDOM % 160 ))
-      echo "<circle cx='$X' cy='$Y' r='1.5' opacity='0.$((RANDOM % 8 + 2))'/>"
-    done)
+  <rect width="800" height="160" fill="#000000"/>
+  <g fill="$PARTICLE_COLOR1">
+EOF
+
+# Map dots from terminal content to particles
+while read -r line; do
+    for (( i=0; i<${#line}; i++ )); do
+        char="${line:$i:1}"
+        if [[ "$char" == "•" ]]; then
+            X=$(( RANDOM % 800 ))
+            Y=$(( RANDOM % 160 ))
+            OPACITY=$(awk -v min=0.2 -v max=0.8 'BEGIN{srand(); print min+rand()*(max-min)}')
+            echo "<circle cx='$X' cy='$Y' r='1.5' opacity='$OPACITY'/>" >> "$PARTICLES_FILE"
+        fi
+    done
+done < "$TERMINAL_FILE"
+
+cat >> "$PARTICLES_FILE" << EOF
   </g>
 </svg>
 EOF
 
-# ╭────────────────────────────────────────────╮
-# │ STEP 4: Generate Animated Terminal SVG     │
-# ╰────────────────────────────────────────────╯
-TERMINAL_FILE="$ASSETS_DIR/terminal.svg"
-cat > "$TERMINAL_FILE" <<EOF
-<svg width="700" height="120" xmlns="http://www.w3.org/2000/svg">
-  <rect width="700" height="120" rx="8" ry="8" fill="#0d0d0d" stroke="$COLOR2" stroke-width="1"/>
-  <text x="50%" y="50%" fill="$COLOR1" font-size="22" text-anchor="middle" alignment-baseline="middle" font-family="monospace">
-    > Initializing Quantum Matrix Shell...
-  </text>
-  <text x="50%" y="75%" fill="$COLOR2" font-size="16" text-anchor="middle" alignment-baseline="middle" font-family="monospace">
-    ꚩꚶꛎꛘ𖢧ꚶ𖢑 𖦪𖤢ꛎꚳ𖢑 ⚡ ACTIVE
-  </text>
-</svg>
-EOF
-
-# ╭────────────────────────────────────────────╮
-# │ STEP 5: Generate Neon Contribution Snake   │
-# ╰────────────────────────────────────────────╯
-npx --yes snk@0.1.2 generate \
-  --user "$GITHUB_ACTOR" \
-  --output "$DIST_DIR/github-snake.svg" \
-  --palette "$COLOR1,$COLOR2" \
-  || echo "⚠️ Snake generation skipped (local run mode)."
-
-npx --yes snk@0.1.2 generate \
-  --user "$GITHUB_ACTOR" \
-  --output "$DIST_DIR/github-snake-dark.svg" \
-  --palette "$COLOR1,$COLOR2" \
-  --palette-dark \
-  || echo "⚠️ Dark snake generation skipped (local run mode)."
-
-# ╭────────────────────────────────────────────╮
-# │ STEP 6: Generate README.md                 │
-# ╰────────────────────────────────────────────╯
-CURRENT_TIME=$(date -u +"%Y-%m-%d %H:%M:%S")
-cat > README.md <<EOF
+# ───────────────────────────────
+# Generate README.md
+# ───────────────────────────────
+cat > README.md << EOF
 <div align="center">
-  <h2>👨‍💻 𖢧ꛅꚶꚽꚽ𖤢𖦪'ꕷ 𖦪𖤢ꛎꚳ𖢑</h2>
+  <h2>👨‍💻 ${USERNAME}</h2>
 
-  <a href="https://git.io/typing-svg">
-    <img src="https://readme-typing-svg.herokuapp.com?font=Ubuntu+Mono&duration=3000&pause=1000&color=00FF9C&center=true&vCenter=true&width=435&lines=ℌ𝔢𝔩𝔩𝔬+𝔗𝔥𝔢𝔯𝔢;ℑ’𝔪+𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ;𝔚𝔢𝔩𝔠𝔬𝔪ｅ+𝔱𝔬+𝔪𝔶+𝔯𝔢𝔞𝔩𝔪" alt="Typing SVG" />
-  </a>
-</div>
-
-<div align="center">
   <pre class="terminal">
-$(cat <<TERMINAL
-Last login: ${CURRENT_TIME} on ttys000
-${CURRENT_TIME} up 02:51, 1 user, load average: 0.42 0.55 0.38
-𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ@github ~ %
-TERMINAL
-)
+$(cat $TERMINAL_FILE)
   </pre>
-</div>
 
-<!-- START SNAKE -->
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="dist/github-snake-dark.svg?ts=${CURRENT_TIME//:/%3A}" />
-  <source media="(prefers-color-scheme: light)" srcset="dist/github-snake.svg?ts=${CURRENT_TIME//:/%3A}" />
-  <img alt="Github Contribution Snake Animation" src="dist/github-snake.svg?ts=${CURRENT_TIME//:/%3A}" />
-</picture>
-<!-- END SNAKE -->
+  <h3>🌌 Quantum Particle Field</h3>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="$PARTICLES_FILE"/>
+    <source media="(prefers-color-scheme: light)" srcset="$PARTICLES_FILE"/>
+    <img alt="Dynamic Particle Field" src="$PARTICLES_FILE"/>
+  </picture>
 
-<div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=100&section=footer"/>
-</div>
-
-<div align="center">
-  <sub>Last Updated: ${CURRENT_TIME} UTC</sub>
+  <div align="center">
+    <sub>Last Updated: ${CURRENT_TIME} UTC</sub>
+  </div>
 </div>
 EOF
 
-echo "✅ Q.R.I.P ALL-IN V2 README regeneration complete at $(date -u)" | tee -a "$LOG_FILE"
+# Clean up
+rm -f "$TERMINAL_FILE"
+
+echo "✅ README.md updated with dynamic terminal + particle field."
