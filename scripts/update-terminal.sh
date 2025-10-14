@@ -1,37 +1,38 @@
-#!/bin/bash
+#!/usr/bin/env bash
+#
+# ──────────────────────────────────────────────
+# Q.R.I.P ALL-IN: Unified README & Terminal Updater
+# Handles terminal content, snake animations, and README
+# ──────────────────────────────────────────────
+
 set -euo pipefail
 
-# ================================
-# 🜂 Q.R.I.P ALL-IN Update Terminal Script
-# ================================
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+DIST_DIR="$ROOT_DIR/dist"
+ASSETS_DIR="$ROOT_DIR/assets"
+LOG_FILE="$ROOT_DIR/logs/update_terminal.log"
+
+mkdir -p "$DIST_DIR" "$ASSETS_DIR" "$(dirname "$LOG_FILE")"
 
 # Environment defaults
-USERNAME=${USERNAME:-"𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ"}
-username=${username:-"thugger069"}
-CURRENT_TIME=${CURRENT_TIME:-$(date -u +"%Y-%m-%d %H:%M:%S")}
+USERNAME="${USERNAME:-𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ}"
+username="${username:-thugger069}"
+CURRENT_TIME="${CURRENT_TIME:-$(date -u '+%Y-%m-%d %H:%M:%S')}"
 
-# ------------------------
-# Helper: Generate random load average
-# ------------------------
+# Generate random load average
 generate_load_avg() {
-    if ! command -v bc &> /dev/null; then
-        echo "0.50 0.60 0.40"
-        return
-    fi
-    printf "%.2f %.2f %.2f" \
-        "$(echo "scale=2; ${RANDOM}/32767 + 0.1" | bc)" \
-        "$(echo "scale=2; ${RANDOM}/32767 + 0.2" | bc)" \
-        "$(echo "scale=2; ${RANDOM}/32767 + 0.1" | bc)"
+  printf "%.2f %.2f %.2f" \
+    "$(awk -v seed=$RANDOM 'BEGIN{srand(seed); print 0.1+rand()*0.9}')" \
+    "$(awk -v seed=$RANDOM 'BEGIN{srand(seed); print 0.2+rand()*0.8}')" \
+    "$(awk -v seed=$RANDOM 'BEGIN{srand(seed); print 0.1+rand()*0.9}')"
 }
 
-# ------------------------
-# Generate Terminal Content
-# ------------------------
+# Generate terminal content
 generate_terminal_content() {
-    local LOAD_AVG
-    LOAD_AVG=$(generate_load_avg)
-
-    cat > terminal_output.txt << EOF
+  local LOAD_AVG
+  LOAD_AVG=$(generate_load_avg)
+  
+  cat > "$DIST_DIR/terminal_output.txt" <<EOF
 Last login: ${CURRENT_TIME} on ttys000
 ${USERNAME}@github ~ % uptime
 ${CURRENT_TIME} up 02:51, 1 user, load average: ${LOAD_AVG}
@@ -57,83 +58,65 @@ ${USERNAME}@github ~ %
 EOF
 }
 
-# ------------------------
-# Generate README.md
-# ------------------------
-generate_readme() {
-    mkdir -p assets dist
+# Generate snake animations for light & dark mode
+generate_snake() {
+  if ! command -v npx &>/dev/null; then
+    echo "⚠️ npx not found, skipping snake generation."
+    return
+  fi
 
-    cat > README.md << EOF
+  echo "🐍 Generating snake animations..."
+  npx --yes snk@0.1.2 generate \
+    --user "$username" \
+    --output "$DIST_DIR/github-snake.svg" \
+    --palette "#39FF14,#FF00FF" || echo "⚠️ Light snake skipped."
+
+  npx --yes snk@0.1.2 generate \
+    --user "$username" \
+    --output "$DIST_DIR/github-snake-dark.svg" \
+    --palette "#00FFFF,#FF00FF" || echo "⚠️ Dark snake skipped."
+}
+
+# Generate README
+generate_readme() {
+  cat > "$ROOT_DIR/README.md" <<EOF
 <div align="center">
-  <h2>👨‍💻 𖢧ꛅꚶꚽꚽ𖤢𖦪'ꕷ 𖦪𖤢ꛎꚳ𖢑</h2>
+  <h2>👨‍💻 $USERNAME</h2>
 
   [![Profile Views](https://komarev.com/ghpvc/?username=${username}&color=blueviolet&style=flat-square)](https://github.com/${username})
 
-  <a href="https://git.io/typing-svg">
-    <img src="https://readme-typing-svg.herokuapp.com?font=Ubuntu+Mono&duration=3000&pause=1000&color=00FF9C&center=true&vCenter=true&width=435&lines=ℌ𝔢𝔩𝔩𝔬+𝔗𝔥𝔢𝔯𝔢;ℑ’𝔪+${USERNAME};𝔚𝔢𝔩𝔠𝔬𝔪ｅ+𝔱𝔬+𝔪𝔶+𝔯𝔢𝔞𝔩𝔪;𝔖𝔥𝔢𝔩𝔩+𝔖𝔠𝔯𝔦𝔭𝔱+𝔈𝔫𝔱𝔥𝔲𝔰𝔦𝔞𝔰𝔱;𝔏𝔦𝔫𝔲𝔵+%26+𝔇𝔢𝔳𝔒𝔭𝔰+𝔈𝔵𝔭𝔩𝔬𝔯𝔢𝔯;𝔒𝔭𝔢𝔫+𝔖𝔬𝔲𝔯𝔠𝔢+ℭ𝔬𝔫𝔱𝔯𝔦𝔟𝔲𝔱𝔬𝔯;𝔄𝔩𝔴𝔞𝔶𝔰+𝔏𝔢𝔞𝔯𝔫𝔦𝔫𝔤+%F0%9F%92%A1" alt="Typing SVG" />
-  </a>
-</div>
+  <pre class="terminal">
+$(cat "$DIST_DIR/terminal_output.txt")
+  </pre>
 
-<pre class="terminal">
-$(cat terminal_output.txt)
-</pre>
+  <!-- START SNAKE -->
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="dist/github-snake-dark.svg?ts=${CURRENT_TIME//:/%3A}" />
+    <source media="(prefers-color-scheme: light)" srcset="dist/github-snake.svg?ts=${CURRENT_TIME//:/%3A}" />
+    <img alt="Github Snake Animation" src="dist/github-snake.svg?ts=${CURRENT_TIME//:/%3A}" />
+  </picture>
+  <!-- END SNAKE -->
 
-<!-- Snake animation -->
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="dist/github-snake-dark.svg?ts=${CURRENT_TIME//:/%3A}" />
-  <source media="(prefers-color-scheme: light)" srcset="dist/github-snake.svg?ts=${CURRENT_TIME//:/%3A}" />
-  <img alt="Github Contribution Snake Animation" src="dist/github-snake.svg?ts=${CURRENT_TIME//:/%3A}" />
-</picture>
-
-<div align="center">
-  <sub>Last Updated: ${CURRENT_TIME} UTC</sub>
+  <div align="center">
+    <sub>Last Updated: ${CURRENT_TIME} UTC</sub>
+  </div>
 </div>
 EOF
 }
 
-# ------------------------
-# Install dependencies safely
-# ------------------------
-install_dependencies() {
-    echo "Installing system packages..."
-    sudo apt-get update
-    sudo apt-get install -y figlet lolcat neofetch boxes cowsay fortune bc || true
-
-    echo "Installing npm packages..."
-    if [ -f package-lock.json ]; then
-        npm ci
-    else
-        npm install
-    fi
-
-    sudo npm install -g terminalizer || echo "Terminalizer already installed"
+# Force git to track dist/ even if in .gitignore
+track_dist() {
+  git add -f "$DIST_DIR" || echo "⚠️ Failed to track dist directory"
 }
 
-# ------------------------
-# Generate GitHub Snake
-# ------------------------
-generate_snake() {
-    echo "Generating GitHub Snake..."
-    if ! command -v snk &> /dev/null; then
-        echo "Installing Platane/snk CLI..."
-        npm install -g snk
-    fi
-    snk --github-user-name "$username" \
-        --outputs "dist/github-snake.svg" "dist/github-snake-dark.svg?palette=github-dark" \
-        --color-snake "#ff0000" \
-        --color-dots "#00ff00"
-}
-
-# ------------------------
-# Main execution
-# ------------------------
+# Main
 main() {
-    install_dependencies
-    generate_terminal_content
-    generate_snake
-    generate_readme
-    rm -f terminal_output.txt
-    echo "✅ README and terminal content updated successfully!"
+  echo "🚀 Starting Q.R.I.P Terminal & README update..."
+  generate_terminal_content
+  generate_snake
+  generate_readme
+  track_dist
+  echo "✅ Update complete at ${CURRENT_TIME}" | tee -a "$LOG_FILE"
 }
 
 main
