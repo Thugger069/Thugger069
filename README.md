@@ -164,3 +164,16 @@ f6e5d4c3b2a1   redis:7-alpine  "docker-entrypoint.s…"  Up 2 hours   6379/tcp  
     <sub>Made with ❤️ and 🐧 using Bash | Automatically updated via GitHub Actions</sub>
   </div>
 </div>
+
+<!-- Terminal Section -->
+<div align="center">
+  <h2>🎮 Live Terminal</h2>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="dist/terminal.svg">
+    <source media="(prefers-color-scheme: light)" srcset="dist/terminal-light.svg">
+    <img src="dist/terminal.svg" alt="Live Terminal Output" width="100%" style="border-radius: 10px; border: 1px solid #2a2b3a; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+  </picture>
+  <br>
+  <sub><em>Last updated: 2025-10-15 01:44:19 UTC</em></sub>
+</div>
+<!-- End Terminal Section -->
