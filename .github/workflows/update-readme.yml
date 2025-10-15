@@ -9,7 +9,7 @@ on:
       skip-svg:
         description: 'Skip SVG generation (use existing files)'
         required: false
-        default: 'false'
+        default: false
         type: boolean
   # Run when changes are pushed to main branch
   push:
@@ -31,7 +31,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '18'
-          cache: 'npm'
+          # Removed cache to avoid lock file warning since we don't have package.json
 
       - name: Debug information
         run: |
@@ -39,6 +39,7 @@ jobs:
           echo "🎯 Running on branch: ${{ github.ref }}"
           echo "👤 Triggered by: ${{ github.actor }}"
           echo "📁 Workspace: ${{ github.workspace }}"
+          echo "📝 Current directory contents:"
           ls -la
 
       - name: Create necessary directories
@@ -54,6 +55,7 @@ jobs:
           if [ -f "dist/terminal.svg" ]; then
             echo "terminal-exists=true" >> $GITHUB_OUTPUT
             echo "📄 Existing terminal.svg found"
+            echo "📏 Size: $(wc -c < dist/terminal.svg) bytes"
           else
             echo "terminal-exists=false" >> $GITHUB_OUTPUT
             echo "❌ No existing terminal.svg found"
@@ -72,31 +74,37 @@ jobs:
           const GITHUB_USERNAME = "Thugger069";
           const CURRENT_TIME = new Date().toUTCString().replace(/GMT/, 'UTC');
 
+          // Generate random load averages
+          const load1 = (Math.random() * 0.8 + 0.1).toFixed(2);
+          const load2 = (Math.random() * 0.8 + 0.2).toFixed(2);
+          const load3 = (Math.random() * 0.8 + 0.1).toFixed(2);
+          const LOAD_AVG = `${load1} ${load2} ${load3}`;
+
           // Enhanced terminal content
           const lines = [
-            `Last login: \${CURRENT_TIME} on ttys001`,
-            `\${DISPLAY_NAME}@github ~ % whoami`,
-            `\${DISPLAY_NAME}`,
+            `Last login: ${CURRENT_TIME} on ttys001`,
+            `${DISPLAY_NAME}@github ~ % whoami`,
+            `${DISPLAY_NAME}`,
             '',
-            `\${DISPLAY_NAME}@github ~ % uname -a`,
+            `${DISPLAY_NAME}@github ~ % uname -a`,
             `Darwin github-pro 22.5.0 Darwin Kernel Version 22.5.0: x86_64`,
             '',
-            `\${DISPLAY_NAME}@github ~ % uptime`,
-            `\${CURRENT_TIME} up 14 days, 2:51, 1 user, load averages: 0.56 0.62 0.48`,
+            `${DISPLAY_NAME}@github ~ % uptime`,
+            `${CURRENT_TIME} up 14 days, 2:51, 1 user, load averages: ${LOAD_AVG}`,
             '',
-            `\${DISPLAY_NAME}@github ~ % ls -la Projects/`,
+            `${DISPLAY_NAME}@github ~ % ls -la Projects/`,
             `total 48`,
-            `drwxr-xr-x   9 \${DISPLAY_NAME}  staff   288 Jun 15 10:30 .`,
-            `drwxr-xr-x   6 \${DISPLAY_NAME}  staff   192 Jun 15 10:30 ..`,
-            `drwxr-xr-x   8 \${DISPLAY_NAME}  staff   256 Jun 15 10:30 .git`,
-            `-rw-r--r--   1 \${DISPLAY_NAME}  staff   113 Jun 15 10:30 .gitignore`,
-            `drwxr-xr-x   7 \${DISPLAY_NAME}  staff   224 Jun 15 10:30 DevOps`,
-            `drwxr-xr-x   6 \${DISPLAY_NAME}  staff   192 Jun 15 10:30 OpenSource`,
-            `drwxr-xr-x   5 \${DISPLAY_NAME}  staff   160 Jun 15 10:30 Scripts`,
-            `-rw-r--r--   1 \${DISPLAY_NAME}  staff  1024 Jun 15 10:30 README.md`,
-            `-rw-r--r--   1 \${DISPLAY_NAME}  staff   925 Jun 15 10:30 TODO.md`,
+            `drwxr-xr-x   9 ${DISPLAY_NAME}  staff   288 Jun 15 10:30 .`,
+            `drwxr-xr-x   6 ${DISPLAY_NAME}  staff   192 Jun 15 10:30 ..`,
+            `drwxr-xr-x   8 ${DISPLAY_NAME}  staff   256 Jun 15 10:30 .git`,
+            `-rw-r--r--   1 ${DISPLAY_NAME}  staff   113 Jun 15 10:30 .gitignore`,
+            `drwxr-xr-x   7 ${DISPLAY_NAME}  staff   224 Jun 15 10:30 DevOps`,
+            `drwxr-xr-x   6 ${DISPLAY_NAME}  staff   192 Jun 15 10:30 OpenSource`,
+            `drwxr-xr-x   5 ${DISPLAY_NAME}  staff   160 Jun 15 10:30 Scripts`,
+            `-rw-r--r--   1 ${DISPLAY_NAME}  staff  1024 Jun 15 10:30 README.md`,
+            `-rw-r--r--   1 ${DISPLAY_NAME}  staff   925 Jun 15 10:30 TODO.md`,
             '',
-            `\${DISPLAY_NAME}@github ~ % cat Projects/TODO.md`,
+            `${DISPLAY_NAME}@github ~ % cat Projects/TODO.md`,
             `# 📋 Current Projects`,
             `## 🚀 Active Development`,
             `- [ ] Kubernetes cluster autoscaling`,
@@ -104,12 +112,16 @@ jobs:
             `- [ ] CI/CD pipeline optimization`,
             `- [ ] Monitoring stack with Prometheus & Grafana`,
             '',
-            `\${DISPLAY_NAME}@github ~ % docker ps`,
+            `## 🔄 Maintenance`,
+            `- [ ] Update Docker container security`,
+            `- [ ] Backup strategy implementation`,
+            '',
+            `${DISPLAY_NAME}@github ~ % docker ps`,
             `CONTAINER ID   IMAGE           COMMAND                  STATUS       PORTS     NAMES`,
             `a1b2c3d4e5f6   nginx:alpine    "nginx -g 'daemon off;" Up 2 hours   80/tcp    webserver`,
             `f6e5d4c3b2a1   redis:7-alpine  "docker-entrypoint.s…"  Up 2 hours   6379/tcp  cache`,
             '',
-            `\${DISPLAY_NAME}@github ~ %`
+            `${DISPLAY_NAME}@github ~ %`
           ];
 
           // Cyberpunk theme
@@ -128,10 +140,10 @@ jobs:
           const CHAR_WIDTH = 8;
           const width = Math.max(800, maxLineLength * CHAR_WIDTH + PADDING * 2);
 
-          const svgDark = `<svg width="\${width}" height="\${height}" xmlns="http://www.w3.org/2000/svg">
+          const svgDark = `<svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="\${theme.background}" />
+                <stop offset="0%" stop-color="${theme.background}" />
                 <stop offset="100%" stop-color="#16161e" />
               </linearGradient>
               <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
@@ -143,34 +155,38 @@ jobs:
               </filter>
             </defs>
             
+            <!-- Terminal window -->
             <rect width="100%" height="100%" rx="12" ry="12" fill="url(#bgGradient)" 
-                  stroke="\${theme.border}" stroke-width="2" filter="url(#glow)"/>
+                  stroke="${theme.border}" stroke-width="2" filter="url(#glow)"/>
             
-            <rect x="0" y="0" width="100%" height="30" rx="12" ry="12" fill="\${theme.headerBg}" 
-                  stroke="\${theme.border}" stroke-width="2"/>
+            <!-- Terminal header -->
+            <rect x="0" y="0" width="100%" height="30" rx="12" ry="12" fill="${theme.headerBg}" 
+                  stroke="${theme.border}" stroke-width="2"/>
             <circle cx="15" cy="15" r="4" fill="#ff5f56"/>
             <circle cx="30" cy="15" r="4" fill="#ffbd2e"/>
             <circle cx="45" cy="15" r="4" fill="#27ca3f"/>
-            <text x="60" y="18" style="font-family: 'Monaco', 'Consolas', monospace; font-size: 12px; fill: \${theme.text}; font-weight: bold;">\${DISPLAY_NAME}@github: ~</text>
+            <text x="60" y="18" style="font-family: 'Monaco', 'Consolas', monospace; font-size: 12px; fill: ${theme.text}; font-weight: bold;">${DISPLAY_NAME}@github: ~</text>
             
             <style>
               .line { 
                 font-family: 'Monaco', 'Consolas', 'Courier New', monospace; 
                 font-size: 14px; 
-                fill: \${theme.text};
+                fill: ${theme.text};
                 white-space: pre;
               }
               .accent { 
-                fill: \${theme.accent};
+                fill: ${theme.accent};
                 font-weight: bold;
               }
             </style>
             
-            \${lines.map((line, idx) => 
-              `<text x="\${PADDING}" y="\${PADDING + 30 + idx * LINE_HEIGHT}" class="line">\${line}</text>`
+            <!-- Terminal content -->
+            ${lines.map((line, idx) => 
+              `<text x="${PADDING}" y="${PADDING + 30 + idx * LINE_HEIGHT}" class="line">${line}</text>`
             ).join('')}
             
-            <text x="\${PADDING}" y="\${PADDING + 30 + (lines.length - 1) * LINE_HEIGHT + 4}" 
+            <!-- Blinking cursor -->
+            <text x="${PADDING}" y="${PADDING + 30 + (lines.length - 1) * LINE_HEIGHT + 4}" 
                   class="accent">█
               <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite" />
             </text>
@@ -192,26 +208,25 @@ jobs:
             .replace(new RegExp(theme.border, 'g'), lightTheme.border)
             .replace(new RegExp(theme.headerBg, 'g'), lightTheme.headerBg);
 
-          fs.writeFileSync(path.join(DIST_DIR, 'terminal.svg'), svgDark);
-          fs.writeFileSync(path.join(DIST_DIR, 'terminal-light.svg'), svgLight);
-
-          console.log("✅ Enhanced terminal SVGs generated!");
-          console.log("📁 Files: terminal.svg, terminal-light.svg");
+          try {
+            fs.writeFileSync(path.join(DIST_DIR, 'terminal.svg'), svgDark);
+            fs.writeFileSync(path.join(DIST_DIR, 'terminal-light.svg'), svgLight);
+            console.log("✅ Enhanced terminal SVGs generated!");
+            console.log("📁 Files: terminal.svg, terminal-light.svg");
+            console.log(`📏 Dimensions: ${width}x${height}px`);
+          } catch (error) {
+            console.error("❌ Error generating SVG files:", error);
+            process.exit(1);
+          }
           EOF
 
-          echo "📝 SVG generator script created"
-
-      - name: Make scripts executable
-        run: |
-          chmod +x scripts/update-terminal.sh || true
-          chmod +x scripts/*.js || true
-          echo "🔧 Scripts made executable"
+          echo "📝 SVG generator script created successfully"
 
       - name: Generate terminal SVGs
         id: generate-svg
         run: |
-          if [ "${{ inputs.skip-svg }}" = "true" ]; then
-            echo "⏭️ Skipping SVG generation as requested"
+          if [ "${{ inputs.skip-svg }}" = "true" ] && [ -f "dist/terminal.svg" ]; then
+            echo "⏭️ Skipping SVG generation as requested, using existing files"
             echo "svg-generated=false" >> $GITHUB_OUTPUT
           else
             echo "🎨 Generating terminal SVGs..."
@@ -220,12 +235,9 @@ jobs:
               echo "svg-generated=true" >> $GITHUB_OUTPUT
               
               # Display file info
-              echo "📄 Generated files:"
-              ls -la dist/terminal*.svg
+              echo "📄 Generated files in dist/:"
+              ls -la dist/
               
-              # Verify SVG content
-              echo "🔍 SVG preview (first few lines):"
-              head -5 dist/terminal.svg
             else
               echo "❌ SVG generation failed"
               echo "svg-generated=false" >> $GITHUB_OUTPUT
@@ -243,171 +255,199 @@ jobs:
           GITHUB_SNAKE_LIGHT="https://raw.githubusercontent.com/Thugger069/Thugger069/main/dist/github-snake.svg"
           CURRENT_TIME=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
           
-          # Check if README exists
-          if [ ! -f "README.md" ]; then
+          # Check if README exists and has content
+          if [ ! -f "README.md" ] || [ ! -s "README.md" ]; then
             echo "📝 Creating new README.md..."
             cat > README.md << 'README_EOF'
-          <div align="center">
-            <h1>👨‍💻 ɬɧɛ ɠıɬƈɧ</h1>
-            <h3>DevOps Engineer & Open Source Enthusiast</h3>
+<div align="center">
+  <h1>👨‍💻 ɬɧɛ ɠıɬƈɧ</h1>
+  <h3>DevOps Engineer & Open Source Enthusiast</h3>
 
-            <!-- Badges -->
-            <p align="center">
-              <a href="https://github.com/Thugger069">
-                <img src="https://komarev.com/ghpvc/?username=Thugger069&color=blueviolet&style=for-the-badge" alt="Profile Views" />
-              </a>
-              <a href="https://github.com/Thugger069?tab=followers">
-                <img src="https://img.shields.io/github/followers/Thugger069?color=green&logo=github&style=for-the-badge" alt="GitHub Followers" />
-              </a>
-            </p>
-          README_EOF
+  <!-- Badges -->
+  <p align="center">
+    <a href="https://github.com/Thugger069">
+      <img src="https://komarev.com/ghpvc/?username=Thugger069&color=blueviolet&style=for-the-badge" alt="Profile Views" />
+    </a>
+    <a href="https://github.com/Thugger069?tab=followers">
+      <img src="https://img.shields.io/github/followers/Thugger069?color=green&logo=github&style=for-the-badge" alt="GitHub Followers" />
+    </a>
+  </p>
+README_EOF
           fi
           
-          # Add or update terminal section
-          if grep -q "<!-- Terminal Display -->" README.md; then
+          # Create terminal section
+          TERMINAL_SECTION="<!-- Terminal Section -->
+  <div align=\"center\">
+    <h2>🎮 Live Terminal</h2>
+    <picture>
+      <source media=\"(prefers-color-scheme: dark)\" srcset=\"dist/terminal.svg\">
+      <source media=\"(prefers-color-scheme: light)\" srcset=\"dist/terminal-light.svg\">
+      <img src=\"dist/terminal.svg\" alt=\"Live Terminal Output\" width=\"100%\" style=\"border-radius: 10px; border: 1px solid #2a2b3a; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);\">
+    </picture>
+    <br>
+    <sub><em>Last updated: $CURRENT_TIME</em></sub>
+  </div>"
+          
+          # Check if terminal section exists and update accordingly
+          if grep -q "<!-- Terminal Section -->" README.md; then
             echo "🔄 Updating existing terminal section..."
-            # Use sed to update the terminal section
-            sed -i '/<!-- Terminal Display -->/,/<!-- End Terminal Display -->/c\
-          <!-- Terminal Display -->\
-          <div align="center">\
-            <h3>🎮 Live Terminal</h3>\
-            <picture>\
-              <source media="(prefers-color-scheme: dark)" srcset="dist/terminal.svg">\
-              <source media="(prefers-color-scheme: light)" srcset="dist/terminal-light.svg">\
-              <img src="dist/terminal.svg" alt="Live Terminal Output" width="100%" style="border-radius: 10px; border: 1px solid #2a2b3a; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">\
-            </picture>\
-            <br>\
-            <sub><em>Last updated: '"$CURRENT_TIME"'</em></sub>\
-          </div>\
-          <!-- End Terminal Display -->' README.md
+            # Create temporary file for processing
+            awk -v new_terminal="$TERMINAL_SECTION" '
+              /<!-- Terminal Section -->/ { printing=1; print new_terminal; next }
+              /<!-- End Terminal Section -->/ { printing=0; next }
+              !printing { print }
+            ' README.md > README.tmp && mv README.tmp README.md
           else
             echo "📝 Adding new terminal section..."
-            cat >> README.md << 'TERMINAL_EOF'
-
-          <!-- Terminal Display -->
-          <div align="center">
-            <h3>🎮 Live Terminal</h3>
-            <picture>
-              <source media="(prefers-color-scheme: dark)" srcset="dist/terminal.svg">
-              <source media="(prefers-color-scheme: light)" srcset="dist/terminal-light.svg">
-              <img src="dist/terminal.svg" alt="Live Terminal Output" width="100%" style="border-radius: 10px; border: 1px solid #2a2b3a; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-            </picture>
-            <br>
-            <sub><em>Last updated: $CURRENT_TIME</em></sub>
-          </div>
-          <!-- End Terminal Display -->
-          TERMINAL_EOF
+            echo "" >> README.md
+            echo "$TERMINAL_SECTION" >> README.md
           fi
           
-          # Add tech stack and stats if not present
-          if ! grep -q "🛠️ Tech Stack" README.md; then
-            cat >> README.md << 'CONTENT_EOF'
+          # Add additional sections if they don't exist
+          if ! grep -q "<!-- Tech Stack -->" README.md; then
+            echo "🛠️ Adding tech stack section..."
+            cat >> README.md << 'STACK_EOF'
 
-          <!-- Tech Stack -->
-          <h3 align="center">🛠️ Tech Stack</h3>
-          <p align="center">
-            <img src="https://skillicons.dev/icons?i=linux,docker,kubernetes,aws,bash,python,go,terraform,prometheus,grafana,git,github,gitlab,vscode&perline=7" alt="Tech Stack" />
-          </p>
-
-          <!-- GitHub Stats -->
-          <h3 align="center">📊 GitHub Analytics</h3>
-          <p align="center">
-            <img height="165" src="https://github-readme-stats.vercel.app/api?username=Thugger069&show_icons=true&theme=radical&hide_border=true&bg_color=1a1b26&title_color=7dcfff&icon_color=bb9af7&text_color=c0caf5" />
-            <img height="165" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Thugger069&layout=compact&theme=radical&hide_border=true&bg_color=1a1b26&title_color=7dcfff&text_color=c0caf5" />
-          </p>
-          
-          <p align="center">
-            <img src="https://github-readme-streak-stats.herokuapp.com/?user=Thugger069&theme=radical&hide_border=true&background=1a1b26&ring=7dcfff&fire=7dcfff&currStreakLabel=7dcfff" />
-          </p>
-
-          <!-- GitHub Snake -->
-          <h3 align="center">🐍 GitHub Contributions</h3>
-          <p align="center">
-            <picture>
-              <source media="(prefers-color-scheme: dark)" srcset="$GITHUB_SNAKE_DARK" />
-              <source media="(prefers-color-scheme: light)" srcset="$GITHUB_SNAKE_LIGHT" />
-              <img alt="GitHub Contribution Snake" src="$GITHUB_SNAKE_LIGHT" width="100%" style="border-radius: 10px;" />
-            </picture>
-          </p>
-
-          <!-- Footer -->
-          <div align="center" style="margin-top: 30px;">
-            <sub>⚡ <b>Last Updated:</b> $CURRENT_TIME | 🎯 <b>Always learning, always deploying</b></sub>
-            <br>
-            <sub>Automatically updated via GitHub Actions</sub>
-          </div>
-          </div>
-          CONTENT_EOF
+  <!-- Tech Stack -->
+  <h2>🛠️ Tech Stack</h2>
+  <p align="center">
+    <img src="https://skillicons.dev/icons?i=linux,docker,kubernetes,aws,bash,python,go,terraform,prometheus,grafana,git,github,gitlab,vscode&perline=7" alt="Tech Stack" />
+  </p>
+STACK_EOF
           fi
-          
+
+          if ! grep -q "<!-- GitHub Stats -->" README.md; then
+            echo "📊 Adding GitHub stats section..."
+            cat >> README.md << 'STATS_EOF'
+
+  <!-- GitHub Stats -->
+  <h2>📊 GitHub Analytics</h2>
+  <p align="center">
+    <img height="165" src="https://github-readme-stats.vercel.app/api?username=Thugger069&show_icons=true&theme=radical&hide_border=true&bg_color=1a1b26&title_color=7dcfff&icon_color=bb9af7&text_color=c0caf5" />
+    <img height="165" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Thugger069&layout=compact&theme=radical&hide_border=true&bg_color=1a1b26&title_color=7dcfff&text_color=c0caf5" />
+  </p>
+  
+  <p align="center">
+    <img src="https://github-readme-streak-stats.herokuapp.com/?user=Thugger069&theme=radical&hide_border=true&background=1a1b26&ring=7dcfff&fire=7dcfff&currStreakLabel=7dcfff" />
+  </p>
+STATS_EOF
+          fi
+
+          if ! grep -q "<!-- GitHub Snake -->" README.md; then
+            echo "🐍 Adding GitHub snake section..."
+            cat >> README.md << 'SNAKE_EOF'
+
+  <!-- GitHub Snake -->
+  <h2>🐍 GitHub Contributions</h2>
+  <p align="center">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="$GITHUB_SNAKE_DARK" />
+      <source media="(prefers-color-scheme: light)" srcset="$GITHUB_SNAKE_LIGHT" />
+      <img alt="GitHub Contribution Snake" src="$GITHUB_SNAKE_LIGHT" width="100%" style="border-radius: 10px;" />
+    </picture>
+    <br>
+    <sub><em>My contribution graph eating my contributions 🐍</em></sub>
+  </p>
+SNAKE_EOF
+          fi
+
+          # Close the main div if not closed
+          if ! grep -q "^</div>" README.md; then
+            echo "📑 Adding closing div and footer..."
+            cat >> README.md << 'FOOTER_EOF'
+
+  <!-- Footer -->
+  <br>
+  <div align="center">
+    <sub>⚡ <b>Last Updated:</b> $CURRENT_TIME | 🎯 <b>Always learning, always deploying</b></sub>
+    <br>
+    <sub>Automatically updated via GitHub Actions</sub>
+  </div>
+</div>
+FOOTER_EOF
+          fi
+
           echo "✅ README.md updated successfully"
           echo "readme-updated=true" >> $GITHUB_OUTPUT
 
       - name: Verify changes
         run: |
           echo "🔍 Verifying changes..."
-          echo "📄 Files modified:"
-          git status --porcelain
+          echo "📄 Files in repository:"
+          ls -la
           
-          echo "📊 README preview (first 20 lines):"
-          head -20 README.md
+          echo "📁 Contents of dist/:"
+          ls -la dist/ || echo "dist/ directory not found"
           
-          if [ -f "dist/terminal.svg" ]; then
-            echo "✅ terminal.svg exists"
-            echo "📏 File size: $(wc -c < dist/terminal.svg) bytes"
+          echo "📝 README.md status:"
+          if [ -f "README.md" ]; then
+            echo "✅ README.md exists"
+            echo "📏 Size: $(wc -l < README.md) lines"
+            echo "🔍 First 10 lines:"
+            head -10 README.md
           else
-            echo "❌ terminal.svg missing"
+            echo "❌ README.md missing"
           fi
 
       - name: Commit and push changes
-        if: always() && steps.generate-svg.outputs.svg-generated == 'true' || steps.update-readme.outputs.readme-updated == 'true'
+        if: always()
         run: |
-          echo "🚀 Committing and pushing changes..."
+          echo "🚀 Checking for changes to commit..."
           
           # Configure git
           git config --local user.email "thugger069"
-          git config --local user.name "41898282+github-actions[bot]@users.noreply.github.com"       
-          # Add all changes
-          git add .
-          
-          # Check if there are changes to commit
-          if git diff --staged --quiet; then
+          git config --local user.name "41898282+github-actions[bot]@users.noreply.github.com"                 
+          # Check if there are any changes
+          if git diff --quiet && git diff --staged --quiet; then
             echo "⏭️ No changes to commit"
           else
-            echo "📦 Changes detected, creating commit..."
+            echo "📦 Changes detected, preparing commit..."
             
-            # Create commit message based on what changed
-            COMMIT_MSG="🔄 Auto-update: "
+            # Add all changes
+            git add .
+            
+            # Create commit message
+            COMMIT_MSG="🔄 Auto-update terminal display"
             
             if [ "${{ steps.generate-svg.outputs.svg-generated }}" = "true" ]; then
-              COMMIT_MSG="$COMMIT_MSG terminal"
+              COMMIT_MSG="$COMMIT_MSG + SVG"
             fi
             
             if [ "${{ steps.update-readme.outputs.readme-updated }}" = "true" ]; then
-              if [ "${{ steps.generate-svg.outputs.svg-generated }}" = "true" ]; then
-                COMMIT_MSG="$COMMIT_MSG +"
-              fi
-              COMMIT_MSG="$COMMIT_MSG README"
+              COMMIT_MSG="$COMMIT_MSG + README"
             fi
             
             COMMIT_MSG="$COMMIT_MSG ($(date -u +'%Y-%m-%d %H:%M:%S UTC'))"
             
+            echo "💾 Committing: $COMMIT_MSG"
             git commit -m "$COMMIT_MSG"
+            
+            echo "📤 Pushing changes..."
             git push
-            echo "✅ Changes committed and pushed: $COMMIT_MSG"
+            echo "✅ Changes committed and pushed successfully"
           fi
 
       - name: Workflow summary
         if: always()
         run: |
-          echo "🎉 Workflow completed successfully!"
           echo ""
-          echo "📋 Summary:"
-          echo "  👤 User: ɬɧɛ ɠıɬƈɧ (Thugger069)"
-          echo "  🕒 Timestamp: $(date -u +'%Y-%m-%d %H:%M:%S UTC')"
-          echo "  📁 SVG Generated: ${{ steps.generate-svg.outputs.svg-generated }}"
-          echo "  📖 README Updated: ${{ steps.update-readme.outputs.readme-updated }}"
+          echo "🎉 Workflow Summary"
+          echo "═══════════════════════════════════════"
+          echo "👤 Profile: ɬɧɛ ɠıɬƈɧ (Thugger069)"
+          echo "🕒 Timestamp: $(date -u +'%Y-%m-%d %H:%M:%S UTC')"
+          echo "🔧 SVG Generated: ${{ steps.generate-svg.outputs.svg-generated || 'false' }}"
+          echo "📖 README Updated: ${{ steps.update-readme.outputs.readme-updated || 'false' }}"
+          echo "📁 Files Modified:"
+          git status --porcelain || echo "No git changes"
           echo ""
-          echo "🌐 Your updated profile will be available at:"
+          echo "🌐 View your updated profile:"
           echo "   https://github.com/Thugger069/Thugger069"
-   
+          echo ""
+          if [ "${{ steps.generate-svg.outputs.svg-generated }}" = "true" ]; then
+            echo "✅ Successfully generated enhanced terminal with:"
+            echo "   🪟 Terminal window with controls"
+            echo "   🎨 Cyberpunk color scheme" 
+            echo "   ⚡ Blinking cursor animation"
+            echo "   🌓 Dark/light theme support"
+          fi
+       
