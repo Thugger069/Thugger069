@@ -1,65 +1,64 @@
-name: 🜂 QRLP README Auto-Update | Stealth Mode v3 🜁
-
+name: 🜂 Q.R.I.P README Update | v7.5 🜁
 on:
   push:
     branches:
       - main
   schedule:
-    - cron: '0 */6 * * *'
-  workflow_dispatch:
-
+    - cron: '0 * * * *' # Every hour UTC
 jobs:
-  update-readme-stealth:
-    name: Stealth Auto-Update
+  update-readme:
     runs-on: ubuntu-latest
-    env:
-      NODE_OPTIONS: "--max_old_space_size=4096"
-      GIT_USER_NAME: "Thugger069"
-      GIT_USER_EMAIL: "noreply@github.com"
-
+    permissions:
+      contents: write
     steps:
-      - name: Checkout repository quietly
-        uses: actions/checkout@v4
+      - name: Checkout Repository
+        uses: actions/checkout@v3
         with:
-          persist-credentials: true
           fetch-depth: 0
 
-      - name: Setup Node.js 20.x
-        uses: actions/setup-node@v4
+      - name: Set up Node.js 20
+        uses: actions/setup-node@v3
         with:
-          node-version: 20
+          node-version: '20'
           cache: 'pnpm'
 
-      - name: Restore build cache
-        uses: actions/cache@v3
-        with:
-          path: |
-            node_modules
-            dist
-          key: qrpl-readme-cache-${{ hashFiles('scripts/*.sh','package-lock.json','pnpm-lock.yaml') }}
-          restore-keys: |
-            qrpl-readme-cache-
-
-      - name: Install dependencies silently
-        run: pnpm install --frozen-lockfile --reporter silent
-
-      - name: Run README update script stealthily
+      - name: Install Dependencies
         run: |
-          # Only run the existing update-readme.sh script
-          bash ./scripts/update-readme.sh > /dev/null 2>&1
+          corepack enable
+          corepack prepare pnpm@latest --activate
+          pnpm install
 
-      - name: Commit updated README & SVGs (stealth)
+      - name: Generate Typing SVG
         run: |
-          git config user.name "$GIT_USER_NAME"
-          git config user.email "$GIT_USER_EMAIL"
-          git add README.md dist/*.svg || echo "::notice::No changes to add"
+          mkdir -p assets
+          curl -s "https://readme-typing-svg.herokuapp.com?font=Ubuntu+Mono&weight=600&size=22&duration=2000&pause=500&color=00F3FF&background=0a0a0f00&center=true&lines=Hello+World;Quantum+Developer;Cyberpunk+Architect" -o assets/typing.svg
+
+      - name: Generate Cyberpunk Header
+        run: |
+          chmod +x scripts/generate-header.js
+          node scripts/generate-header.js
+
+      - name: Generate Terminal Snake & GitHub Activity
+        run: |
+          chmod +x scripts/generate-terminal-svg.js
+          node scripts/generate-terminal-svg.js
+
+      - name: Generate GitHub Stats & Languages
+        run: |
+          mkdir -p assets/stats
+          curl -s "https://github-readme-stats.vercel.app/api?username=Thugger069&show_icons=true&theme=dark&hide_border=true&count_private=true" -o assets/stats/github-stats.svg
+          curl -s "https://github-readme-stats.vercel.app/api/top-langs/?username=Thugger069&layout=compact&theme=dark" -o assets/stats/top-langs.svg
+
+      - name: Update README with Full Content
+        run: ./scripts/update-readme.sh
+
+      - name: Commit & Push Changes
+        run: |
+          git config user.name "Thugger069"
+          git config user.email "noreply@github.com"
+          git add README.md assets/*.svg assets/stats/*.svg
           if ! git diff --cached --quiet; then
-            TIMESTAMP=$(date -u +'%Y-%m-%d %H:%M:%S UTC')
-            git commit -m "🜂 Stealth README + SVG update: $TIMESTAMP"
-            git push origin main --quiet
+            git commit -m "🜂 Q.R.I.P Cyberpunk README v7.5 update 🜁 $(date -u +%Y%m%d%H%M%S)"
+            git push
           else
-            echo "::notice::🜂 No changes detected, skipping commit"
-          fi
-
-      - name: Stealth completion notice
-        run: echo "::notice::✅ QRLP Stealth README auto-update v3 completed"
+            echo "No changes to commit"
