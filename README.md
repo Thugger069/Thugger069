@@ -1,3 +1,29 @@
+<!-- Terminal Display Start -->
+<div align="center">
+  <h3>🎮 Live Terminal</h3>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="dist/terminal.svg">
+    <source media="(prefers-color-scheme: light)" srcset="dist/terminal-light.svg">
+    <img src="dist/terminal.svg" alt="Live Terminal Output" width="100%" style="border-radius: 10px; border: 1px solid #2a2b3a; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+  </picture>
+  <br>
+  <sub><em>Last updated: 2025-10-15 00:52:50 UTC</em></sub>
+</div>
+<!-- Terminal Display End -->
+
+<!-- Snake Display Start -->
+<div align="center">
+  <h3>🐍 GitHub Contributions</h3>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Thugger069/Thugger069/main/dist/github-snake-dark.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Thugger069/Thugger069/main/dist/github-snake.svg" />
+    <img alt="GitHub Contribution Snake" src="https://raw.githubusercontent.com/Thugger069/Thugger069/main/dist/github-snake.svg" width="100%" style="border-radius: 10px;" />
+  </picture>
+  <br>
+  <sub><em>My contribution graph eating my contributions 🐍</em></sub>
+</div>
+<!-- Snake Display End -->
+
 <div align="center">
   <h2>👨‍💻 ɬɧɛ ɠıɬƈɧ's DevOps Hub</h2>
 
