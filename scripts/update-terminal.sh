@@ -1,34 +1,29 @@
 #!/bin/bash
-set -e  # Exit on any error
+set -e
 
-# ─────────────────────────────
-# User & Environment Defaults
-# ─────────────────────────────
+# -----------------------------
+# Environment variables
+# -----------------------------
 USERNAME=${USERNAME:-"𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ"}
-username=${username:-"thugger069"}
-CURRENT_TIME=$(date -u +"%Y-%m-%d %H:%M:%S")
+CURRENT_TIME=${CURRENT_TIME:-"$(date -u +"%Y-%m-%d %H:%M:%S")"}
 
-# ─────────────────────────────
-# Function: Generate random load average
-# ─────────────────────────────
+# -----------------------------
+# Generate random load average
+# -----------------------------
 generate_load_avg() {
-    if ! command -v bc &> /dev/null; then
-        echo "0.50 0.60 0.40"
-        return
-    fi
     printf "%.2f %.2f %.2f" \
-        "$(echo "scale=2; ${RANDOM}/32767 + 0.1" | bc)" \
-        "$(echo "scale=2; ${RANDOM}/32767 + 0.2" | bc)" \
-        "$(echo "scale=2; ${RANDOM}/32767 + 0.1" | bc)"
+        "$(awk -v min=0.1 -v max=1.0 'BEGIN{srand(); print min+rand()*(max-min)}')" \
+        "$(awk -v min=0.2 -v max=1.2 'BEGIN{srand(); print min+rand()*(max-min)}')" \
+        "$(awk -v min=0.1 -v max=1.0 'BEGIN{srand(); print min+rand()*(max-min)}')"
 }
 
-# ─────────────────────────────
-# Function: Generate terminal content
-# ─────────────────────────────
+# -----------------------------
+# Generate terminal output
+# -----------------------------
 generate_terminal_content() {
     local LOAD_AVG
     LOAD_AVG=$(generate_load_avg)
-    
+
     cat > terminal_output.txt << EOF
 Last login: ${CURRENT_TIME} on ttys000
 ${USERNAME}@github ~ % uptime
@@ -55,85 +50,68 @@ ${USERNAME}@github ~ %
 EOF
 }
 
-# ─────────────────────────────
-# Function: Generate README.md
-# ─────────────────────────────
+# -----------------------------
+# Generate README.md
+# -----------------------------
 generate_readme() {
     cat > README.md << EOF
 <div align="center">
   <h2>👨‍💻 ${USERNAME}</h2>
 
-  [![Profile Views](https://komarev.com/ghpvc/?username=${username}&color=blueviolet&style=flat-square)](https://github.com/${username})
+  [![Profile Views](https://komarev.com/ghpvc/?username=thugger069&color=blueviolet&style=flat-square)](https://github.com/thugger069)
 
-  <a href="https://git.io/typing-svg">
-    <img src="https://readme-typing-svg.herokuapp.com?font=Ubuntu+Mono&duration=3000&pause=1000&color=00FF9C&center=true&vCenter=true&width=435&lines=ℌ𝔢𝔩𝔩𝔬+𝔗𝔥𝔢𝔯𝔢;ℑ’𝔪+${USERNAME};𝔚𝔢𝔩𝔠𝔬𝔪ｅ+𝔱𝔬+𝔪𝔶+𝔯𝔢𝔞𝔩𝔪;𝔖𝔥𝔢𝔩𝔩+𝔖𝔠𝔯𝔦𝔭𝔱+𝔈𝔫𝔱𝔥𝔲𝔰𝔦𝔞𝔰𝔱" alt="Typing SVG" />
-  </a>
-</div>
-
-<pre class="terminal">
+  <pre class="terminal">
 $(cat terminal_output.txt)
-</pre>
+  </pre>
 
-<!-- START SNAKE -->
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="dist/github-snake-dark.svg?ts=${CURRENT_TIME//:/%3A}" />
-  <source media="(prefers-color-scheme: light)" srcset="dist/github-snake.svg?ts=${CURRENT_TIME//:/%3A}" />
-  <img alt="Github Contribution Snake Animation" src="dist/github-snake.svg?ts=${CURRENT_TIME//:/%3A}" />
-</picture>
-<!-- END SNAKE -->
+  <!-- GitHub Snake -->
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="dist/github-snake-dark.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="dist/github-snake.svg" />
+    <img alt="Github Snake Animation" src="dist/github-snake.svg" />
+  </picture>
 
-<div align="center">
-  <sub>Last Updated: ${CURRENT_TIME} UTC</sub>
+  <div align="center">
+    <sub>Last Updated: ${CURRENT_TIME} UTC</sub>
+  </div>
 </div>
 EOF
 }
 
-# ─────────────────────────────
-# Function: Generate Neon Snake
-# ─────────────────────────────
-generate_neon_snake() {
+# -----------------------------
+# Generate Neon Snake Animations
+# -----------------------------
+generate_snake() {
     mkdir -p dist
-
-    # Random neon palette
-    COLORS=(
-      "#39FF14,#00FFF0"
-      "#FF00FF,#FFDD00"
-      "#00FFFF,#FF00FF"
-      "#FF4D00,#39FF14"
+    # Define random neon palette
+    PALETTES=(
+      "#39FF14,#00FFF0" "#FF00FF,#FFDD00" "#00FFFF,#FF00FF" "#FF4D00,#39FF14"
     )
-    RANDOM_INDEX=$(( RANDOM % ${#COLORS[@]} ))
-    COLOR_SN=(${COLORS[$RANDOM_INDEX]//,/ })
-    
-    # Run Platane/snk CLI
-    npx snk \
-      --github-user-name "${username}" \
-      --outputs "dist/github-snake.svg" "dist/github-snake-dark.svg?palette=github-dark" \
-      --snake-color "${COLOR_SN[0]}" \
-      --dots-color "${COLOR_SN[1]}" \
-      --background-color "#0d0d0d"
+    I=$(( RANDOM % ${#PALETTES[@]} ))
+    SNAKE_COLOR=$(echo ${PALETTES[$I]} | cut -d',' -f1)
+    DOTS_COLOR=$(echo ${PALETTES[$I]} | cut -d',' -f2)
+
+    # Generate light snake
+    npx snk --github-user-name="${GITHUB_REPOSITORY_OWNER}" \
+      --outputs="dist/github-snake.svg" \
+      --color-snake="${SNAKE_COLOR}" \
+      --color-dots="${DOTS_COLOR}"
+
+    # Generate dark snake
+    npx snk --github-user-name="${GITHUB_REPOSITORY_OWNER}" \
+      --outputs="dist/github-snake-dark.svg" \
+      --color-snake="${SNAKE_COLOR}" \
+      --color-dots="${DOTS_COLOR}" \
+      --palette=github-dark
 }
 
-# ─────────────────────────────
-# Function: Commit & Push
-# ─────────────────────────────
-commit_and_push() {
-    git config --local user.name "${username}"
-    git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-    git add -f README.md dist/github-snake*.svg
-    git commit -m "🧬 Q.R.I.P Terminal & Snake Update (${CURRENT_TIME})" || echo "No changes to commit"
-    git push
-}
-
-# ─────────────────────────────
-# Main Execution
-# ─────────────────────────────
+# -----------------------------
+# Main execution
+# -----------------------------
 main() {
     generate_terminal_content
-    generate_neon_snake
+    generate_snake
     generate_readme
-    commit_and_push
-
-    # Cleanup
     rm -f terminal_output.txt
 }
 
