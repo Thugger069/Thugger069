@@ -1,4 +1,4 @@
-name: 🔄 Auto-Update README V7.0
+name: 🔄 Auto-Update README V7.1
 
 on:
   schedule:
@@ -21,13 +21,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # ───── Setup Node.js & pnpm ─────
+      # ───── Setup Node.js 20 & pnpm ─────
       - name: Setup Node.js 20
         uses: actions/setup-node@v3
         with:
           node-version: 20
-          cache: "pnpm"
-          package-manager: "pnpm"
+          cache: pnpm
 
       - name: Ensure pnpm is installed
         run: npm install -g pnpm
@@ -42,7 +41,7 @@ jobs:
           chmod +x scripts/generate-header.js
           node scripts/generate-header.js
 
-      # ───── Generate Terminal SVG (if exists) ─────
+      # ───── Generate Terminal SVG if exists ─────
       - name: Generate Terminal SVG
         run: |
           if [ -f scripts/generate-terminal-svg.js ]; then
@@ -77,5 +76,5 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes detected, skipping commit."
           else
-            git commit -m "✨ Auto-update README V7.0 [ci skip]"
+            git commit -m "✨ Auto-update README V7.1 [ci skip]"
             git push origin HEAD:${{ github.ref_name }}
