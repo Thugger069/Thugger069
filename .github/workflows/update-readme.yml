@@ -2,7 +2,7 @@ name: Update Terminal & README
 
 on:
   schedule:
-    - cron: '0 0 * * *'  # daily
+    - cron: '0 0 * * *'
   workflow_dispatch:
 
 permissions:
@@ -22,9 +22,10 @@ jobs:
         with:
           node-version: '18'
 
-      - name: Install Dependencies
+      - name: Install Dependencies & Audit Fix
         run: |
           npm install -g snk
+          npm audit fix --force || echo "⚠ npm audit fix failed, continuing..."
 
       - name: Make Script Executable
         run: chmod +x ./scripts/update-terminal.sh
@@ -35,12 +36,12 @@ jobs:
           GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}
         run: ./scripts/update-terminal.sh
 
-      - name: Commit & Push
+      - name: Commit & Push Changes
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config --local user.name "Thugger069"
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -f README.md dist/github-snake*.svg
-          git commit -m "🐍 Update Terminal & Snake - $(date -u +"%Y-%m-%d %H:%M:%S")" || echo "No changes to commit"
+          git commit -m "🐍 Resilient Terminal & Snake Update - $(date -u +"%Y-%m-%d %H:%M:%S")" || echo "No changes to commit"
           git push
