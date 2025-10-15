@@ -1,0 +1,51 @@
+<!-- https://github.com/DenverCoder1/readme-typing-svg/ -->
+<svg xmlns='http://www.w3.org/2000/svg'
+    xmlns:xlink='http://www.w3.org/1999/xlink'
+    viewBox='0 0 400 50'
+    style='background-color: #0a0a0f00;'
+    width='400px' height='50px'>
+
+    
+                <path id='path0'>
+                            <!-- Single line -->
+                                <animate id='d0' attributeName='d' begin='0s;d2.end'
+                    dur='2500ms' fill='remove'
+                    values='m0,25 h0 ; m0,25 h400 ; m0,25 h400 ; m0,25 h0' keyTimes='0;0.64;0.84;1' />
+                    </path>
+    <text font-family='"Ubuntu Mono", monospace' fill='#00F3FF' font-size='22'
+        dominant-baseline='auto'
+        x='50%' text-anchor='middle'
+        letter-spacing='normal'>
+        <textPath xlink:href='#path0'>
+            Hello World
+        </textPath>
+    </text>
+        <path id='path1'>
+                            <!-- Single line -->
+                                <animate id='d1' attributeName='d' begin='d0.end'
+                    dur='2500ms' fill='remove'
+                    values='m0,25 h0 ; m0,25 h400 ; m0,25 h400 ; m0,25 h0' keyTimes='0;0.64;0.84;1' />
+                    </path>
+    <text font-family='"Ubuntu Mono", monospace' fill='#00F3FF' font-size='22'
+        dominant-baseline='auto'
+        x='50%' text-anchor='middle'
+        letter-spacing='normal'>
+        <textPath xlink:href='#path1'>
+            Quantum Developer
+        </textPath>
+    </text>
+        <path id='path2'>
+                            <!-- Single line -->
+                                <animate id='d2' attributeName='d' begin='d1.end'
+                    dur='2500ms' fill='remove'
+                    values='m0,25 h0 ; m0,25 h400 ; m0,25 h400 ; m0,25 h0' keyTimes='0;0.64;0.84;1' />
+                    </path>
+    <text font-family='"Ubuntu Mono", monospace' fill='#00F3FF' font-size='22'
+        dominant-baseline='auto'
+        x='50%' text-anchor='middle'
+        letter-spacing='normal'>
+        <textPath xlink:href='#path2'>
+            Cyberpunk Architect
+        </textPath>
+    </text>
+</svg>

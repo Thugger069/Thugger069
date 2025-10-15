@@ -22,104 +22,104 @@
   <rect x="2" y="2" width="1196" height="396" fill="none" stroke="#00f3ff" stroke-width="3" rx="18"/>
   <line x1="60" y1="0" x2="60" y2="400" stroke="#00f3ff" stroke-width="0.5" opacity="0.10750000000000001"/><line x1="120" y1="0" x2="120" y2="400" stroke="#00f3ff" stroke-width="0.5" opacity="0.115"/><line x1="180" y1="0" x2="180" y2="400" stroke="#00f3ff" stroke-width="0.5" opacity="0.1225"/><line x1="240" y1="0" x2="240" y2="400" stroke="#00f3ff" stroke-width="0.5" opacity="0.13"/><line x1="300" y1="0" x2="300" y2="400" stroke="#00f3ff" stroke-width="0.5" opacity="0.1375"/><line x1="360" y1="0" x2="360" y2="400" stroke="#00f3ff" stroke-width="0.5" opacity="0.14500000000000002"/><line x1="420" y1="0" x2="420" y2="400" stroke="#00f3ff" stroke-width="0.5" opacity="0.1525"/><line x1="480" y1="0" x2="480" y2="400" stroke="#00f3ff" stroke-width="0.5" opacity="0.16"/><line x1="540" y1="0" x2="540" y2="400" stroke="#00f3ff" stroke-width="0.5" opacity="0.1675"/><line x1="600" y1="0" x2="600" y2="400" stroke="#00f3ff" stroke-width="0.5" opacity="0.175"/><line x1="660" y1="0" x2="660" y2="400" stroke="#00f3ff" stroke-width="0.5" opacity="0.1825"/><line x1="720" y1="0" x2="720" y2="400" stroke="#00f3ff" stroke-width="0.5" opacity="0.19"/><line x1="780" y1="0" x2="780" y2="400" stroke="#00f3ff" stroke-width="0.5" opacity="0.1975"/><line x1="840" y1="0" x2="840" y2="400" stroke="#00f3ff" stroke-width="0.5" opacity="0.20500000000000002"/><line x1="900" y1="0" x2="900" y2="400" stroke="#00f3ff" stroke-width="0.5" opacity="0.2125"/><line x1="960" y1="0" x2="960" y2="400" stroke="#00f3ff" stroke-width="0.5" opacity="0.22"/><line x1="1020" y1="0" x2="1020" y2="400" stroke="#00f3ff" stroke-width="0.5" opacity="0.2275"/><line x1="1080" y1="0" x2="1080" y2="400" stroke="#00f3ff" stroke-width="0.5" opacity="0.23500000000000001"/><line x1="1140" y1="0" x2="1140" y2="400" stroke="#00f3ff" stroke-width="0.5" opacity="0.2425"/><line x1="0" y1="60" x2="1200" y2="60" stroke="#ff00ff" stroke-width="0.5" opacity="0.1225"/><line x1="0" y1="120" x2="1200" y2="120" stroke="#ff00ff" stroke-width="0.5" opacity="0.14500000000000002"/><line x1="0" y1="180" x2="1200" y2="180" stroke="#ff00ff" stroke-width="0.5" opacity="0.1675"/><line x1="0" y1="240" x2="1200" y2="240" stroke="#ff00ff" stroke-width="0.5" opacity="0.19"/><line x1="0" y1="300" x2="1200" y2="300" stroke="#ff00ff" stroke-width="0.5" opacity="0.2125"/><line x1="0" y1="360" x2="1200" y2="360" stroke="#ff00ff" stroke-width="0.5" opacity="0.23500000000000001"/>
   <text x="20" y="-20" font-family="monospace" font-size="16" fill="#00ff41" opacity="0.6" font-weight="bold">
-      E
-      <animate attributeName="y" values="-20;420" dur="3.1259284722684986s" begin="3.0118275612799508s" repeatCount="indefinite"/>
+      B
+      <animate attributeName="y" values="-20;420" dur="4.156262108954159s" begin="0.11766790716779885s" repeatCount="indefinite"/>
       <animate attributeName="opacity" values="0.6;0.3;0.6" dur="1s" repeatCount="indefinite"/>
     </text><text x="68" y="-20" font-family="monospace" font-size="16" fill="#00ff41" opacity="0.6" font-weight="bold">
-      F
-      <animate attributeName="y" values="-20;420" dur="3.168121564261011s" begin="0.8778750676289682s" repeatCount="indefinite"/>
+      1
+      <animate attributeName="y" values="-20;420" dur="4.329950316745331s" begin="1.9466732834339562s" repeatCount="indefinite"/>
       <animate attributeName="opacity" values="0.6;0.3;0.6" dur="1s" repeatCount="indefinite"/>
     </text><text x="116" y="-20" font-family="monospace" font-size="16" fill="#00ff41" opacity="0.6" font-weight="bold">
       B
-      <animate attributeName="y" values="-20;420" dur="3.5686848946843672s" begin="1.3069719293526894s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="-20;420" dur="4.396980449869547s" begin="2.181215083093957s" repeatCount="indefinite"/>
       <animate attributeName="opacity" values="0.6;0.3;0.6" dur="1s" repeatCount="indefinite"/>
     </text><text x="164" y="-20" font-family="monospace" font-size="16" fill="#00ff41" opacity="0.6" font-weight="bold">
-      0
-      <animate attributeName="y" values="-20;420" dur="3.123947471324679s" begin="1.387079416086483s" repeatCount="indefinite"/>
+      F
+      <animate attributeName="y" values="-20;420" dur="4.329030417985614s" begin="4.4832626029259774s" repeatCount="indefinite"/>
       <animate attributeName="opacity" values="0.6;0.3;0.6" dur="1s" repeatCount="indefinite"/>
     </text><text x="212" y="-20" font-family="monospace" font-size="16" fill="#00ff41" opacity="0.6" font-weight="bold">
-      F
-      <animate attributeName="y" values="-20;420" dur="4.1395164068980295s" begin="1.9518832285974475s" repeatCount="indefinite"/>
+      X
+      <animate attributeName="y" values="-20;420" dur="3.357937458518157s" begin="1.408169279706486s" repeatCount="indefinite"/>
       <animate attributeName="opacity" values="0.6;0.3;0.6" dur="1s" repeatCount="indefinite"/>
     </text><text x="260" y="-20" font-family="monospace" font-size="16" fill="#00ff41" opacity="0.6" font-weight="bold">
-      0
-      <animate attributeName="y" values="-20;420" dur="3.2746663629097243s" begin="0.47494980378498974s" repeatCount="indefinite"/>
+      A
+      <animate attributeName="y" values="-20;420" dur="4.330976084418156s" begin="3.49667301191079s" repeatCount="indefinite"/>
       <animate attributeName="opacity" values="0.6;0.3;0.6" dur="1s" repeatCount="indefinite"/>
     </text><text x="308" y="-20" font-family="monospace" font-size="16" fill="#00ff41" opacity="0.6" font-weight="bold">
-      A
-      <animate attributeName="y" values="-20;420" dur="3.1887389378952826s" begin="0.6761069605966485s" repeatCount="indefinite"/>
+      B
+      <animate attributeName="y" values="-20;420" dur="3.2540223705844697s" begin="1.782232228087408s" repeatCount="indefinite"/>
       <animate attributeName="opacity" values="0.6;0.3;0.6" dur="1s" repeatCount="indefinite"/>
     </text><text x="356" y="-20" font-family="monospace" font-size="16" fill="#00ff41" opacity="0.6" font-weight="bold">
       B
-      <animate attributeName="y" values="-20;420" dur="3.94711184834377s" begin="0.8791389374612357s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="-20;420" dur="4.399435896516632s" begin="1.7024094046385707s" repeatCount="indefinite"/>
       <animate attributeName="opacity" values="0.6;0.3;0.6" dur="1s" repeatCount="indefinite"/>
     </text><text x="404" y="-20" font-family="monospace" font-size="16" fill="#00ff41" opacity="0.6" font-weight="bold">
       C
-      <animate attributeName="y" values="-20;420" dur="4.187753971905458s" begin="4.322395840310871s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="-20;420" dur="3.718390162211583s" begin="1.8888773484745103s" repeatCount="indefinite"/>
       <animate attributeName="opacity" values="0.6;0.3;0.6" dur="1s" repeatCount="indefinite"/>
     </text><text x="452" y="-20" font-family="monospace" font-size="16" fill="#00ff41" opacity="0.6" font-weight="bold">
-      0
-      <animate attributeName="y" values="-20;420" dur="3.2844385749649083s" begin="4.5872035021277355s" repeatCount="indefinite"/>
+      C
+      <animate attributeName="y" values="-20;420" dur="4.409855372001857s" begin="4.007827586537836s" repeatCount="indefinite"/>
       <animate attributeName="opacity" values="0.6;0.3;0.6" dur="1s" repeatCount="indefinite"/>
     </text><text x="500" y="-20" font-family="monospace" font-size="16" fill="#00ff41" opacity="0.6" font-weight="bold">
-      A
-      <animate attributeName="y" values="-20;420" dur="4.0017677376939185s" begin="3.395739667362502s" repeatCount="indefinite"/>
+      D
+      <animate attributeName="y" values="-20;420" dur="4.395086281597413s" begin="4.164254065326092s" repeatCount="indefinite"/>
       <animate attributeName="opacity" values="0.6;0.3;0.6" dur="1s" repeatCount="indefinite"/>
     </text><text x="548" y="-20" font-family="monospace" font-size="16" fill="#00ff41" opacity="0.6" font-weight="bold">
       D
-      <animate attributeName="y" values="-20;420" dur="4.5131860991468s" begin="4.567327358963356s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="-20;420" dur="4.355225681247447s" begin="1.3040938251680634s" repeatCount="indefinite"/>
       <animate attributeName="opacity" values="0.6;0.3;0.6" dur="1s" repeatCount="indefinite"/>
     </text><text x="596" y="-20" font-family="monospace" font-size="16" fill="#00ff41" opacity="0.6" font-weight="bold">
       A
-      <animate attributeName="y" values="-20;420" dur="3.82459697290178s" begin="1.5329198760781404s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="-20;420" dur="3.8801334173573827s" begin="0.7468788354419198s" repeatCount="indefinite"/>
       <animate attributeName="opacity" values="0.6;0.3;0.6" dur="1s" repeatCount="indefinite"/>
     </text><text x="644" y="-20" font-family="monospace" font-size="16" fill="#00ff41" opacity="0.6" font-weight="bold">
       B
-      <animate attributeName="y" values="-20;420" dur="4.358548408074555s" begin="3.9758650999782565s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="-20;420" dur="3.5629164444964467s" begin="3.1996503693011547s" repeatCount="indefinite"/>
       <animate attributeName="opacity" values="0.6;0.3;0.6" dur="1s" repeatCount="indefinite"/>
     </text><text x="692" y="-20" font-family="monospace" font-size="16" fill="#00ff41" opacity="0.6" font-weight="bold">
-      A
-      <animate attributeName="y" values="-20;420" dur="4.442402667287288s" begin="3.704132632538941s" repeatCount="indefinite"/>
+      C
+      <animate attributeName="y" values="-20;420" dur="4.540224838987721s" begin="2.2410391244166594s" repeatCount="indefinite"/>
       <animate attributeName="opacity" values="0.6;0.3;0.6" dur="1s" repeatCount="indefinite"/>
     </text><text x="740" y="-20" font-family="monospace" font-size="16" fill="#00ff41" opacity="0.6" font-weight="bold">
-      D
-      <animate attributeName="y" values="-20;420" dur="3.3707483666773075s" begin="4.465915441242462s" repeatCount="indefinite"/>
+      A
+      <animate attributeName="y" values="-20;420" dur="3.6210410833286284s" begin="0.47745262228678587s" repeatCount="indefinite"/>
       <animate attributeName="opacity" values="0.6;0.3;0.6" dur="1s" repeatCount="indefinite"/>
     </text><text x="788" y="-20" font-family="monospace" font-size="16" fill="#00ff41" opacity="0.6" font-weight="bold">
-      X
-      <animate attributeName="y" values="-20;420" dur="3.1651697910686614s" begin="3.3076336489097633s" repeatCount="indefinite"/>
+      1
+      <animate attributeName="y" values="-20;420" dur="3.7377741598643577s" begin="2.060282260771049s" repeatCount="indefinite"/>
       <animate attributeName="opacity" values="0.6;0.3;0.6" dur="1s" repeatCount="indefinite"/>
     </text><text x="836" y="-20" font-family="monospace" font-size="16" fill="#00ff41" opacity="0.6" font-weight="bold">
-      C
-      <animate attributeName="y" values="-20;420" dur="3.030034691797711s" begin="4.28995770923459s" repeatCount="indefinite"/>
+      F
+      <animate attributeName="y" values="-20;420" dur="3.6113334350999375s" begin="3.8283171260461146s" repeatCount="indefinite"/>
       <animate attributeName="opacity" values="0.6;0.3;0.6" dur="1s" repeatCount="indefinite"/>
     </text><text x="884" y="-20" font-family="monospace" font-size="16" fill="#00ff41" opacity="0.6" font-weight="bold">
-      1
-      <animate attributeName="y" values="-20;420" dur="4.35133710699506s" begin="1.2403875897337657s" repeatCount="indefinite"/>
+      B
+      <animate attributeName="y" values="-20;420" dur="4.003038580645828s" begin="1.9603451830668006s" repeatCount="indefinite"/>
       <animate attributeName="opacity" values="0.6;0.3;0.6" dur="1s" repeatCount="indefinite"/>
     </text><text x="932" y="-20" font-family="monospace" font-size="16" fill="#00ff41" opacity="0.6" font-weight="bold">
-      1
-      <animate attributeName="y" values="-20;420" dur="4.251011452250797s" begin="3.7999852613951224s" repeatCount="indefinite"/>
+      0
+      <animate attributeName="y" values="-20;420" dur="4.612099586223642s" begin="2.265548072945146s" repeatCount="indefinite"/>
       <animate attributeName="opacity" values="0.6;0.3;0.6" dur="1s" repeatCount="indefinite"/>
     </text><text x="980" y="-20" font-family="monospace" font-size="16" fill="#00ff41" opacity="0.6" font-weight="bold">
-      1
-      <animate attributeName="y" values="-20;420" dur="4.617941425073889s" begin="3.9051087942419374s" repeatCount="indefinite"/>
+      D
+      <animate attributeName="y" values="-20;420" dur="3.2773467647548222s" begin="0.5584980751908708s" repeatCount="indefinite"/>
       <animate attributeName="opacity" values="0.6;0.3;0.6" dur="1s" repeatCount="indefinite"/>
     </text><text x="1028" y="-20" font-family="monospace" font-size="16" fill="#00ff41" opacity="0.6" font-weight="bold">
-      D
-      <animate attributeName="y" values="-20;420" dur="4.308244651854391s" begin="1.49298113624325s" repeatCount="indefinite"/>
+      F
+      <animate attributeName="y" values="-20;420" dur="3.7306143369147557s" begin="4.028335287929s" repeatCount="indefinite"/>
       <animate attributeName="opacity" values="0.6;0.3;0.6" dur="1s" repeatCount="indefinite"/>
     </text><text x="1076" y="-20" font-family="monospace" font-size="16" fill="#00ff41" opacity="0.6" font-weight="bold">
       0
-      <animate attributeName="y" values="-20;420" dur="3.841793708810621s" begin="4.3479618165217335s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="-20;420" dur="4.799722321394274s" begin="2.47118067877496s" repeatCount="indefinite"/>
       <animate attributeName="opacity" values="0.6;0.3;0.6" dur="1s" repeatCount="indefinite"/>
     </text><text x="1124" y="-20" font-family="monospace" font-size="16" fill="#00ff41" opacity="0.6" font-weight="bold">
-      1
-      <animate attributeName="y" values="-20;420" dur="4.426151222140912s" begin="1.420770948137282s" repeatCount="indefinite"/>
+      A
+      <animate attributeName="y" values="-20;420" dur="3.807153263079719s" begin="0.014042654071791949s" repeatCount="indefinite"/>
       <animate attributeName="opacity" values="0.6;0.3;0.6" dur="1s" repeatCount="indefinite"/>
     </text><text x="1172" y="-20" font-family="monospace" font-size="16" fill="#00ff41" opacity="0.6" font-weight="bold">
       1
-      <animate attributeName="y" values="-20;420" dur="3.1497994094864192s" begin="2.4008482102162465s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="-20;420" dur="3.471054092371845s" begin="0.6165607535866979s" repeatCount="indefinite"/>
       <animate attributeName="opacity" values="0.6;0.3;0.6" dur="1s" repeatCount="indefinite"/>
     </text>
   <g transform="translate(600, 200)">
@@ -178,6 +178,6 @@
     <animate attributeName="opacity" values="0.8;1;0.8" dur="2.5s" repeatCount="indefinite"/>
   </text>
   <text x="600" y="380" font-family="Monaco, Consolas, monospace" font-size="12" fill="#b967ff" text-anchor="middle" opacity="0.8">
-    SYSTEM UPDATE: Wed, 15 Oct 2025 03:53:01 UTC
+    SYSTEM UPDATE: Wed, 15 Oct 2025 05:04:14 UTC
   </text>
 </svg>
