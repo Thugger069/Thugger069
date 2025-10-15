@@ -1,3 +1,26 @@
+
+<!-- Header Start -->
+<p align="center">
+<pre>
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ 𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ ┃
+┃ Good morning, coder!                   ┃
+┃ Last updated: Wed, 15 Oct 2025 02:36:11 UTC ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+</pre>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="dist/header-quote.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="dist/header-quote-light.svg" />
+  <img alt="Quote Banner" src="dist/header-quote-light.svg" width="100%" style="border-radius: 10px;" />
+</picture>
+</p>
+<!-- Header End -->
+
+
+
+
 <!-- Terminal Display Start -->
 <div align="center">
   <h3>🎮 Live Terminal</h3>
@@ -177,3 +200,13 @@ f6e5d4c3b2a1   redis:7-alpine  "docker-entrypoint.s…"  Up 2 hours   6379/tcp  
   <sub><em>Last updated: 2025-10-15 01:49:00 UTC</em></sub>
 </div>
 <!-- End Terminal Section -->
+
+<!-- Terminal Start -->
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="$TERMINAL_SVG_DARK" />
+    <source media="(prefers-color-scheme: light)" srcset="$TERMINAL_SVG_LIGHT" />
+    <img alt="Terminal Display" src="$TERMINAL_SVG_LIGHT" width="100%" style="border-radius: 10px;" />
+  </picture>
+</p>
+<!-- Terminal End -->

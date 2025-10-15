@@ -1,27 +1,37 @@
-<svg viewBox="0 0 900 250" xmlns="http://www.w3.org/2000/svg">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 180" width="100%" height="180">
   <defs>
-    <linearGradient id="neonGradient" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#00fff0"/>
-      <stop offset="50%" stop-color="#ff00ff"/>
-      <stop offset="100%" stop-color="#ff0000"/>
+    <linearGradient id="neonGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#39FF14">
+        <animate attributeName="stop-color" values="#39FF14;#FF00FF;#00FFF0" dur="8s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="100%" stop-color="#00FFF0">
+        <animate attributeName="stop-color" values="#00FFF0;#39FF14;#FF00FF" dur="8s" repeatCount="indefinite"/>
+      </stop>
     </linearGradient>
-    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="4" result="blur"/>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3.5" result="coloredBlur"/>
       <feMerge>
-        <feMergeNode in="blur"/>
+        <feMergeNode in="coloredBlur"/>
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
-    <animate xlink:href="#neonGradient" attributeName="x1" values="0;1;0" dur="12s" repeatCount="indefinite"/>
   </defs>
 
-  <rect width="900" height="250" rx="20" fill="#0d0d0d"/>
-
-  <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle"
-        font-family="Fira Code, monospace" font-size="20"
-        fill="url(#neonGradient)" filter="url(#glow)">
+  <text x="50%" y="50" text-anchor="middle" font-family="Fira Code, monospace" font-size="28" fill="url(#neonGradient)" filter="url(#glow)">
     𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ
-• Walking The Path Where Bits & Dreams Intersect ®
-卞廾凵呂呂ヨ尺.と己し. 魔大帝
   </text>
+
+  <text x="50%" y="90" text-anchor="middle" font-family="Fira Code, monospace" font-size="20" fill="url(#neonGradient)" filter="url(#glow)">
+    • Walking The Path Where Bits & Dreams Intersect ®
+  </text>
+
+  <text x="50%" y="130" text-anchor="middle" font-family="Fira Code, monospace" font-size="16" fill="url(#neonGradient)" filter="url(#glow)">
+    卞廾凵呂呂ヨ尺.と己し. 魔大帝
+  </text>
+
+  <style>
+    @media (prefers-color-scheme: light) {
+      text { fill-opacity: 0.9; }
+    }
+  </style>
 </svg>
