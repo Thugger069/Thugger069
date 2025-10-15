@@ -1,28 +1,23 @@
+// generate-terminal-svg.js
+// Generates terminal-style SVGs for README display
+// Author: 𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ
+
 const fs = require('fs');
 const path = require('path');
+const { getQuote } = require('./fetch-quote');
 
-// --- Paths ---
-const DIST_DIR = path.resolve(__dirname, '../dist');
-if (!fs.existsSync(DIST_DIR)) fs.mkdirSync(DIST_DIR, { recursive: true });
-
-// --- Constants ---
+const AUTHOR = "𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ";
 const DISPLAY_NAME = "ɬɧɛ ɠıɬƈɧ";
 const GITHUB_USERNAME = "Thugger069";
 const CURRENT_TIME = new Date().toUTCString().replace(/GMT/, 'UTC');
 
-// --- Fetch dynamic quote ---
-let quoteLine = '';
-try {
-  const quoteModule = require('./fetch-quote.js');
-  const quote = quoteModule.getQuote ? quoteModule.getQuote() : '';
-  if (quote) {
-    quoteLine = `[💡 Quote] ${quote}`;
-  }
-} catch (err) {
-  console.warn("⚠️ fetch-quote.js not found or failed:", err.message);
-}
+const DIST_DIR = path.resolve(__dirname, '../dist');
+if (!fs.existsSync(DIST_DIR)) fs.mkdirSync(DIST_DIR, { recursive: true });
 
-// --- Terminal content ---
+// Fetch a random quote
+const quote = getQuote();
+
+// Terminal content
 const lines = [
   `Last login: ${CURRENT_TIME} on ttys001`,
   `${DISPLAY_NAME}@github ~ % whoami`,
@@ -58,37 +53,38 @@ const lines = [
   `a1b2c3d4e5f6   nginx:alpine    "nginx -g 'daemon off;" Up 2 hours   80/tcp    webserver`,
   `f6e5d4c3b2a1   redis:7-alpine  "docker-entrypoint.s…"  Up 2 hours   6379/tcp  cache`,
   '',
-  ...(quoteLine ? [quoteLine, ''] : []),
+  `${DISPLAY_NAME}@github ~ % echo "${quote}"`,
+  `"${quote}" - ${AUTHOR}`,
+  '',
   `${DISPLAY_NAME}@github ~ %`
 ];
 
-// --- Themes ---
-const themeDark = {
-  background: '#1a1b26',
-  text: '#c0caf5',
-  accent: '#7dcfff',
-  border: '#2ac3de',
-  headerBg: '#16161e'
+// Theme settings
+const themes = {
+  dark: {
+    background: '#1a1b26',
+    text: '#c0caf5',
+    accent: '#7dcfff',
+    border: '#2ac3de',
+    headerBg: '#16161e'
+  },
+  light: {
+    background: '#ffffff',
+    text: '#333333',
+    accent: '#0366d6',
+    border: '#d1d5da',
+    headerBg: '#f6f8fa'
+  }
 };
 
-const themeLight = {
-  background: '#ffffff',
-  text: '#333333',
-  accent: '#0366d6',
-  border: '#d1d5da',
-  headerBg: '#f6f8fa'
-};
-
-// --- Dimensions ---
-const LINE_HEIGHT = 18;
-const PADDING = 20;
-const CHAR_WIDTH = 8;
-const height = lines.length * LINE_HEIGHT + PADDING * 2 + 30;
-const maxLineLength = Math.max(...lines.map(line => line.length));
-const width = Math.max(800, maxLineLength * CHAR_WIDTH + PADDING * 2);
-
-// --- SVG generator ---
 function generateSVG(theme) {
+  const LINE_HEIGHT = 18;
+  const PADDING = 20;
+  const height = lines.length * LINE_HEIGHT + PADDING * 2 + 30;
+  const maxLineLength = Math.max(...lines.map(line => line.length));
+  const CHAR_WIDTH = 8;
+  const width = Math.max(800, maxLineLength * CHAR_WIDTH + PADDING * 2);
+
   return `<svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -104,31 +100,29 @@ function generateSVG(theme) {
     </filter>
   </defs>
 
-  <rect width="100%" height="100%" rx="12" ry="12" fill="url(#bgGradient)" 
-        stroke="${theme.border}" stroke-width="2" filter="url(#glow)"/>
-  <rect x="0" y="0" width="100%" height="30" rx="12" ry="12" fill="${theme.headerBg}" 
-        stroke="${theme.border}" stroke-width="2"/>
+  <rect width="100%" height="100%" rx="12" ry="12" fill="url(#bgGradient)" stroke="${theme.border}" stroke-width="2" filter="url(#glow)"/>
+  <rect x="0" y="0" width="100%" height="30" rx="12" ry="12" fill="${theme.headerBg}" stroke="${theme.border}" stroke-width="2"/>
   <circle cx="15" cy="15" r="4" fill="#ff5f56"/>
   <circle cx="30" cy="15" r="4" fill="#ffbd2e"/>
   <circle cx="45" cy="15" r="4" fill="#27ca3f"/>
-  <text x="60" y="18" style="font-family:'Monaco','Consolas',monospace; font-size:12px; fill:${theme.text}; font-weight:bold;">${DISPLAY_NAME}@github: ~</text>
+  <text x="60" y="18" style="font-family:'Monaco','Consolas',monospace;font-size:12px;fill:${theme.text};font-weight:bold;">${DISPLAY_NAME}@github: ~</text>
 
   <style>
     .line { font-family:'Monaco','Consolas','Courier New',monospace; font-size:14px; fill:${theme.text}; white-space:pre; }
     .accent { fill:${theme.accent}; font-weight:bold; }
   </style>
 
-  ${lines.map((line, idx) => `<text x="${PADDING}" y="${PADDING + 30 + idx*LINE_HEIGHT}" class="line">${line}</text>`).join('')}
+  ${lines.map((line, idx) => `<text x="${PADDING}" y="${PADDING + 30 + idx * LINE_HEIGHT}" class="line">${line}</text>`).join('')}
 
-  <text x="${PADDING}" y="${PADDING + 30 + (lines.length-1)*LINE_HEIGHT + 4}" class="accent">█
+  <text x="${PADDING}" y="${PADDING + 30 + (lines.length - 1) * LINE_HEIGHT + 4}" class="accent">█
     <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite" />
   </text>
 </svg>`;
 }
 
-// --- Write SVGs ---
-fs.writeFileSync(path.join(DIST_DIR, 'terminal.svg'), generateSVG(themeDark));
-fs.writeFileSync(path.join(DIST_DIR, 'terminal-light.svg'), generateSVG(themeLight));
+// Write files
+fs.writeFileSync(path.join(DIST_DIR, 'terminal.svg'), generateSVG(themes.dark));
+fs.writeFileSync(path.join(DIST_DIR, 'terminal-light.svg'), generateSVG(themes.light));
 
-console.log("✅ Terminal SVGs generated with dynamic quote!");
-console.log("📁 Files: terminal.svg, terminal-light.svg");
+console.log("✅ Enhanced terminal SVGs generated!");
+console.log(`📁 Files: ${DIST_DIR}/terminal.svg, ${DIST_DIR}/terminal-light.svg`);
