@@ -1,8 +1,8 @@
-name: 🔄 Update README V7.0
+name: 🔄 Auto-Update README V7.0
 
 on:
   schedule:
-    - cron: '0 * * * *' # every hour
+    - cron: '0 * * * *'  # every hour
   workflow_dispatch:
 
 jobs:
@@ -21,7 +21,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # ───── Setup Node.js ─────
+      # ───── Setup Node.js & pnpm ─────
       - name: Setup Node.js 20
         uses: actions/setup-node@v3
         with:
@@ -29,13 +29,12 @@ jobs:
           cache: "pnpm"
           package-manager: "pnpm"
 
-      # ───── Ensure pnpm ─────
       - name: Ensure pnpm is installed
         run: npm install -g pnpm
 
       # ───── Install Dependencies ─────
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
 
       # ───── Generate Cyberpunk Header ─────
       - name: Generate README Header
@@ -43,37 +42,40 @@ jobs:
           chmod +x scripts/generate-header.js
           node scripts/generate-header.js
 
-      # ───── Generate Terminal SVG ─────
+      # ───── Generate Terminal SVG (if exists) ─────
       - name: Generate Terminal SVG
-        if: exists('scripts/generate-terminal-svg.js')
         run: |
-          chmod +x scripts/generate-terminal-svg.js
-          node scripts/generate-terminal-svg.js
+          if [ -f scripts/generate-terminal-svg.js ]; then
+            chmod +x scripts/generate-terminal-svg.js
+            node scripts/generate-terminal-svg.js
+          else
+            echo "scripts/generate-terminal-svg.js not found, skipping..."
+          fi
 
-      # ───── Fetch GitHub Stats for README ─────
-      - name: Generate GitHub Stats
+      # ───── Generate GitHub Stats ─────
+      - name: Fetch GitHub Stats
         run: |
           curl -s "https://github-readme-stats.vercel.app/api?username=${GITHUB_USERNAME}&show_icons=true&theme=dark&hide_title=false&hide_border=true" -o assets/github-stats.svg
 
       # ───── Append Snake Animation ─────
-      - name: Append Snake Animation
+      - name: Fetch Snake Animation
         run: |
           curl -s "https://raw.githubusercontent.com/Thugger069/snake-animation/main/snake.svg" -o assets/snake.svg
 
       # ───── Add Footer ─────
-      - name: Append Footer
+      - name: Generate Footer
         run: |
           FOOTER="<div style='text-align:center;font-family:Ubuntu Mono;color:#00F3FF;font-size:0.7rem;margin-top:1rem;'>Maintained by ${AUTHOR_NAME} | © $(date +%Y)</div>"
           echo "$FOOTER" > assets/footer.html
 
       # ───── Commit & Push Changes ─────
-      - name: Commit updated README
+      - name: Commit README Updates
         run: |
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
           git add README.md assets/github-stats.svg assets/snake.svg assets/footer.html
           if git diff --cached --quiet; then
-            echo "No changes to commit."
+            echo "No changes detected, skipping commit."
           else
             git commit -m "✨ Auto-update README V7.0 [ci skip]"
             git push origin HEAD:${{ github.ref_name }}
