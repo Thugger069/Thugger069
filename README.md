@@ -1,3 +1,9 @@
+<!-- Quantum Cyberpunk Header -->
+<div align="center">
+  <img src="./assets/header.svg" alt="Quantum Cyberpunk Header" width="100%"/>
+</div>
+<!-- Header End -->
+
 <!-- Quantum Cyberpunk Header Start -->
 <div style="position:relative;width:100%;height:500px;background:linear-gradient(135deg,#0a0a0f 0%,#1a1b26 50%,#0a0a0f 100%);overflow:hidden;border-radius:20px;margin:2rem 0;border:2px solid transparent;background-clip:padding-box;box-shadow:0 0 50px rgba(0,243,255,0.2);">
   <!-- Animated Border -->
