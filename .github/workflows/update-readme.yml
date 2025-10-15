@@ -16,8 +16,8 @@ jobs:
           
       - name: Generate README
         run: |
-          chmod +x update-terminal.sh
-          ./update-terminal.sh
+          chmod +x ./scripts/update-terminal.sh
+          ./scripts/update-terminal.sh
           
       - name: Commit and push
         run: |
