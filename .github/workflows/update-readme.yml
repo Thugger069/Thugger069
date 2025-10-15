@@ -93,12 +93,15 @@ jobs:
           # Your manual README update logic goes here
           echo "✅ Manual fallback executed at $CURRENT_TIME"
 
-      - name: Commit and push changes
+      - name: Commit and push changes safely
         if: always()
         run: |
           git config --local user.name "Thugger069"
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add .
+          
+          git add -A
+
+          # Commit if there are changes
           if git diff --cached --quiet; then
             echo "⏭️ No changes to commit"
           else
@@ -108,8 +111,19 @@ jobs:
             fi
             COMMIT_MSG="$COMMIT_MSG ($(date -u +'%Y-%m-%d %H:%M:%S UTC'))"
             git commit -m "$COMMIT_MSG"
-            git push
-          fi   # <-- fixed missing fi
+
+            # Fetch latest remote to avoid non-fast-forward
+            git fetch origin main
+
+            # Attempt rebase, fallback to force push if conflicts
+            if git rebase origin/main; then
+              git push origin main
+            else
+              echo "⚠️ Rebase failed, performing force push"
+              git rebase --abort
+              git push origin main --force
+            fi
+          fi
 
       - name: Workflow summary
         if: always()
