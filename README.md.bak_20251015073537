@@ -1,0 +1,31 @@
+# 𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ | Cyberpunk Quantum Developer
+
+<!-- Animated GitHub Stats -->
+![GitHub Stats](./dist/github-stats.svg)
+
+<!-- Header SVG -->
+<p align="center">
+  <picture>
+    <source srcset="./dist/header.svg" media="(prefers-color-scheme: dark)">
+    <img src="./dist/header.svg" alt="Cyberpunk Quantum Header" width="100%">
+  </picture>
+</p>
+
+<!-- Terminal SVG -->
+<p align="center">
+  <picture>
+    <source srcset="./dist/terminal.svg" media="(prefers-color-scheme: dark)">
+    <img src="./dist/terminal.svg" alt="Terminal Output" width="100%">
+  </picture>
+</p>
+
+## Projects & Current Work
+
+- Automating deployment workflows
+- Contributing to open source
+- Learning Kubernetes
+- Building shell script utilities
+
+---
+
+_Last updated: 2025-10-15 07:04:55 UTC_

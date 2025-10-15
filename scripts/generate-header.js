@@ -3,168 +3,258 @@ const path = require('path');
 
 const REPO_ROOT = path.resolve(__dirname, '..');
 const README_FILE = path.join(REPO_ROOT, 'README.md');
-const ASSETS_DIR = path.join(REPO_ROOT, 'assets');
-const SVG_FILE = path.join(ASSETS_DIR, 'header.svg');
 
-const AUTHOR = "𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ";
+const AUTHOR = "ɬɧɛ ɠıɬƈɧ";
 const GITHUB_USERNAME = "Thugger069";
 const CURRENT_TIME = new Date().toUTCString().replace(/GMT/, 'UTC');
 
-// Ensure assets directory exists
-if (!fs.existsSync(ASSETS_DIR)) {
-  fs.mkdirSync(ASSETS_DIR, { recursive: true });
-}
+// ———————–
+// Enhanced Matrix Rain with Multiple Character Sets
+// ———————–
+function generateMatrixRain() {
+  const columns = 45;
+  const characterSets = {
+    binary: "01",
+    japanese: "アイウエオカキクケコサシスセソタチツテト",
+    symbols: "⟁⦻⨀⨁⨂⨄⨆⨅⨊⨍⨎⨏⨐⨑⨒⨓⨔⨕⨖⨗⨘⨙⨚⨛⨜⨝",
+    math: "∂∇∏∑√∞∫≈≠≤≥"
+  };
 
-// Static neon grid background
-function generateGrid(width, height) {
-  let grid = '';
-  const spacing = 60;
-  for (let x = spacing; x < width; x += spacing) {
-    const opacity = 0.1 + (x / width) * 0.15;
-    grid += `<line x1="${x}" y1="0" x2="${x}" y2="${height}" stroke="#00f3ff" stroke-width="0.5" opacity="${opacity}"/>`;
-  }
-  for (let y = spacing; y < height; y += spacing) {
-    const opacity = 0.1 + (y / height) * 0.15;
-    grid += `<line x1="0" y1="${y}" x2="${width}" y2="${y}" stroke="#ff00ff" stroke-width="0.5" opacity="${opacity}"/>`;
-  }
-  return grid;
-}
+  let rain = '';
+  const colors = ["#00F3FF", "#FF00FF", "#00FF41", "#B967FF", "#FFF000"];
 
-// Matrix-style falling characters
-function generateMatrix(width, height) {
-  let chars = '';
-  const characters = ['0','1','A','B','C','D','E','F','X'];
-  const columns = 25;
   for (let i = 0; i < columns; i++) {
-    const x = (i * width) / columns + 20;
-    const char = characters[Math.floor(Math.random() * characters.length)];
-    const delay = Math.random() * 5;
-    const duration = 3 + Math.random() * 2;
-    chars += `<text x="${x}" y="-20" font-family="monospace" font-size="16" fill="#00ff41" opacity="0.6" font-weight="bold">
-      ${char}
-      <animate attributeName="y" values="-20;${height+20}" dur="${duration}s" begin="${delay}s" repeatCount="indefinite"/>
-      <animate attributeName="opacity" values="0.6;0.3;0.6" dur="1s" repeatCount="indefinite"/>
+    const x = (i * 2.2).toFixed(2);
+    const delay = (Math.random() * 4).toFixed(2);
+    const duration = (Math.random() * 3 + 2).toFixed(2);
+    const charSet = Object.values(characterSets)[Math.floor(Math.random() * Object.keys(characterSets).length)];
+    const color = colors[Math.floor(Math.random() * colors.length)];
+    const charCount = Math.floor(Math.random() * 4) + 1;
+
+    let chars = '';
+    for (let j = 0; j < charCount; j++) {
+      const char = charSet[Math.floor(Math.random() * charSet.length)];
+      const charDelay = (j * 0.3).toFixed(2);
+      const opacity = (0.3 + (j * 0.2)).toFixed(2);
+      chars += `<tspan x="${x}%" dy="1.2em" opacity="0">
+        ${char}
+        <animate attributeName="opacity" values="0;${opacity};0" dur="${duration}s" begin="${charDelay}s" repeatCount="indefinite"/>
+      </tspan>`;
+    }
+
+    rain += `<text x="${x}%" y="-10%" fill="${color}" font-family="monospace" font-size="0.65rem" font-weight="bold">
+      ${chars}
+      <animate attributeName="y" values="-10%;110%" dur="${duration}s" repeatCount="indefinite" begin="${delay}s"/>
     </text>`;
   }
-  return chars;
+
+  return `<svg width="100%" height="100%" style="position:absolute;top:0;left:0;z-index:0;opacity:0.4;">${rain}</svg>`;
 }
 
-// Quantum symbols & rotation
-function generateQuantumSymbols(width, height) {
-  const symbols = [
-    { text: '|0>', x: 150, y: 80, color: '#00f3ff' },
-    { text: '|1>', x: width-150, y: 100, color: '#ff00ff' },
-    { text: 'PSI', x: 200, y: height-120, color: '#b967ff' },
-    { text: 'H', x: width-200, y: height-100, color: '#fff000' },
-    { text: 'CNOT', x: width/2-150, y: 60, color: '#00f3ff' },
-    { text: 'X', x: width/2+150, y: 70, color: '#00ff41' }
-  ];
-  let html = '';
-  symbols.forEach((sym, idx) => {
-    const rotateValue = (idx * 60) % 360;
-    html += `<text x="${sym.x}" y="${sym.y}" font-family="Monaco, Consolas, monospace" font-size="20" font-weight="bold" fill="${sym.color}" opacity="0.7" filter="url(#glow)" transform="rotate(${rotateValue} ${sym.x} ${sym.y})">
-      ${sym.text}
-      <animate attributeName="opacity" values="0.5;0.9;0.5" dur="3s" begin="${idx*0.5}s" repeatCount="indefinite"/>
-      <animateTransform attributeName="transform" type="rotate" values="${rotateValue} ${sym.x} ${sym.y};${rotateValue+360} ${sym.x} ${sym.y}" dur="20s" repeatCount="indefinite"/>
-    </text>`;
+// ———————–
+// 3D Holographic Grid with Depth
+// ———————–
+function generateHolographicGrid() {
+  let grid = '';
+  const size = 12;
+
+  for (let i = 0; i <= 100; i += size) {
+    const depthOpacity = 0.05 + (i / 100) * 0.15;
+    grid += `<line x1="${i}%" y1="0%" x2="${i}%" y2="100%" stroke="#00f3ff" stroke-opacity="${depthOpacity}">
+      <animate attributeName="stroke-opacity" values="${depthOpacity};${depthOpacity * 3};${depthOpacity}" dur="4s" repeatCount="indefinite"/>
+    </line>`;
+    grid += `<line x1="0%" y1="${i}%" x2="100%" y2="${i}%" stroke="#ff00ff" stroke-opacity="${depthOpacity}">
+      <animate attributeName="stroke-opacity" values="${depthOpacity};${depthOpacity * 3};${depthOpacity}" dur="3s" repeatCount="indefinite"/>
+    </line>`;
+  }
+
+  for (let i = 1; i <= 3; i++) {
+    const radius = i * 15;
+    grid += `<circle cx="50%" cy="50%" r="${radius}%" fill="none" stroke="#b967ff" stroke-opacity="0.1" stroke-width="0.5">
+      <animate attributeName="r" values="${radius - 2}%;${radius + 2}%;${radius - 2}%" dur="${4 + i}s" repeatCount="indefinite"/>
+    </circle>`;
+  }
+
+  return `<svg width="100%" height="100%" style="position:absolute;top:0;left:0;z-index:1;opacity:0.8;">${grid}</svg>`;
+}
+
+// ———————–
+// Quantum Circuit Animation
+// ———————–
+function generateQuantumCircuit() {
+  const gates = ["H", "X", "Y", "Z", "CNOT", "SWAP", "T", "S"];
+  let circuit = '';
+
+  gates.forEach((gate, index) => {
+    const x = Math.random() * 80 + 10;
+    const y = Math.random() * 60 + 20;
+    const delay = index * 0.5;
+
+    circuit += `
+    <g transform="translate(${x}, ${y})">
+      <rect x="-15" y="-10" width="30" height="20" rx="3" fill="#0a0a0f" stroke="#00f3ff" stroke-width="1" opacity="0.8">
+        <animate attributeName="stroke" values="#00f3ff;#ff00ff;#00f3ff" dur="3s" repeatCount="indefinite" begin="${delay}s"/>
+      </rect>
+      <text text-anchor="middle" dominant-baseline="middle" fill="#00f3ff" font-family="monospace" font-size="10" font-weight="bold">
+        ${gate}
+        <animate attributeName="fill" values="#00f3ff;#ff00ff;#00f3ff" dur="3s" repeatCount="indefinite" begin="${delay}s"/>
+      </text>
+    </g>`;
   });
-  return html;
+
+  return `<svg width="100%" height="100%" style="position:absolute;top:0;left:0;z-index:1;opacity:0.6;">${circuit}</svg>`;
 }
 
-// HUD elements
-function generateHUD(width, height) {
+// ———————–
+// Interactive Profile Cards
+// ———————–
+function generateProfileCards() {
   return `
-  <g transform="translate(${width-180}, 40)">
-    <text font-family="Monaco, Consolas, monospace" font-size="11" fill="#00f3ff">
-      <tspan x="0" y="0">SYSTEM: ONLINE</tspan>
-      <tspan x="0" y="18" fill="#00ff41">STATUS: ACTIVE</tspan>
-      <tspan x="0" y="36" fill="#ff00ff">USER: ${GITHUB_USERNAME}</tspan>
-      <tspan x="0" y="54" fill="#fff000">MODE: QUANTUM</tspan>
-    </text>
-    <animate attributeName="opacity" values="1;0.7;1" dur="2s" repeatCount="indefinite"/>
-  </g>
-  <g transform="translate(30, ${height-80})">
-    <text font-family="Monaco, Consolas, monospace" font-size="10" fill="#ff00ff" opacity="0.8">
-      <tspan x="0" y="0">// QUANTUM_INTERFACE_ACTIVE</tspan>
-      <tspan x="0" y="15">// CYBERPUNK_PROTOCOL_ENGAGED</tspan>
-      <tspan x="0" y="30">// AWAITING_USER_INPUT...</tspan>
-    </text>
-  </g>`;
+  <div style="position:absolute;top:2rem;left:2rem;z-index:3;display:flex;flex-direction:column;gap:1rem;">
+    <div class="profile-card" style="background:rgba(10,10,15,0.8);padding:1rem;border-radius:10px;border:1px solid #00f3ff;backdrop-filter:blur(10px);min-width:200px;">
+      <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem;">
+        <div style="width:8px;height:8px;background:#00ff41;border-radius:50%;"></div>
+        <span style="font-family:'Ubuntu Mono',monospace;color:#00f3ff;font-size:0.8rem;">GITHUB STATS</span>
+      </div>
+      <div style="color:#ff00ff;font-family:'Ubuntu Mono',monospace;font-size:0.7rem;">
+        <div>📊 Followers: <span style="color:#00ff41;">growing</span></div>
+        <div>⭐ Stars: <span style="color:#00ff41;">rising</span></div>
+        <div>📚 Repos: <span style="color:#00ff41;">active</span></div>
+      </div>
+    </div>
+    <div class="profile-card" style="background:rgba(10,10,15,0.8);padding:1rem;border-radius:10px;border:1px solid #ff00ff;backdrop-filter:blur(10px);min-width:200px;">
+      <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem;">
+        <div style="width:8px;height:8px;background:#b967ff;border-radius:50%;"></div>
+        <span style="font-family:'Ubuntu Mono',monospace;color:#ff00ff;font-size:0.8rem;">CODING ACTIVITY</span>
+      </div>
+      <div style="color:#00f3ff;font-family:'Ubuntu Mono',monospace;font-size:0.7rem;">
+        <div>🔄 Current: Quantum Scripts</div>
+        <div>📈 Focus: DevOps & Automation</div>
+        <div>🎯 Learning: Advanced K8s</div>
+      </div>
+    </div>
+  </div>`;
 }
 
-// Generate complete SVG
-function generateSVG() {
-  const width = 1200;
-  const height = 400;
-  return `<svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#0a0a0f;stop-opacity:1"/>
-      <stop offset="50%" style="stop-color:#1a1b26;stop-opacity:1"/>
-      <stop offset="100%" style="stop-color:#0a0a0f;stop-opacity:1"/>
-    </linearGradient>
-    <radialGradient id="coreGlow">
-      <stop offset="0%" style="stop-color:#00f3ff;stop-opacity:0.9"/>
-      <stop offset="50%" style="stop-color:#ff00ff;stop-opacity:0.6"/>
-      <stop offset="100%" style="stop-color:#b967ff;stop-opacity:0"/>
-    </radialGradient>
-    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-      <feMerge>
-        <feMergeNode in="coloredBlur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
-  </defs>
-  <rect width="${width}" height="${height}" fill="url(#bgGradient)" rx="20"/>
-  <rect x="2" y="2" width="${width-4}" height="${height-4}" fill="none" stroke="#00f3ff" stroke-width="3" rx="18"/>
-  ${generateGrid(width, height)}
-  ${generateMatrix(width, height)}
-  <g transform="translate(${width/2}, ${height/2})">
-    <circle r="20" fill="url(#coreGlow)" filter="url(#glow)">
-      <animate attributeName="r" values="18;25;18" dur="2s" repeatCount="indefinite"/>
-    </circle>
-  </g>
-  ${generateQuantumSymbols(width, height)}
-  ${generateHUD(width, height)}
-  <text x="${width/2}" y="${height-100}" font-family="Monaco, Consolas, monospace" font-size="56" font-weight="bold" fill="#00f3ff" text-anchor="middle" filter="url(#glow)">
-    ${AUTHOR}
-    <animate attributeName="opacity" values="1;0.8;1" dur="3s" repeatCount="indefinite"/>
-  </text>
-  <text x="${width/2}" y="${height-60}" font-family="Monaco, Consolas, monospace" font-size="18" fill="#ff00ff" text-anchor="middle" filter="url(#glow)">
-    QUANTUM DEVELOPER | CYBERPUNK ARCHITECT
-    <animate attributeName="opacity" values="0.8;1;0.8" dur="2.5s" repeatCount="indefinite"/>
-  </text>
-  <text x="${width/2}" y="${height-20}" font-family="Monaco, Consolas, monospace" font-size="12" fill="#b967ff" text-anchor="middle" opacity="0.8">
-    SYSTEM UPDATE: ${CURRENT_TIME}
-  </text>
-</svg>`;
+// ———————–
+// Enhanced Typing Animation Container
+// ———————–
+function generateTypingAnimation() {
+  return `
+  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:3;text-align:center;">
+    <div style="background:rgba(10,10,15,0.9);padding:2rem;border-radius:15px;border:1px solid #00f3ff;box-shadow:0 0 30px rgba(0,243,255,0.3);backdrop-filter:blur(10px);">
+      <a href="https://git.io/typing-svg" style="text-decoration:none;">
+        <img 
+          src="https://readme-typing-svg.herokuapp.com?font=Ubuntu+Mono&weight=600&size=22&duration=2000&pause=500&color=00F3FF&background=0a0a0f00&center=true&vCenter=true&width=550&height=80&lines=ℌ𝔢𝔩𝔩𝔬+𝔗𝔥𝔢𝔯𝔢;ℑ'𝔪+ɬɧɛ+ɠıɬƈɧ;𝔚𝔢𝔩𝔠𝔬𝔪𝔢+𝔱𝔬+𝔪𝔶+𝔮𝔲𝔞𝔫𝔱𝔲𝔪+𝔯𝔢𝔞𝔩𝔪;𝔖𝔥𝔢𝔩𝔩+𝔖𝔠𝔯𝔦𝔭𝔱+𝔈𝔫𝔱𝔥𝔲𝔰𝔦𝔞𝔰𝔱;𝔏𝔦𝔫𝔲𝔵+%26+𝔇𝔢𝔳𝔒𝔭𝔰+𝔈𝔵𝔭𝔩𝔬𝔯𝔢𝔯;𝔒𝔭𝔢𝔫+𝔖𝔬𝔲𝔯𝔠𝔢+ℭ𝔬𝔫𝔱𝔯𝔦𝔟𝔲𝔱𝔬𝔯;𝔄𝔩𝔴𝔞𝔶𝔰+𝔏𝔢𝔞𝔯𝔫𝔦𝔫𝔤+%F0%9F%92%A1" 
+          alt="Cyberpunk Typing Animation"
+          style="filter: drop-shadow(0 0 15px rgba(0,243,255,0.7)) drop-shadow(0 0 25px rgba(0,243,255,0.4));"
+        />
+      </a>
+      <div style="margin-top:1rem;font-family:'Ubuntu Mono',monospace;font-size:0.8rem;color:#ff00ff;">
+        <span style="color:#00f3ff;">//</span> Quantum Developer | Cyberpunk Architect
+      </div>
+    </div>
+  </div>`;
 }
 
-// Generate README header snippet
-function generateReadmeHeader() {
-  return `<!-- Quantum Cyberpunk Header -->
-<div align="center">
-  <img src="./assets/header.svg" alt="Quantum Cyberpunk Header" width="100%"/>
+// ———————–
+// Social Links with Awesome Style
+// ———————–
+function generateSocialLinks() {
+  return `
+  <div style="position:absolute;bottom:2rem;right:2rem;z-index:3;display:flex;gap:1rem;">
+    <a href="https://github.com/${GITHUB_USERNAME}" style="text-decoration:none;">
+      <div class="social-btn" style="background:rgba(0,243,255,0.1);padding:0.5rem 1rem;border-radius:25px;border:1px solid #00f3ff;color:#00f3ff;font-family:'Ubuntu Mono',monospace;font-size:0.8rem;transition:all 0.3s ease;display:flex;align-items:center;gap:0.5rem;">
+        <span>🐙</span> GitHub
+      </div>
+    </a>
+    <a href="https://twitter.com/yourhandle" style="text-decoration:none;">
+      <div class="social-btn" style="background:rgba(255,0,255,0.1);padding:0.5rem 1rem;border-radius:25px;border:1px solid #ff00ff;color:#ff00ff;font-family:'Ubuntu Mono',monospace;font-size:0.8rem;transition:all 0.3s ease;display:flex;align-items:center;gap:0.5rem;">
+        <span>🐦</span> Twitter
+      </div>
+    </a>
+    <a href="https://linkedin.com/in/yourprofile" style="text-decoration:none;">
+      <div class="social-btn" style="background:rgba(185,103,255,0.1);padding:0.5rem 1rem;border-radius:25px;border:1px solid #b967ff;color:#b967ff;font-family:'Ubuntu Mono',monospace;font-size:0.8rem;transition:all 0.3s ease;display:flex;align-items:center;gap:0.5rem;">
+        <span>💼</span> LinkedIn
+      </div>
+    </a>
+  </div>`;
+}
+
+// ———————–
+// Generate Complete Header
+// ———————–
+function generateHeader() {
+  const matrix = generateMatrixRain();
+  const grid = generateHolographicGrid();
+  const circuit = generateQuantumCircuit();
+  const cards = generateProfileCards();
+  const typing = generateTypingAnimation();
+  const social = generateSocialLinks();
+
+  return `
+<div class="cyber-container" style="position:relative;width:100%;height:600px;background:linear-gradient(135deg,#0a0a0f 0%,#1a1b26 50%,#0a0a0f 100%);overflow:hidden;border-radius:20px;margin:2rem 0;border:2px solid transparent;background-clip:padding-box;box-shadow:0 0 50px rgba(0,243,255,0.2);">
+  <div style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:20px;padding:2px;background:linear-gradient(45deg,#00f3ff,#ff00ff,#b967ff,#00f3ff);background-size:400% 400%;animation:borderFlow 6s ease infinite;z-index:4;pointer-events:none;"></div>
+  ${matrix}
+  ${grid}
+  ${circuit}
+  ${cards}
+  ${typing}
+  ${social}
+  <div style="position:absolute;bottom:1rem;left:2rem;z-index:3;font-family:'Ubuntu Mono',monospace;font-size:0.7rem;color:#00ff41;">
+    <span style="color:#ff00ff;">▶</span> SYSTEM: <span style="color:#00f3ff;">QUANTUM_READY</span> | UPDATED: ${CURRENT_TIME}
+  </div>
+  <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:repeating-linear-gradient(0deg, rgba(0,0,0,0) 0px, rgba(0,0,0,0) 1px, rgba(0,243,255,0.03) 2px, rgba(0,0,0,0) 3px);z-index:2;pointer-events:none;"></div>
 </div>
-<!-- Header End -->`;
+
+<style>
+  @keyframes borderFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  .cyber-container:hover {
+    box-shadow: 0 0 60px rgba(0,243,255,0.4), inset 0 0 40px rgba(0,243,255,0.2);
+    transform: translateY(-3px);
+    transition: all 0.3s ease;
+  }
+  .profile-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(0,243,255,0.3);
+    transition: all 0.3s ease;
+  }
+  .social-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px currentColor;
+    background: rgba(255,255,255,0.1) !important;
+    transition: all 0.3s ease;
+  }
+</style>`;
 }
 
-// Write SVG and update README
+// ———————–
+// Write to README
+// ———————–
 try {
-  const svg = generateSVG();
-  fs.writeFileSync(SVG_FILE, svg);
-  console.log('✅ Generated header.svg');
-
   let content = '';
   if (fs.existsSync(README_FILE)) {
     content = fs.readFileSync(README_FILE, 'utf8');
-    content = content.replace(/<!-- Quantum Cyberpunk Header -->[\s\S]*?<!-- Header End -->/g, '').trim();
+    content = content.replace(/[\s\S]*/g, '').trim();
   }
 
-  const header = generateReadmeHeader();
+  const header = generateHeader();
   fs.writeFileSync(README_FILE, `${header}\n\n${content}`);
-  console.log('✅ Updated README.md with header');
+
+  console.log('🚀 ULTIMATE CYBERPUNK HEADER GENERATED!');
+  console.log('✨ Inspired by awesome-github-profile-readme with:');
+  console.log('   🌌 Advanced Matrix Rain with multiple character sets');
+  console.log('   🔮 3D Holographic Grid with quantum circuits');
+  console.log('   📊 Interactive Profile Cards (GitHub stats style)');
+  console.log('   ⌨️ Enhanced Typing Animation with cyberpunk styling');
+  console.log('   🔗 Social Links with hover effects');
+  console.log('   📱 Responsive design for all devices');
+  console.log('   🎮 Interactive hover animations throughout');
+  console.log(`👤 Profile: ${AUTHOR} (${GITHUB_USERNAME})`);
 } catch (err) {
   console.error('❌ Error generating header:', err);
   process.exit(1);

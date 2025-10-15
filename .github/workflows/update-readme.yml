@@ -1,133 +1,65 @@
-name: Update README with Terminal
+name: 🜂 QRLP README Auto-Update | Stealth Mode v3 🜁
 
 on:
+  push:
+    branches:
+      - main
   schedule:
     - cron: '0 */6 * * *'
   workflow_dispatch:
-    inputs:
-      skip-svg:
-        description: 'Skip SVG generation'
-        required: false
-        default: 'false'
-  push:
-    branches: [ main ]
 
 jobs:
-  update-readme:
+  update-readme-stealth:
+    name: Stealth Auto-Update
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
+    env:
+      NODE_OPTIONS: "--max_old_space_size=4096"
+      GIT_USER_NAME: "Thugger069"
+      GIT_USER_EMAIL: "noreply@github.com"
 
     steps:
-      - name: Checkout repository
+      - name: Checkout repository quietly
         uses: actions/checkout@v4
         with:
+          persist-credentials: true
           fetch-depth: 0
 
-      - name: Setup Node.js
+      - name: Setup Node.js 20.x
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: 20
+          cache: 'pnpm'
 
-      - name: Debug info
+      - name: Restore build cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            node_modules
+            dist
+          key: qrpl-readme-cache-${{ hashFiles('scripts/*.sh','package-lock.json','pnpm-lock.yaml') }}
+          restore-keys: |
+            qrpl-readme-cache-
+
+      - name: Install dependencies silently
+        run: pnpm install --frozen-lockfile --reporter silent
+
+      - name: Run README update script stealthily
         run: |
-          echo "🕒 Trigger: ${{ github.event_name }}"
-          echo "🎯 Branch: ${{ github.ref }}"
-          echo "👤 Actor: ${{ github.actor }}"
-          ls -la
+          # Only run the existing update-readme.sh script
+          bash ./scripts/update-readme.sh > /dev/null 2>&1
 
-      - name: Create directories
-        run: mkdir -p dist scripts
-
-      - name: Check for SVG generator
-        id: check-svg
+      - name: Commit updated README & SVGs (stealth)
         run: |
-          if [ -f "scripts/generate-terminal-svg.js" ]; then
-            echo "script-exists=true" >> $GITHUB_OUTPUT
+          git config user.name "$GIT_USER_NAME"
+          git config user.email "$GIT_USER_EMAIL"
+          git add README.md dist/*.svg || echo "::notice::No changes to add"
+          if ! git diff --cached --quiet; then
+            TIMESTAMP=$(date -u +'%Y-%m-%d %H:%M:%S UTC')
+            git commit -m "🜂 Stealth README + SVG update: $TIMESTAMP"
+            git push origin main --quiet
           else
-            echo "script-exists=false" >> $GITHUB_OUTPUT
+            echo "::notice::🜂 No changes detected, skipping commit"
           fi
 
-      - name: Create SVG generator script
-        if: steps.check-svg.outputs.script-exists == 'false'
-        run: |
-          cat > scripts/generate-terminal-svg.js << 'EOF'
-          # Paste your full generate-terminal-svg.js content here
-          EOF
-          chmod +x scripts/generate-terminal-svg.js
-
-      - name: Generate terminal SVGs
-        id: generate-svg
-        run: |
-          SKIP="${{ inputs.skip-svg }}"
-          if [ "$SKIP" = "true" ] && [ -f "dist/terminal.svg" ]; then
-            echo "⏭️ Skipping SVG generation"
-            echo "svg-generated=false" >> $GITHUB_OUTPUT
-          else
-            echo "🎨 Generating terminal SVGs..."
-            if node scripts/generate-terminal-svg.js; then
-              echo "✅ SVG generation successful"
-              echo "svg-generated=true" >> $GITHUB_OUTPUT
-            else
-              echo "❌ SVG generation failed"
-              echo "svg-generated=false" >> $GITHUB_OUTPUT
-              exit 1
-            fi
-          fi
-
-      - name: Run update script
-        id: update-script
-        run: |
-          if [ -f "scripts/update-terminal.sh" ]; then
-            chmod +x scripts/update-terminal.sh
-            ./scripts/update-terminal.sh
-            echo "script-completed=true" >> $GITHUB_OUTPUT
-          else
-            echo "script-completed=false" >> $GITHUB_OUTPUT
-          fi
-
-      - name: Manual update fallback
-        if: steps.update-script.outputs.script-completed == 'false'
-        run: |
-          CURRENT_TIME=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
-          # Your manual README update logic goes here
-          echo "✅ Manual fallback executed at $CURRENT_TIME"
-
-      - name: Commit and push changes safely
-        if: always()
-        run: |
-          git config --local user.name "Thugger069"
-          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          
-          git add -A
-
-          # Commit if there are changes
-          if git diff --cached --quiet; then
-            echo "⏭️ No changes to commit"
-          else
-            COMMIT_MSG="🔄 Update terminal display"
-            if [ "${{ steps.generate-svg.outputs.svg-generated }}" = "true" ]; then
-              COMMIT_MSG="$COMMIT_MSG + SVG"
-            fi
-            COMMIT_MSG="$COMMIT_MSG ($(date -u +'%Y-%m-%d %H:%M:%S UTC'))"
-            git commit -m "$COMMIT_MSG"
-
-            # Fetch latest remote to avoid non-fast-forward
-            git fetch origin main
-
-            # Attempt rebase, fallback to force push if conflicts
-            if git rebase origin/main; then
-              git push origin main
-            else
-              echo "⚠️ Rebase failed, performing force push"
-              git rebase --abort
-              git push origin main --force
-            fi
-          fi
-
-      - name: Workflow summary
-        if: always()
-        run: |
-          echo "🎉 Workflow Complete"
-          echo "🔧 SVG Generated: ${{ steps.generate-svg.outputs.svg-generated || 'N/A' }}"
-          echo "📖 Update Script: ${{ steps.update-script.outputs.script-completed || 'N/A' }}"
+      - name: Stealth completion notice
+        run: echo "::notice::✅ QRLP Stealth README auto-update v3 completed"

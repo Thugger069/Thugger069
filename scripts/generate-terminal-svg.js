@@ -1,120 +1,117 @@
+#!/usr/bin/env node
 const fs = require('fs');
 const path = require('path');
-const { getQuote } = require('./fetch-quote.js'); // import quote function
 
 const DIST_DIR = path.resolve(__dirname, '../dist');
 if (!fs.existsSync(DIST_DIR)) fs.mkdirSync(DIST_DIR, { recursive: true });
 
-const DISPLAY_NAME = "ɬɧɛ ɠıɬƈɧ";
-const GITHUB_USERNAME = "Thugger069";
-const CURRENT_TIME = new Date().toUTCString().replace(/GMT/, 'UTC');
-
-// Get dynamic quote
-const quote = getQuote();
+const TERMINAL_SVG = path.join(DIST_DIR, 'terminal.svg');
+const nowUTC = new Date().toISOString().replace('T', ' ').split('.')[0] + ' UTC';
 
 // Terminal content
-const lines = [
-  `Last login: ${CURRENT_TIME} on ttys001`,
-  `${DISPLAY_NAME}@github ~ % whoami`,
-  `${DISPLAY_NAME}`,
-  '',
-  `${DISPLAY_NAME}@github ~ % uname -a`,
-  `Darwin github-pro 22.5.0 Darwin Kernel Version 22.5.0: x86_64`,
-  '',
-  `${DISPLAY_NAME}@github ~ % uptime`,
-  `${CURRENT_TIME} up 14 days, 2:51, 1 user, load averages: 0.56 0.62 0.48`,
-  '',
-  `${DISPLAY_NAME}@github ~ % echo "${quote}"`,
-  quote,
-  '',
-  `${DISPLAY_NAME}@github ~ % ls -la Projects/`,
-  `total 48`,
-  `drwxr-xr-x   9 ${DISPLAY_NAME}  staff   288 Jun 15 10:30 .`,
-  `drwxr-xr-x   6 ${DISPLAY_NAME}  staff   192 Jun 15 10:30 ..`,
-  `drwxr-xr-x   8 ${DISPLAY_NAME}  staff   256 Jun 15 10:30 .git`,
-  `-rw-r--r--   1 ${DISPLAY_NAME}  staff   113 Jun 15 10:30 .gitignore`,
-  `drwxr-xr-x   7 ${DISPLAY_NAME}  staff   224 Jun 15 10:30 DevOps`,
-  `drwxr-xr-x   6 ${DISPLAY_NAME}  staff   192 Jun 15 10:30 OpenSource`,
-  `drwxr-xr-x   5 ${DISPLAY_NAME}  staff   160 Jun 15 10:30 Scripts`,
-  `-rw-r--r--   1 ${DISPLAY_NAME}  staff  1024 Jun 15 10:30 README.md`,
-  `-rw-r--r--   1 ${DISPLAY_NAME}  staff   925 Jun 15 10:30 TODO.md`,
-  '',
-  `${DISPLAY_NAME}@github ~ % docker ps`,
-  `CONTAINER ID   IMAGE           COMMAND                  STATUS       PORTS     NAMES`,
-  `a1b2c3d4e5f6   nginx:alpine    "nginx -g 'daemon off;" Up 2 hours   80/tcp    webserver`,
-  `f6e5d4c3b2a1   redis:7-alpine  "docker-entrypoint.s…"  Up 2 hours   6379/tcp  cache`,
-  '',
-  `${DISPLAY_NAME}@github ~ %`
+const username = '𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ';
+const currentTime = nowUTC;
+const loadAvg = '0.15, 0.12, 0.10';
+const projects = ['DevOps','OpenSource','Scripts'];
+const todoList = [
+  'Automating deployment workflows',
+  'Contributing to open source',
+  'Learning Kubernetes',
+  'Building shell script utilities'
 ];
 
-// Theme configs
-const theme = {
-  background: '#1a1b26',
-  text: '#c0caf5',
-  accent: '#7dcfff',
-  border: '#2ac3de',
-  headerBg: '#16161e'
-};
+// Generate matrix letters behind terminal
+const signature = '𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ';
+const matrixLetters = signature.split('');
+const generateMatrixText = (letters) => 
+  letters.map((char, i) => {
+    const delay = (i * 0.2).toFixed(2);
+    return `<text x="${50 + i*36}" y="50" font-family="Monaco, Consolas, monospace" font-size="36" font-weight="bold" fill="#00ff41" class="matrix">
+      ${char}
+      <animate attributeName="y" values="-20;400;-20" dur="4s" begin="${delay}s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.2;1;0.2" dur="2s" begin="${delay}s" repeatCount="indefinite"/>
+    </text>`;
+  }).join('\n  ');
 
-const lightTheme = {
-  background: '#ffffff',
-  text: '#333333',
-  accent: '#0366d6',
-  border: '#d1d5da',
-  headerBg: '#f6f8fa'
-};
+// Generate TODO list as SVG text
+const generateTODOText = (list, startY) => list.map((item,i) =>
+  `<text x="40" y="${startY + i*24}" font-family="Monaco, Consolas, monospace" font-size="16" fill="#b967ff">→ ${item}</text>`
+).join('\n  ');
 
-const LINE_HEIGHT = 18;
-const PADDING = 20;
-const height = lines.length * LINE_HEIGHT + PADDING * 2 + 30; // +30 for header
-const maxLineLength = Math.max(...lines.map(line => line.length));
-const CHAR_WIDTH = 8;
-const width = Math.max(800, maxLineLength * CHAR_WIDTH + PADDING * 2);
+// Particle layer
+const generateParticles = (count=50) => Array.from({ length: count }).map(() => {
+  const cx = Math.random()*1200;
+  const cy = Math.random()*400;
+  const r = 1 + Math.random()*3;
+  const dur = 2 + Math.random()*3;
+  return `<circle cx="${cx}" cy="${cy}" r="${r}" fill="#00f3ff" opacity="0.5">
+    <animate attributeName="cy" values="${cy};${cy+60};${cy}" dur="${dur}s" repeatCount="indefinite"/>
+    <animate attributeName="fill" values="#00f3ff;#ff00ff;#00f3ff" dur="3s" repeatCount="indefinite"/>
+  </circle>`;
+}).join('\n  ');
 
-function generateSVG(themeConfig) {
-  return `<svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg">
+const svgContent = `
+<svg width="100%" height="400" viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="${themeConfig.background}" />
-      <stop offset="100%" stop-color="${themeConfig.headerBg}" />
+    <linearGradient id="bgDark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0a0f"/>
+      <stop offset="50%" stop-color="#1a1b26"/>
+      <stop offset="100%" stop-color="#0a0a0f"/>
     </linearGradient>
-    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
-      <feMerge> 
-        <feMergeNode in="coloredBlur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
+    <linearGradient id="bgLight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="50%" stop-color="#e0e0e0"/>
+      <stop offset="100%" stop-color="#ffffff"/>
+    </linearGradient>
+
+    <style>
+      .bg { fill: url(#bgDark); }
+      .matrix { fill: #00ff41; }
+      @media (prefers-color-scheme: light) {
+        .bg { fill: url(#bgLight); }
+        .matrix { fill: #0077aa; }
+      }
+    </style>
   </defs>
-  
-  <rect width="100%" height="100%" rx="12" ry="12" fill="url(#bgGradient)" 
-        stroke="${themeConfig.border}" stroke-width="2" filter="url(#glow)"/>
-  
-  <rect x="0" y="0" width="100%" height="30" rx="12" ry="12" fill="${themeConfig.headerBg}" 
-        stroke="${themeConfig.border}" stroke-width="2"/>
-  <circle cx="15" cy="15" r="4" fill="#ff5f56"/>
-  <circle cx="30" cy="15" r="4" fill="#ffbd2e"/>
-  <circle cx="45" cy="15" r="4" fill="#27ca3f"/>
-  <text x="60" y="18" style="font-family: 'Monaco', monospace; font-size: 12px; fill: ${themeConfig.text}; font-weight: bold;">${DISPLAY_NAME}@github: ~</text>
-  
-  <style>
-    .line { font-family: 'Monaco', monospace; font-size: 14px; fill: ${themeConfig.text}; white-space: pre; }
-    .accent { fill: ${themeConfig.accent}; font-weight: bold; }
-  </style>
-  
-  ${lines.map((line, idx) => 
-    `<text x="${PADDING}" y="${PADDING + 30 + idx * LINE_HEIGHT}" class="line">${line}</text>`
-  ).join('')}
-  
-  <text x="${PADDING}" y="${PADDING + 30 + (lines.length - 1) * LINE_HEIGHT + 4}" class="accent">█
-    <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite" />
+
+  <rect width="1200" height="400" rx="15" class="bg"/>
+
+  <!-- Matrix letters -->
+  ${generateMatrixText(matrixLetters)}
+
+  <!-- Terminal content -->
+  <text x="40" y="40" font-family="Monaco, Consolas, monospace" font-size="18" fill="#00ffff">
+    ${username}@github ~ % uptime
   </text>
-</svg>`;
-}
+  <text x="40" y="70" font-family="Monaco, Consolas, monospace" font-size="16" fill="#ffffff">
+    ${currentTime} up 02:51, 1 user, load average: ${loadAvg}
+  </text>
 
-// Write SVGs
-fs.writeFileSync(path.join(DIST_DIR, 'terminal.svg'), generateSVG(theme));
-fs.writeFileSync(path.join(DIST_DIR, 'terminal-light.svg'), generateSVG(lightTheme));
+  <text x="40" y="110" font-family="Monaco, Consolas, monospace" font-size="16" fill="#00ff41">
+    ${username}@github ~ % ls -la Projects/
+  </text>
+  ${projects.map((p,i)=>`<text x="60" y="${140+i*24}" font-family="Monaco, Consolas, monospace" font-size="16" fill="#ffffff">${p}/</text>`).join('\n  ')}
 
-console.log("✅ Terminal SVGs generated!");
-console.log("📁 Files: terminal.svg, terminal-light.svg");
+  <text x="40" y="240" font-family="Monaco, Consolas, monospace" font-size="16" fill="#00ff41">
+    ${username}@github ~ % cat Projects/TODO.md
+  </text>
+  ${generateTODOText(todoList, 270)}
+
+  <!-- Timestamp bottom-right -->
+  <text x="1180" y="390" font-family="Monaco, Consolas, monospace" font-size="12" fill="#888" text-anchor="end">
+    ${currentTime}
+  </text>
+
+  <!-- Blinking cursor -->
+  <text x="500" y="40" font-family="Monaco, Consolas, monospace" font-size="18" fill="#00ffff">
+    <animate attributeName="opacity" values="0;1;0" dur="1s" repeatCount="indefinite"/>
+    █
+  </text>
+
+  <!-- Particle layer -->
+  ${generateParticles(70)}
+</svg>
+`;
+
+fs.writeFileSync(TERMINAL_SVG, svgContent, 'utf8');
+console.log('✅ Generated fully enhanced terminal.svg with matrix, cursor, TODOs, and particles');
