@@ -1,59 +1,28 @@
 name: Update README
-
 on:
   schedule:
-    - cron: '0 0 * * *' # daily
+    - cron: '0 */6 * * *'
   workflow_dispatch:
-
-permissions:
-  contents: write
+  push:
+    branches: [ main ]
 
 jobs:
-  generate-snake:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 1
-
-      - name: Create dist Directory
-        run: mkdir -p dist
-
-      - name: Generate Neon Snake Animations
-        uses: Platane/snk@v3
-        with:
-          github_user_name: ${{ github.repository_owner }}
-          outputs: |
-            dist/github-snake.svg
-            dist/github-snake-dark.svg?palette=github-dark
-
   update-readme:
     runs-on: ubuntu-latest
-    needs: generate-snake
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v3
         with:
-          fetch-depth: 1
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-
-      - name: Run update-terminal.sh
-        env:
-          USERNAME: "𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Generate README
         run: |
-          chmod +x ./scripts/update-terminal.sh
-          ./scripts/update-terminal.sh
-
-      - name: Commit & Push
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          chmod +x update-terminal.sh
+          ./update-terminal.sh
+          
+      - name: Commit and push
         run: |
-          TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M:%S")
-          git config --local user.name "Thugger069"
-          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -f README.md dist/github-snake*.svg
-          git commit -m "🐍 Q.R.I.P README Update ($TIMESTAMP)" || echo "No changes to commit"
+          git config --local user.email "thugger069"
+          git config --local user.name "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git diff --quiet && git diff --staged --quiet || git commit -m "📚 Update README - $(date -u)"
           git push
