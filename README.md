@@ -1114,13 +1114,23 @@ f6e5d4c3b2a1   redis:7-alpine  "docker-entrypoint.s…"  Up 2 hours   6379/tcp  
 
 
 
+
 <!-- Terminal Start -->
 <p align="center">
 <picture>
 <source media="(prefers-color-scheme: dark)" srcset="dist/terminal.svg" />
 <source media="(prefers-color-scheme: light)" srcset="dist/terminal-light.svg" />
-<source media="(prefers-color-scheme: no-preference)" srcset="dist/terminal-cyberpunk.svg" />
-<img alt="Terminal Display" src="dist/terminal-cyberpunk.svg" width="100%" style="border-radius: 10px;" />
+<img alt="Terminal Display" src="dist/terminal-light.svg" width="100%" style="border-radius: 10px;" />
 </picture>
 </p>
 <!-- Terminal End -->
+
+<!-- Particle Start -->
+<p align="center">
+<picture>
+<source media="(prefers-color-scheme: dark)" srcset="dist/particles-dark.svg" />
+<source media="(prefers-color-scheme: light)" srcset="dist/particles-light.svg" />
+<img alt="Particle Effects" src="dist/particles-light.svg" width="100%" style="border-radius: 10px;" />
+</picture>
+</p>
+<!-- Particle End -->

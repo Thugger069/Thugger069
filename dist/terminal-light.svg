@@ -36,7 +36,7 @@
   .accent { fill: #0969da; font-weight:bold;}
 </style>
 
-<text x="20" y="55" class="line">Last login: Wed, 15 Oct 2025 04:13:49 UTC on ttys001</text>
+<text x="20" y="55" class="line">Last login: Wed, 15 Oct 2025 05:04:14 UTC on ttys001</text>
   <text x="20" y="73" class="line"><tspan fill="#1a7f37" font-weight="bold">𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ@quantum-terminal ~ %</tspan> whoami</text>
   <text x="20" y="91" class="line">𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ</text>
   <text x="20" y="109" class="line"></text>
@@ -44,10 +44,10 @@
   <text x="20" y="145" class="line">Darwin quantum-pro 22.5.0 Darwin Kernel Version 22.5.0: x86_64</text>
   <text x="20" y="163" class="line"></text>
   <text x="20" y="181" class="line"><tspan fill="#1a7f37" font-weight="bold">𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ@quantum-terminal ~ %</tspan> uptime</text>
-  <text x="20" y="199" class="line">Wed, 15 Oct 2025 04:13:49 up 14 days, 2:51, 1 user, load: 0.56 0.62 0.48</text>
+  <text x="20" y="199" class="line">Wed, 15 Oct 2025 05:04:14 up 14 days, 2:51, 1 user, load: 0.56 0.62 0.48</text>
   <text x="20" y="217" class="line"></text>
-  <text x="20" y="235" class="line"><tspan fill="#1a7f37" font-weight="bold">𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ@quantum-terminal ~ %</tspan> echo "The function of good software is to make the complex appear to be simple. - Grady Booch"</text>
-  <text x="20" y="253" class="line">The function of good software is to make the complex appear to be simple. - Grady Booch</text>
+  <text x="20" y="235" class="line"><tspan fill="#1a7f37" font-weight="bold">𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ@quantum-terminal ~ %</tspan> echo "Programming isn’t about what you know; it’s about what you can figure out. - Chris Pine"</text>
+  <text x="20" y="253" class="line">Programming isn’t about what you know; it’s about what you can figure out. - Chris Pine</text>
   <text x="20" y="271" class="line"></text>
   <text x="20" y="289" class="line"><tspan fill="#1a7f37" font-weight="bold">𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ@quantum-terminal ~ %</tspan> ls -la Projects/</text>
   <text x="20" y="307" class="line">total 48</text>
