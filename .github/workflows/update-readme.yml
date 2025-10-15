@@ -1,332 +1,324 @@
-name: Update Terminal Display
+name: Update README with Terminal
 
 on:
   schedule:
-    # Run every 6 hours to keep the terminal fresh
+    # Run every 6 hours
     - cron: '0 */6 * * *'
   
-  # Manual trigger from GitHub UI
+  # Manual trigger
   workflow_dispatch:
     inputs:
       skip-svg:
-        description: 'Skip SVG generation (use existing files)'
+        description: 'Skip SVG generation'
         required: false
         default: false
         type: boolean
   
-  # Run when changes are pushed to main branch
+  # Run on pushes to main
   push:
     branches: [ main ]
 
 jobs:
-  update-terminal:
+  update-readme:
     runs-on: ubuntu-latest
     permissions:
       contents: write
     
     steps:
-  - name: Checkout repository
-    uses: actions/checkout@v4
-    with:
-      token: ${{ secrets.GITHUB_TOKEN }}
-      fetch-depth: 0
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
 
-  - name: Setup Node.js
-    uses: actions/setup-node@v4
-    with:
-      node-version: '18'
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
 
-  - name: Debug information
-    run: |
-      echo "🕒 Workflow triggered by: ${{ github.event_name }}"
-      echo "🎯 Running on branch: ${{ github.ref }}"
-      echo "👤 Triggered by: ${{ github.actor }}"
-      echo "📁 Workspace: ${{ github.workspace }}"
-      ls -la
+      - name: Debug info
+        run: |
+          echo "🕒 Trigger: ${{ github.event_name }}"
+          echo "🎯 Branch: ${{ github.ref }}"
+          echo "👤 Actor: ${{ github.actor }}"
+          ls -la
 
-  - name: Create necessary directories
-    run: |
-      mkdir -p dist
-      mkdir -p scripts
-      mkdir -p backup
-      echo "📁 Directory structure created"
+      - name: Create directories
+        run: |
+          mkdir -p dist scripts
+          echo "📁 Created directories"
 
-  - name: Check for existing terminal files
-    id: check-files
-    run: |
-      if [ -f "dist/terminal.svg" ]; then
-        echo "terminal-exists=true" >> $GITHUB_OUTPUT
-        echo "📄 Existing terminal.svg found"
-      else
-        echo "terminal-exists=false" >> $GITHUB_OUTPUT
-        echo "❌ No existing terminal.svg found"
-      fi
+      - name: Check for SVG generator
+        id: check-svg-script
+        run: |
+          if [ -f "scripts/generate-terminal-svg.js" ]; then
+            echo "📄 SVG generator found"
+            echo "script-exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "❌ SVG generator not found"
+            echo "script-exists=false" >> $GITHUB_OUTPUT
+          fi
 
-  - name: Create enhanced SVG generator script
-    run: |
-      cat > scripts/generate-terminal-svg.js << 'EOF'
-      const fs = require('fs');
-      const path = require('path');
+      - name: Create SVG generator script
+        if: steps.check-svg-script.outputs.script-exists == 'false'
+        run: |
+          cat > scripts/generate-terminal-svg.js << 'EOF'
+          const fs = require('fs');
+          const path = require('path');
 
-      const DIST_DIR = path.resolve(__dirname, '../dist');
-      if (!fs.existsSync(DIST_DIR)) fs.mkdirSync(DIST_DIR, { recursive: true });
+          const DIST_DIR = path.resolve(__dirname, '../dist');
+          if (!fs.existsSync(DIST_DIR)) fs.mkdirSync(DIST_DIR, { recursive: true });
 
-      const DISPLAY_NAME = "ɬɧɛ ɠıɬƈɧ";
-      const GITHUB_USERNAME = "Thugger069";
-      const CURRENT_TIME = new Date().toUTCString().replace(/GMT/, 'UTC');
+          const DISPLAY_NAME = "ɬɧɛ ɠıɬƈɧ";
+          const CURRENT_TIME = new Date().toUTCString().replace(/GMT/, 'UTC');
 
-      // Generate random load averages
-      const load1 = (Math.random() * 0.8 + 0.1).toFixed(2);
-      const load2 = (Math.random() * 0.8 + 0.2).toFixed(2);
-      const load3 = (Math.random() * 0.8 + 0.1).toFixed(2);
-      const LOAD_AVG = \`\${load1} \${load2} \${load3}\`;
+          // Generate random load averages
+          const load1 = (Math.random() * 0.8 + 0.1).toFixed(2);
+          const load2 = (Math.random() * 0.8 + 0.2).toFixed(2);
+          const load3 = (Math.random() * 0.8 + 0.1).toFixed(2);
+          const LOAD_AVG = `${load1} ${load2} ${load3}`;
 
-      // Enhanced terminal content
-      const lines = [
-        \`Last login: \${CURRENT_TIME} on ttys001\`,
-        \`\${DISPLAY_NAME}@github ~ % whoami\`,
-        \`\${DISPLAY_NAME}\`,
-        '',
-        \`\${DISPLAY_NAME}@github ~ % uname -a\`,
-        \`Darwin github-pro 22.5.0 Darwin Kernel Version 22.5.0: x86_64\`,
-        '',
-        \`\${DISPLAY_NAME}@github ~ % uptime\`,
-        \`\${CURRENT_TIME} up 14 days, 2:51, 1 user, load averages: \${LOAD_AVG}\`,
-        '',
-        \`\${DISPLAY_NAME}@github ~ % ls -la Projects/\`,
-        \`total 48\`,
-        \`drwxr-xr-x   9 \${DISPLAY_NAME}  staff   288 Jun 15 10:30 .\`,
-        \`drwxr-xr-x   6 \${DISPLAY_NAME}  staff   192 Jun 15 10:30 ..\`,
-        \`drwxr-xr-x   8 \${DISPLAY_NAME}  staff   256 Jun 15 10:30 .git\`,
-        \`-rw-r--r--   1 \${DISPLAY_NAME}  staff   113 Jun 15 10:30 .gitignore\`,
-        \`drwxr-xr-x   7 \${DISPLAY_NAME}  staff   224 Jun 15 10:30 DevOps\`,
-        \`drwxr-xr-x   6 \${DISPLAY_NAME}  staff   192 Jun 15 10:30 OpenSource\`,
-        \`drwxr-xr-x   5 \${DISPLAY_NAME}  staff   160 Jun 15 10:30 Scripts\`,
-        \`-rw-r--r--   1 \${DISPLAY_NAME}  staff  1024 Jun 15 10:30 README.md\`,
-        \`-rw-r--r--   1 \${DISPLAY_NAME}  staff   925 Jun 15 10:30 TODO.md\`,
-        '',
-        \`\${DISPLAY_NAME}@github ~ % cat Projects/TODO.md\`,
-        \`# 📋 Current Projects\`,
-        \`## 🚀 Active Development\`,
-        \`- [ ] Kubernetes cluster autoscaling\`,
-        \`- [ ] Terraform multi-cloud deployment\`,
-        \`- [ ] CI/CD pipeline optimization\`,
-        \`- [ ] Monitoring stack with Prometheus & Grafana\`,
-        '',
-        \`## 🔄 Maintenance\`,
-        \`- [ ] Update Docker container security\`,
-        \`- [ ] Backup strategy implementation\`,
-        '',
-        \`\${DISPLAY_NAME}@github ~ % docker ps\`,
-        \`CONTAINER ID   IMAGE           COMMAND                  STATUS       PORTS     NAMES\`,
-        \`a1b2c3d4e5f6   nginx:alpine    "nginx -g 'daemon off;" Up 2 hours   80/tcp    webserver\`,
-        \`f6e5d4c3b2a1   redis:7-alpine  "docker-entrypoint.s…"  Up 2 hours   6379/tcp  cache\`,
-        '',
-        \`\${DISPLAY_NAME}@github ~ %\`
-      ];
+          const lines = [
+            `Last login: ${CURRENT_TIME} on ttys001`,
+            `${DISPLAY_NAME}@github ~ % whoami`,
+            `${DISPLAY_NAME}`,
+            '',
+            `${DISPLAY_NAME}@github ~ % uname -a`,
+            `Darwin github-pro 22.5.0 Darwin Kernel Version 22.5.0: x86_64`,
+            '',
+            `${DISPLAY_NAME}@github ~ % uptime`,
+            `${CURRENT_TIME} up 14 days, 2:51, 1 user, load averages: ${LOAD_AVG}`,
+            '',
+            `${DISPLAY_NAME}@github ~ % ls -la Projects/`,
+            `total 48`,
+            `drwxr-xr-x   9 ${DISPLAY_NAME}  staff   288 Jun 15 10:30 .`,
+            `drwxr-xr-x   6 ${DISPLAY_NAME}  staff   192 Jun 15 10:30 ..`,
+            `drwxr-xr-x   8 ${DISPLAY_NAME}  staff   256 Jun 15 10:30 .git`,
+            `-rw-r--r--   1 ${DISPLAY_NAME}  staff   113 Jun 15 10:30 .gitignore`,
+            `drwxr-xr-x   7 ${DISPLAY_NAME}  staff   224 Jun 15 10:30 DevOps`,
+            `drwxr-xr-x   6 ${DISPLAY_NAME}  staff   192 Jun 15 10:30 OpenSource`,
+            `drwxr-xr-x   5 ${DISPLAY_NAME}  staff   160 Jun 15 10:30 Scripts`,
+            `-rw-r--r--   1 ${DISPLAY_NAME}  staff  1024 Jun 15 10:30 README.md`,
+            `-rw-r--r--   1 ${DISPLAY_NAME}  staff   925 Jun 15 10:30 TODO.md`,
+            '',
+            `${DISPLAY_NAME}@github ~ % docker ps`,
+            `CONTAINER ID   IMAGE           COMMAND                  STATUS       PORTS     NAMES`,
+            `a1b2c3d4e5f6   nginx:alpine    "nginx -g 'daemon off;" Up 2 hours   80/tcp    webserver`,
+            `f6e5d4c3b2a1   redis:7-alpine  "docker-entrypoint.s…"  Up 2 hours   6379/tcp  cache`,
+            '',
+            `${DISPLAY_NAME}@github ~ %`
+          ];
 
-      // Cyberpunk theme
-      const theme = {
-        background: '#1a1b26',
-        text: '#c0caf5',
-        accent: '#7dcfff',
-        border: '#2ac3de',
-        headerBg: '#16161e'
-      };
+          const theme = {
+            background: '#1a1b26',
+            text: '#c0caf5',
+            accent: '#7dcfff',
+            border: '#2ac3de',
+            headerBg: '#16161e'
+          };
 
-      const LINE_HEIGHT = 18;
-      const PADDING = 20;
-      const height = lines.length * LINE_HEIGHT + PADDING * 2 + 30;
-      const maxLineLength = Math.max(...lines.map(line => line.length));
-      const CHAR_WIDTH = 8;
-      const width = Math.max(800, maxLineLength * CHAR_WIDTH + PADDING * 2);
+          const LINE_HEIGHT = 18;
+          const PADDING = 20;
+          const height = lines.length * LINE_HEIGHT + PADDING * 2 + 30;
+          const maxLineLength = Math.max(...lines.map(line => line.length));
+          const CHAR_WIDTH = 8;
+          const width = Math.max(800, maxLineLength * CHAR_WIDTH + PADDING * 2);
 
-      const svgDark = \`<svg width="\${width}" height="\${height}" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="\${theme.background}" />
-            <stop offset="100%" stop-color="#16161e" />
-          </linearGradient>
-          <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-            <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
-            <feMerge> 
-              <feMergeNode in="coloredBlur"/>
-              <feMergeNode in="SourceGraphic"/>
-            </feMerge>
-          </filter>
-        </defs>
-        
-        <!-- Terminal window -->
-        <rect width="100%" height="100%" rx="12" ry="12" fill="url(#bgGradient)" 
-              stroke="\${theme.border}" stroke-width="2" filter="url(#glow)"/>
-        
-        <!-- Terminal header -->
-        <rect x="0" y="0" width="100%" height="30" rx="12" ry="12" fill="\${theme.headerBg}" 
-              stroke="\${theme.border}" stroke-width="2"/>
-        <circle cx="15" cy="15" r="4" fill="#ff5f56"/>
-        <circle cx="30" cy="15" r="4" fill="#ffbd2e"/>
-        <circle cx="45" cy="15" r="4" fill="#27ca3f"/>
-        <text x="60" y="18" style="font-family: 'Monaco', 'Consolas', monospace; font-size: 12px; fill: \${theme.text}; font-weight: bold;">\${DISPLAY_NAME}@github: ~</text>
-        
-        <style>
-          .line { 
-            font-family: 'Monaco', 'Consolas', 'Courier New', monospace; 
-            font-size: 14px; 
-            fill: \${theme.text};
-            white-space: pre;
-          }
-          .accent { 
-            fill: \${theme.accent};
-            font-weight: bold;
-          }
-        </style>
-        
-        <!-- Terminal content -->
-        \${lines.map((line, idx) => 
-          \`<text x="\${PADDING}" y="\${PADDING + 30 + idx * LINE_HEIGHT}" class="line">\${line}</text>\`
-        ).join('')}
-        
-        <!-- Blinking cursor -->
-        <text x="\${PADDING}" y="\${PADDING + 30 + (lines.length - 1) * LINE_HEIGHT + 4}" 
-              class="accent">█
-          <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite" />
-        </text>
-      </svg>\`;
+          const svgDark = `<svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="${theme.background}" />
+                <stop offset="100%" stop-color="#16161e" />
+              </linearGradient>
+            </defs>
+            
+            <rect width="100%" height="100%" rx="12" ry="12" fill="url(#bgGradient)" 
+                  stroke="${theme.border}" stroke-width="2"/>
+            
+            <rect x="0" y="0" width="100%" height="30" rx="12" ry="12" fill="${theme.headerBg}" 
+                  stroke="${theme.border}" stroke-width="2"/>
+            <circle cx="15" cy="15" r="4" fill="#ff5f56"/>
+            <circle cx="30" cy="15" r="4" fill="#ffbd2e"/>
+            <circle cx="45" cy="15" r="4" fill="#27ca3f"/>
+            <text x="60" y="18" style="font-family: monospace; font-size: 12px; fill: ${theme.text}; font-weight: bold;">${DISPLAY_NAME}@github: ~</text>
+            
+            <style>
+              .line { font-family: monospace; font-size: 14px; fill: ${theme.text}; white-space: pre; }
+              .accent { fill: ${theme.accent}; font-weight: bold; }
+            </style>
+            
+            ${lines.map((line, idx) => 
+              `<text x="${PADDING}" y="${PADDING + 30 + idx * LINE_HEIGHT}" class="line">${line}</text>`
+            ).join('')}
+            
+            <text x="${PADDING}" y="${PADDING + 30 + (lines.length - 1) * LINE_HEIGHT + 4}" 
+                  class="accent">█
+              <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite" />
+            </text>
+          </svg>`;
 
-      // Light theme variant
-      const lightTheme = {
-        background: '#ffffff',
-        text: '#333333',
-        accent: '#0366d6',
-        border: '#d1d5da',
-        headerBg: '#f6f8fa'
-      };
+          // Light theme
+          const lightTheme = {
+            background: '#ffffff',
+            text: '#333333',
+            accent: '#0366d6',
+            border: '#d1d5da',
+            headerBg: '#f6f8fa'
+          };
 
-      const svgLight = svgDark
-        .replace(new RegExp(theme.background, 'g'), lightTheme.background)
-        .replace(new RegExp(theme.text, 'g'), lightTheme.text)
-        .replace(new RegExp(theme.accent, 'g'), lightTheme.accent)
-        .replace(new RegExp(theme.border, 'g'), lightTheme.border)
-        .replace(new RegExp(theme.headerBg, 'g'), lightTheme.headerBg);
+          const svgLight = svgDark
+            .replace(new RegExp(theme.background, 'g'), lightTheme.background)
+            .replace(new RegExp(theme.text, 'g'), lightTheme.text)
+            .replace(new RegExp(theme.accent, 'g'), lightTheme.accent)
+            .replace(new RegExp(theme.border, 'g'), lightTheme.border)
+            .replace(new RegExp(theme.headerBg, 'g'), lightTheme.headerBg);
 
-      try {
-        fs.writeFileSync(path.join(DIST_DIR, 'terminal.svg'), svgDark);
-        fs.writeFileSync(path.join(DIST_DIR, 'terminal-light.svg'), svgLight);
-        console.log("✅ Enhanced terminal SVGs generated!");
-        console.log("📁 Files: terminal.svg, terminal-light.svg");
-        console.log(\`📏 Dimensions: \${width}x\${height}px\`);
-      } catch (error) {
-        console.error("❌ Error generating SVG files:", error);
-        process.exit(1);
-      }
-      EOF
-      echo "📝 SVG generator script created successfully"
+          fs.writeFileSync(path.join(DIST_DIR, 'terminal.svg'), svgDark);
+          fs.writeFileSync(path.join(DIST_DIR, 'terminal-light.svg'), svgLight);
+          console.log("✅ Terminal SVGs generated!");
+          EOF
+          echo "📝 Created SVG generator script"
 
-  - name: Generate terminal SVGs
-    id: generate-svg
-    run: |
-      if [ "${{ inputs.skip-svg }}" = "true" ] && [ -f "dist/terminal.svg" ]; then
-        echo "⏭️ Skipping SVG generation as requested, using existing files"
-        echo "svg-generated=false" >> $GITHUB_OUTPUT
-      else
-        echo "🎨 Generating terminal SVGs..."
-        if node scripts/generate-terminal-svg.js; then
-          echo "✅ SVG generation successful"
-          echo "svg-generated=true" >> $GITHUB_OUTPUT
-          echo "📄 Generated files in dist/:"
-          ls -la dist/
-        else
-          echo "❌ SVG generation failed"
-          echo "svg-generated=false" >> $GITHUB_OUTPUT
-          exit 1
-        fi
-      fi
+      - name: Generate terminal SVGs
+        id: generate-svg
+        run: |
+          if [ "${{ inputs.skip-svg }}" = "true" ] && [ -f "dist/terminal.svg" ]; then
+            echo "⏭️ Skipping SVG generation"
+            echo "svg-generated=false" >> $GITHUB_OUTPUT
+          else
+            echo "🎨 Generating terminal SVGs..."
+            if node scripts/generate-terminal-svg.js; then
+              echo "✅ SVG generation successful"
+              echo "svg-generated=true" >> $GITHUB_OUTPUT
+              ls -la dist/
+            else
+              echo "❌ SVG generation failed"
+              echo "svg-generated=false" >> $GITHUB_OUTPUT
+              exit 1
+            fi
+          fi
 
-  - name: Create or update README
-    id: update-readme
-    run: |
-      echo "📖 Updating README.md..."
-      
-      GITHUB_SNAKE_DARK="https://raw.githubusercontent.com/Thugger069/Thugger069/main/dist/github-snake-dark.svg"
-      GITHUB_SNAKE_LIGHT="https://raw.githubusercontent.com/Thugger069/Thugger069/main/dist/github-snake.svg"
-      CURRENT_TIME=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
-      
-      # Create basic README if it doesn't exist
-      if [ ! -f "README.md" ]; then
-        echo "📝 Creating new README.md..."
-        cat > README.md << 'README'
+      - name: Run update script
+        id: update-script
+        run: |
+          echo "🚀 Running update script..."
+          if [ -f "scripts/update-terminal.sh" ]; then
+            chmod +x scripts/update-terminal.sh
+            ./scripts/update-terminal.sh
+            echo "script-completed=true" >> $GITHUB_OUTPUT
+          else
+            echo "❌ Update script not found"
+            echo "script-completed=false" >> $GITHUB_OUTPUT
+          fi
 
-      # Add terminal section
-      if grep -q "<!-- Terminal Section -->" README.md; then
-        echo "🔄 Updating existing terminal section..."
-        # Use a temporary file for the update
-        cat > README_temp.md << 'TERMINAL'
+      - name: Manual update fallback
+        if: steps.update-script.outputs.script-completed == 'false'
+        run: |
+          echo "🔄 Using manual update fallback..."
+          
+          CURRENT_TIME=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
+          SNAKE_DARK="https://raw.githubusercontent.com/Thugger069/Thugger069/main/dist/github-snake-dark.svg"
+          SNAKE_LIGHT="https://raw.githubusercontent.com/Thugger069/Thugger069/main/dist/github-snake.svg"
+          
+          # Create or update README
+          if [ ! -f "README.md" ]; then
+            cat > README.md << 'EOF'
+<div align="center">
+  <h1>👨‍💻 ɬɧɛ ɠıɬƈɧ</h1>
+  <h3>DevOps Engineer & Open Source Enthusiast</h3>
 
-      # Add other sections if they don't exist
-      if ! grep -q "<!-- Tech Stack -->" README.md; then
-        cat >> README.md << 'STACK'
+  <p align="center">
+    <a href="https://github.com/Thugger069">
+      <img src="https://komarev.com/ghpvc/?username=Thugger069&color=blueviolet&style=for-the-badge" alt="Profile Views" />
+    </a>
+    <a href="https://github.com/Thugger069?tab=followers">
+      <img src="https://img.shields.io/github/followers/Thugger069?color=green&logo=github&style=for-the-badge" alt="GitHub Followers" />
+    </a>
+  </p>
+EOF
+          fi
+          
+          # Add terminal section
+          if ! grep -q "<!-- Terminal Section -->" README.md; then
+            cat >> README.md << EOF
 
-      if ! grep -q "<!-- GitHub Stats -->" README.md; then
-        cat >> README.md << 'STATS'
+  <!-- Terminal Section -->
+  <div align="center">
+    <h2>🎮 Live Terminal</h2>
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="dist/terminal.svg">
+      <source media="(prefers-color-scheme: light)" srcset="dist/terminal-light.svg">
+      <img src="dist/terminal.svg" alt="Live Terminal Output" width="100%" style="border-radius: 10px; border: 1px solid #2a2b3a; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+    </picture>
+    <br>
+    <sub><em>Last updated: $CURRENT_TIME</em></sub>
+  </div>
+  <!-- End Terminal Section -->
+EOF
+          fi
+          
+          # Close README if needed
+          if ! grep -q "^</div>" README.md; then
+            cat >> README.md << EOF
 
-      if ! grep -q "<!-- GitHub Snake -->" README.md; then
-        cat >> README.md << 'SNAKE'
+  <!-- Footer -->
+  <br>
+  <div align="center">
+    <sub>⚡ <b>Last Updated:</b> $CURRENT_TIME | 🎯 <b>Always learning, always deploying</b></sub>
+    <br>
+    <sub>Automatically updated via GitHub Actions</sub>
+  </div>
+</div>
+EOF
+          fi
+          
+          echo "✅ Manual update completed"
 
-      # Close the main div and add footer
-      if ! grep -q "^</div>" README.md; then
-        cat >> README.md << 'FOOTER'
+      - name: Verify changes
+        run: |
+          echo "🔍 Verifying changes..."
+          echo "📄 Files:"
+          ls -la
+          echo "📁 dist/:"
+          ls -la dist/ || echo "No dist directory"
+          if [ -f "README.md" ]; then
+            echo "📏 README size: $(wc -l < README.md) lines"
+          fi
 
-      echo "✅ README.md updated successfully"
-      echo "readme-updated=true" >> $GITHUB_OUTPUT
+      - name: Commit and push changes
+        if: always()
+        run: |
+          echo "🚀 Checking for changes..."
+          
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "Thugger069"
+          
+          if git diff --quiet && git diff --staged --quiet; then
+            echo "⏭️ No changes to commit"
+          else
+            echo "📦 Changes detected, committing..."
+            git add .
+            
+            COMMIT_MSG="🔄 Update terminal display"
+            if [ "${{ steps.generate-svg.outputs.svg-generated }}" = "true" ]; then
+              COMMIT_MSG="$COMMIT_MSG + SVG"
+            fi
+            COMMIT_MSG="$COMMIT_MSG ($(date -u +'%Y-%m-%d %H:%M:%S UTC'))"
+            
+            git commit -m "$COMMIT_MSG"
+            git push
+            echo "✅ Changes committed"
+          fi
 
-  - name: Verify changes
-    run: |
-      echo "🔍 Verifying changes..."
-      echo "📄 Files in repository:"
-      ls -la
-      echo "📁 Contents of dist/:"
-      ls -la dist/ || echo "dist/ directory not found"
-
-  - name: Commit and push changes
-    if: always()
-    run: |
-      echo "🚀 Checking for changes to commit..."
-      
-         git config --local user.email "thugger069"
-         git config --local user.name "41898282+github-actions[bot]@users.noreply.github.com"                 
-      
-      if git diff --quiet && git diff --staged --quiet; then
-        echo "⏭️ No changes to commit"
-      else
-        echo "📦 Changes detected, preparing commit..."
-        git add .
-        
-        COMMIT_MSG="🔄 Auto-update terminal display"
-        if [ "${{ steps.generate-svg.outputs.svg-generated }}" = "true" ]; then
-          COMMIT_MSG="$COMMIT_MSG + SVG"
-        fi
-        if [ "${{ steps.update-readme.outputs.readme-updated }}" = "true" ]; then
-          COMMIT_MSG="$COMMIT_MSG + README"
-        fi
-        COMMIT_MSG="$COMMIT_MSG ($(date -u +'%Y-%m-%d %H:%M:%S UTC'))"
-        
-        echo "💾 Committing: $COMMIT_MSG"
-        git commit -m "$COMMIT_MSG"
-        echo "📤 Pushing changes..."
-        git push
-        echo "✅ Changes committed and pushed successfully"
-      fi
-
-  - name: Workflow summary
-    if: always()
-    run: |
-      echo ""
-      echo "🎉 Workflow Summary"
-      echo "═══════════════════════════════════════"
-      echo "👤 Profile: ɬɧɛ ɠıɬƈɧ (Thugger069)"
-      echo "🕒 Timestamp: $(date -u +'%Y-%m-%d %H:%M:%S UTC')"
-      echo "🔧 SVG Generated: ${{ steps.generate-svg.outputs.svg-generated || 'false' }}"
-      echo "📖 README Updated: ${{ steps.update-readme.outputs.readme-updated || 'false' }}"
-      echo ""
-      echo "🌐 View your updated profile:"
-      echo "   https://github.com/Thugger069/Thugger069"
+      - name: Workflow summary
+        if: always()
+        run: |
+          echo ""
+          echo "🎉 Workflow Complete"
+          echo "══════════════════════════════"
+          echo "👤 ɬɧɛ ɠıɬƈɧ (Thugger069)"
+          echo "🕒 $(date -u +'%Y-%m-%d %H:%M:%S UTC')"
+          echo "🔧 SVG Generated: ${{ steps.generate-svg.outputs.svg-generated || 'N/A' }}"
+          echo "📖 Update Script: ${{ steps.update-script.outputs.script-completed || 'N/A' }}"
+          echo ""
+          echo "🌐 Profile: https://github.com/Thugger069/Thugger069"
