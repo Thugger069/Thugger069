@@ -1,11 +1,30 @@
 name: Update Terminal Display
-on: schedule: # Run every 6 hours to keep the terminal fresh - cron: '0 */6 * * *'
-Manual trigger from GitHub UI
-workflow_dispatch: inputs: skip-svg: description: 'Skip SVG generation (use existing files)' required: false default: false type: boolean
-Run when changes are pushed to main branch
-push: branches: [ main ]
-jobs: update-terminal: runs-on: ubuntu-latest permissions: contents: write
-steps:
+
+on:
+  schedule:
+    # Run every 6 hours to keep the terminal fresh
+    - cron: '0 */6 * * *'
+  
+  # Manual trigger from GitHub UI
+  workflow_dispatch:
+    inputs:
+      skip-svg:
+        description: 'Skip SVG generation (use existing files)'
+        required: false
+        default: false
+        type: boolean
+  
+  # Run when changes are pushed to main branch
+  push:
+    branches: [ main ]
+
+jobs:
+  update-terminal:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    
+    steps:
   - name: Checkout repository
     uses: actions/checkout@v4
     with:
