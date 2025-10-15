@@ -1,159 +1,762 @@
 <!-- Quantum Cyberpunk Header Start -->
-<div style="position:relative;width:100%;height:400px;background:linear-gradient(135deg,#0a0a0f,#1a1b26);overflow:hidden;border-radius:15px;margin:2rem 0;border:1px solid #00f3ff;">
-  <svg width="100%" height="100%" style="position:absolute;top:0;left:0;z-index:0;opacity:0.3;">
-    <text x="0.00%" y="-5%" fill="#00ff41" font-family="monospace" font-size="0.8rem">
-      01
-      <animate attributeName="y" values="-5%;105%" dur="4s" repeatCount="indefinite" begin="1.06s"/>
-    </text><text x="3.30%" y="-5%" fill="#00ff41" font-family="monospace" font-size="0.8rem">
-      01
-      <animate attributeName="y" values="-5%;105%" dur="4s" repeatCount="indefinite" begin="1.95s"/>
-    </text><text x="6.60%" y="-5%" fill="#00ff41" font-family="monospace" font-size="0.8rem">
-      01
-      <animate attributeName="y" values="-5%;105%" dur="4s" repeatCount="indefinite" begin="1.51s"/>
-    </text><text x="9.90%" y="-5%" fill="#00ff41" font-family="monospace" font-size="0.8rem">
-      01
-      <animate attributeName="y" values="-5%;105%" dur="4s" repeatCount="indefinite" begin="1.60s"/>
-    </text><text x="13.20%" y="-5%" fill="#00ff41" font-family="monospace" font-size="0.8rem">
-      01
-      <animate attributeName="y" values="-5%;105%" dur="4s" repeatCount="indefinite" begin="1.24s"/>
-    </text><text x="16.50%" y="-5%" fill="#00ff41" font-family="monospace" font-size="0.8rem">
-      01
-      <animate attributeName="y" values="-5%;105%" dur="4s" repeatCount="indefinite" begin="0.69s"/>
-    </text><text x="19.80%" y="-5%" fill="#00ff41" font-family="monospace" font-size="0.8rem">
-      01
-      <animate attributeName="y" values="-5%;105%" dur="4s" repeatCount="indefinite" begin="1.65s"/>
-    </text><text x="23.10%" y="-5%" fill="#00ff41" font-family="monospace" font-size="0.8rem">
-      01
-      <animate attributeName="y" values="-5%;105%" dur="4s" repeatCount="indefinite" begin="1.69s"/>
-    </text><text x="26.40%" y="-5%" fill="#00ff41" font-family="monospace" font-size="0.8rem">
-      01
-      <animate attributeName="y" values="-5%;105%" dur="4s" repeatCount="indefinite" begin="1.39s"/>
-    </text><text x="29.70%" y="-5%" fill="#00ff41" font-family="monospace" font-size="0.8rem">
-      01
-      <animate attributeName="y" values="-5%;105%" dur="4s" repeatCount="indefinite" begin="0.06s"/>
-    </text><text x="33.00%" y="-5%" fill="#00ff41" font-family="monospace" font-size="0.8rem">
-      01
-      <animate attributeName="y" values="-5%;105%" dur="4s" repeatCount="indefinite" begin="0.85s"/>
-    </text><text x="36.30%" y="-5%" fill="#00ff41" font-family="monospace" font-size="0.8rem">
-      01
-      <animate attributeName="y" values="-5%;105%" dur="4s" repeatCount="indefinite" begin="1.48s"/>
-    </text><text x="39.60%" y="-5%" fill="#00ff41" font-family="monospace" font-size="0.8rem">
-      01
-      <animate attributeName="y" values="-5%;105%" dur="4s" repeatCount="indefinite" begin="0.82s"/>
-    </text><text x="42.90%" y="-5%" fill="#00ff41" font-family="monospace" font-size="0.8rem">
-      01
-      <animate attributeName="y" values="-5%;105%" dur="4s" repeatCount="indefinite" begin="0.26s"/>
-    </text><text x="46.20%" y="-5%" fill="#00ff41" font-family="monospace" font-size="0.8rem">
-      01
-      <animate attributeName="y" values="-5%;105%" dur="4s" repeatCount="indefinite" begin="0.83s"/>
-    </text><text x="49.50%" y="-5%" fill="#00ff41" font-family="monospace" font-size="0.8rem">
-      01
-      <animate attributeName="y" values="-5%;105%" dur="4s" repeatCount="indefinite" begin="1.03s"/>
-    </text><text x="52.80%" y="-5%" fill="#00ff41" font-family="monospace" font-size="0.8rem">
-      01
-      <animate attributeName="y" values="-5%;105%" dur="4s" repeatCount="indefinite" begin="0.34s"/>
-    </text><text x="56.10%" y="-5%" fill="#00ff41" font-family="monospace" font-size="0.8rem">
-      01
-      <animate attributeName="y" values="-5%;105%" dur="4s" repeatCount="indefinite" begin="0.23s"/>
-    </text><text x="59.40%" y="-5%" fill="#00ff41" font-family="monospace" font-size="0.8rem">
-      01
-      <animate attributeName="y" values="-5%;105%" dur="4s" repeatCount="indefinite" begin="0.66s"/>
-    </text><text x="62.70%" y="-5%" fill="#00ff41" font-family="monospace" font-size="0.8rem">
-      01
-      <animate attributeName="y" values="-5%;105%" dur="4s" repeatCount="indefinite" begin="0.12s"/>
-    </text><text x="66.00%" y="-5%" fill="#00ff41" font-family="monospace" font-size="0.8rem">
-      01
-      <animate attributeName="y" values="-5%;105%" dur="4s" repeatCount="indefinite" begin="0.26s"/>
-    </text><text x="69.30%" y="-5%" fill="#00ff41" font-family="monospace" font-size="0.8rem">
-      01
-      <animate attributeName="y" values="-5%;105%" dur="4s" repeatCount="indefinite" begin="1.21s"/>
-    </text><text x="72.60%" y="-5%" fill="#00ff41" font-family="monospace" font-size="0.8rem">
-      01
-      <animate attributeName="y" values="-5%;105%" dur="4s" repeatCount="indefinite" begin="0.99s"/>
-    </text><text x="75.90%" y="-5%" fill="#00ff41" font-family="monospace" font-size="0.8rem">
-      01
-      <animate attributeName="y" values="-5%;105%" dur="4s" repeatCount="indefinite" begin="0.98s"/>
-    </text><text x="79.20%" y="-5%" fill="#00ff41" font-family="monospace" font-size="0.8rem">
-      01
-      <animate attributeName="y" values="-5%;105%" dur="4s" repeatCount="indefinite" begin="1.66s"/>
-    </text><text x="82.50%" y="-5%" fill="#00ff41" font-family="monospace" font-size="0.8rem">
-      01
-      <animate attributeName="y" values="-5%;105%" dur="4s" repeatCount="indefinite" begin="0.31s"/>
-    </text><text x="85.80%" y="-5%" fill="#00ff41" font-family="monospace" font-size="0.8rem">
-      01
-      <animate attributeName="y" values="-5%;105%" dur="4s" repeatCount="indefinite" begin="0.66s"/>
-    </text><text x="89.10%" y="-5%" fill="#00ff41" font-family="monospace" font-size="0.8rem">
-      01
-      <animate attributeName="y" values="-5%;105%" dur="4s" repeatCount="indefinite" begin="1.65s"/>
-    </text><text x="92.40%" y="-5%" fill="#00ff41" font-family="monospace" font-size="0.8rem">
-      01
-      <animate attributeName="y" values="-5%;105%" dur="4s" repeatCount="indefinite" begin="1.65s"/>
-    </text><text x="95.70%" y="-5%" fill="#00ff41" font-family="monospace" font-size="0.8rem">
-      01
-      <animate attributeName="y" values="-5%;105%" dur="4s" repeatCount="indefinite" begin="1.89s"/>
+<div style="position:relative;width:100%;height:500px;background:linear-gradient(135deg,#0a0a0f 0%,#1a1b26 50%,#0a0a0f 100%);overflow:hidden;border-radius:20px;margin:2rem 0;border:2px solid transparent;background-clip:padding-box;box-shadow:0 0 50px rgba(0,243,255,0.2);">
+  <!-- Animated Border -->
+  <div style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:20px;padding:2px;background:linear-gradient(45deg,#00f3ff,#ff00ff,#b967ff,#00f3ff);background-size:400% 400%;animation:borderFlow 6s ease infinite;z-index:4;pointer-events:none;"></div>
+  
+  <svg width="100%" height="100%" style="position:absolute;top:0;left:0;z-index:0;opacity:0.4;">
+    <text x="0.00%" y="-10%" fill="#00ff41" font-family="monospace" font-size="0.7rem" font-weight="bold">
+      <tspan x="0.00%" dy="1.2em" opacity="0">
+        1
+        <animate attributeName="opacity" values="0;0.8;0" dur="4.09s" begin="0.00s" repeatCount="indefinite"/>
+      </tspan><tspan x="0.00%" dy="1.2em" opacity="0">
+        ス
+        <animate attributeName="opacity" values="0;0.8;0" dur="4.09s" begin="0.20s" repeatCount="indefinite"/>
+      </tspan><tspan x="0.00%" dy="1.2em" opacity="0">
+        ソ
+        <animate attributeName="opacity" values="0;0.8;0" dur="4.09s" begin="0.40s" repeatCount="indefinite"/>
+      </tspan><tspan x="0.00%" dy="1.2em" opacity="0">
+        セ
+        <animate attributeName="opacity" values="0;0.8;0" dur="4.09s" begin="0.60s" repeatCount="indefinite"/>
+      </tspan>
+      <animate attributeName="y" values="-10%;110%" dur="4.09s" repeatCount="indefinite" begin="2.96s"/>
+    </text><text x="2.50%" y="-10%" fill="#00ff41" font-family="monospace" font-size="0.7rem" font-weight="bold">
+      <tspan x="2.50%" dy="1.2em" opacity="0">
+        セ
+        <animate attributeName="opacity" values="0;0.8;0" dur="4.62s" begin="0.00s" repeatCount="indefinite"/>
+      </tspan><tspan x="2.50%" dy="1.2em" opacity="0">
+        ソ
+        <animate attributeName="opacity" values="0;0.8;0" dur="4.62s" begin="0.20s" repeatCount="indefinite"/>
+      </tspan><tspan x="2.50%" dy="1.2em" opacity="0">
+        チ
+        <animate attributeName="opacity" values="0;0.8;0" dur="4.62s" begin="0.40s" repeatCount="indefinite"/>
+      </tspan><tspan x="2.50%" dy="1.2em" opacity="0">
+        キ
+        <animate attributeName="opacity" values="0;0.8;0" dur="4.62s" begin="0.60s" repeatCount="indefinite"/>
+      </tspan>
+      <animate attributeName="y" values="-10%;110%" dur="4.62s" repeatCount="indefinite" begin="1.84s"/>
+    </text><text x="5.00%" y="-10%" fill="#00ff41" font-family="monospace" font-size="0.7rem" font-weight="bold">
+      <tspan x="5.00%" dy="1.2em" opacity="0">
+        テ
+        <animate attributeName="opacity" values="0;0.8;0" dur="3.90s" begin="0.00s" repeatCount="indefinite"/>
+      </tspan><tspan x="5.00%" dy="1.2em" opacity="0">
+        0
+        <animate attributeName="opacity" values="0;0.8;0" dur="3.90s" begin="0.20s" repeatCount="indefinite"/>
+      </tspan>
+      <animate attributeName="y" values="-10%;110%" dur="3.90s" repeatCount="indefinite" begin="0.85s"/>
+    </text><text x="7.50%" y="-10%" fill="#00ff41" font-family="monospace" font-size="0.7rem" font-weight="bold">
+      <tspan x="7.50%" dy="1.2em" opacity="0">
+        チ
+        <animate attributeName="opacity" values="0;0.8;0" dur="3.65s" begin="0.00s" repeatCount="indefinite"/>
+      </tspan><tspan x="7.50%" dy="1.2em" opacity="0">
+        0
+        <animate attributeName="opacity" values="0;0.8;0" dur="3.65s" begin="0.20s" repeatCount="indefinite"/>
+      </tspan><tspan x="7.50%" dy="1.2em" opacity="0">
+        セ
+        <animate attributeName="opacity" values="0;0.8;0" dur="3.65s" begin="0.40s" repeatCount="indefinite"/>
+      </tspan><tspan x="7.50%" dy="1.2em" opacity="0">
+        ウ
+        <animate attributeName="opacity" values="0;0.8;0" dur="3.65s" begin="0.60s" repeatCount="indefinite"/>
+      </tspan>
+      <animate attributeName="y" values="-10%;110%" dur="3.65s" repeatCount="indefinite" begin="0.98s"/>
+    </text><text x="10.00%" y="-10%" fill="#00ff41" font-family="monospace" font-size="0.7rem" font-weight="bold">
+      <tspan x="10.00%" dy="1.2em" opacity="0">
+        キ
+        <animate attributeName="opacity" values="0;0.8;0" dur="3.02s" begin="0.00s" repeatCount="indefinite"/>
+      </tspan><tspan x="10.00%" dy="1.2em" opacity="0">
+        ク
+        <animate attributeName="opacity" values="0;0.8;0" dur="3.02s" begin="0.20s" repeatCount="indefinite"/>
+      </tspan>
+      <animate attributeName="y" values="-10%;110%" dur="3.02s" repeatCount="indefinite" begin="1.55s"/>
+    </text><text x="12.50%" y="-10%" fill="#00ff41" font-family="monospace" font-size="0.7rem" font-weight="bold">
+      <tspan x="12.50%" dy="1.2em" opacity="0">
+        オ
+        <animate attributeName="opacity" values="0;0.8;0" dur="4.39s" begin="0.00s" repeatCount="indefinite"/>
+      </tspan><tspan x="12.50%" dy="1.2em" opacity="0">
+        ク
+        <animate attributeName="opacity" values="0;0.8;0" dur="4.39s" begin="0.20s" repeatCount="indefinite"/>
+      </tspan><tspan x="12.50%" dy="1.2em" opacity="0">
+        セ
+        <animate attributeName="opacity" values="0;0.8;0" dur="4.39s" begin="0.40s" repeatCount="indefinite"/>
+      </tspan>
+      <animate attributeName="y" values="-10%;110%" dur="4.39s" repeatCount="indefinite" begin="0.71s"/>
+    </text><text x="15.00%" y="-10%" fill="#00ff41" font-family="monospace" font-size="0.7rem" font-weight="bold">
+      <tspan x="15.00%" dy="1.2em" opacity="0">
+        イ
+        <animate attributeName="opacity" values="0;0.8;0" dur="3.39s" begin="0.00s" repeatCount="indefinite"/>
+      </tspan><tspan x="15.00%" dy="1.2em" opacity="0">
+        カ
+        <animate attributeName="opacity" values="0;0.8;0" dur="3.39s" begin="0.20s" repeatCount="indefinite"/>
+      </tspan><tspan x="15.00%" dy="1.2em" opacity="0">
+        タ
+        <animate attributeName="opacity" values="0;0.8;0" dur="3.39s" begin="0.40s" repeatCount="indefinite"/>
+      </tspan><tspan x="15.00%" dy="1.2em" opacity="0">
+        ツ
+        <animate attributeName="opacity" values="0;0.8;0" dur="3.39s" begin="0.60s" repeatCount="indefinite"/>
+      </tspan>
+      <animate attributeName="y" values="-10%;110%" dur="3.39s" repeatCount="indefinite" begin="0.86s"/>
+    </text><text x="17.50%" y="-10%" fill="#00ff41" font-family="monospace" font-size="0.7rem" font-weight="bold">
+      <tspan x="17.50%" dy="1.2em" opacity="0">
+        コ
+        <animate attributeName="opacity" values="0;0.8;0" dur="4.13s" begin="0.00s" repeatCount="indefinite"/>
+      </tspan><tspan x="17.50%" dy="1.2em" opacity="0">
+        イ
+        <animate attributeName="opacity" values="0;0.8;0" dur="4.13s" begin="0.20s" repeatCount="indefinite"/>
+      </tspan>
+      <animate attributeName="y" values="-10%;110%" dur="4.13s" repeatCount="indefinite" begin="0.96s"/>
+    </text><text x="20.00%" y="-10%" fill="#00ff41" font-family="monospace" font-size="0.7rem" font-weight="bold">
+      <tspan x="20.00%" dy="1.2em" opacity="0">
+        1
+        <animate attributeName="opacity" values="0;0.8;0" dur="4.86s" begin="0.00s" repeatCount="indefinite"/>
+      </tspan><tspan x="20.00%" dy="1.2em" opacity="0">
+        ウ
+        <animate attributeName="opacity" values="0;0.8;0" dur="4.86s" begin="0.20s" repeatCount="indefinite"/>
+      </tspan><tspan x="20.00%" dy="1.2em" opacity="0">
+        キ
+        <animate attributeName="opacity" values="0;0.8;0" dur="4.86s" begin="0.40s" repeatCount="indefinite"/>
+      </tspan><tspan x="20.00%" dy="1.2em" opacity="0">
+        テ
+        <animate attributeName="opacity" values="0;0.8;0" dur="4.86s" begin="0.60s" repeatCount="indefinite"/>
+      </tspan>
+      <animate attributeName="y" values="-10%;110%" dur="4.86s" repeatCount="indefinite" begin="1.57s"/>
+    </text><text x="22.50%" y="-10%" fill="#00ff41" font-family="monospace" font-size="0.7rem" font-weight="bold">
+      <tspan x="22.50%" dy="1.2em" opacity="0">
+        ク
+        <animate attributeName="opacity" values="0;0.8;0" dur="4.56s" begin="0.00s" repeatCount="indefinite"/>
+      </tspan><tspan x="22.50%" dy="1.2em" opacity="0">
+        オ
+        <animate attributeName="opacity" values="0;0.8;0" dur="4.56s" begin="0.20s" repeatCount="indefinite"/>
+      </tspan>
+      <animate attributeName="y" values="-10%;110%" dur="4.56s" repeatCount="indefinite" begin="2.53s"/>
+    </text><text x="25.00%" y="-10%" fill="#00ff41" font-family="monospace" font-size="0.7rem" font-weight="bold">
+      <tspan x="25.00%" dy="1.2em" opacity="0">
+        ツ
+        <animate attributeName="opacity" values="0;0.8;0" dur="3.64s" begin="0.00s" repeatCount="indefinite"/>
+      </tspan><tspan x="25.00%" dy="1.2em" opacity="0">
+        ツ
+        <animate attributeName="opacity" values="0;0.8;0" dur="3.64s" begin="0.20s" repeatCount="indefinite"/>
+      </tspan><tspan x="25.00%" dy="1.2em" opacity="0">
+        イ
+        <animate attributeName="opacity" values="0;0.8;0" dur="3.64s" begin="0.40s" repeatCount="indefinite"/>
+      </tspan>
+      <animate attributeName="y" values="-10%;110%" dur="3.64s" repeatCount="indefinite" begin="1.95s"/>
+    </text><text x="27.50%" y="-10%" fill="#00ff41" font-family="monospace" font-size="0.7rem" font-weight="bold">
+      <tspan x="27.50%" dy="1.2em" opacity="0">
+        エ
+        <animate attributeName="opacity" values="0;0.8;0" dur="4.72s" begin="0.00s" repeatCount="indefinite"/>
+      </tspan><tspan x="27.50%" dy="1.2em" opacity="0">
+        1
+        <animate attributeName="opacity" values="0;0.8;0" dur="4.72s" begin="0.20s" repeatCount="indefinite"/>
+      </tspan>
+      <animate attributeName="y" values="-10%;110%" dur="4.72s" repeatCount="indefinite" begin="2.62s"/>
+    </text><text x="30.00%" y="-10%" fill="#00ff41" font-family="monospace" font-size="0.7rem" font-weight="bold">
+      <tspan x="30.00%" dy="1.2em" opacity="0">
+        ツ
+        <animate attributeName="opacity" values="0;0.8;0" dur="4.02s" begin="0.00s" repeatCount="indefinite"/>
+      </tspan><tspan x="30.00%" dy="1.2em" opacity="0">
+        セ
+        <animate attributeName="opacity" values="0;0.8;0" dur="4.02s" begin="0.20s" repeatCount="indefinite"/>
+      </tspan><tspan x="30.00%" dy="1.2em" opacity="0">
+        ケ
+        <animate attributeName="opacity" values="0;0.8;0" dur="4.02s" begin="0.40s" repeatCount="indefinite"/>
+      </tspan>
+      <animate attributeName="y" values="-10%;110%" dur="4.02s" repeatCount="indefinite" begin="2.55s"/>
+    </text><text x="32.50%" y="-10%" fill="#00ff41" font-family="monospace" font-size="0.7rem" font-weight="bold">
+      <tspan x="32.50%" dy="1.2em" opacity="0">
+        コ
+        <animate attributeName="opacity" values="0;0.8;0" dur="4.89s" begin="0.00s" repeatCount="indefinite"/>
+      </tspan><tspan x="32.50%" dy="1.2em" opacity="0">
+        ク
+        <animate attributeName="opacity" values="0;0.8;0" dur="4.89s" begin="0.20s" repeatCount="indefinite"/>
+      </tspan><tspan x="32.50%" dy="1.2em" opacity="0">
+        セ
+        <animate attributeName="opacity" values="0;0.8;0" dur="4.89s" begin="0.40s" repeatCount="indefinite"/>
+      </tspan><tspan x="32.50%" dy="1.2em" opacity="0">
+        エ
+        <animate attributeName="opacity" values="0;0.8;0" dur="4.89s" begin="0.60s" repeatCount="indefinite"/>
+      </tspan>
+      <animate attributeName="y" values="-10%;110%" dur="4.89s" repeatCount="indefinite" begin="0.49s"/>
+    </text><text x="35.00%" y="-10%" fill="#00ff41" font-family="monospace" font-size="0.7rem" font-weight="bold">
+      <tspan x="35.00%" dy="1.2em" opacity="0">
+        0
+        <animate attributeName="opacity" values="0;0.8;0" dur="3.64s" begin="0.00s" repeatCount="indefinite"/>
+      </tspan><tspan x="35.00%" dy="1.2em" opacity="0">
+        シ
+        <animate attributeName="opacity" values="0;0.8;0" dur="3.64s" begin="0.20s" repeatCount="indefinite"/>
+      </tspan><tspan x="35.00%" dy="1.2em" opacity="0">
+        ク
+        <animate attributeName="opacity" values="0;0.8;0" dur="3.64s" begin="0.40s" repeatCount="indefinite"/>
+      </tspan>
+      <animate attributeName="y" values="-10%;110%" dur="3.64s" repeatCount="indefinite" begin="2.22s"/>
+    </text><text x="37.50%" y="-10%" fill="#00ff41" font-family="monospace" font-size="0.7rem" font-weight="bold">
+      <tspan x="37.50%" dy="1.2em" opacity="0">
+        ツ
+        <animate attributeName="opacity" values="0;0.8;0" dur="3.79s" begin="0.00s" repeatCount="indefinite"/>
+      </tspan><tspan x="37.50%" dy="1.2em" opacity="0">
+        テ
+        <animate attributeName="opacity" values="0;0.8;0" dur="3.79s" begin="0.20s" repeatCount="indefinite"/>
+      </tspan><tspan x="37.50%" dy="1.2em" opacity="0">
+        ク
+        <animate attributeName="opacity" values="0;0.8;0" dur="3.79s" begin="0.40s" repeatCount="indefinite"/>
+      </tspan>
+      <animate attributeName="y" values="-10%;110%" dur="3.79s" repeatCount="indefinite" begin="1.27s"/>
+    </text><text x="40.00%" y="-10%" fill="#00ff41" font-family="monospace" font-size="0.7rem" font-weight="bold">
+      <tspan x="40.00%" dy="1.2em" opacity="0">
+        キ
+        <animate attributeName="opacity" values="0;0.8;0" dur="4.73s" begin="0.00s" repeatCount="indefinite"/>
+      </tspan><tspan x="40.00%" dy="1.2em" opacity="0">
+        タ
+        <animate attributeName="opacity" values="0;0.8;0" dur="4.73s" begin="0.20s" repeatCount="indefinite"/>
+      </tspan>
+      <animate attributeName="y" values="-10%;110%" dur="4.73s" repeatCount="indefinite" begin="0.89s"/>
+    </text><text x="42.50%" y="-10%" fill="#00ff41" font-family="monospace" font-size="0.7rem" font-weight="bold">
+      <tspan x="42.50%" dy="1.2em" opacity="0">
+        サ
+        <animate attributeName="opacity" values="0;0.8;0" dur="3.40s" begin="0.00s" repeatCount="indefinite"/>
+      </tspan><tspan x="42.50%" dy="1.2em" opacity="0">
+        1
+        <animate attributeName="opacity" values="0;0.8;0" dur="3.40s" begin="0.20s" repeatCount="indefinite"/>
+      </tspan><tspan x="42.50%" dy="1.2em" opacity="0">
+        ク
+        <animate attributeName="opacity" values="0;0.8;0" dur="3.40s" begin="0.40s" repeatCount="indefinite"/>
+      </tspan>
+      <animate attributeName="y" values="-10%;110%" dur="3.40s" repeatCount="indefinite" begin="2.93s"/>
+    </text><text x="45.00%" y="-10%" fill="#00ff41" font-family="monospace" font-size="0.7rem" font-weight="bold">
+      <tspan x="45.00%" dy="1.2em" opacity="0">
+        ケ
+        <animate attributeName="opacity" values="0;0.8;0" dur="4.48s" begin="0.00s" repeatCount="indefinite"/>
+      </tspan><tspan x="45.00%" dy="1.2em" opacity="0">
+        ト
+        <animate attributeName="opacity" values="0;0.8;0" dur="4.48s" begin="0.20s" repeatCount="indefinite"/>
+      </tspan><tspan x="45.00%" dy="1.2em" opacity="0">
+        キ
+        <animate attributeName="opacity" values="0;0.8;0" dur="4.48s" begin="0.40s" repeatCount="indefinite"/>
+      </tspan><tspan x="45.00%" dy="1.2em" opacity="0">
+        タ
+        <animate attributeName="opacity" values="0;0.8;0" dur="4.48s" begin="0.60s" repeatCount="indefinite"/>
+      </tspan>
+      <animate attributeName="y" values="-10%;110%" dur="4.48s" repeatCount="indefinite" begin="2.69s"/>
+    </text><text x="47.50%" y="-10%" fill="#00ff41" font-family="monospace" font-size="0.7rem" font-weight="bold">
+      <tspan x="47.50%" dy="1.2em" opacity="0">
+        コ
+        <animate attributeName="opacity" values="0;0.8;0" dur="3.53s" begin="0.00s" repeatCount="indefinite"/>
+      </tspan><tspan x="47.50%" dy="1.2em" opacity="0">
+        ス
+        <animate attributeName="opacity" values="0;0.8;0" dur="3.53s" begin="0.20s" repeatCount="indefinite"/>
+      </tspan><tspan x="47.50%" dy="1.2em" opacity="0">
+        イ
+        <animate attributeName="opacity" values="0;0.8;0" dur="3.53s" begin="0.40s" repeatCount="indefinite"/>
+      </tspan>
+      <animate attributeName="y" values="-10%;110%" dur="3.53s" repeatCount="indefinite" begin="2.50s"/>
+    </text><text x="50.00%" y="-10%" fill="#00ff41" font-family="monospace" font-size="0.7rem" font-weight="bold">
+      <tspan x="50.00%" dy="1.2em" opacity="0">
+        キ
+        <animate attributeName="opacity" values="0;0.8;0" dur="4.12s" begin="0.00s" repeatCount="indefinite"/>
+      </tspan><tspan x="50.00%" dy="1.2em" opacity="0">
+        タ
+        <animate attributeName="opacity" values="0;0.8;0" dur="4.12s" begin="0.20s" repeatCount="indefinite"/>
+      </tspan><tspan x="50.00%" dy="1.2em" opacity="0">
+        サ
+        <animate attributeName="opacity" values="0;0.8;0" dur="4.12s" begin="0.40s" repeatCount="indefinite"/>
+      </tspan><tspan x="50.00%" dy="1.2em" opacity="0">
+        0
+        <animate attributeName="opacity" values="0;0.8;0" dur="4.12s" begin="0.60s" repeatCount="indefinite"/>
+      </tspan>
+      <animate attributeName="y" values="-10%;110%" dur="4.12s" repeatCount="indefinite" begin="1.15s"/>
+    </text><text x="52.50%" y="-10%" fill="#00ff41" font-family="monospace" font-size="0.7rem" font-weight="bold">
+      <tspan x="52.50%" dy="1.2em" opacity="0">
+        1
+        <animate attributeName="opacity" values="0;0.8;0" dur="4.50s" begin="0.00s" repeatCount="indefinite"/>
+      </tspan><tspan x="52.50%" dy="1.2em" opacity="0">
+        セ
+        <animate attributeName="opacity" values="0;0.8;0" dur="4.50s" begin="0.20s" repeatCount="indefinite"/>
+      </tspan><tspan x="52.50%" dy="1.2em" opacity="0">
+        タ
+        <animate attributeName="opacity" values="0;0.8;0" dur="4.50s" begin="0.40s" repeatCount="indefinite"/>
+      </tspan><tspan x="52.50%" dy="1.2em" opacity="0">
+        ク
+        <animate attributeName="opacity" values="0;0.8;0" dur="4.50s" begin="0.60s" repeatCount="indefinite"/>
+      </tspan>
+      <animate attributeName="y" values="-10%;110%" dur="4.50s" repeatCount="indefinite" begin="2.01s"/>
+    </text><text x="55.00%" y="-10%" fill="#00ff41" font-family="monospace" font-size="0.7rem" font-weight="bold">
+      <tspan x="55.00%" dy="1.2em" opacity="0">
+        キ
+        <animate attributeName="opacity" values="0;0.8;0" dur="4.52s" begin="0.00s" repeatCount="indefinite"/>
+      </tspan><tspan x="55.00%" dy="1.2em" opacity="0">
+        テ
+        <animate attributeName="opacity" values="0;0.8;0" dur="4.52s" begin="0.20s" repeatCount="indefinite"/>
+      </tspan><tspan x="55.00%" dy="1.2em" opacity="0">
+        セ
+        <animate attributeName="opacity" values="0;0.8;0" dur="4.52s" begin="0.40s" repeatCount="indefinite"/>
+      </tspan>
+      <animate attributeName="y" values="-10%;110%" dur="4.52s" repeatCount="indefinite" begin="0.47s"/>
+    </text><text x="57.50%" y="-10%" fill="#00ff41" font-family="monospace" font-size="0.7rem" font-weight="bold">
+      <tspan x="57.50%" dy="1.2em" opacity="0">
+        カ
+        <animate attributeName="opacity" values="0;0.8;0" dur="3.40s" begin="0.00s" repeatCount="indefinite"/>
+      </tspan><tspan x="57.50%" dy="1.2em" opacity="0">
+        サ
+        <animate attributeName="opacity" values="0;0.8;0" dur="3.40s" begin="0.20s" repeatCount="indefinite"/>
+      </tspan>
+      <animate attributeName="y" values="-10%;110%" dur="3.40s" repeatCount="indefinite" begin="1.16s"/>
+    </text><text x="60.00%" y="-10%" fill="#00ff41" font-family="monospace" font-size="0.7rem" font-weight="bold">
+      <tspan x="60.00%" dy="1.2em" opacity="0">
+        1
+        <animate attributeName="opacity" values="0;0.8;0" dur="4.22s" begin="0.00s" repeatCount="indefinite"/>
+      </tspan><tspan x="60.00%" dy="1.2em" opacity="0">
+        1
+        <animate attributeName="opacity" values="0;0.8;0" dur="4.22s" begin="0.20s" repeatCount="indefinite"/>
+      </tspan><tspan x="60.00%" dy="1.2em" opacity="0">
+        ウ
+        <animate attributeName="opacity" values="0;0.8;0" dur="4.22s" begin="0.40s" repeatCount="indefinite"/>
+      </tspan>
+      <animate attributeName="y" values="-10%;110%" dur="4.22s" repeatCount="indefinite" begin="1.03s"/>
+    </text><text x="62.50%" y="-10%" fill="#00ff41" font-family="monospace" font-size="0.7rem" font-weight="bold">
+      <tspan x="62.50%" dy="1.2em" opacity="0">
+        タ
+        <animate attributeName="opacity" values="0;0.8;0" dur="4.55s" begin="0.00s" repeatCount="indefinite"/>
+      </tspan><tspan x="62.50%" dy="1.2em" opacity="0">
+        カ
+        <animate attributeName="opacity" values="0;0.8;0" dur="4.55s" begin="0.20s" repeatCount="indefinite"/>
+      </tspan><tspan x="62.50%" dy="1.2em" opacity="0">
+        ク
+        <animate attributeName="opacity" values="0;0.8;0" dur="4.55s" begin="0.40s" repeatCount="indefinite"/>
+      </tspan><tspan x="62.50%" dy="1.2em" opacity="0">
+        エ
+        <animate attributeName="opacity" values="0;0.8;0" dur="4.55s" begin="0.60s" repeatCount="indefinite"/>
+      </tspan>
+      <animate attributeName="y" values="-10%;110%" dur="4.55s" repeatCount="indefinite" begin="2.16s"/>
+    </text><text x="65.00%" y="-10%" fill="#00ff41" font-family="monospace" font-size="0.7rem" font-weight="bold">
+      <tspan x="65.00%" dy="1.2em" opacity="0">
+        ト
+        <animate attributeName="opacity" values="0;0.8;0" dur="3.14s" begin="0.00s" repeatCount="indefinite"/>
+      </tspan><tspan x="65.00%" dy="1.2em" opacity="0">
+        ト
+        <animate attributeName="opacity" values="0;0.8;0" dur="3.14s" begin="0.20s" repeatCount="indefinite"/>
+      </tspan><tspan x="65.00%" dy="1.2em" opacity="0">
+        エ
+        <animate attributeName="opacity" values="0;0.8;0" dur="3.14s" begin="0.40s" repeatCount="indefinite"/>
+      </tspan><tspan x="65.00%" dy="1.2em" opacity="0">
+        タ
+        <animate attributeName="opacity" values="0;0.8;0" dur="3.14s" begin="0.60s" repeatCount="indefinite"/>
+      </tspan>
+      <animate attributeName="y" values="-10%;110%" dur="3.14s" repeatCount="indefinite" begin="0.03s"/>
+    </text><text x="67.50%" y="-10%" fill="#00ff41" font-family="monospace" font-size="0.7rem" font-weight="bold">
+      <tspan x="67.50%" dy="1.2em" opacity="0">
+        ス
+        <animate attributeName="opacity" values="0;0.8;0" dur="4.93s" begin="0.00s" repeatCount="indefinite"/>
+      </tspan><tspan x="67.50%" dy="1.2em" opacity="0">
+        エ
+        <animate attributeName="opacity" values="0;0.8;0" dur="4.93s" begin="0.20s" repeatCount="indefinite"/>
+      </tspan><tspan x="67.50%" dy="1.2em" opacity="0">
+        サ
+        <animate attributeName="opacity" values="0;0.8;0" dur="4.93s" begin="0.40s" repeatCount="indefinite"/>
+      </tspan>
+      <animate attributeName="y" values="-10%;110%" dur="4.93s" repeatCount="indefinite" begin="1.02s"/>
+    </text><text x="70.00%" y="-10%" fill="#00ff41" font-family="monospace" font-size="0.7rem" font-weight="bold">
+      <tspan x="70.00%" dy="1.2em" opacity="0">
+        ス
+        <animate attributeName="opacity" values="0;0.8;0" dur="5.00s" begin="0.00s" repeatCount="indefinite"/>
+      </tspan><tspan x="70.00%" dy="1.2em" opacity="0">
+        ス
+        <animate attributeName="opacity" values="0;0.8;0" dur="5.00s" begin="0.20s" repeatCount="indefinite"/>
+      </tspan><tspan x="70.00%" dy="1.2em" opacity="0">
+        ト
+        <animate attributeName="opacity" values="0;0.8;0" dur="5.00s" begin="0.40s" repeatCount="indefinite"/>
+      </tspan><tspan x="70.00%" dy="1.2em" opacity="0">
+        エ
+        <animate attributeName="opacity" values="0;0.8;0" dur="5.00s" begin="0.60s" repeatCount="indefinite"/>
+      </tspan>
+      <animate attributeName="y" values="-10%;110%" dur="5.00s" repeatCount="indefinite" begin="2.43s"/>
+    </text><text x="72.50%" y="-10%" fill="#00ff41" font-family="monospace" font-size="0.7rem" font-weight="bold">
+      <tspan x="72.50%" dy="1.2em" opacity="0">
+        コ
+        <animate attributeName="opacity" values="0;0.8;0" dur="3.62s" begin="0.00s" repeatCount="indefinite"/>
+      </tspan><tspan x="72.50%" dy="1.2em" opacity="0">
+        シ
+        <animate attributeName="opacity" values="0;0.8;0" dur="3.62s" begin="0.20s" repeatCount="indefinite"/>
+      </tspan><tspan x="72.50%" dy="1.2em" opacity="0">
+        カ
+        <animate attributeName="opacity" values="0;0.8;0" dur="3.62s" begin="0.40s" repeatCount="indefinite"/>
+      </tspan><tspan x="72.50%" dy="1.2em" opacity="0">
+        タ
+        <animate attributeName="opacity" values="0;0.8;0" dur="3.62s" begin="0.60s" repeatCount="indefinite"/>
+      </tspan>
+      <animate attributeName="y" values="-10%;110%" dur="3.62s" repeatCount="indefinite" begin="1.58s"/>
+    </text><text x="75.00%" y="-10%" fill="#00ff41" font-family="monospace" font-size="0.7rem" font-weight="bold">
+      <tspan x="75.00%" dy="1.2em" opacity="0">
+        ト
+        <animate attributeName="opacity" values="0;0.8;0" dur="4.67s" begin="0.00s" repeatCount="indefinite"/>
+      </tspan><tspan x="75.00%" dy="1.2em" opacity="0">
+        ク
+        <animate attributeName="opacity" values="0;0.8;0" dur="4.67s" begin="0.20s" repeatCount="indefinite"/>
+      </tspan><tspan x="75.00%" dy="1.2em" opacity="0">
+        オ
+        <animate attributeName="opacity" values="0;0.8;0" dur="4.67s" begin="0.40s" repeatCount="indefinite"/>
+      </tspan>
+      <animate attributeName="y" values="-10%;110%" dur="4.67s" repeatCount="indefinite" begin="1.70s"/>
+    </text><text x="77.50%" y="-10%" fill="#00ff41" font-family="monospace" font-size="0.7rem" font-weight="bold">
+      <tspan x="77.50%" dy="1.2em" opacity="0">
+        1
+        <animate attributeName="opacity" values="0;0.8;0" dur="3.08s" begin="0.00s" repeatCount="indefinite"/>
+      </tspan><tspan x="77.50%" dy="1.2em" opacity="0">
+        キ
+        <animate attributeName="opacity" values="0;0.8;0" dur="3.08s" begin="0.20s" repeatCount="indefinite"/>
+      </tspan><tspan x="77.50%" dy="1.2em" opacity="0">
+        テ
+        <animate attributeName="opacity" values="0;0.8;0" dur="3.08s" begin="0.40s" repeatCount="indefinite"/>
+      </tspan>
+      <animate attributeName="y" values="-10%;110%" dur="3.08s" repeatCount="indefinite" begin="2.04s"/>
+    </text><text x="80.00%" y="-10%" fill="#00ff41" font-family="monospace" font-size="0.7rem" font-weight="bold">
+      <tspan x="80.00%" dy="1.2em" opacity="0">
+        コ
+        <animate attributeName="opacity" values="0;0.8;0" dur="4.60s" begin="0.00s" repeatCount="indefinite"/>
+      </tspan><tspan x="80.00%" dy="1.2em" opacity="0">
+        ウ
+        <animate attributeName="opacity" values="0;0.8;0" dur="4.60s" begin="0.20s" repeatCount="indefinite"/>
+      </tspan><tspan x="80.00%" dy="1.2em" opacity="0">
+        ク
+        <animate attributeName="opacity" values="0;0.8;0" dur="4.60s" begin="0.40s" repeatCount="indefinite"/>
+      </tspan><tspan x="80.00%" dy="1.2em" opacity="0">
+        ス
+        <animate attributeName="opacity" values="0;0.8;0" dur="4.60s" begin="0.60s" repeatCount="indefinite"/>
+      </tspan>
+      <animate attributeName="y" values="-10%;110%" dur="4.60s" repeatCount="indefinite" begin="0.32s"/>
+    </text><text x="82.50%" y="-10%" fill="#00ff41" font-family="monospace" font-size="0.7rem" font-weight="bold">
+      <tspan x="82.50%" dy="1.2em" opacity="0">
+        ア
+        <animate attributeName="opacity" values="0;0.8;0" dur="3.26s" begin="0.00s" repeatCount="indefinite"/>
+      </tspan><tspan x="82.50%" dy="1.2em" opacity="0">
+        1
+        <animate attributeName="opacity" values="0;0.8;0" dur="3.26s" begin="0.20s" repeatCount="indefinite"/>
+      </tspan><tspan x="82.50%" dy="1.2em" opacity="0">
+        サ
+        <animate attributeName="opacity" values="0;0.8;0" dur="3.26s" begin="0.40s" repeatCount="indefinite"/>
+      </tspan><tspan x="82.50%" dy="1.2em" opacity="0">
+        ケ
+        <animate attributeName="opacity" values="0;0.8;0" dur="3.26s" begin="0.60s" repeatCount="indefinite"/>
+      </tspan>
+      <animate attributeName="y" values="-10%;110%" dur="3.26s" repeatCount="indefinite" begin="1.51s"/>
+    </text><text x="85.00%" y="-10%" fill="#00ff41" font-family="monospace" font-size="0.7rem" font-weight="bold">
+      <tspan x="85.00%" dy="1.2em" opacity="0">
+        シ
+        <animate attributeName="opacity" values="0;0.8;0" dur="3.51s" begin="0.00s" repeatCount="indefinite"/>
+      </tspan><tspan x="85.00%" dy="1.2em" opacity="0">
+        1
+        <animate attributeName="opacity" values="0;0.8;0" dur="3.51s" begin="0.20s" repeatCount="indefinite"/>
+      </tspan><tspan x="85.00%" dy="1.2em" opacity="0">
+        ウ
+        <animate attributeName="opacity" values="0;0.8;0" dur="3.51s" begin="0.40s" repeatCount="indefinite"/>
+      </tspan><tspan x="85.00%" dy="1.2em" opacity="0">
+        サ
+        <animate attributeName="opacity" values="0;0.8;0" dur="3.51s" begin="0.60s" repeatCount="indefinite"/>
+      </tspan>
+      <animate attributeName="y" values="-10%;110%" dur="3.51s" repeatCount="indefinite" begin="1.90s"/>
+    </text><text x="87.50%" y="-10%" fill="#00ff41" font-family="monospace" font-size="0.7rem" font-weight="bold">
+      <tspan x="87.50%" dy="1.2em" opacity="0">
+        コ
+        <animate attributeName="opacity" values="0;0.8;0" dur="3.67s" begin="0.00s" repeatCount="indefinite"/>
+      </tspan><tspan x="87.50%" dy="1.2em" opacity="0">
+        シ
+        <animate attributeName="opacity" values="0;0.8;0" dur="3.67s" begin="0.20s" repeatCount="indefinite"/>
+      </tspan>
+      <animate attributeName="y" values="-10%;110%" dur="3.67s" repeatCount="indefinite" begin="2.03s"/>
+    </text><text x="90.00%" y="-10%" fill="#00ff41" font-family="monospace" font-size="0.7rem" font-weight="bold">
+      <tspan x="90.00%" dy="1.2em" opacity="0">
+        テ
+        <animate attributeName="opacity" values="0;0.8;0" dur="3.36s" begin="0.00s" repeatCount="indefinite"/>
+      </tspan><tspan x="90.00%" dy="1.2em" opacity="0">
+        セ
+        <animate attributeName="opacity" values="0;0.8;0" dur="3.36s" begin="0.20s" repeatCount="indefinite"/>
+      </tspan><tspan x="90.00%" dy="1.2em" opacity="0">
+        ア
+        <animate attributeName="opacity" values="0;0.8;0" dur="3.36s" begin="0.40s" repeatCount="indefinite"/>
+      </tspan>
+      <animate attributeName="y" values="-10%;110%" dur="3.36s" repeatCount="indefinite" begin="0.48s"/>
+    </text><text x="92.50%" y="-10%" fill="#00ff41" font-family="monospace" font-size="0.7rem" font-weight="bold">
+      <tspan x="92.50%" dy="1.2em" opacity="0">
+        チ
+        <animate attributeName="opacity" values="0;0.8;0" dur="3.15s" begin="0.00s" repeatCount="indefinite"/>
+      </tspan><tspan x="92.50%" dy="1.2em" opacity="0">
+        ウ
+        <animate attributeName="opacity" values="0;0.8;0" dur="3.15s" begin="0.20s" repeatCount="indefinite"/>
+      </tspan><tspan x="92.50%" dy="1.2em" opacity="0">
+        キ
+        <animate attributeName="opacity" values="0;0.8;0" dur="3.15s" begin="0.40s" repeatCount="indefinite"/>
+      </tspan><tspan x="92.50%" dy="1.2em" opacity="0">
+        ウ
+        <animate attributeName="opacity" values="0;0.8;0" dur="3.15s" begin="0.60s" repeatCount="indefinite"/>
+      </tspan>
+      <animate attributeName="y" values="-10%;110%" dur="3.15s" repeatCount="indefinite" begin="2.20s"/>
+    </text><text x="95.00%" y="-10%" fill="#00ff41" font-family="monospace" font-size="0.7rem" font-weight="bold">
+      <tspan x="95.00%" dy="1.2em" opacity="0">
+        タ
+        <animate attributeName="opacity" values="0;0.8;0" dur="3.13s" begin="0.00s" repeatCount="indefinite"/>
+      </tspan><tspan x="95.00%" dy="1.2em" opacity="0">
+        コ
+        <animate attributeName="opacity" values="0;0.8;0" dur="3.13s" begin="0.20s" repeatCount="indefinite"/>
+      </tspan>
+      <animate attributeName="y" values="-10%;110%" dur="3.13s" repeatCount="indefinite" begin="2.77s"/>
+    </text><text x="97.50%" y="-10%" fill="#00ff41" font-family="monospace" font-size="0.7rem" font-weight="bold">
+      <tspan x="97.50%" dy="1.2em" opacity="0">
+        ソ
+        <animate attributeName="opacity" values="0;0.8;0" dur="4.85s" begin="0.00s" repeatCount="indefinite"/>
+      </tspan><tspan x="97.50%" dy="1.2em" opacity="0">
+        イ
+        <animate attributeName="opacity" values="0;0.8;0" dur="4.85s" begin="0.20s" repeatCount="indefinite"/>
+      </tspan>
+      <animate attributeName="y" values="-10%;110%" dur="4.85s" repeatCount="indefinite" begin="0.43s"/>
     </text>
   </svg>
-  <svg width="100%" height="100%" style="position:absolute;top:0;left:0;z-index:0;">
-    <line x1="0%" y1="0%" x2="0%" y2="100%" stroke="#00f3ff" stroke-opacity="0.15">
-      <animate attributeName="stroke-opacity" values="0.15;0.35;0.15" dur="3s" repeatCount="indefinite"/>
-    </line><line x1="0%" y1="0%" x2="100%" y2="0%" stroke="#ff00ff" stroke-opacity="0.1">
-      <animate attributeName="stroke-opacity" values="0.1;0.3;0.1" dur="4s" repeatCount="indefinite"/>
-    </line><line x1="10%" y1="0%" x2="10%" y2="100%" stroke="#00f3ff" stroke-opacity="0.15">
-      <animate attributeName="stroke-opacity" values="0.15;0.35;0.15" dur="3s" repeatCount="indefinite"/>
-    </line><line x1="0%" y1="10%" x2="100%" y2="10%" stroke="#ff00ff" stroke-opacity="0.1">
-      <animate attributeName="stroke-opacity" values="0.1;0.3;0.1" dur="4s" repeatCount="indefinite"/>
-    </line><line x1="20%" y1="0%" x2="20%" y2="100%" stroke="#00f3ff" stroke-opacity="0.15">
-      <animate attributeName="stroke-opacity" values="0.15;0.35;0.15" dur="3s" repeatCount="indefinite"/>
-    </line><line x1="0%" y1="20%" x2="100%" y2="20%" stroke="#ff00ff" stroke-opacity="0.1">
-      <animate attributeName="stroke-opacity" values="0.1;0.3;0.1" dur="4s" repeatCount="indefinite"/>
-    </line><line x1="30%" y1="0%" x2="30%" y2="100%" stroke="#00f3ff" stroke-opacity="0.15">
-      <animate attributeName="stroke-opacity" values="0.15;0.35;0.15" dur="3s" repeatCount="indefinite"/>
-    </line><line x1="0%" y1="30%" x2="100%" y2="30%" stroke="#ff00ff" stroke-opacity="0.1">
-      <animate attributeName="stroke-opacity" values="0.1;0.3;0.1" dur="4s" repeatCount="indefinite"/>
-    </line><line x1="40%" y1="0%" x2="40%" y2="100%" stroke="#00f3ff" stroke-opacity="0.15">
-      <animate attributeName="stroke-opacity" values="0.15;0.35;0.15" dur="3s" repeatCount="indefinite"/>
-    </line><line x1="0%" y1="40%" x2="100%" y2="40%" stroke="#ff00ff" stroke-opacity="0.1">
-      <animate attributeName="stroke-opacity" values="0.1;0.3;0.1" dur="4s" repeatCount="indefinite"/>
-    </line><line x1="50%" y1="0%" x2="50%" y2="100%" stroke="#00f3ff" stroke-opacity="0.15">
-      <animate attributeName="stroke-opacity" values="0.15;0.35;0.15" dur="3s" repeatCount="indefinite"/>
-    </line><line x1="0%" y1="50%" x2="100%" y2="50%" stroke="#ff00ff" stroke-opacity="0.1">
-      <animate attributeName="stroke-opacity" values="0.1;0.3;0.1" dur="4s" repeatCount="indefinite"/>
-    </line><line x1="60%" y1="0%" x2="60%" y2="100%" stroke="#00f3ff" stroke-opacity="0.15">
-      <animate attributeName="stroke-opacity" values="0.15;0.35;0.15" dur="3s" repeatCount="indefinite"/>
-    </line><line x1="0%" y1="60%" x2="100%" y2="60%" stroke="#ff00ff" stroke-opacity="0.1">
-      <animate attributeName="stroke-opacity" values="0.1;0.3;0.1" dur="4s" repeatCount="indefinite"/>
-    </line><line x1="70%" y1="0%" x2="70%" y2="100%" stroke="#00f3ff" stroke-opacity="0.15">
-      <animate attributeName="stroke-opacity" values="0.15;0.35;0.15" dur="3s" repeatCount="indefinite"/>
-    </line><line x1="0%" y1="70%" x2="100%" y2="70%" stroke="#ff00ff" stroke-opacity="0.1">
-      <animate attributeName="stroke-opacity" values="0.1;0.3;0.1" dur="4s" repeatCount="indefinite"/>
-    </line><line x1="80%" y1="0%" x2="80%" y2="100%" stroke="#00f3ff" stroke-opacity="0.15">
-      <animate attributeName="stroke-opacity" values="0.15;0.35;0.15" dur="3s" repeatCount="indefinite"/>
-    </line><line x1="0%" y1="80%" x2="100%" y2="80%" stroke="#ff00ff" stroke-opacity="0.1">
-      <animate attributeName="stroke-opacity" values="0.1;0.3;0.1" dur="4s" repeatCount="indefinite"/>
-    </line><line x1="90%" y1="0%" x2="90%" y2="100%" stroke="#00f3ff" stroke-opacity="0.15">
-      <animate attributeName="stroke-opacity" values="0.15;0.35;0.15" dur="3s" repeatCount="indefinite"/>
-    </line><line x1="0%" y1="90%" x2="100%" y2="90%" stroke="#ff00ff" stroke-opacity="0.1">
-      <animate attributeName="stroke-opacity" values="0.1;0.3;0.1" dur="4s" repeatCount="indefinite"/>
-    </line><line x1="100%" y1="0%" x2="100%" y2="100%" stroke="#00f3ff" stroke-opacity="0.15">
-      <animate attributeName="stroke-opacity" values="0.15;0.35;0.15" dur="3s" repeatCount="indefinite"/>
-    </line><line x1="0%" y1="100%" x2="100%" y2="100%" stroke="#ff00ff" stroke-opacity="0.1">
-      <animate attributeName="stroke-opacity" values="0.1;0.3;0.1" dur="4s" repeatCount="indefinite"/>
+  <svg width="100%" height="100%" style="position:absolute;top:0;left:0;z-index:1;opacity:0.8;">
+    <line x1="0%" y1="0%" x2="0%" y2="100%" stroke="#00f3ff" stroke-opacity="0.1">
+      <animate attributeName="stroke-opacity" values="0.1;0.2;0.1" dur="4s" repeatCount="indefinite"/>
+    </line><line x1="0%" y1="0%" x2="100%" y2="0%" stroke="#ff00ff" stroke-opacity="0.30000000000000004">
+      <animate attributeName="stroke-opacity" values="0.30000000000000004;0.6000000000000001;0.30000000000000004" dur="3s" repeatCount="indefinite"/>
+    </line><line x1="15%" y1="0%" x2="15%" y2="100%" stroke="#00f3ff" stroke-opacity="0.13">
+      <animate attributeName="stroke-opacity" values="0.13;0.26;0.13" dur="4s" repeatCount="indefinite"/>
+    </line><line x1="0%" y1="15%" x2="100%" y2="15%" stroke="#ff00ff" stroke-opacity="0.27">
+      <animate attributeName="stroke-opacity" values="0.27;0.54;0.27" dur="3s" repeatCount="indefinite"/>
+    </line><line x1="30%" y1="0%" x2="30%" y2="100%" stroke="#00f3ff" stroke-opacity="0.16">
+      <animate attributeName="stroke-opacity" values="0.16;0.32;0.16" dur="4s" repeatCount="indefinite"/>
+    </line><line x1="0%" y1="30%" x2="100%" y2="30%" stroke="#ff00ff" stroke-opacity="0.24">
+      <animate attributeName="stroke-opacity" values="0.24;0.48;0.24" dur="3s" repeatCount="indefinite"/>
+    </line><line x1="45%" y1="0%" x2="45%" y2="100%" stroke="#00f3ff" stroke-opacity="0.19">
+      <animate attributeName="stroke-opacity" values="0.19;0.38;0.19" dur="4s" repeatCount="indefinite"/>
+    </line><line x1="0%" y1="45%" x2="100%" y2="45%" stroke="#ff00ff" stroke-opacity="0.21000000000000002">
+      <animate attributeName="stroke-opacity" values="0.21000000000000002;0.42000000000000004;0.21000000000000002" dur="3s" repeatCount="indefinite"/>
+    </line><line x1="60%" y1="0%" x2="60%" y2="100%" stroke="#00f3ff" stroke-opacity="0.22">
+      <animate attributeName="stroke-opacity" values="0.22;0.44;0.22" dur="4s" repeatCount="indefinite"/>
+    </line><line x1="0%" y1="60%" x2="100%" y2="60%" stroke="#ff00ff" stroke-opacity="0.18000000000000002">
+      <animate attributeName="stroke-opacity" values="0.18000000000000002;0.36000000000000004;0.18000000000000002" dur="3s" repeatCount="indefinite"/>
+    </line><line x1="75%" y1="0%" x2="75%" y2="100%" stroke="#00f3ff" stroke-opacity="0.25">
+      <animate attributeName="stroke-opacity" values="0.25;0.5;0.25" dur="4s" repeatCount="indefinite"/>
+    </line><line x1="0%" y1="75%" x2="100%" y2="75%" stroke="#ff00ff" stroke-opacity="0.15000000000000002">
+      <animate attributeName="stroke-opacity" values="0.15000000000000002;0.30000000000000004;0.15000000000000002" dur="3s" repeatCount="indefinite"/>
+    </line><line x1="90%" y1="0%" x2="90%" y2="100%" stroke="#00f3ff" stroke-opacity="0.28">
+      <animate attributeName="stroke-opacity" values="0.28;0.56;0.28" dur="4s" repeatCount="indefinite"/>
+    </line><line x1="0%" y1="90%" x2="100%" y2="90%" stroke="#ff00ff" stroke-opacity="0.12000000000000001">
+      <animate attributeName="stroke-opacity" values="0.12000000000000001;0.24000000000000002;0.12000000000000001" dur="3s" repeatCount="indefinite"/>
+    </line><line x1="0%" y1="0%" x2="50%" y2="50%" stroke="#b967ff" stroke-opacity="0.3" stroke-width="1">
+      <animate attributeName="stroke-opacity" values="0.1;0.4;0.1" dur="5s" repeatCount="indefinite" begin="0s"/>
+    </line><line x1="0%" y1="100%" x2="50%" y2="50%" stroke="#fff000" stroke-opacity="0.3" stroke-width="1">
+      <animate attributeName="stroke-opacity" values="0.1;0.4;0.1" dur="5s" repeatCount="indefinite" begin="1s"/>
+    </line><line x1="25%" y1="0%" x2="50%" y2="50%" stroke="#b967ff" stroke-opacity="0.3" stroke-width="1">
+      <animate attributeName="stroke-opacity" values="0.1;0.4;0.1" dur="5s" repeatCount="indefinite" begin="1s"/>
+    </line><line x1="25%" y1="100%" x2="50%" y2="50%" stroke="#fff000" stroke-opacity="0.3" stroke-width="1">
+      <animate attributeName="stroke-opacity" values="0.1;0.4;0.1" dur="5s" repeatCount="indefinite" begin="2s"/>
+    </line><line x1="50%" y1="0%" x2="50%" y2="50%" stroke="#b967ff" stroke-opacity="0.3" stroke-width="1">
+      <animate attributeName="stroke-opacity" values="0.1;0.4;0.1" dur="5s" repeatCount="indefinite" begin="2s"/>
+    </line><line x1="50%" y1="100%" x2="50%" y2="50%" stroke="#fff000" stroke-opacity="0.3" stroke-width="1">
+      <animate attributeName="stroke-opacity" values="0.1;0.4;0.1" dur="5s" repeatCount="indefinite" begin="3s"/>
+    </line><line x1="75%" y1="0%" x2="50%" y2="50%" stroke="#b967ff" stroke-opacity="0.3" stroke-width="1">
+      <animate attributeName="stroke-opacity" values="0.1;0.4;0.1" dur="5s" repeatCount="indefinite" begin="3s"/>
+    </line><line x1="75%" y1="100%" x2="50%" y2="50%" stroke="#fff000" stroke-opacity="0.3" stroke-width="1">
+      <animate attributeName="stroke-opacity" values="0.1;0.4;0.1" dur="5s" repeatCount="indefinite" begin="4s"/>
+    </line><line x1="100%" y1="0%" x2="50%" y2="50%" stroke="#b967ff" stroke-opacity="0.3" stroke-width="1">
+      <animate attributeName="stroke-opacity" values="0.1;0.4;0.1" dur="5s" repeatCount="indefinite" begin="4s"/>
+    </line><line x1="100%" y1="100%" x2="50%" y2="50%" stroke="#fff000" stroke-opacity="0.3" stroke-width="1">
+      <animate attributeName="stroke-opacity" values="0.1;0.4;0.1" dur="5s" repeatCount="indefinite" begin="5s"/>
     </line>
   </svg>
-  <svg width="120" height="120" viewBox="0 0 120 120" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:1;">
-    <circle cx="60" cy="60" r="15" fill="none" stroke="#b967ff" stroke-width="4">
-      <animate attributeName="r" values="10;20;10" dur="2s" repeatCount="indefinite"/>
-      <animate attributeName="stroke-opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite"/>
+  <svg width="200" height="200" viewBox="0 0 200 200" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;">
+    <defs>
+      <radialGradient id="coreGlow" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#00f3ff" stop-opacity="0.8"/>
+        <stop offset="50%" stop-color="#ff00ff" stop-opacity="0.6"/>
+        <stop offset="100%" stop-color="#b967ff" stop-opacity="0"/>
+      </radialGradient>
+      <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+        <feMerge>
+          <feMergeNode in="coloredBlur"/>
+          <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+      </filter>
+    </defs>
+    
+    <!-- Pulsing Core -->
+    <circle cx="100" cy="100" r="15" fill="url(#coreGlow)" filter="url(#glow)">
+      <animate attributeName="r" values="12;18;12" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.8;1;0.8" dur="1.5s" repeatCount="indefinite"/>
     </circle>
-    <circle cx="60" cy="60" r="25" fill="none" stroke="#00f3ff" stroke-width="2">
+    
+    <!-- Energy Rings -->
+    <circle cx="100" cy="100" r="25" fill="none" stroke="#00f3ff" stroke-width="2" opacity="0.6">
       <animate attributeName="r" values="20;30;20" dur="2.5s" repeatCount="indefinite"/>
-      <animate attributeName="stroke-opacity" values="0.5;0.8;0.5" dur="2.5s" repeatCount="indefinite"/>
+      <animate attributeName="stroke-opacity" values="0.3;0.7;0.3" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    
+    <circle cx="100" cy="100" r="40" fill="none" stroke="#ff00ff" stroke-width="1" opacity="0.4">
+      <animate attributeName="r" values="35;45;35" dur="3s" repeatCount="indefinite"/>
+      <animate attributeName="stroke-opacity" values="0.2;0.5;0.2" dur="2.5s" repeatCount="indefinite"/>
+    </circle>
+    
+    <!-- Energy Particles -->
+    <circle cx="130" cy="100" r="2" fill="#fff000">
+      <animate attributeName="cx" values="130;70;130" dur="4s" repeatCount="indefinite"/>
+      <animate attributeName="cy" values="100;130;100" dur="4s" repeatCount="indefinite"/>
+    </circle>
+    
+    <circle cx="70" cy="100" r="2" fill="#00ff41">
+      <animate attributeName="cx" values="70;130;70" dur="4s" repeatCount="indefinite"/>
+      <animate attributeName="cy" values="100;70;100" dur="4s" repeatCount="indefinite"/>
     </circle>
   </svg>
-  <div style="position:absolute;top:40.08840018747125%;left:53.846253661015226%;transform:rotate(202.781640413164deg);font-family:monospace;font-weight:bold;font-size:1rem;color:#ff00ff;opacity:0.7;">|0⟩</div><div style="position:absolute;top:24.490349788720003%;left:25.209923034443538%;transform:rotate(346.9433381724763deg);font-family:monospace;font-weight:bold;font-size:1rem;color:#ff00ff;opacity:0.7;">|1⟩</div><div style="position:absolute;top:28.913576258063163%;left:86.5214756429046%;transform:rotate(315.958323227494deg);font-family:monospace;font-weight:bold;font-size:1rem;color:#ff00ff;opacity:0.7;">|ψ⟩</div><div style="position:absolute;top:18.148635923596164%;left:34.450945959973716%;transform:rotate(255.787219887915deg);font-family:monospace;font-weight:bold;font-size:1rem;color:#ff00ff;opacity:0.7;">H</div><div style="position:absolute;top:43.13761993774634%;left:48.78204791073371%;transform:rotate(89.56811165381951deg);font-family:monospace;font-weight:bold;font-size:1rem;color:#ff00ff;opacity:0.7;">X</div><div style="position:absolute;top:22.724136249870092%;left:14.207651696962262%;transform:rotate(218.40889838199647deg);font-family:monospace;font-weight:bold;font-size:1rem;color:#ff00ff;opacity:0.7;">Z</div>
-  <div style="position:absolute;bottom:1rem;width:100%;text-align:center;font-family:'Monaco',monospace;color:#00f3ff;font-size:2rem;text-shadow:0 0 15px #00f3ff;">ɬɧɛ ɠıɬƈɧ</div>
-  <div style="position:absolute;bottom:0.2rem;width:100%;text-align:center;font-family:'Monaco',monospace;color:#ff00ff;font-size:1rem;text-shadow:0 0 8px #ff00ff;">Last updated: Wed, 15 Oct 2025 03:14:26 UTC</div>
+  
+    <div class="quantum-symbol" 
+         style="position:absolute;top:20%;left:15%;
+                transform:rotate(100.77521987712491deg);
+                font-family:'Monaco','Consolas',monospace;
+                font-weight:bold;font-size:1.1rem;
+                color:#00f3ff;opacity:0.8;
+                text-shadow:0 0 8px #00f3ff;
+                transition:all 0.3s ease;
+                cursor:pointer;"
+         onmouseover="this.style.opacity='1';this.style.transform='scale(1.2) rotate(0deg)';this.style.textShadow='0 0 15px #00f3ff'"
+         onmouseout="this.style.opacity='0.8';this.style.transform='scale(1) rotate(183.30533708996816deg)';this.style.textShadow='0 0 8px #00f3ff'">
+      |0⟩
+    </div>
+    <div class="quantum-symbol" 
+         style="position:absolute;top:25%;left:85%;
+                transform:rotate(15.419861213469792deg);
+                font-family:'Monaco','Consolas',monospace;
+                font-weight:bold;font-size:1.1rem;
+                color:#ff00ff;opacity:0.8;
+                text-shadow:0 0 8px #ff00ff;
+                transition:all 0.3s ease;
+                cursor:pointer;"
+         onmouseover="this.style.opacity='1';this.style.transform='scale(1.2) rotate(0deg)';this.style.textShadow='0 0 15px #ff00ff'"
+         onmouseout="this.style.opacity='0.8';this.style.transform='scale(1) rotate(341.73310445739327deg)';this.style.textShadow='0 0 8px #ff00ff'">
+      |1⟩
+    </div>
+    <div class="quantum-symbol" 
+         style="position:absolute;top:80%;left:20%;
+                transform:rotate(319.72640007662915deg);
+                font-family:'Monaco','Consolas',monospace;
+                font-weight:bold;font-size:1.1rem;
+                color:#b967ff;opacity:0.8;
+                text-shadow:0 0 8px #b967ff;
+                transition:all 0.3s ease;
+                cursor:pointer;"
+         onmouseover="this.style.opacity='1';this.style.transform='scale(1.2) rotate(0deg)';this.style.textShadow='0 0 15px #b967ff'"
+         onmouseout="this.style.opacity='0.8';this.style.transform='scale(1) rotate(294.25720118757675deg)';this.style.textShadow='0 0 8px #b967ff'">
+      |ψ⟩
+    </div>
+    <div class="quantum-symbol" 
+         style="position:absolute;top:75%;left:80%;
+                transform:rotate(167.6901313710232deg);
+                font-family:'Monaco','Consolas',monospace;
+                font-weight:bold;font-size:1.1rem;
+                color:#fff000;opacity:0.8;
+                text-shadow:0 0 8px #fff000;
+                transition:all 0.3s ease;
+                cursor:pointer;"
+         onmouseover="this.style.opacity='1';this.style.transform='scale(1.2) rotate(0deg)';this.style.textShadow='0 0 15px #fff000'"
+         onmouseout="this.style.opacity='0.8';this.style.transform='scale(1) rotate(110.74274150231922deg)';this.style.textShadow='0 0 8px #fff000'">
+      H
+    </div>
+    <div class="quantum-symbol" 
+         style="position:absolute;top:15%;left:45%;
+                transform:rotate(136.00311822420252deg);
+                font-family:'Monaco','Consolas',monospace;
+                font-weight:bold;font-size:1.1rem;
+                color:#00ff41;opacity:0.8;
+                text-shadow:0 0 8px #00ff41;
+                transition:all 0.3s ease;
+                cursor:pointer;"
+         onmouseover="this.style.opacity='1';this.style.transform='scale(1.2) rotate(0deg)';this.style.textShadow='0 0 15px #00ff41'"
+         onmouseout="this.style.opacity='0.8';this.style.transform='scale(1) rotate(188.63973077136438deg)';this.style.textShadow='0 0 8px #00ff41'">
+      X
+    </div>
+    <div class="quantum-symbol" 
+         style="position:absolute;top:85%;left:55%;
+                transform:rotate(299.512621289961deg);
+                font-family:'Monaco','Consolas',monospace;
+                font-weight:bold;font-size:1.1rem;
+                color:#ff6bff;opacity:0.8;
+                text-shadow:0 0 8px #ff6bff;
+                transition:all 0.3s ease;
+                cursor:pointer;"
+         onmouseover="this.style.opacity='1';this.style.transform='scale(1.2) rotate(0deg)';this.style.textShadow='0 0 15px #ff6bff'"
+         onmouseout="this.style.opacity='0.8';this.style.transform='scale(1) rotate(299.43844661023894deg)';this.style.textShadow='0 0 8px #ff6bff'">
+      Z
+    </div>
+    <div class="quantum-symbol" 
+         style="position:absolute;top:40%;left:75%;
+                transform:rotate(93.45186393060641deg);
+                font-family:'Monaco','Consolas',monospace;
+                font-weight:bold;font-size:1.1rem;
+                color:#00f3ff;opacity:0.8;
+                text-shadow:0 0 8px #00f3ff;
+                transition:all 0.3s ease;
+                cursor:pointer;"
+         onmouseover="this.style.opacity='1';this.style.transform='scale(1.2) rotate(0deg)';this.style.textShadow='0 0 15px #00f3ff'"
+         onmouseout="this.style.opacity='0.8';this.style.transform='scale(1) rotate(227.60685893348935deg)';this.style.textShadow='0 0 8px #00f3ff'">
+      CNOT
+    </div>
+    <div class="quantum-symbol" 
+         style="position:absolute;top:60%;left:25%;
+                transform:rotate(242.19537638561286deg);
+                font-family:'Monaco','Consolas',monospace;
+                font-weight:bold;font-size:1.1rem;
+                color:#ff00ff;opacity:0.8;
+                text-shadow:0 0 8px #ff00ff;
+                transition:all 0.3s ease;
+                cursor:pointer;"
+         onmouseover="this.style.opacity='1';this.style.transform='scale(1.2) rotate(0deg)';this.style.textShadow='0 0 15px #ff00ff'"
+         onmouseout="this.style.opacity='0.8';this.style.transform='scale(1) rotate(338.9486498411186deg)';this.style.textShadow='0 0 8px #ff00ff'">
+      SWAP
+    </div>
+  
+  <div style="position:absolute;top:2rem;right:2rem;z-index:3;font-family:'Monaco','Consolas',monospace;font-size:0.8rem;color:#00f3ff;">
+    <div style="margin-bottom:0.5rem;">
+      <span style="color:#ff00ff;">■</span> SYSTEM: ONLINE
+    </div>
+    <div style="margin-bottom:0.5rem;">
+      <span style="color:#00ff41;">■</span> TIME: 23:22
+    </div>
+    <div style="margin-bottom:0.5rem;">
+      <span style="color:#b967ff;">■</span> USER: Thugger069
+    </div>
+    <div>
+      <span style="color:#fff000;">■</span> STATUS: QUANTUM_READY
+    </div>
+  </div>
+  
+  <div style="position:absolute;bottom:2rem;left:2rem;z-index:3;font-family:'Monaco','Consolas',monospace;font-size:0.8rem;color:#ff00ff;">
+    <div style="margin-bottom:0.3rem;">// QUANTUM INTERFACE ACTIVE</div>
+    <div style="margin-bottom:0.3rem;">// CYBERPUNK PROTOCOL ENGAGED</div>
+    <div>// AWAITING USER INPUT...</div>
+  </div>
+  <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:repeating-linear-gradient(0deg, rgba(0,0,0,0) 0px, rgba(0,0,0,0) 1px, rgba(0,243,255,0.05) 2px, rgba(0,0,0,0) 3px);z-index:3;pointer-events:none;"></div>
+  
+  <!-- Main Title with Glitch Effect -->
+  <div style="position:absolute;bottom:4rem;width:100%;text-align:center;z-index:3;">
+    <h1 style="font-family:'Monaco','Consolas',monospace;color:#00f3ff;font-size:3.5rem;margin:0;text-shadow:0 0 20px #00f3ff, 0 0 40px #00f3ff;letter-spacing:2px;">
+      ɬɧɛ ɠıɬƈɧ
+    </h1>
+    <div style="font-family:'Monaco','Consolas',monospace;color:#ff00ff;font-size:1.2rem;margin-top:0.5rem;text-shadow:0 0 10px #ff00ff;">
+      QUANTUM DEVELOPER | CYBERPUNK ARCHITECT
+    </div>
+  </div>
+  
+  <!-- Time Signature -->
+  <div style="position:absolute;bottom:1rem;width:100%;text-align:center;font-family:'Monaco','Consolas',monospace;color:#b967ff;font-size:0.9rem;text-shadow:0 0 8px #b967ff;z-index:3;">
+    SYSTEM UPDATE: Wed, 15 Oct 2025 03:22:24 UTC
+  </div>
 </div>
+
+<style>
+  @keyframes borderFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  .quantum-symbol:hover {
+    z-index: 5 !important;
+  }
+</style>
 <!-- Quantum Cyberpunk Header End -->
 
 <!-- Quantum Header Start -->
@@ -495,6 +1098,7 @@ f6e5d4c3b2a1   redis:7-alpine  "docker-entrypoint.s…"  Up 2 hours   6379/tcp  
   <sub><em>Last updated: 2025-10-15 01:49:00 UTC</em></sub>
 </div>
 <!-- End Terminal Section -->
+
 
 
 
