@@ -1,36 +1,84 @@
-<svg width="960" height="628" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#ffffff" />
-      <stop offset="100%" stop-color="#f6f8fa" />
-    </linearGradient>
-    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
-      <feMerge> 
-        <feMergeNode in="coloredBlur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
-  </defs>
-  
-  <rect width="100%" height="100%" rx="12" ry="12" fill="url(#bgGradient)" 
-        stroke="#d1d5da" stroke-width="2" filter="url(#glow)"/>
-  
-  <rect x="0" y="0" width="100%" height="30" rx="12" ry="12" fill="#f6f8fa" 
-        stroke="#d1d5da" stroke-width="2"/>
-  <circle cx="15" cy="15" r="4" fill="#ff5f56"/>
-  <circle cx="30" cy="15" r="4" fill="#ffbd2e"/>
-  <circle cx="45" cy="15" r="4" fill="#27ca3f"/>
-  <text x="60" y="18" style="font-family: 'Monaco', monospace; font-size: 12px; fill: #333333; font-weight: bold;">ɬɧɛ ɠıɬƈɧ@github: ~</text>
-  
-  <style>
-    .line { font-family: 'Monaco', monospace; font-size: 14px; fill: #333333; white-space: pre; }
-    .accent { fill: #0366d6; font-weight: bold; }
-  </style>
-  
-  <text x="20" y="50" class="line">Last login: Wed, 15 Oct 2025 03:53:01 UTC on ttys001</text><text x="20" y="68" class="line">ɬɧɛ ɠıɬƈɧ@github ~ % whoami</text><text x="20" y="86" class="line">ɬɧɛ ɠıɬƈɧ</text><text x="20" y="104" class="line"></text><text x="20" y="122" class="line">ɬɧɛ ɠıɬƈɧ@github ~ % uname -a</text><text x="20" y="140" class="line">Darwin github-pro 22.5.0 Darwin Kernel Version 22.5.0: x86_64</text><text x="20" y="158" class="line"></text><text x="20" y="176" class="line">ɬɧɛ ɠıɬƈɧ@github ~ % uptime</text><text x="20" y="194" class="line">Wed, 15 Oct 2025 03:53:01 UTC up 14 days, 2:51, 1 user, load averages: 0.56 0.62 0.48</text><text x="20" y="212" class="line"></text><text x="20" y="230" class="line">ɬɧɛ ɠıɬƈɧ@github ~ % echo "Debugging is like being the detective in a crime movie where you are also the murderer."</text><text x="20" y="248" class="line">Debugging is like being the detective in a crime movie where you are also the murderer.</text><text x="20" y="266" class="line"></text><text x="20" y="284" class="line">ɬɧɛ ɠıɬƈɧ@github ~ % ls -la Projects/</text><text x="20" y="302" class="line">total 48</text><text x="20" y="320" class="line">drwxr-xr-x   9 ɬɧɛ ɠıɬƈɧ  staff   288 Jun 15 10:30 .</text><text x="20" y="338" class="line">drwxr-xr-x   6 ɬɧɛ ɠıɬƈɧ  staff   192 Jun 15 10:30 ..</text><text x="20" y="356" class="line">drwxr-xr-x   8 ɬɧɛ ɠıɬƈɧ  staff   256 Jun 15 10:30 .git</text><text x="20" y="374" class="line">-rw-r--r--   1 ɬɧɛ ɠıɬƈɧ  staff   113 Jun 15 10:30 .gitignore</text><text x="20" y="392" class="line">drwxr-xr-x   7 ɬɧɛ ɠıɬƈɧ  staff   224 Jun 15 10:30 DevOps</text><text x="20" y="410" class="line">drwxr-xr-x   6 ɬɧɛ ɠıɬƈɧ  staff   192 Jun 15 10:30 OpenSource</text><text x="20" y="428" class="line">drwxr-xr-x   5 ɬɧɛ ɠıɬƈɧ  staff   160 Jun 15 10:30 Scripts</text><text x="20" y="446" class="line">-rw-r--r--   1 ɬɧɛ ɠıɬƈɧ  staff  1024 Jun 15 10:30 README.md</text><text x="20" y="464" class="line">-rw-r--r--   1 ɬɧɛ ɠıɬƈɧ  staff   925 Jun 15 10:30 TODO.md</text><text x="20" y="482" class="line"></text><text x="20" y="500" class="line">ɬɧɛ ɠıɬƈɧ@github ~ % docker ps</text><text x="20" y="518" class="line">CONTAINER ID   IMAGE           COMMAND                  STATUS       PORTS     NAMES</text><text x="20" y="536" class="line">a1b2c3d4e5f6   nginx:alpine    "nginx -g 'daemon off;" Up 2 hours   80/tcp    webserver</text><text x="20" y="554" class="line">f6e5d4c3b2a1   redis:7-alpine  "docker-entrypoint.s…"  Up 2 hours   6379/tcp  cache</text><text x="20" y="572" class="line"></text><text x="20" y="590" class="line">ɬɧɛ ɠıɬƈɧ@github ~ %</text>
-  
-  <text x="20" y="594" class="accent">█
-    <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite" />
+<svg width="1136.5" height="741" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <linearGradient id="bgGradient-light" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#ffffff" />
+    <stop offset="100%" stop-color="#f6f8fa" />
+  </linearGradient>
+  <filter id="shadow-light">
+    <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="rgba(149, 157, 165, 0.2)"/>
+  </filter>
+</defs>
+
+<g filter="url(#shadow-light)">
+  <rect width="100%" height="100%" rx="12" ry="12" fill="url(#bgGradient-light)" stroke="#d0d7de" stroke-width="2"/>
+  <rect x="0" y="0" width="100%" height="35" rx="12" ry="12" fill="#f6f8fa"/>
+  <rect x="0" y="33" width="100%" height="2" fill="#d0d7de" opacity="0.5"/>
+
+  <!-- Traffic lights -->
+  <circle cx="18" cy="17.5" r="6" fill="#ff5f56">
+    <animate attributeName="opacity" values="1;0.6;1" dur="3s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="38" cy="17.5" r="6" fill="#ffbd2e">
+    <animate attributeName="opacity" values="1;0.6;1" dur="3s" begin="1s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="58" cy="17.5" r="6" fill="#27ca3f">
+    <animate attributeName="opacity" values="1;0.6;1" dur="3s" begin="2s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- Window title -->
+  <text x="75" y="22.5" style="font-family: 'SF Mono', monospace; font-size: 13px; fill: #24292f; font-weight: 600;">
+    𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ@quantum-terminal: ~
   </text>
+</g>
+
+<style>
+  .line { font-family: 'SF Mono', monospace; font-size: 14px; fill: #24292f; white-space: pre; letter-spacing:0.5px;}
+  .accent { fill: #0969da; font-weight:bold;}
+</style>
+
+<text x="20" y="55" class="line">Last login: Wed, 15 Oct 2025 04:13:49 UTC on ttys001</text>
+  <text x="20" y="73" class="line"><tspan fill="#1a7f37" font-weight="bold">𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ@quantum-terminal ~ %</tspan> whoami</text>
+  <text x="20" y="91" class="line">𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ</text>
+  <text x="20" y="109" class="line"></text>
+  <text x="20" y="127" class="line"><tspan fill="#1a7f37" font-weight="bold">𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ@quantum-terminal ~ %</tspan> uname -a</text>
+  <text x="20" y="145" class="line">Darwin quantum-pro 22.5.0 Darwin Kernel Version 22.5.0: x86_64</text>
+  <text x="20" y="163" class="line"></text>
+  <text x="20" y="181" class="line"><tspan fill="#1a7f37" font-weight="bold">𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ@quantum-terminal ~ %</tspan> uptime</text>
+  <text x="20" y="199" class="line">Wed, 15 Oct 2025 04:13:49 up 14 days, 2:51, 1 user, load: 0.56 0.62 0.48</text>
+  <text x="20" y="217" class="line"></text>
+  <text x="20" y="235" class="line"><tspan fill="#1a7f37" font-weight="bold">𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ@quantum-terminal ~ %</tspan> echo "The function of good software is to make the complex appear to be simple. - Grady Booch"</text>
+  <text x="20" y="253" class="line">The function of good software is to make the complex appear to be simple. - Grady Booch</text>
+  <text x="20" y="271" class="line"></text>
+  <text x="20" y="289" class="line"><tspan fill="#1a7f37" font-weight="bold">𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ@quantum-terminal ~ %</tspan> ls -la Projects/</text>
+  <text x="20" y="307" class="line">total 48</text>
+  <text x="20" y="325" class="line">drwxr-xr-x   9 𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ  staff   288 Oct 14 10:30 .</text>
+  <text x="20" y="343" class="line">drwxr-xr-x   6 𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ  staff   192 Oct 14 10:30 ..</text>
+  <text x="20" y="361" class="line">drwxr-xr-x   8 𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ  staff   256 Oct 14 10:30 .git</text>
+  <text x="20" y="379" class="line">-rw-r--r--   1 𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ  staff   113 Oct 14 10:30 .gitignore</text>
+  <text x="20" y="397" class="line">drwxr-xr-x   7 𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ  staff   224 Oct 14 10:30 quantum-core</text>
+  <text x="20" y="415" class="line">drwxr-xr-x   6 𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ  staff   192 Oct 14 10:30 cyberpunk-ui</text>
+  <text x="20" y="433" class="line">drwxr-xr-x   5 𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ  staff   160 Oct 14 10:30 neural-net</text>
+  <text x="20" y="451" class="line">-rw-r--r--   1 𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ  staff  1024 Oct 14 10:30 README.md</text>
+  <text x="20" y="469" class="line">-rw-r--r--   1 𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ  staff   925 Oct 14 10:30 TODO.md</text>
+  <text x="20" y="487" class="line"></text>
+  <text x="20" y="505" class="line"><tspan fill="#1a7f37" font-weight="bold">𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ@quantum-terminal ~ %</tspan> docker ps</text>
+  <text x="20" y="523" class="line">CONTAINER ID   IMAGE           COMMAND                  STATUS       PORTS     NAMES</text>
+  <text x="20" y="541" class="line">a1b2c3d4e5f6   nginx:alpine    "nginx -g 'daemon off;" Up 2 hours   80/tcp    webserver</text>
+  <text x="20" y="559" class="line">f6e5d4c3b2a1   redis:7-alpine  "docker-entrypoint.s…"  Up 2 hours   6379/tcp  cache</text>
+  <text x="20" y="577" class="line">9x8y7z6w5v4u   postgres:15     "docker-entrypoint.s…"  Up 2 hours   5432/tcp  database</text>
+  <text x="20" y="595" class="line"></text>
+  <text x="20" y="613" class="line"><tspan fill="#1a7f37" font-weight="bold">𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ@quantum-terminal ~ %</tspan> git status</text>
+  <text x="20" y="631" class="line">On branch main</text>
+  <text x="20" y="649" class="line">Your branch is up to date with 'origin/main'.</text>
+  <text x="20" y="667" class="line">nothing to commit, working tree clean</text>
+  <text x="20" y="685" class="line"></text>
+  <text x="20" y="703" class="line"><tspan fill="#1a7f37" font-weight="bold">𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ@quantum-terminal ~ %</tspan></text>
+
+<!-- Blinking cursor -->
+<text x="25" y="705" class="accent" style="font-size:16px;">█
+  <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite"/>
+</text>
+
+
+
 </svg>

@@ -1,18 +1,18 @@
 <svg width="1136.5" height="741" xmlns="http://www.w3.org/2000/svg">
 <defs>
-  <linearGradient id="bgGradient-dark" x1="0%" y1="0%" x2="100%" y2="100%">
-    <stop offset="0%" stop-color="#0a0e27" />
-    <stop offset="100%" stop-color="#1a1b26" />
+  <linearGradient id="bgGradient-cyberpunk" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#0f0f23" />
+    <stop offset="100%" stop-color="#1a0033" />
   </linearGradient>
-  <filter id="shadow-dark">
-    <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="rgba(0, 243, 255, 0.3)"/>
+  <filter id="shadow-cyberpunk">
+    <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="rgba(255, 0, 255, 0.4)"/>
   </filter>
 </defs>
 
-<g filter="url(#shadow-dark)">
-  <rect width="100%" height="100%" rx="12" ry="12" fill="url(#bgGradient-dark)" stroke="#2ac3de" stroke-width="2"/>
-  <rect x="0" y="0" width="100%" height="35" rx="12" ry="12" fill="#16161e"/>
-  <rect x="0" y="33" width="100%" height="2" fill="#2ac3de" opacity="0.5"/>
+<g filter="url(#shadow-cyberpunk)">
+  <rect width="100%" height="100%" rx="12" ry="12" fill="url(#bgGradient-cyberpunk)" stroke="#ff00ff" stroke-width="2"/>
+  <rect x="0" y="0" width="100%" height="35" rx="12" ry="12" fill="#1a0033"/>
+  <rect x="0" y="33" width="100%" height="2" fill="#ff00ff" opacity="0.5"/>
 
   <!-- Traffic lights -->
   <circle cx="18" cy="17.5" r="6" fill="#ff5f56">
@@ -26,30 +26,30 @@
   </circle>
 
   <!-- Window title -->
-  <text x="75" y="22.5" style="font-family: 'SF Mono', monospace; font-size: 13px; fill: #c0caf5; font-weight: 600;">
+  <text x="75" y="22.5" style="font-family: 'SF Mono', monospace; font-size: 13px; fill: #00ff41; font-weight: 600;">
     𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ@quantum-terminal: ~
   </text>
 </g>
 
 <style>
-  .line { font-family: 'SF Mono', monospace; font-size: 14px; fill: #c0caf5; white-space: pre; letter-spacing:0.5px;}
-  .accent { fill: #7dcfff; font-weight:bold;}
+  .line { font-family: 'SF Mono', monospace; font-size: 14px; fill: #00ff41; white-space: pre; letter-spacing:0.5px;}
+  .accent { fill: #ff00ff; font-weight:bold;}
 </style>
 
 <text x="20" y="55" class="line">Last login: Wed, 15 Oct 2025 04:13:49 UTC on ttys001</text>
-  <text x="20" y="73" class="line"><tspan fill="#00ff41" font-weight="bold">𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ@quantum-terminal ~ %</tspan> whoami</text>
+  <text x="20" y="73" class="line"><tspan fill="#00f3ff" font-weight="bold">𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ@quantum-terminal ~ %</tspan> whoami</text>
   <text x="20" y="91" class="line">𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ</text>
   <text x="20" y="109" class="line"></text>
-  <text x="20" y="127" class="line"><tspan fill="#00ff41" font-weight="bold">𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ@quantum-terminal ~ %</tspan> uname -a</text>
+  <text x="20" y="127" class="line"><tspan fill="#00f3ff" font-weight="bold">𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ@quantum-terminal ~ %</tspan> uname -a</text>
   <text x="20" y="145" class="line">Darwin quantum-pro 22.5.0 Darwin Kernel Version 22.5.0: x86_64</text>
   <text x="20" y="163" class="line"></text>
-  <text x="20" y="181" class="line"><tspan fill="#00ff41" font-weight="bold">𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ@quantum-terminal ~ %</tspan> uptime</text>
+  <text x="20" y="181" class="line"><tspan fill="#00f3ff" font-weight="bold">𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ@quantum-terminal ~ %</tspan> uptime</text>
   <text x="20" y="199" class="line">Wed, 15 Oct 2025 04:13:49 up 14 days, 2:51, 1 user, load: 0.56 0.62 0.48</text>
   <text x="20" y="217" class="line"></text>
-  <text x="20" y="235" class="line"><tspan fill="#00ff41" font-weight="bold">𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ@quantum-terminal ~ %</tspan> echo "The function of good software is to make the complex appear to be simple. - Grady Booch"</text>
+  <text x="20" y="235" class="line"><tspan fill="#00f3ff" font-weight="bold">𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ@quantum-terminal ~ %</tspan> echo "The function of good software is to make the complex appear to be simple. - Grady Booch"</text>
   <text x="20" y="253" class="line">The function of good software is to make the complex appear to be simple. - Grady Booch</text>
   <text x="20" y="271" class="line"></text>
-  <text x="20" y="289" class="line"><tspan fill="#00ff41" font-weight="bold">𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ@quantum-terminal ~ %</tspan> ls -la Projects/</text>
+  <text x="20" y="289" class="line"><tspan fill="#00f3ff" font-weight="bold">𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ@quantum-terminal ~ %</tspan> ls -la Projects/</text>
   <text x="20" y="307" class="line">total 48</text>
   <text x="20" y="325" class="line">drwxr-xr-x   9 𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ  staff   288 Oct 14 10:30 .</text>
   <text x="20" y="343" class="line">drwxr-xr-x   6 𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ  staff   192 Oct 14 10:30 ..</text>
@@ -61,24 +61,25 @@
   <text x="20" y="451" class="line">-rw-r--r--   1 𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ  staff  1024 Oct 14 10:30 README.md</text>
   <text x="20" y="469" class="line">-rw-r--r--   1 𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ  staff   925 Oct 14 10:30 TODO.md</text>
   <text x="20" y="487" class="line"></text>
-  <text x="20" y="505" class="line"><tspan fill="#00ff41" font-weight="bold">𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ@quantum-terminal ~ %</tspan> docker ps</text>
+  <text x="20" y="505" class="line"><tspan fill="#00f3ff" font-weight="bold">𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ@quantum-terminal ~ %</tspan> docker ps</text>
   <text x="20" y="523" class="line">CONTAINER ID   IMAGE           COMMAND                  STATUS       PORTS     NAMES</text>
   <text x="20" y="541" class="line">a1b2c3d4e5f6   nginx:alpine    "nginx -g 'daemon off;" Up 2 hours   80/tcp    webserver</text>
   <text x="20" y="559" class="line">f6e5d4c3b2a1   redis:7-alpine  "docker-entrypoint.s…"  Up 2 hours   6379/tcp  cache</text>
   <text x="20" y="577" class="line">9x8y7z6w5v4u   postgres:15     "docker-entrypoint.s…"  Up 2 hours   5432/tcp  database</text>
   <text x="20" y="595" class="line"></text>
-  <text x="20" y="613" class="line"><tspan fill="#00ff41" font-weight="bold">𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ@quantum-terminal ~ %</tspan> git status</text>
+  <text x="20" y="613" class="line"><tspan fill="#00f3ff" font-weight="bold">𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ@quantum-terminal ~ %</tspan> git status</text>
   <text x="20" y="631" class="line">On branch main</text>
   <text x="20" y="649" class="line">Your branch is up to date with 'origin/main'.</text>
   <text x="20" y="667" class="line">nothing to commit, working tree clean</text>
   <text x="20" y="685" class="line"></text>
-  <text x="20" y="703" class="line"><tspan fill="#00ff41" font-weight="bold">𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ@quantum-terminal ~ %</tspan></text>
+  <text x="20" y="703" class="line"><tspan fill="#00f3ff" font-weight="bold">𖢧ꛅ𖤢 ꚽꚳꛈ𖢧ꛕꛅ@quantum-terminal ~ %</tspan></text>
 
 <!-- Blinking cursor -->
 <text x="25" y="705" class="accent" style="font-size:16px;">█
   <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite"/>
 </text>
 
-
+<line x1="1096.5" y1="10" x2="1126.5" y2="10" stroke="#ff00ff" stroke-width="2" opacity="0.6"/>
+<line x1="1126.5" y1="10" x2="1126.5" y2="40" stroke="#ff00ff" stroke-width="2" opacity="0.6"/>
 
 </svg>
