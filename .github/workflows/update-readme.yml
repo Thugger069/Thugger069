@@ -1,48 +1,46 @@
 name: Update Terminal & README
 
 on:
-  push:
-    branches: ["main"]
-    paths-ignore:
-      - 'README.md'
   schedule:
-    - cron: "0 0 * * *" # Daily at midnight UTC
+    - cron: '0 0 * * *'  # daily
   workflow_dispatch:
 
 permissions:
   contents: write
 
 jobs:
-  update-terminal-readme:
+  update-readme:
     runs-on: ubuntu-latest
     steps:
-      # 1️⃣ Checkout the repository
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 1
 
-      # 2️⃣ Set up Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "18"
+          node-version: '18'
 
-      # 3️⃣ Install system dependencies
-      - name: Install System Packages
+      - name: Install Dependencies
         run: |
-          sudo apt-get update
-          sudo apt-get install -y figlet lolcat neofetch boxes cowsay fortune bc
+          npm install -g snk
 
-      # 4️⃣ Install npm packages
-      - name: Install npm Packages
-        run: |
-          npm install -g snk terminalizer
+      - name: Make Script Executable
+        run: chmod +x ./scripts/update-terminal.sh
 
-      # 5️⃣ Run the unified update-terminal script
       - name: Run Update Script
         env:
           USERNAME: "𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ"
+          GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}
+        run: ./scripts/update-terminal.sh
+
+      - name: Commit & Push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          chmod +x ./scripts/update-terminal.sh
-          ./scripts/update-terminal.sh
+          git config --local user.name "Thugger069"
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f README.md dist/github-snake*.svg
+          git commit -m "🐍 Update Terminal & Snake - $(date -u +"%Y-%m-%d %H:%M:%S")" || echo "No changes to commit"
+          git push
