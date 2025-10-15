@@ -52,7 +52,7 @@ jobs:
         if: steps.check-svg.outputs.script-exists == 'false'
         run: |
           cat > scripts/generate-terminal-svg.js << 'EOF'
-          # Paste the full generate-terminal-svg.js content here (optimized script)
+          # Paste your full generate-terminal-svg.js content here
           EOF
           chmod +x scripts/generate-terminal-svg.js
 
@@ -61,8 +61,8 @@ jobs:
         run: |
           SKIP="${{ inputs.skip-svg }}"
           if [ "$SKIP" = "true" ] && [ -f "dist/terminal.svg" ]; then
-            echo "svg-generated=false" >> $GITHUB_OUTPUT
             echo "⏭️ Skipping SVG generation"
+            echo "svg-generated=false" >> $GITHUB_OUTPUT
           else
             echo "🎨 Generating terminal SVGs..."
             if node scripts/generate-terminal-svg.js; then
@@ -90,7 +90,8 @@ jobs:
         if: steps.update-script.outputs.script-completed == 'false'
         run: |
           CURRENT_TIME=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
-          # Your manual README update logic here (as before)
+          # Your manual README update logic goes here
+          echo "✅ Manual fallback executed at $CURRENT_TIME"
 
       - name: Commit and push changes
         if: always()
@@ -108,6 +109,7 @@ jobs:
             COMMIT_MSG="$COMMIT_MSG ($(date -u +'%Y-%m-%d %H:%M:%S UTC'))"
             git commit -m "$COMMIT_MSG"
             git push
+          fi   # <-- fixed missing fi
 
       - name: Workflow summary
         if: always()
