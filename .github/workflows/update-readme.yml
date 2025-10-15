@@ -1,47 +1,59 @@
-name: Update Terminal & README
+name: Update README
 
 on:
   schedule:
-    - cron: '0 0 * * *'
+    - cron: '0 0 * * *' # daily
   workflow_dispatch:
 
 permissions:
   contents: write
 
 jobs:
-  update-readme:
+  generate-snake:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 1
 
-      - name: Setup Node.js
+      - name: Create dist Directory
+        run: mkdir -p dist
+
+      - name: Generate Neon Snake Animations
+        uses: Platane/snk@v3
+        with:
+          github_user_name: ${{ github.repository_owner }}
+          outputs: |
+            dist/github-snake.svg
+            dist/github-snake-dark.svg?palette=github-dark
+
+  update-readme:
+    runs-on: ubuntu-latest
+    needs: generate-snake
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18'
 
-      - name: Install Dependencies & Audit Fix
-        run: |
-          npm install -g snk
-          npm audit fix --force || echo "⚠ npm audit fix failed, continuing..."
-
-      - name: Make Script Executable
-        run: chmod +x ./scripts/update-terminal.sh
-
-      - name: Run Update Script
+      - name: Run update-terminal.sh
         env:
           USERNAME: "𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ"
-          GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}
-        run: ./scripts/update-terminal.sh
+        run: |
+          chmod +x ./scripts/update-terminal.sh
+          ./scripts/update-terminal.sh
 
-      - name: Commit & Push Changes
+      - name: Commit & Push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M:%S")
           git config --local user.name "Thugger069"
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -f README.md dist/github-snake*.svg
-          git commit -m "🐍 Resilient Terminal & Snake Update - $(date -u +"%Y-%m-%d %H:%M:%S")" || echo "No changes to commit"
+          git commit -m "🐍 Q.R.I.P README Update ($TIMESTAMP)" || echo "No changes to commit"
           git push
