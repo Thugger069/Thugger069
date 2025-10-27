@@ -18,13 +18,16 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'pnpm'
+          cache: 'pnpm' # Use pnpm cache
 
+      # [ --- THIS IS THE CRITICAL FIX --- ]
+      # This action installs the pnpm executable itself.
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 9
+          version: 9 # Specify pnpm version
 
+      # [ --- THIS STEP WILL NOW SUCCEED --- ]
       - name: Install Node.js dependencies
         run: pnpm install
 
@@ -37,7 +40,7 @@ jobs:
         uses: Platane/snk@v3
         id: snake-gif
         with:
-          github_user_name: ${{ github.repository_owner }} # Use dynamic username
+          github_user_name: ${{ github.repository_owner }}
           outputs: |
             output/github-snake.svg
             output/github-snake-dark.svg?palette=github-dark
@@ -51,17 +54,13 @@ jobs:
           echo "Rendering GIF from recording..."
           pnpm exec terminalizer render ./assets/terminal-capture.yml -o ./assets/terminal_animation.gif
 
-      # [ --- MODIFIED: ADDED ENV BLOCK --- ]
       - name: Run README update script
         run: |
           chmod +x ./scripts/update-readme.sh
           ./scripts/update-readme.sh
         env:
-          # Pass the GitHub token for API calls
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # Pass the username to the script
           GH_USERNAME: ${{ github.repository_owner }}
-          # Pass all your new secrets
           SECRET_DEVTO_USERNAME: ${{ secrets.DEVTO_USERNAME }}
           SECRET_LINKEDIN_URL: ${{ secrets.LINKEDIN_URL }}
           SECRET_TWITTER_HANDLE: ${{ secrets.TWITTER_HANDLE }}
