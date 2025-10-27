@@ -5,24 +5,22 @@ set -e # Exit immediately if a command exits with a non-zero status.
 mkdir -p assets
 mkdir -p output
 
-# --- Configuration & Secrets ---
-GH_USERNAME="Thugger069" # <<-- UPDATE THIS IF YOUR GITHUB USERNAME IS DIFFERENT
+# --- Configuration & Secrets (Read from Environment) ---
+# These are passed from the .yml file's 'env:' block
+GH_USERNAME="${GH_USERNAME}"
+GH_TOKEN="${GH_TOKEN}"
+DEVTO_USERNAME="${SECRET_DEVTO_USERNAME}"
+LINKEDIN_URL="${SECRET_LINKEDIN_URL}"
+TWITTER_HANDLE="${SECRET_TWITTER_HANDLE}"
+EMAIL_ADDRESS="${SECRET_EMAIL_ADDRESS}"
+WAKATIME_USERNAME="${SECRET_WAKATIME_USERNAME}"
 
-# For Spotify (using a public service for ease, replace if you build custom API integration)
-# Note: spotify-github-profile.vercel.app is maintained by another developer.
-# If you prefer full control, you'd need to set up Spotify API credentials
-# (SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET, SPOTIFY_REFRESH_TOKEN) as GitHub Secrets
-# and implement the OAuth flow and API calls directly in Python/Node.js.
-# For now, this badge only works if the service can find a username matching your GH_USERNAME.
-
-# For Dev.to (replace with your Dev.to username)
-DEVTO_USERNAME="d3_glitch" # <<-- CRITICAL: UPDATE THIS WITH YOUR DEV.TO USERNAME, OR LEAVE EMPTY TO SKIP
-
-# --- Dynamic Variables & Placeholders (Customize these) ---
+# --- Dynamic Variables & Placeholders ---
 CURRENT_DATE=$(date -u +"%Y-%m-%d %H:%M:%S")
+CURRENT_YEAR=$(date -u +"%Y")
 
-# Time-based greeting (using UTC for consistency in GitHub Actions)
-HOUR=$(date +"%H" -u)
+# Time-based greeting
+HOUR=$(date +"%H" -u) # Use UTC for consistency
 GREETING=""
 if (( HOUR >= 5 && HOUR < 12 )); then
   GREETING="Good Morning, Coder! ☀️"
@@ -32,40 +30,27 @@ else
   GREETING="Good Evening, Night Owl! 🌙"
 fi
 
-# Example of dynamic status messages - will rotate randomly
+# Example of dynamic status messages
 STATUS_MESSAGES=(
   "Refining CI/CD pipelines for a new microservice"
   "Debugging a tricky C++ memory leak on a personal project"
   "Exploring the latest features in FastAPI and Python 3.12"
   "Contributing to an open-source project focused on web scraping"
   "Learning advanced JavaScript patterns for frontend optimization"
-  "Optimizing database queries for a Flask application"
-  "Setting up a new Kubernetes cluster in a test environment"
 )
 RANDOM_INDEX=$(( RANDOM % ${#STATUS_MESSAGES[@]} ))
 DYNAMIC_STATUS_MESSAGE="${STATUS_MESSAGES[$RANDOM_INDEX]}"
-
-STATUS_EMOJIS=( "🛠️" "🐛" "💡" "🤝" "📚" "⚙️" "☁️" )
+STATUS_EMOJIS=( "🛠️" "🐛" "💡" "🤝" "📚" )
 DYNAMIC_STATUS_EMOJI="${STATUS_EMOJIS[$RANDOM_INDEX]}"
 
-# About Me dynamic content
-CURRENT_FOCUS="implementing event-driven architectures with RabbitMQ" # <<-- CUSTOMIZE THIS
-LEARNING_PATH="Kubernetes for container orchestration and advanced Go concepts" # <<-- CUSTOMIZE THIS
-FUN_FACT_ACTIVITY="hiking new trails and practicing amateur astrophotography 🌌" # <<-- CUSTOMIZE THIS
-
-# Social Links
-LINKEDIN_URL="https://www.linkedin.com/in/thugger069" # <<-- CRITICAL: UPDATE THIS
-EMAIL_ADDRESS="thugger069@gmail.com" # <<-- CRITICAL: UPDATE THIS
-TWITTER_HANDLE="d3_glitch" # <<-- CRITICAL: UPDATE THIS
-
+CURRENT_FOCUS="implementing event-driven architectures with RabbitMQ"
+LEARNING_PATH="Kubernetes for container orchestration and advanced Go concepts"
+FUN_FACT_ACTIVITY="hiking new trails and practicing amateur astrophotography 🌌"
 
 # --- FUNCTIONS FOR DYNAMIC CONTENT ---
 
-# Function to get Spotify "Now Playing" (using a public service for ease)
+# Function to get Spotify "Now Playing"
 get_spotify_status() {
-    # This badge relies on https://spotify-github-profile.vercel.app/
-    # If it doesn't work or you want more control, you'll need to set up
-    # Spotify API keys as GitHub Secrets and write a script to fetch and format.
     if [ -n "$GH_USERNAME" ]; then
         echo "![Spotify](https://spotify-github-profile.vercel.app/api/spotify?username=${GH_USERNAME}&theme=dark)"
     else
@@ -74,88 +59,77 @@ get_spotify_status() {
 }
 SPOTIFY_BADGE=$(get_spotify_status)
 
-
 # Function to get recent Dev.to articles
 get_devto_articles() {
-    if [ -z "$DEVTO_USERNAME" ] || [ "$DEVTO_USERNAME" == "YOUR_DEVTO_USERNAME" ]; then
-        echo "<!-- Dev.to username not configured or is placeholder. Skipping articles. -->"
+    if [ -z "$DEVTO_USERNAME" ]; then
+        echo ""
         return
     fi
 
-    # Fetch articles and handle potential errors
     ARTICLES=$(curl -s "https://dev.to/api/articles?username=${DEVTO_USERNAME}&per_page=3")
-    if [ $? -ne 0 ]; then
-        echo "<!-- Failed to fetch Dev.to articles (curl error). -->"
-        return
-    fi
-    
-    # Check if the response is valid JSON and has articles
-    if ! echo "$ARTICLES" | jq -e '.[0]' > /dev/null; then
-        echo "<!-- Failed to parse Dev.to articles or no articles found. -->"
+    if [ $? -ne 0 ] || [ -z "$ARTICLES" ] || [ "$(echo "$ARTICLES" | jq 'length')" -eq 0 ]; then
+        echo ""
         return
     fi
 
     echo "<h3>📰 Latest Articles on Dev.to</h3>"
-    echo "<ul>"
-    echo "$ARTICLES" | jq -r '.[] | "<li><a href=\"\(.url)\" target=\"_blank\">\(.title)</a></li>"'
-    echo "</ul>"
+    echo "<table width='100%'>"
+    echo "$ARTICLES" | jq -r '.[] | 
+      "<tr>" +
+      "<td width=\"90%\"><a href=\"\(.url)\" target=\"_blank\">\(.title)</a></td>" +
+      "<td width=\"10%\" align=\"right\">❤️ \(.public_reactions_count)</td>" +
+      "</tr>"
+    '
+    echo "</table>"
 }
 DEVTO_SECTION=$(get_devto_articles)
 
-
-# Function to get a random featured project
-get_featured_project() {
-    # CRITICAL: CUSTOMIZE THESE PROJECTS!
-    # Format: "REPO_NAME|DESCRIPTION|LANGUAGE_BADGE_URL|LINK"
-    # The LANGUAGE_BADGE_URL can be a standard shields.io badge.
-    PROJECTS=(
-        "MyAwesomeCLI|A powerful command-line interface for daily tasks.|![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)|https://github.com/${GH_USERNAME}/MyAwesomeCLI"
-        "WebScraperFlask|A Flask app to scrape product data from e-commerce sites.|![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white) ![Flask](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white)|https://github.com/${GH_USERNAME}/WebScraperFlask"
-        "CppGameEngine|An experimental 2D game engine built from scratch for learning purposes.|![C++](https://img.shields.io/badge/C%2B%2B-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white)|https://github.com/${GH_USERNAME}/CppGameEngine"
-        "PortfolioWebsite|My personal portfolio website built with Next.js and Tailwind CSS.|![Next.js](https://img.shields.io/badge/Next.js-black?style=for-the-badge&logo=next.js&logoColor=white) ![React](https://img.shields.io/badge/React-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)|https://github.com/${GH_USERNAME}/PortfolioWebsite"
-        "GoMicroservice|A lightweight microservice built with Go and Docker for scalable operations.|![Go](https://img.shields.io/badge/Go-00ADD8?style=for-the-badge&logo=go&logoColor=white)|https://github.com/${GH_USERNAME}/GoMicroservice"
-    )
-
-    if [ ${#PROJECTS[@]} -eq 0 ]; then
-        echo "<!-- No featured projects defined. -->"
+# [ --- NEW: DYNAMIC FEATURED PROJECTS --- ]
+# Function to get top 3 starred projects
+get_featured_projects() {
+    if [ -z "$GH_USERNAME" ] || [ -z "$GH_TOKEN" ]; then
+        echo ""
         return
     fi
 
-    RANDOM_PROJECT_INDEX=$(( RANDOM % ${#PROJECTS[@]} ))
-    SELECTED_PROJECT="${PROJECTS[$RANDOM_PROJECT_INDEX]}"
+    PROJECTS_DATA=$(curl -s -H "Authorization: token ${GH_TOKEN}" \
+      "https://api.github.com/users/${GH_USERNAME}/repos?sort=stargazers&per_page=3&type=owner")
 
-    # Use IFS to split the string into an array, then access elements
-    IFS='|' read -r REPO_NAME DESCRIPTION LANGUAGE_BADGE_URL PROJECT_LINK <<< "$SELECTED_PROJECT"
+    if [ $? -ne 0 ] || [ -z "$PROJECTS_DATA" ] || [ "$(echo "$PROJECTS_DATA" | jq 'length')" -eq 0 ]; then
+        echo ""
+        return
+    fi
 
-    echo "<h2>✨ Featured Project</h2>"
-    echo "<p align=\"center\">"
-    echo "  <b><a href=\"${PROJECT_LINK}\" target=\"_blank\">${REPO_NAME}</a></b><br>"
-    echo "  ${DESCRIPTION}<br>"
-    echo "  ${LANGUAGE_BADGE_URL}"
-    echo "</p>"
+    echo "<h2>✨ My Top Projects</h2>"
+    echo "<table width=\"100%\">"
+    
+    echo "$PROJECTS_DATA" | jq -r '.[] | 
+      "<tr>" +
+      "<td width=\"70%\"><b><a href=\"\(.html_url)\" target=\"_blank\">\(.name)</a></b></td>" +
+      "<td width=\"30%\" align=\"right\">⭐ \(.stargazers_count) | 🍴 \(.forks_count)</td>" +
+      "</tr>" +
+      "<tr><td colspan=\"2\">\(.description // "No description")</td></tr>" +
+      "<tr><td colspan=\"2\" height=\"10\"></td></tr>" # Spacer row
+    '
+    
+    echo "</table>"
 }
-FEATURED_PROJECT_SECTION=$(get_featured_project)
+FEATURED_PROJECT_SECTION=$(get_featured_projects)
 
 
 # Function to get a random programming quote
 get_random_quote() {
-    # Using a simple API for programming quotes
     QUOTE_DATA=$(curl -s "https://programming-quotes-api.herokuapp.com/quotes/random")
-    if [ $? -ne 0 ]; then
-        echo "<!-- Failed to fetch random quote (curl error). -->"
-        return
-    fi
-    
-    if ! echo "$QUOTE_DATA" | jq -e '.' > /dev/null; then
-        echo "<!-- Failed to parse random quote (invalid JSON). -->"
+    if [ $? -ne 0 ] || [ -z "$QUOTE_DATA" ] || ! echo "$QUOTE_DATA" | jq . > /dev/null 2>&1; then
+        echo ""
         return
     fi
 
     QUOTE=$(echo "$QUOTE_DATA" | jq -r '.quote')
     AUTHOR=$(echo "$QUOTE_DATA" | jq -r '.author')
 
-    if [ -z "$QUOTE" ]; then
-        echo "<!-- Failed to extract quote from JSON. -->"
+    if [ -z "$QUOTE" ] || [ "$QUOTE" == "null" ]; then
+        echo ""
         return
     fi
 
@@ -167,45 +141,41 @@ get_random_quote() {
 }
 QUOTE_SECTION=$(get_random_quote)
 
-# Conditional badge example: A "Learning Rust" badge that could appear if a flag is set
-LEARNING_RUST_FLAG="false" # <<-- Set to "true" when actively learning Rust
-RUST_BADGE_SECTION=""
-if [ "$LEARNING_RUST_FLAG" == "true" ]; then
-    RUST_BADGE_SECTION="<h3 align=\"center\">Currently Learning</h3><p align=\"center\"><img src=\"https://img.shields.io/badge/Rust-black?style=for-the-badge&logo=rust&logoColor=white\" alt=\"Rust\"></p>"
-fi
-
+# [ --- NEW: WAKATIME CARD --- ]
+get_wakatime_card() {
+    if [ -z "$WAKATIME_USERNAME" ]; then
+        echo ""
+        return
+    fi
+    
+    echo "<h3>📊 My Weekly Coding Activity</h3>"
+    echo "<a href=\"https://wakatime.com/@${WAKATIME_USERNAME}\">"
+    echo "  <img src=\"https://github-readme-stats.vercel.app/api/wakatime?username=${WAKATIME_USERNAME}&theme=tokyonight&layout=compact&hide_border=true\" alt=\"WakaTime Stats\" />"
+    echo "</a>"
+}
+WAKATIME_SECTION=$(get_wakatime_card)
 
 # --- Generate the README Content ---
 cat << EOF > README.md
-<!-- HEADER START -->
 <div align="center">
-  <img src="https://github.com/${GH_USERNAME}/${GH_USERNAME}/blob/main/pfp.jpg?raw=true" alt="${GH_USERNAME}'s Profile Picture" width="150" height="150" style="border-radius:50%;">
+  <img src="https://github.com/Thugger069/Thugger069/blob/main/pfp.jpg?raw=true" alt="Thugger069's Profile Picture" width="150" height="150" style="border-radius:50%;">
   <a href="https://git.io/typing-svg">
-    <img src="https://readme-typing-svg.herokuapp.com?font=Ubuntu+Mono&duration=3000&pause=1000&color=00FF9C&center=true&vCenter=true&width=435&lines=Greetings%2C+Fellow+Coder!;${GH_USERNAME}+Here!;Crafting+Digital+Experiences;Exploring+the+DevOps+Frontier;Building+with+Python%2C+JS%2C+C%2B%2B;Open+Source+Advocate;Always+Learning+%F0%9F%92%A1;Welcome+to+my+README!;Let's+Build+Something+Great!" alt="Typing SVG" />
+    <img src="https://readme-typing-svg.herokuapp.com?font=Ubuntu+Mono&duration=3000&pause=1000&color=00FF9C&center=true&vCenter=true&width=435&lines=Greetings%2C+Fellow+Coder!;Thugger069+Here!;Crafting+Digital+Experiences;Exploring+the+DevOps+Frontier;Building+with+Python%2C+JS%2C+C%2B%2B;Open+Source+Advocate;Always+Learning+%F0%9F%92%A1;Welcome+to+my+README!;Let's+Build+Something+Great!" alt="Typing SVG" />
   </a>
   <h2>${GREETING}</h2>
 </div>
-<!-- HEADER END -->
-
-<!-- PROFILE VIEWS START -->
 <div align="center">
   <a href="https://github.com/${GH_USERNAME}">
     <img src="https://komarev.com/ghpvc/?username=${GH_USERNAME}&color=blueviolet&style=flat-square&label=Profile%20Views" alt="Profile views"/>
   </a>
 </div>
-<!-- PROFILE VIEWS END -->
-
 <hr/>
 
-<!-- SPOTIFY NOW PLAYING START -->
 <div align="center">
   ${SPOTIFY_BADGE}
 </div>
-<!-- SPOTIFY NOW PLAYING END -->
-
 <hr/>
 
-<!-- TERMINAL SIMULATION / DYNAMIC CONTENT START -->
 <div align="center">
   <img src="https://raw.githubusercontent.com/${GH_USERNAME}/${GH_USERNAME}/main/assets/terminal_animation.gif" alt="Terminal Simulation" width="600" />
   <br/>
@@ -214,8 +184,6 @@ cat << EOF > README.md
     <code>[${DYNAMIC_STATUS_EMOJI}] ${DYNAMIC_STATUS_MESSAGE}</code>
   </p>
 </div>
-<!-- TERMINAL SIMULATION / DYNAMIC CONTENT END -->
-
 <hr/>
 
 ## 🚀 About Me
@@ -230,35 +198,22 @@ I'm an aspiring developer with a strong passion for **backend systems**, **web t
 
 <hr/>
 
-<!-- FEATURED PROJECT START -->
 <div align="center">
   ${FEATURED_PROJECT_SECTION}
 </div>
-<!-- FEATURED PROJECT END -->
-
 <hr/>
 
-<!-- DEV.TO ARTICLES START -->
 <div align="center">
   ${DEVTO_SECTION}
 </div>
-<!-- DEV.TO ARTICLES END -->
-
 <hr/>
 
-<!-- PROGRAMMING WISDOM START -->
 <div align="center">
   ${QUOTE_SECTION}
 </div>
-<!-- PROGRAMMING WISDOM END -->
-
 <hr/>
 
 ## 🛠️ Tech Stack & Tools
-
-My development arsenal includes:
-
-${RUST_BADGE_SECTION} <!-- Conditional badge inserted here -->
 
 <h3 align="center">Frontend & Web</h3>
 <p align="center">
@@ -273,60 +228,84 @@ ${RUST_BADGE_SECTION} <!-- Conditional badge inserted here -->
 <p align="center">
   <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python"/>
   <img src="https://img.shields.io/badge/C%2B%2B-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white" alt="C++"/>
-  <img src="https://img.shields.io/badge/Node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white" alt="Node.js"/>
-  <img src="https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white" alt="Flask"/>
+  <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" alt="Node.js"/>
   <img src="https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI"/>
+  <img src="https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white" alt="Flask"/>
 </p>
 
-<h3 align="center">DevOps & Tools</h3>
+<h3 align="center">Databases & DevOps</h3>
 <p align="center">
-  <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" alt="Git"/>
-  <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"/>
+  <img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL"/>
+  <img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white" alt="MongoDB"/>
   <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker"/>
-  <img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black" alt="Linux"/>
-  <img src="https://img.shields.io/badge/VSCode-007ACC?style=for-the-badge&logo=visualstudiocode&logoColor=white" alt="VSCode"/>
-  <img src="https://img.shields.io/badge/GitHub%20Actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white" alt="GitHub Actions"/>
+  <img src="https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white" alt="Git"/>
+  <img src="https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white" alt="GitHub Actions"/>
 </p>
 
 <hr/>
 
-## 📈 My GitHub Journey
-
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=${GH_USERNAME}&show_icons=true&theme=radical&hide_border=true&count_private=true&line_height=25&cache_seconds=3600" alt="${GH_USERNAME}'s GitHub Stats"/>
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=${GH_USERNAME}&theme=radical&hide_border=true&cache_seconds=3600" alt="GitHub Streak"/>
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=${GH_USERNAME}&layout=compact&theme=radical&hide_border=true&cache_seconds=3600" alt="Top Languages"/>
-</p>
+## 📊 GitHub Stats & Activity
 
 <div align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=${GH_USERNAME}&theme=github-dark&hide_border=true&line=00FF9C&point=00FF9C" alt="${GH_USERNAME}'s Contribution Graph"/>
+  
+  <img src="https://github-readme-stats.vercel.app/api?username=${GH_USERNAME}&show_icons=true&theme=tokyonight&hide_border=true&include_all_commits=true&count_private=true" alt="GitHub Stats" width="49%"/>
+  
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=${GH_USERNAME}&layout=compact&theme=tokyonight&hide_border=true" alt="Top Languages" width="49%"/>
+  
+  <br/>
+  
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=${GH_USERNAME}&theme=tokyonight&hide_border=true" alt="GitHub Streak" width="70%"/>
 </div>
 
-<!-- START SNAKE -->
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/${GH_USERNAME}/${GH_USERNAME}/output/github-snake-dark.svg" />
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/${GH_USERNAME}/${GH_USERNAME}/output/github-snake.svg" />
-  <img alt="Github Contribution Snake Animation" src="https://raw.githubusercontent.com/${GH_USERNAME}/${GH_USERNAME}/output/github-snake.svg" />
-</picture>
-<!-- END SNAKE -->
+<div align="center">
+  ${WAKATIME_SECTION}
+</div>
 
 <hr/>
 
-## 💬 Let's Connect!
+## 🐍 GitHub Contribution Snake
 
-[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/${GH_USERNAME})
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](${LINKEDIN_URL})
-[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:${EMAIL_ADDRESS})
-[![Twitter](https://img.shields.io/badge/X-%23000000.svg?style=for-the-badge&logo=X&logoColor=white)](https://twitter.com/${TWITTER_HANDLE})
+<div align="center">
+  <img src="https://raw.githubusercontent.com/${GH_USERNAME}/${GH_USERNAME}/main/output/github-snake.svg" alt="github contribution snake" />
+  
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/${GH_USERNAME}/${GH_USERNAME}/main/output/github-snake-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/${GH_USERNAME}/${GH_USERNAME}/main/output/github-snake.svg">
+    <img alt="github contribution snake" src="https://raw.githubusercontent.com/${GH_USERNAME}/${GH_USERNAME}/main/output/github-snake.svg">
+  </picture>
+</div>
+
+## 🏙️ GitHub Skyline
+
+<div align="center">
+  <a href="https://skyline.github.com/${GH_USERNAME}/${CURRENT_YEAR}">
+    <img src="https://skyline.github.com/${GH_USERNAME}/${CURRENT_YEAR}.svg" alt="GitHub Skyline ${CURRENT_YEAR}" width="80%"/>
+  </a>
+  <p>My ${CURRENT_YEAR} contribution graph in 3D</p>
+</div>
 
 <hr/>
 
-<!-- FOOTER START -->
+## 🌐 Connect with Me
+
 <div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=100&section=footer"/>
-  <p><sub>Last Updated: ${CURRENT_DATE} UTC - Crafted with 💙 and Automation</sub></p>
+  <a href="${LINKEDIN_URL}" target="_blank">
+    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/>
+  </a>
+  <a href="https://twitter.com/${TWITTER_HANDLE}" target="_blank">
+    <img src="https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white" alt="Twitter"/>
+  </a>
+  <a href="mailto:${EMAIL_ADDRESS}">
+    <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"/>
+  </a>
 </div>
-<!-- FOOTER END -->
+
+<hr/>
+
+<div align="center">
+  <p><em>README automatically updated on: ${CURRENT_DATE} UTC</em></p>
+</div>
 EOF
+# --- END OF FILE GENERATION ---
 
-echo "README.md updated successfully!"
+echo "✅ README.md successfully generated with dynamic API content."
