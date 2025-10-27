@@ -20,14 +20,14 @@ jobs:
           node-version: '20'
           cache: 'pnpm' # Use pnpm cache
 
-      # [ --- THIS IS THE CRITICAL MISSING STEP --- ]
+      # [ --- THIS IS THE CRITICAL FIX --- ]
       # This action installs the pnpm executable itself.
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
           version: 9 # Specify pnpm version
 
-      # [ --- THIS STEP WILL NOW SUCCEED --- ]
+      # This step will now succeed
       - name: Install Node.js dependencies
         run: pnpm install
 
