@@ -18,16 +18,13 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'pnpm' # Use pnpm cache
+          cache: 'pnpm'
 
-      # [ --- THIS IS THE CRITICAL FIX --- ]
-      # This action installs the pnpm executable itself.
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 9 # Specify pnpm version
+          version: 9
 
-      # This step will now succeed
       - name: Install Node.js dependencies
         run: pnpm install
 
@@ -40,7 +37,7 @@ jobs:
         uses: Platane/snk@v3
         id: snake-gif
         with:
-          github_user_name: Thugger069 # <<-- CRITICAL: ENSURE THIS IS YOUR GITHUB USERNAME
+          github_user_name: ${{ github.repository_owner }} # Use dynamic username
           outputs: |
             output/github-snake.svg
             output/github-snake-dark.svg?palette=github-dark
@@ -49,27 +46,34 @@ jobs:
         run: |
           mkdir -p assets 
           chmod +x ./scripts/terminal_commands.sh
-          
           echo "Recording terminal session..."
-          # Use `pnpm exec` to run the installed binary
           pnpm exec terminalizer record ./assets/terminal-capture.yml -c "./scripts/terminal_commands.sh"
-          
           echo "Rendering GIF from recording..."
           pnpm exec terminalizer render ./assets/terminal-capture.yml -o ./assets/terminal_animation.gif
 
+      # [ --- MODIFIED: ADDED ENV BLOCK --- ]
       - name: Run README update script
         run: |
           chmod +x ./scripts/update-readme.sh
           ./scripts/update-readme.sh
+        env:
+          # Pass the GitHub token for API calls
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Pass the username to the script
+          GH_USERNAME: ${{ github.repository_owner }}
+          # Pass all your new secrets
+          SECRET_DEVTO_USERNAME: ${{ secrets.DEVTO_USERNAME }}
+          SECRET_LINKEDIN_URL: ${{ secrets.LINKEDIN_URL }}
+          SECRET_TWITTER_HANDLE: ${{ secrets.TWITTER_HANDLE }}
+          SECRET_EMAIL_ADDRESS: ${{ secrets.EMAIL_ADDRESS }}
+          SECRET_WAKATIME_USERNAME: ${{ secrets.WAKATIME_USERNAME }}
 
       - name: Commit and push changes
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          
           git add README.md output/github-snake.svg output/github-snake-dark.svg assets/terminal_animation.gif
-          
-          git commit -m "chore: Auto-update README with dynamic content, Snake, and Terminal GIF" || echo "No changes to commit"
+          git commit -m "chore: Auto-update README with dynamic content (Phase IV)" || echo "No changes to commit"
           git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
