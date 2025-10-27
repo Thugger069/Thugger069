@@ -18,27 +18,24 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'pnpm' # [--- MODIFIED ---] Use pnpm cache
+          cache: 'pnpm' # Use pnpm cache
 
-      # [--- NEW ---]
-      # Install pnpm package manager
+      # [ --- THIS IS THE CRITICAL MISSING STEP --- ]
+      # This action installs the pnpm executable itself.
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
           version: 9 # Specify pnpm version
 
-      # [--- MODIFIED ---]
-      # Installs dependencies from package.json (i.e., terminalizer)
+      # [ --- THIS STEP WILL NOW SUCCEED --- ]
       - name: Install Node.js dependencies
         run: pnpm install
 
-      # Installs dependencies for your update-readme.sh script
       - name: Install system dependencies (curl, jq)
         run: |
           sudo apt-get update
           sudo apt-get install -y curl jq
 
-      # --- Generate GitHub Contribution Snake (REQUIRED) ---
       - name: Generate github-contribution-grid-snake
         uses: Platane/snk@v3
         id: snake-gif
@@ -48,19 +45,16 @@ jobs:
             output/github-snake.svg
             output/github-snake-dark.svg?palette=github-dark
 
-      # [--- MODIFIED (PHALE III): Terminal GIF Generation ---]
       - name: Generate terminal animation
         run: |
-          mkdir -p assets # Ensure the output directory exists
-          chmod +x ./scripts/terminal_commands.sh # Ensure command script is executable
+          mkdir -p assets 
+          chmod +x ./scripts/terminal_commands.sh
           
           echo "Recording terminal session..."
-          # 1. Record the commands from the script into a YAML file
-          #    We use `pnpm exec` to run the binary installed via pnpm
+          # Use `pnpm exec` to run the installed binary
           pnpm exec terminalizer record ./assets/terminal-capture.yml -c "./scripts/terminal_commands.sh"
           
           echo "Rendering GIF from recording..."
-          # 2. Render the captured YAML file into a GIF
           pnpm exec terminalizer render ./assets/terminal-capture.yml -o ./assets/terminal_animation.gif
 
       - name: Run README update script
@@ -68,16 +62,13 @@ jobs:
           chmod +x ./scripts/update-readme.sh
           ./scripts/update-readme.sh
 
-      # [--- MODIFIED (PHASE III): Commit all generated assets ---]
       - name: Commit and push changes
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           
-          # Add README, snakes, AND the new terminal GIF
           git add README.md output/github-snake.svg output/github-snake-dark.svg assets/terminal_animation.gif
           
-          # Commit if there are changes
           git commit -m "chore: Auto-update README with dynamic content, Snake, and Terminal GIF" || echo "No changes to commit"
           git push
         env:
