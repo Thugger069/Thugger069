@@ -18,12 +18,19 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm' # [--- NEW (PHASE III) ---] Cache npm dependencies
+          cache: 'pnpm' # [--- MODIFIED ---] Use pnpm cache
 
-      # [--- NEW (PHASE III) ---]
+      # [--- NEW ---]
+      # Install pnpm package manager
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9 # Specify pnpm version
+
+      # [--- MODIFIED ---]
       # Installs dependencies from package.json (i.e., terminalizer)
       - name: Install Node.js dependencies
-        run: npm install
+        run: pnpm install
 
       # Installs dependencies for your update-readme.sh script
       - name: Install system dependencies (curl, jq)
@@ -41,7 +48,7 @@ jobs:
             output/github-snake.svg
             output/github-snake-dark.svg?palette=github-dark
 
-      # [--- NEW (PHASE III): Terminal GIF Generation ---]
+      # [--- MODIFIED (PHALE III): Terminal GIF Generation ---]
       - name: Generate terminal animation
         run: |
           mkdir -p assets # Ensure the output directory exists
@@ -49,12 +56,12 @@ jobs:
           
           echo "Recording terminal session..."
           # 1. Record the commands from the script into a YAML file
-          #    We use `npx` to run the binary installed via npm install
-          npx terminalizer record ./assets/terminal-capture.yml -c "./scripts/terminal_commands.sh"
+          #    We use `pnpm exec` to run the binary installed via pnpm
+          pnpm exec terminalizer record ./assets/terminal-capture.yml -c "./scripts/terminal_commands.sh"
           
           echo "Rendering GIF from recording..."
           # 2. Render the captured YAML file into a GIF
-          npx terminalizer render ./assets/terminal-capture.yml -o ./assets/terminal_animation.gif
+          pnpm exec terminalizer render ./assets/terminal-capture.yml -o ./assets/terminal_animation.gif
 
       - name: Run README update script
         run: |
