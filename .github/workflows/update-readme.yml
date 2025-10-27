@@ -12,33 +12,33 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # Required for snake animation
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'pnpm' # Use pnpm cache
+          cache: 'pnpm'
 
-      # [ --- THIS IS THE CRITICAL FIX --- ]
-      # This action installs the pnpm executable itself.
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
         with:
-          version: 9 # Specify pnpm version
+          version: 9
 
-      # [ --- THIS STEP WILL NOW SUCCEED --- ]
-      - name: Install Node.js dependencies
+      - name: Install dependencies
         run: pnpm install
 
-      - name: Install system dependencies (curl, jq)
+      - name: Install system dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y curl jq
+          sudo apt-get install -y curl jq xvfb libgtk-3-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2
+
+      - name: Create output directories
+        run: mkdir -p output assets
 
       - name: Generate github-contribution-grid-snake
         uses: Platane/snk@v3
-        id: snake-gif
         with:
           github_user_name: ${{ github.repository_owner }}
           outputs: |
@@ -47,10 +47,9 @@ jobs:
 
       - name: Generate terminal animation
         run: |
-          mkdir -p assets 
           chmod +x ./scripts/terminal_commands.sh
           echo "Recording terminal session..."
-          pnpm exec terminalizer record ./assets/terminal-capture.yml -c "./scripts/terminal_commands.sh"
+          xvfb-run -a pnpm exec terminalizer record ./assets/terminal-capture.yml -c "./scripts/terminal_commands.sh" --skip-sharing
           echo "Rendering GIF from recording..."
           pnpm exec terminalizer render ./assets/terminal-capture.yml -o ./assets/terminal_animation.gif
 
@@ -71,9 +70,5 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add README.md output/github-snake.svg output/github-snake-dark.svg assets/terminal_animation.gif
-          git commit -m "chore: Auto-update README with dynamic content (Phase IV)" || echo "No changes to commit"
-          git push
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
+          git add README.md output/ assets/
+          git diff --staged --quiet || (git commit -m "chore: Auto-update README with dynamic content" && git push)
