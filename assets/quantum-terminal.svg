@@ -1,56 +1,175 @@
-<svg width="900" height="260" viewBox="0 0 900 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="880" height="360" viewBox="0 0 880 360" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="qt-surface" x1="0" y1="0" x2="900" y2="260" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#07090f"/>
-      <stop offset="0.45" stop-color="#101829"/>
-      <stop offset="1" stop-color="#080a10"/>
+    <linearGradient id="qt-surface" x1="0" y1="0" x2="880" y2="320" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#05070d"/>
+      <stop offset="0.48" stop-color="#0c1423"/>
+      <stop offset="1" stop-color="#05070d"/>
     </linearGradient>
-    <linearGradient id="qt-border" x1="0" y1="0" x2="900" y2="0" gradientUnits="userSpaceOnUse">
+    <linearGradient id="qt-border" x1="0" y1="0" x2="880" y2="0" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#00f3ff"/>
       <stop offset="0.5" stop-color="#b967ff"/>
       <stop offset="1" stop-color="#ff00ff"/>
     </linearGradient>
-    <radialGradient id="qt-glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(450 130) rotate(90) scale(180 450)">
-      <stop offset="0" stop-color="#00f3ff" stop-opacity="0.32"/>
+    <radialGradient id="qt-glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(440 180) rotate(90) scale(240 440)">
+      <stop offset="0" stop-color="#00f3ff" stop-opacity="0.28"/>
       <stop offset="1" stop-color="#00f3ff" stop-opacity="0"/>
     </radialGradient>
   </defs>
 
-  <rect x="4" y="4" width="892" height="252" rx="18" stroke="url(#qt-border)" stroke-width="2" opacity="0.9"/>
-  <rect x="12" y="12" width="876" height="236" rx="14" fill="url(#qt-surface)"/>
-  <rect x="12" y="12" width="876" height="236" rx="14" fill="url(#qt-glow)" opacity="0.35"/>
+  <style>
+    .terminal-text {
+      font-family: 'Fira Code', 'Fira Mono', 'SFMono-Regular', monospace;
+      letter-spacing: 0.04em;
+    }
+    .prompt { fill: #7dd3ff; font-size: 16px; }
+    .output { fill: #8be9fd; font-size: 15px; }
+    .muted { fill: #5b6b89; font-size: 13px; }
+    .section-label { fill: #b967ff; font-size: 12px; letter-spacing: 0.12em; }
+  </style>
 
-  <rect x="24" y="32" width="160" height="18" rx="9" fill="#0f172a" opacity="0.8"/>
-  <circle cx="36" cy="41" r="5" fill="#ff4f84"/>
-  <circle cx="54" cy="41" r="5" fill="#ffc857"/>
-  <circle cx="72" cy="41" r="5" fill="#2ef7c5"/>
+  <rect x="6" y="6" width="868" height="348" rx="22" stroke="url(#qt-border)" stroke-width="1.6" opacity="0.92"/>
+  <rect x="18" y="18" width="844" height="324" rx="18" fill="url(#qt-surface)"/>
+  <rect x="18" y="18" width="844" height="324" rx="18" fill="url(#qt-glow)" opacity="0.32"/>
 
-  <text x="210" y="50" fill="#00f3ff" font-family="Fira Code, 'Fira Mono', 'SFMono-Regular', monospace" font-size="18" letter-spacing="0.12em">
-    𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ · 🜂 Lysergic
-  </text>
-  <text x="210" y="76" fill="#b967ff" font-family="Fira Code, 'Fira Mono', 'SFMono-Regular', monospace" font-size="14">
-    Quantum Systems Architect & AI Maximalist
-  </text>
+  <rect x="32" y="34" width="140" height="18" rx="9" fill="#0e1626" opacity="0.85"/>
+  <circle cx="44" cy="43" r="5" fill="#ff4f84"/>
+  <circle cx="62" cy="43" r="5" fill="#ffc857"/>
+  <circle cx="80" cy="43" r="5" fill="#2ef7c5"/>
 
-  <g font-family="Fira Code, 'Fira Mono', 'SFMono-Regular', monospace" font-size="13">
-    <text x="48" y="120" fill="#6fffe9">> Smooth Operator</text>
-    <text x="48" y="144" fill="#c084fc">Siri-triggered reply engine · Shortcuts · Scriptable · JSON state</text>
+  <text class="muted terminal-text" x="120" y="76">Last login: Fri Nov 07 08:00:00 UTC 2025</text>
+  <text class="muted terminal-text" x="120" y="98">thugger@quantum:~$ whoami → 𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ · 🜂 Lysergic</text>
 
-    <text x="48" y="182" fill="#6fffe9">> Quantum Autopilot</text>
-    <text x="48" y="206" fill="#c084fc">Local-first routines · Pushcut · GitHub Actions · Focus rituals</text>
+  <line x1="40" y1="112" x2="840" y2="112" stroke="#142032" stroke-width="1" stroke-dasharray="6 10" opacity="0.55"/>
 
-    <text x="430" y="120" fill="#6fffe9">> shadow-scripts</text>
-    <text x="430" y="144" fill="#c084fc">Proxy meshes · MITM loaders · DNS overlays · WireGuard</text>
-
-    <text x="430" y="182" fill="#6fffe9">> Borderless-Pay</text>
-    <text x="430" y="206" fill="#c084fc">Temporal workflows · Auditable FX routing · Compliance lattice</text>
+  <!-- Command 1 -->
+  <clipPath id="clip-cmd-1" clipPathUnits="userSpaceOnUse">
+    <rect x="40" y="122" width="0" height="24">
+      <animate attributeName="width" dur="18s" repeatCount="indefinite"
+        values="0;0;520;520;0;0"
+        keyTimes="0;0.01;0.11;0.14;0.16;1"/>
+    </rect>
+  </clipPath>
+  <g opacity="0" class="terminal-text">
+    <animate attributeName="opacity" dur="18s" repeatCount="indefinite"
+      values="0;1;1;0;0"
+      keyTimes="0;0.01;0.14;0.16;1"/>
+    <text class="prompt" x="40" y="138" clip-path="url(#clip-cmd-1)">thugger@quantum:~$ uptime</text>
+    <text class="output" x="40" y="160">
+      <animate attributeName="opacity" dur="18s" repeatCount="indefinite"
+        values="0;0;1;1;0"
+        keyTimes="0;0.11;0.14;0.16;1"/>
+      system online for 21h 42m · zero drift detected
+    </text>
   </g>
 
-  <line x1="36" y1="98" x2="864" y2="98" stroke="#111c33" stroke-width="1" stroke-dasharray="5 7"/>
-  <line x1="36" y1="160" x2="864" y2="160" stroke="#111c33" stroke-width="1" stroke-dasharray="5 7"/>
-  <line x1="36" y1="222" x2="864" y2="222" stroke="#111c33" stroke-width="1" stroke-dasharray="5 7" opacity="0.6"/>
+  <!-- Command 2 -->
+  <clipPath id="clip-cmd-2" clipPathUnits="userSpaceOnUse">
+    <rect x="40" y="158" width="0" height="24">
+      <animate attributeName="width" dur="18s" repeatCount="indefinite"
+        values="0;0;560;560;0;0"
+        keyTimes="0;0.17;0.27;0.30;0.33;1"/>
+    </rect>
+  </clipPath>
+  <g opacity="0" class="terminal-text">
+    <animate attributeName="opacity" dur="18s" repeatCount="indefinite"
+      values="0;1;1;0;0"
+      keyTimes="0;0.17;0.30;0.33;1"/>
+    <text class="prompt" x="40" y="174" clip-path="url(#clip-cmd-2)">thugger@quantum:~$ ls -la Projects/</text>
+    <text class="output" x="40" y="196">
+      <animate attributeName="opacity" dur="18s" repeatCount="indefinite"
+        values="0;0;1;1;0"
+        keyTimes="0;0.27;0.30;0.33;1"/>
+      smooth-operator/  quantum-autopilot/  shadow-scripts/  borderless-pay/
+    </text>
+  </g>
 
-  <text x="48" y="244" fill="#00ff9f" font-family="Fira Code, 'Fira Mono', 'SFMono-Regular', monospace" font-size="12">
-    STATUS: Quantum-ready · Auditable · Reversible · Observability locked
-  </text>
+  <!-- Command 3 -->
+  <clipPath id="clip-cmd-3" clipPathUnits="userSpaceOnUse">
+    <rect x="40" y="194" width="0" height="24">
+      <animate attributeName="width" dur="18s" repeatCount="indefinite"
+        values="0;0;540;540;0;0"
+        keyTimes="0;0.34;0.44;0.47;0.50;1"/>
+    </rect>
+  </clipPath>
+  <g opacity="0" class="terminal-text">
+    <animate attributeName="opacity" dur="18s" repeatCount="indefinite"
+      values="0;1;1;0;0"
+      keyTimes="0;0.34;0.47;0.50;1"/>
+    <text class="prompt" x="40" y="210" clip-path="url(#clip-cmd-3)">thugger@quantum:~$ cat Projects/TODO.md</text>
+    <text class="output" x="40" y="232">
+      <animate attributeName="opacity" dur="18s" repeatCount="indefinite"
+        values="0;0;1;1;0"
+        keyTimes="0;0.44;0.47;0.50;1"/>
+      - finalize stealth DNS meshes · - ship Smooth Operator beta webhooks
+    </text>
+  </g>
+
+  <!-- Command 4 -->
+  <clipPath id="clip-cmd-4" clipPathUnits="userSpaceOnUse">
+    <rect x="40" y="230" width="0" height="24">
+      <animate attributeName="width" dur="18s" repeatCount="indefinite"
+        values="0;0;480;480;0;0"
+        keyTimes="0;0.51;0.61;0.64;0.67;1"/>
+    </rect>
+  </clipPath>
+  <g opacity="0" class="terminal-text">
+    <animate attributeName="opacity" dur="18s" repeatCount="indefinite"
+      values="0;1;1;0;0"
+      keyTimes="0;0.51;0.64;0.67;1"/>
+    <text class="prompt" x="40" y="246" clip-path="url(#clip-cmd-4)">thugger@quantum:~$ run smooth-operator</text>
+    <text class="output" x="40" y="268">
+      <animate attributeName="opacity" dur="18s" repeatCount="indefinite"
+        values="0;0;1;1;0"
+        keyTimes="0;0.61;0.64;0.67;1"/>
+      initiating DM orchestrator → compliance receipts streaming… done
+    </text>
+  </g>
+
+  <!-- Command 5 -->
+  <clipPath id="clip-cmd-5" clipPathUnits="userSpaceOnUse">
+    <rect x="40" y="266" width="0" height="24">
+      <animate attributeName="width" dur="18s" repeatCount="indefinite"
+        values="0;0;500;500;0;0"
+        keyTimes="0;0.68;0.78;0.81;0.84;1"/>
+    </rect>
+  </clipPath>
+  <g opacity="0" class="terminal-text">
+    <animate attributeName="opacity" dur="18s" repeatCount="indefinite"
+      values="0;1;1;0;0"
+      keyTimes="0;0.68;0.81;0.84;1"/>
+    <text class="prompt" x="40" y="282" clip-path="url(#clip-cmd-5)">thugger@quantum:~$ run quantum-autopilot</text>
+    <text class="output" x="40" y="304">
+      <animate attributeName="opacity" dur="18s" repeatCount="indefinite"
+        values="0;0;1;1;0"
+        keyTimes="0;0.78;0.81;0.84;1"/>
+      orchestrating morning → focus → ship rituals · 0 skipped nodes
+    </text>
+  </g>
+
+  <!-- Command 6 -->
+  <clipPath id="clip-cmd-6" clipPathUnits="userSpaceOnUse">
+    <rect x="40" y="302" width="0" height="24">
+      <animate attributeName="width" dur="18s" repeatCount="indefinite"
+        values="0;0;480;480;0;0"
+        keyTimes="0;0.85;0.95;0.98;0.995;1"/>
+    </rect>
+  </clipPath>
+  <g opacity="0" class="terminal-text">
+    <animate attributeName="opacity" dur="18s" repeatCount="indefinite"
+      values="0;1;1;0;0"
+      keyTimes="0;0.85;0.98;0.995;1"/>
+    <text class="prompt" x="40" y="318" clip-path="url(#clip-cmd-6)">thugger@quantum:~$ open shadow-scripts</text>
+    <text class="output" x="40" y="340">
+      <animate attributeName="opacity" dur="18s" repeatCount="indefinite"
+        values="0;0;1;1;0"
+        keyTimes="0;0.95;0.98;0.995;1"/>
+      loading stealth profiles · proxy mesh ready // MITM lab engaged
+    </text>
+  </g>
+
+  <!-- Static prompt + cursor -->
+  <text class="prompt terminal-text" x="40" y="332">thugger@quantum:~$</text>
+  <rect x="248" y="314" width="12" height="22" fill="#00f3ff" opacity="0.85">
+    <animate attributeName="opacity" values="0;1;0" dur="1.1s" repeatCount="indefinite"/>
+  </rect>
 </svg>

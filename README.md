@@ -1,5 +1,5 @@
 
-<!-- PROFILE_README_VERSION: v1.0.0 -->
+<!-- PROFILE_README_VERSION: v1.1.0 -->
 <!-- PROFILE_README_OWNER: Thugger069 / 🜂 Lysergic -->
 <!-- PROFILE_README_SPEC: QuantumProfileSurface/v1 -->
 <!-- PROFILE_README_LOCKS: header,principles -->
@@ -22,7 +22,15 @@ _Quantum Systems Architect & AI Maximalist — auditable, reversible AI systems,
 - AI systems · multi-agent orchestration · auditable & reversible pipelines  
 - iOS automation · Shortcuts · Scriptable · Obsidian · Termius · local-first ops  
 - Security research · DNS meshes · proxy lattices · MITM instrumentation  
-- 3D commerce · devtools automation · security-flavored DevOps enablement
+- 3D commerce · devtools automation · security-flavored DevOps enablement  
+- Current vectors → ship Smooth Operator beta webhooks · orchestrate Quantum Autopilot rituals · expand shadow-scripts stealth lab
+
+<details>
+  <summary>Telemetry Snapshot</summary>
+
+  ![GitHub activity pulse](assets/stats/github-stats.svg)  
+  ![Languages orbit](assets/stats/top-langs.svg)
+</details>
 <!-- qp:section:hud:end -->
 
 <!-- qp:section:projects:start -->
@@ -102,8 +110,9 @@ _Quantum Systems Architect & AI Maximalist — auditable, reversible AI systems,
 <!-- qp:changelog:start -->
 ### Quantum Profile Changelog
 
+- v1.1.0 — Animated terminal hero, curated telemetry snapshot, HUD refinement.
 - v1.0.0 — Initial quantum profile surface by Cursor agent.
 <!-- qp:changelog:end -->
 
 <!-- Profile README managed by QuantumProfileSurface/v1. -->
-<!-- Profile README v1.0.0 by Cursor agent: quantum theme, modular sections, QPS/v1-compliant. -->
+<!-- Profile README v1.1.0 by Cursor agent: quantum theme, modular sections, QPS/v1-compliant. -->
