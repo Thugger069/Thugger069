@@ -53,12 +53,12 @@
     <animate attributeName="opacity" dur="24s" repeatCount="indefinite"
       values="0;1;1;0;0"
       keyTimes="0;0.02;0.14;0.16;1"/>
-    <text class="prompt" x="40" y="150" clip-path="url(#clip-cmd-1)">$ uptime</text>
+      <text class="prompt" x="40" y="150" fill="#6df2c2" clip-path="url(#clip-cmd-1)">$ uptime</text>
     <text class="output" x="40" y="174">
       <animate attributeName="opacity" dur="24s" repeatCount="indefinite"
         values="0;0;1;1;0"
         keyTimes="0;0.10;0.14;0.16;1"/>
-      up 3 years, 7 months, quantum load average: 0.42 0.69 1.01
+        up 3 years, 7 months · operator stack online · load: 0.42 0.69 1.01
     </text>
   </g>
 
@@ -74,7 +74,7 @@
     <animate attributeName="opacity" dur="24s" repeatCount="indefinite"
       values="0;1;1;0;0"
       keyTimes="0;0.17;0.29;0.31;1"/>
-    <text class="prompt" x="40" y="202" clip-path="url(#clip-cmd-2)">$ ls -la Projects/</text>
+      <text class="prompt" x="40" y="202" fill="#6df2c2" clip-path="url(#clip-cmd-2)">$ ls -la Projects/</text>
     <text class="output" x="40" y="226">
       <animate attributeName="opacity" dur="24s" repeatCount="indefinite"
         values="0;0;1;1;0"
@@ -119,30 +119,30 @@
     <animate attributeName="opacity" dur="24s" repeatCount="indefinite"
       values="0;1;1;0;0"
       keyTimes="0;0.32;0.44;0.46;1"/>
-    <text class="prompt" x="40" y="342" clip-path="url(#clip-cmd-3)">$ cat Projects/TODO.md</text>
+      <text class="prompt" x="40" y="342" fill="#6df2c2" clip-path="url(#clip-cmd-3)">$ cat Projects/TODO.md</text>
     <text class="output" x="40" y="366">
       <animate attributeName="opacity" dur="24s" repeatCount="indefinite"
         values="0;0;1;1;0"
         keyTimes="0;0.40;0.44;0.46;1"/>
-      - Wire Smooth Operator across all socials
+        - Smooth Operator → full multi-app inbox coverage
     </text>
     <text class="output" x="40" y="388">
       <animate attributeName="opacity" dur="24s" repeatCount="indefinite"
         values="0;0;1;1;0"
         keyTimes="0;0.40;0.44;0.46;1" begin="0.01s"/>
-      - Evolve Quantum Autopilot morning/ship/focus loops
+        - Quantum Autopilot → new modes + richer logging
     </text>
     <text class="output" x="40" y="410">
       <animate attributeName="opacity" dur="24s" repeatCount="indefinite"
         values="0;0;1;1;0"
         keyTimes="0;0.40;0.44;0.46;1" begin="0.02s"/>
-      - Harden shadow-scripts stealth & DNS stacks
+        - shadow-scripts → stealth profiles &amp; DNS hardening
     </text>
     <text class="output" x="40" y="432">
       <animate attributeName="opacity" dur="24s" repeatCount="indefinite"
         values="0;0;1;1;0"
         keyTimes="0;0.40;0.44;0.46;1" begin="0.03s"/>
-      - Ship QPS/v1 surfaces across the stack
+        - QPS/v1 surfaces → propagate terminals &amp; meta automation
     </text>
   </g>
 
@@ -158,12 +158,12 @@
     <animate attributeName="opacity" dur="24s" repeatCount="indefinite"
       values="0;1;1;0;0"
       keyTimes="0;0.47;0.59;0.61;1"/>
-    <text class="prompt" x="40" y="460" clip-path="url(#clip-cmd-4)">$ run smooth-operator --target=&quot;inbox/social&quot;</text>
+      <text class="prompt" x="40" y="460" fill="#6df2c2" clip-path="url(#clip-cmd-4)">$ run smooth-operator --target=&quot;inbox/social&quot;</text>
     <text class="output" x="40" y="484">
       <animate attributeName="opacity" dur="24s" repeatCount="indefinite"
         values="0;0;1;1;0"
         keyTimes="0;0.55;0.59;0.61;1"/>
-      [ok] drafted contextual reply · channel: WhatsApp Business / Telegram
+        [ok] drafted contextual reply · WhatsApp Business / Telegram
     </text>
   </g>
 
@@ -179,12 +179,12 @@
     <animate attributeName="opacity" dur="24s" repeatCount="indefinite"
       values="0;1;1;0;0"
       keyTimes="0;0.62;0.74;0.76;1"/>
-    <text class="prompt" x="40" y="508" clip-path="url(#clip-cmd-5)">$ run quantum-autopilot --mode=ship</text>
+      <text class="prompt" x="40" y="508" fill="#6df2c2" clip-path="url(#clip-cmd-5)">$ run quantum-autopilot --mode=ship</text>
     <text class="output" x="40" y="532">
       <animate attributeName="opacity" dur="24s" repeatCount="indefinite"
         values="0;0;1;1;0"
         keyTimes="0;0.70;0.74;0.76;1"/>
-      [ok] ship routine engaged · focus apps + logging online
+        [ok] ship routine engaged · focus apps &amp; logging online
     </text>
   </g>
 
@@ -200,12 +200,12 @@
     <animate attributeName="opacity" dur="24s" repeatCount="indefinite"
       values="0;1;1;0;0"
       keyTimes="0;0.77;0.89;0.91;1"/>
-    <text class="prompt" x="40" y="556" clip-path="url(#clip-cmd-6)">$ open shadow-scripts --profile=stealth</text>
+      <text class="prompt" x="40" y="556" fill="#6df2c2" clip-path="url(#clip-cmd-6)">$ open shadow-scripts --profile=stealth</text>
     <text class="output" x="40" y="580">
       <animate attributeName="opacity" dur="24s" repeatCount="indefinite"
         values="0;0;1;1;0"
         keyTimes="0;0.85;0.89;0.91;1"/>
-      [ok] dns · proxies · mitm toolchain loaded
+        [ok] dns · proxies · mitm toolchain loaded · lab ready
     </text>
   </g>
 

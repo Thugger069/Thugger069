@@ -42,7 +42,7 @@
     <!-- BLOCK 1: uptime -->
     <g id="block1">
       <text x="32" y="60" fill="#0d7a5f">$ uptime</text>
-      <text x="32" y="80">up 3 years, 7 months, quantum load average: 0.42 0.69 1.01</text>
+      <text x="32" y="80">up 3 years, 7 months · operator stack online · load: 0.42 0.69 1.01</text>
       <animate
         attributeName="opacity"
         values="0;1;1;0"
@@ -70,10 +70,10 @@
     <!-- BLOCK 3: TODO -->
     <g id="block3">
       <text x="32" y="60" fill="#0d7a5f">$ cat Projects/TODO.md</text>
-      <text x="32" y="80">- Wire Smooth Operator across all socials</text>
-      <text x="32" y="98">- Evolve Quantum Autopilot morning/ship/focus loops</text>
-      <text x="32" y="116">- Harden shadow-scripts stealth &amp; DNS stacks</text>
-      <text x="32" y="134">- Ship QPS/v1 surfaces across the stack</text>
+      <text x="32" y="80">- Smooth Operator → full multi-app inbox coverage</text>
+      <text x="32" y="98">- Quantum Autopilot → new modes + richer logging</text>
+      <text x="32" y="116">- shadow-scripts → stealth profiles &amp; DNS hardening</text>
+      <text x="32" y="134">- QPS/v1 surfaces → propagate terminals &amp; meta automation</text>
       <animate
         attributeName="opacity"
         values="0;0;1;1;0"
@@ -85,13 +85,13 @@
     <!-- BLOCK 4: run commands -->
     <g id="block4">
       <text x="32" y="60" fill="#0d7a5f">$ run smooth-operator --target="inbox/social"</text>
-      <text x="32" y="80">[ok] drafted contextual reply · channel: WhatsApp Business / Telegram</text>
+      <text x="32" y="80">[ok] drafted contextual reply · WhatsApp Business / Telegram</text>
 
       <text x="32" y="108" fill="#0d7a5f">$ run quantum-autopilot --mode=ship</text>
-      <text x="32" y="128">[ok] ship routine engaged · focus apps + logging online</text>
+      <text x="32" y="128">[ok] ship routine engaged · focus apps &amp; logging online</text>
 
       <text x="32" y="156" fill="#0d7a5f">$ open shadow-scripts --profile=stealth</text>
-      <text x="32" y="176">[ok] dns · proxies · mitm toolchain loaded</text>
+      <text x="32" y="176">[ok] dns · proxies · mitm toolchain loaded · lab ready</text>
 
       <animate
         attributeName="opacity"
