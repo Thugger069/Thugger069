@@ -7,7 +7,10 @@
 <!-- qp:section:header:start -->
 # 𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ · 🜂 Lysergic
 
-![Quantum Terminal Surface](assets/quantum-terminal.svg)
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="assets/quantum-terminal-light.svg" />
+  <img src="assets/quantum-terminal.svg" alt="Quantum Terminal Surface" />
+</picture>
 
 _Quantum Systems Architect & AI Maximalist — auditable, reversible AI systems, iOS automation, security-flavored devops tooling._
 
