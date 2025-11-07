@@ -104,9 +104,19 @@ _Quantum Systems Architect & AI Maximalist — auditable, reversible AI systems,
 <!-- qp:section:contact:start -->
 ### Orbit & Uplink
 
-- 🛰️ GitHub — you’re already inside `@Thugger069`.  
-- ✉️ Collab / DM — [TODO: primary DM channel link]  
-- 🧪 Lab Notes / Experiments — [TODO: link, e.g. published Obsidian vault or blog]
+- 🛰️ **GitHub** — you’re here already: `@Thugger069`.  
+- ✉️ **DM / Collab** — [X (Twitter)](https://x.com/<your_handle>)  
+- 📓 **Lab Notes / Experiments** — [Quantum Lab](https://github.com/Thugger069/quantum-lab) <!-- adjust when real lab is live -->
+
+I design and ship auditable, reversible AI systems and automation stacks — from iOS operators to full-stack devops and “shadow” tooling. If you’re trying to turn chaotic workflows into something observable, automatable, and hard to break, I’m interested.
+
+Ways I can plug in:
+- Architecting AI + automation systems that keep a real paper trail: logs, traces, and state you can reason about.  
+- Designing operator stacks across iOS, desktop, and cloud — Shortcuts, Scriptable, CLIs, daemons, and glue that actually talk to each other.  
+- Hardening pipelines, DNS/proxy setups, and “shadow” infrastructure so it’s powerful but still accountable and rollback-safe.  
+- Turning vague product ideas into concrete, shippable technical surfaces with clear constraints, interfaces, and next steps.
+
+If that sounds close to what you’re building, reach out with context, constraints, and your ideal outcome.
 <!-- qp:section:contact:end -->
 
 ---
