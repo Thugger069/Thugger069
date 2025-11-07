@@ -104,19 +104,23 @@ _Quantum Systems Architect & AI Maximalist — auditable, reversible AI systems,
 <!-- qp:section:contact:start -->
 ### Orbit & Uplink
 
-- 🛰️ **GitHub** — you’re here already: `@Thugger069`.  
-- ✉️ **DM / Collab** — [X (Twitter)](https://x.com/<your_handle>)  
-- 📓 **Lab Notes / Experiments** — [Quantum Lab](https://github.com/Thugger069/quantum-lab) <!-- adjust when real lab is live -->
+> ╭─ **Quantum Uplink Console** ─╮  
+> │ 🛰 GitHub → [`@Thugger069`](https://github.com/Thugger069) │  
+> │ ✉ DM     → [X (Twitter)](https://x.com/<your_handle>)     │  
+> │ 📓 Lab    → [Quantum Lab](https://github.com/Thugger069/quantum-lab) │  
+> ╰─ Send: context · constraints · ideal outcome ─╯  
 
-I design and ship auditable, reversible AI systems and automation stacks — from iOS operators to full-stack devops and “shadow” tooling. If you’re trying to turn chaotic workflows into something observable, automatable, and hard to break, I’m interested.
+I design and ship auditable, reversible AI systems and automation stacks — from iOS operators to full-stack devops and “shadow” tooling.
 
-Ways I can plug in:
-- Architecting AI + automation systems that keep a real paper trail: logs, traces, and state you can reason about.  
-- Designing operator stacks across iOS, desktop, and cloud — Shortcuts, Scriptable, CLIs, daemons, and glue that actually talk to each other.  
-- Hardening pipelines, DNS/proxy setups, and “shadow” infrastructure so it’s powerful but still accountable and rollback-safe.  
-- Turning vague product ideas into concrete, shippable technical surfaces with clear constraints, interfaces, and next steps.
+<details>
+  <summary><strong>Engage the operator</strong></summary>
 
-If that sounds close to what you’re building, reach out with context, constraints, and your ideal outcome.
+  - Architect AI + automation systems with real paper trails: logs, traces, and state you can reason about.  
+  - Design operator stacks across iOS, desktop, and cloud — Shortcuts, Scriptable, CLIs, daemons, and glue that actually talk.  
+  - Harden pipelines, DNS/proxy setups, and “shadow” infrastructure so it’s powerful but still accountable and rollback-safe.  
+  - Turn vague product ideas into concrete, shippable technical surfaces with clear interfaces and next steps.  
+
+</details>
 <!-- qp:section:contact:end -->
 
 ---
