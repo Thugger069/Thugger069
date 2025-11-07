@@ -1,5 +1,5 @@
 
-<!-- PROFILE_README_VERSION: v1.1.0 -->
+<!-- PROFILE_README_VERSION: v1.2.0 -->
 <!-- PROFILE_README_OWNER: Thugger069 / 🜂 Lysergic -->
 <!-- PROFILE_README_SPEC: QuantumProfileSurface/v1 -->
 <!-- PROFILE_README_LOCKS: header,principles -->
@@ -7,14 +7,38 @@
 <!-- qp:section:header:start -->
 # 𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ · 🜂 Lysergic
 
-<picture>
-  <source media="(prefers-color-scheme: light)" srcset="assets/quantum-terminal-light.svg" />
-  <img src="assets/quantum-terminal.svg" alt="Quantum Terminal Surface" />
-</picture>
-
 _Quantum Systems Architect & AI Maximalist — auditable, reversible AI systems, iOS automation, security-flavored devops tooling._
 
 **Mission**: Architect auditable, reversible automation surfaces across multi-agent AI, iOS workflows, and security-first DevOps so every system stays observable, forkable, and future-proof.
+
+<pre><code>MISSION&gt; ensure reversibility
+STATE&gt; local-first, observable automation
+NEXT&gt; deploy Quantum Autopilot &amp; Smooth Operator
+</code></pre>
+
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: light)" srcset="assets/quantum-terminal-light.svg" />
+    <img src="assets/quantum-terminal.svg" alt="Quantum shell — Smooth Operator · Quantum Autopilot · shadow-scripts" />
+  </picture>
+  <br />
+  <sub><em>Quantum shell · dark/light aware (☾ / ☀)</em></sub>
+</p>
+
+<!-- qp:meta:start -->
+Last updated: 2025-11-07 · Current focus: Smooth Operator & inbox clears.
+<!-- qp:meta:end -->
+
+<details>
+  <summary><strong>Blueprint Snapshot</strong></summary>
+
+  | Current Vectors | Next Launch Windows |
+  | -------------- | -------------------- |
+  | Smooth Operator · inbox/social DMs | QPS/v1 surfaces across more repos |
+  | Quantum Autopilot · routines spine | shadow-scripts stealth + DNS hardening |
+  | shadow-scripts · network lab | 3D commerce surfaces & devtools |
+
+</details>
 
 <img src="assets/quote-orbit.svg" alt="Ship fast · Scale forever · Break nothing." width="360" />
 <!-- qp:section:header:end -->
@@ -127,9 +151,10 @@ I design and ship auditable, reversible AI systems and automation stacks — fro
 <!-- qp:changelog:start -->
 ### Quantum Profile Changelog
 
+- v1.2.0 — Evolved header with mission console, blueprint snapshot, and quantum shell caption.
 - v1.1.0 — Animated terminal hero, curated telemetry snapshot, HUD refinement.
 - v1.0.0 — Initial quantum profile surface by Cursor agent.
 <!-- qp:changelog:end -->
 
 <!-- Profile README managed by QuantumProfileSurface/v1. -->
-<!-- Profile README v1.1.0 by Cursor agent: quantum theme, modular sections, QPS/v1-compliant. -->
+<!-- Profile README v1.2.0 by Cursor agent: quantum theme, modular sections, QPS/v1-compliant. -->
