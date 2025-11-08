@@ -10,8 +10,6 @@
 **Quantum Systems Architect & AI Maximalist**  
 Auditable, reversible AI systems · automation stacks · security-flavored DevOps.
 
-`◇ Auditable AI` `◎ Operator Stacks` `● Shadow Ops & DevOps`
-
 <p align="center">
   <img src="assets/header-plate.svg" alt="Lysergic quantum header plate" />
 </p>
@@ -37,6 +35,10 @@ Last updated: 2025-11-07 · Current focus: QPS/v1 surface & Smooth Operator stac
   ![Languages orbit](assets/stats/top-langs.svg)
 </details>
 <!-- qp:section:hud:end -->
+
+<p align="center">
+  <img src="assets/bg-quantum-grid.svg" alt="Quantum grid divider" />
+</p>
 
 <!-- qp:section:projects:start -->
 ### Now Shipping Vessels
@@ -82,6 +84,10 @@ Last updated: 2025-11-07 · Current focus: QPS/v1 surface & Smooth Operator stac
 ![WireGuard](https://img.shields.io/badge/WireGuard-88171A?logo=wireguard&logoColor=white)
 ![Cloudflare Workers](https://img.shields.io/badge/Cloudflare%20Workers-F38020?logo=cloudflare&logoColor=white)
 <!-- qp:section:stacks:end -->
+
+<p align="center">
+  <img src="assets/bg-quantum-grid.svg" alt="Quantum grid divider" />
+</p>
 
 <!-- qp:section:workflows:start -->
 ### Quantum Workflows
