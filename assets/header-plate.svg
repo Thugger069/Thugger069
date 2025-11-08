@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="720"
+  height="140"
+  viewBox="0 0 720 140"
+  role="img"
+  aria-labelledby="title desc">
+  <title id="title">Lysergic · Quantum Header Plate</title>
+  <desc id="desc">
+    Cycling header plate for 𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ · 🜂 Lysergic showing role, mission, field, and current vectors.
+  </desc>
+
+  <!-- Background plate -->
+  <defs>
+    <linearGradient id="plate-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#050514" />
+      <stop offset="50%" stop-color="#090a20" />
+      <stop offset="100%" stop-color="#050313" />
+    </linearGradient>
+  </defs>
+
+  <rect
+    x="0" y="0"
+    width="720" height="140"
+    rx="16" ry="16"
+    fill="url(#plate-bg)"
+    stroke="#272c4a"
+    stroke-width="1" />
+
+  <!-- Typing masks -->
+  <defs>
+    <mask id="typing-mask-1">
+      <rect x="24" y="22" width="0" height="96" fill="#ffffff">
+        <animate
+          attributeName="width"
+          values="0;672;672"
+          keyTimes="0;0.4;1"
+          dur="4.5s"
+          repeatCount="indefinite" />
+      </rect>
+    </mask>
+    <mask id="typing-mask-2">
+      <rect x="24" y="22" width="0" height="96" fill="#ffffff">
+        <animate
+          attributeName="width"
+          values="0;672;672"
+          keyTimes="0;0.4;1"
+          dur="4.5s"
+          begin="4.5s"
+          repeatCount="indefinite" />
+      </rect>
+    </mask>
+    <mask id="typing-mask-3">
+      <rect x="24" y="22" width="0" height="96" fill="#ffffff">
+        <animate
+          attributeName="width"
+          values="0;672;672"
+          keyTimes="0;0.4;1"
+          dur="4.5s"
+          begin="9s"
+          repeatCount="indefinite" />
+      </rect>
+    </mask>
+    <mask id="typing-mask-4">
+      <rect x="24" y="22" width="0" height="96" fill="#ffffff">
+        <animate
+          attributeName="width"
+          values="0;672;672"
+          keyTimes="0;0.4;1"
+          dur="4.5s"
+          begin="13.5s"
+          repeatCount="indefinite" />
+      </rect>
+    </mask>
+  </defs>
+
+  <g
+    font-family="system-ui, -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif"
+    font-size="13"
+    fill="#e8ecff">
+
+    <!-- BLOCK 1: Role + mission -->
+    <g mask="url(#typing-mask-1)">
+      <text x="24" y="46" font-size="15" font-weight="600" fill="#dfe4ff">
+        Quantum Systems Architect &amp; AI Maximalist
+      </text>
+      <text x="24" y="70" fill="#b4c0ff">
+        Architecting auditable, reversible AI and operator-grade automation stacks.
+      </text>
+    </g>
+
+    <!-- BLOCK 2: Mantra -->
+    <g mask="url(#typing-mask-2)">
+      <text x="24" y="46" font-size="14" font-weight="500" fill="#6df2c2">
+        Ship fast · Scale forever · Break nothing.
+      </text>
+    </g>
+
+    <!-- BLOCK 3: Operating field -->
+    <g mask="url(#typing-mask-3)">
+      <text x="24" y="46" font-size="14" font-weight="600" fill="#dfe4ff">
+        Operating field
+      </text>
+      <text x="24" y="70" fill="#b4c0ff">
+        Auditable AI · automation stacks · iOS + desktop operators · security-flavored DevOps.
+      </text>
+    </g>
+
+    <!-- BLOCK 4: Current vectors + badges -->
+    <g mask="url(#typing-mask-4)">
+      <text x="24" y="46" font-size="14" font-weight="600" fill="#dfe4ff">
+        Current vectors
+      </text>
+      <text x="24" y="70" fill="#b4c0ff">
+        Smooth Operator · Quantum Autopilot · shadow-scripts · QPS/v1 profile surfaces.
+      </text>
+
+      <text x="24"  y="100" fill="#6df2c2">◇ Auditable AI</text>
+      <text x="196" y="100" fill="#9aa5ff">◎ Operator Stacks</text>
+      <text x="394" y="100" fill="#ff9cf5">● Shadow Ops &amp; DevOps</text>
+    </g>
+  </g>
+
+  <!-- Soft cursor bar at bottom for flavor -->
+  <rect x="24" y="118" width="120" height="2" fill="#6df2c2">
+    <animate attributeName="opacity" values="1;0.2;1" dur="1.2s" repeatCount="indefinite" />
+  </rect>
+</svg>

@@ -12,6 +12,10 @@ Auditable, reversible AI systems · automation stacks · security-flavored DevOp
 
 `◇ Auditable AI` `◎ Operator Stacks` `● Shadow Ops & DevOps`
 
+<p align="center">
+  <img src="assets/header-plate.svg" alt="Lysergic quantum header plate" />
+</p>
+
 <!-- qp:meta:start -->
 Last updated: 2025-11-07 · Current focus: QPS/v1 surface & Smooth Operator stack.
 <!-- qp:meta:end -->
