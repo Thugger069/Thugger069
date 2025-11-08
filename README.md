@@ -19,6 +19,13 @@ Last updated: 2025-11-07 · Current focus: QPS/v1 surface & Smooth Operator stac
 <!-- qp:meta:end -->
 <!-- qp:section:header:end -->
 
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: light)" srcset="assets/quantum-terminal-light.svg" />
+    <img src="assets/quantum-terminal.svg" alt="Quantum shell — Smooth Operator · Quantum Autopilot · shadow-scripts" />
+  </picture>
+</p>
+
 <!-- qp:section:hud:start -->
 ### Quantum HUD / Signal Grid
 
