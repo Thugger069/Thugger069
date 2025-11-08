@@ -5,8 +5,27 @@
 <!-- PROFILE_README_LOCKS: header,principles -->
 
 <!-- qp:section:header:start -->
+# 𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ · 🜂 Lysergic
+
+Quantum Systems Architect & AI Maximalist — auditable, reversible AI systems, iOS automation, security-flavored devops tooling.
+
+I design and ship auditable, reversible AI systems and automation stacks — from iOS operators to full-stack devops and “shadow” tooling. If you’re trying to turn chaotic workflows into something observable, automatable, and hard to break, you’re in my lane.
+
+`MISSION> ensure reversibility across AI + automation surfaces`  
+`STATE> local-first, observable operator stacks online`  
+`NEXT> deploy Quantum Autopilot & Smooth Operator at full send`
+
+---
+
+#### Quantum Shell
+
 <p align="center">
-  <img src="assets/header-quantum.svg" alt="𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ · Quantum Systems Architect &amp; AI Maximalist" />
+  <picture>
+    <source media="(prefers-color-scheme: light)" srcset="assets/quantum-terminal-light.svg" />
+    <img src="assets/quantum-terminal.svg" alt="Quantum shell — Smooth Operator · Quantum Autopilot · shadow-scripts" />
+  </picture>
+  <br />
+  <sub><em>Dark/light-aware terminal stream for Smooth Operator, Quantum Autopilot, and shadow-scripts (☾ / ☀).</em></sub>
 </p>
 
 <!-- qp:meta:start -->
@@ -122,7 +141,7 @@ I design and ship auditable, reversible AI systems and automation stacks — fro
 <!-- qp:changelog:start -->
 ### Quantum Profile Changelog
 
-- v1.2.1 — Replaced header with quantum banner SVG and updated focus meta.
+- v1.2.1 — Streamlined header with text surface + quantum shell terminal, updated focus meta.
 - v1.2.0 — Evolved header with mission console, blueprint snapshot, and quantum shell caption.
 - v1.1.0 — Animated terminal hero, curated telemetry snapshot, HUD refinement.
 - v1.0.0 — Initial quantum profile surface by Cursor agent.
