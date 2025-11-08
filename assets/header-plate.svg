@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg
   xmlns="http://www.w3.org/2000/svg"
-  width="720"
-  height="140"
-  viewBox="0 0 720 140"
+  width="700"
+  height="120"
+  viewBox="0 0 700 120"
   role="img"
   aria-labelledby="title desc">
   <title id="title">Lysergic · Quantum Header Plate</title>
@@ -11,119 +11,123 @@
     Cycling header plate for 𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ · 🜂 Lysergic showing role, mission, field, and current vectors.
   </desc>
 
-  <!-- Background plate -->
   <defs>
     <linearGradient id="plate-bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#050514" />
-      <stop offset="50%" stop-color="#090a20" />
-      <stop offset="100%" stop-color="#050313" />
+      <stop offset="0%" stop-color="#060616" />
+      <stop offset="50%" stop-color="#0a0d24" />
+      <stop offset="100%" stop-color="#050414" />
+    </linearGradient>
+    <linearGradient id="edge-light" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6df2c2" stop-opacity="0.35" />
+      <stop offset="50%" stop-color="#9aa5ff" stop-opacity="0.1" />
+      <stop offset="100%" stop-color="#ff9cf5" stop-opacity="0.35" />
     </linearGradient>
   </defs>
 
   <rect
-    x="0" y="0"
-    width="720" height="140"
-    rx="16" ry="16"
+    x="0.5" y="0.5"
+    width="699" height="119"
+    rx="14" ry="14"
     fill="url(#plate-bg)"
-    stroke="#272c4a"
+    stroke="#1c203b"
     stroke-width="1" />
+  <rect
+    x="6" y="6"
+    width="688" height="108"
+    rx="10" ry="10"
+    fill="none"
+    stroke="url(#edge-light)"
+    stroke-width="0.6" />
 
-  <!-- Typing masks -->
-  <defs>
-    <mask id="typing-mask-1">
-      <rect x="24" y="22" width="0" height="96" fill="#ffffff">
-        <animate
-          attributeName="width"
-          values="0;672;672"
-          keyTimes="0;0.4;1"
-          dur="4.5s"
-          repeatCount="indefinite" />
-      </rect>
-    </mask>
-    <mask id="typing-mask-2">
-      <rect x="24" y="22" width="0" height="96" fill="#ffffff">
-        <animate
-          attributeName="width"
-          values="0;672;672"
-          keyTimes="0;0.4;1"
-          dur="4.5s"
-          begin="4.5s"
-          repeatCount="indefinite" />
-      </rect>
-    </mask>
-    <mask id="typing-mask-3">
-      <rect x="24" y="22" width="0" height="96" fill="#ffffff">
-        <animate
-          attributeName="width"
-          values="0;672;672"
-          keyTimes="0;0.4;1"
-          dur="4.5s"
-          begin="9s"
-          repeatCount="indefinite" />
-      </rect>
-    </mask>
-    <mask id="typing-mask-4">
-      <rect x="24" y="22" width="0" height="96" fill="#ffffff">
-        <animate
-          attributeName="width"
-          values="0;672;672"
-          keyTimes="0;0.4;1"
-          dur="4.5s"
-          begin="13.5s"
-          repeatCount="indefinite" />
-      </rect>
-    </mask>
-  </defs>
+  <!-- Reveal masks per block -->
+  <mask id="reveal-role">
+    <rect x="24" y="20" width="0" height="80" fill="#ffffff">
+      <animate
+        attributeName="width"
+        values="0;652;652;0;0"
+        keyTimes="0;0.06;0.24;0.25;1"
+        dur="16s"
+        repeatCount="indefinite" />
+    </rect>
+  </mask>
+  <mask id="reveal-mantra">
+    <rect x="24" y="20" width="0" height="80" fill="#ffffff">
+      <animate
+        attributeName="width"
+        values="0;0;652;652;0;0"
+        keyTimes="0;0.24;0.30;0.48;0.49;1"
+        dur="16s"
+        repeatCount="indefinite" />
+    </rect>
+  </mask>
+  <mask id="reveal-field">
+    <rect x="24" y="20" width="0" height="80" fill="#ffffff">
+      <animate
+        attributeName="width"
+        values="0;0;652;652;0;0"
+        keyTimes="0;0.49;0.55;0.73;0.74;1"
+        dur="16s"
+        repeatCount="indefinite" />
+    </rect>
+  </mask>
+  <mask id="reveal-vectors">
+    <rect x="24" y="20" width="0" height="80" fill="#ffffff">
+      <animate
+        attributeName="width"
+        values="0;0;652;652;0;0"
+        keyTimes="0;0.74;0.80;0.98;0.99;1"
+        dur="16s"
+        repeatCount="indefinite" />
+    </rect>
+  </mask>
 
   <g
     font-family="system-ui, -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif"
-    font-size="13"
+    font-size="12.5"
     fill="#e8ecff">
 
-    <!-- BLOCK 1: Role + mission -->
-    <g mask="url(#typing-mask-1)">
-      <text x="24" y="46" font-size="15" font-weight="600" fill="#dfe4ff">
+    <!-- Role + mission -->
+    <g mask="url(#reveal-role)">
+      <text x="24" y="42" font-size="14.5" font-weight="600" fill="#e5e9ff">
         Quantum Systems Architect &amp; AI Maximalist
       </text>
-      <text x="24" y="70" fill="#b4c0ff">
+      <text x="24" y="64" fill="#b9c2ff">
         Architecting auditable, reversible AI and operator-grade automation stacks.
       </text>
     </g>
 
-    <!-- BLOCK 2: Mantra -->
-    <g mask="url(#typing-mask-2)">
-      <text x="24" y="46" font-size="14" font-weight="500" fill="#6df2c2">
+    <!-- Mantra -->
+    <g mask="url(#reveal-mantra)">
+      <text x="24" y="52" font-size="13.5" font-weight="500" fill="#6df2c2">
         Ship fast · Scale forever · Break nothing.
       </text>
     </g>
 
-    <!-- BLOCK 3: Operating field -->
-    <g mask="url(#typing-mask-3)">
-      <text x="24" y="46" font-size="14" font-weight="600" fill="#dfe4ff">
+    <!-- Operating field -->
+    <g mask="url(#reveal-field)">
+      <text x="24" y="42" font-size="13.5" font-weight="600" fill="#dfe4ff">
         Operating field
       </text>
-      <text x="24" y="70" fill="#b4c0ff">
+      <text x="24" y="64" fill="#b9c2ff">
         Auditable AI · automation stacks · iOS + desktop operators · security-flavored DevOps.
       </text>
     </g>
 
-    <!-- BLOCK 4: Current vectors + badges -->
-    <g mask="url(#typing-mask-4)">
-      <text x="24" y="46" font-size="14" font-weight="600" fill="#dfe4ff">
+    <!-- Current vectors -->
+    <g mask="url(#reveal-vectors)">
+      <text x="24" y="42" font-size="13.5" font-weight="600" fill="#dfe4ff">
         Current vectors
       </text>
-      <text x="24" y="70" fill="#b4c0ff">
+      <text x="24" y="64" fill="#b9c2ff">
         Smooth Operator · Quantum Autopilot · shadow-scripts · QPS/v1 profile surfaces.
       </text>
-
-      <text x="24"  y="100" fill="#6df2c2">◇ Auditable AI</text>
-      <text x="196" y="100" fill="#9aa5ff">◎ Operator Stacks</text>
-      <text x="394" y="100" fill="#ff9cf5">● Shadow Ops &amp; DevOps</text>
+      <text x="24"  y="90" fill="#6df2c2">◇ Auditable AI</text>
+      <text x="196" y="90" fill="#9aa5ff">◎ Operator Stacks</text>
+      <text x="386" y="90" fill="#ff9cf5">● Shadow Ops &amp; DevOps</text>
     </g>
   </g>
 
-  <!-- Soft cursor bar at bottom for flavor -->
-  <rect x="24" y="118" width="120" height="2" fill="#6df2c2">
-    <animate attributeName="opacity" values="1;0.2;1" dur="1.2s" repeatCount="indefinite" />
+  <rect x="24" y="104" width="120" height="2" fill="#6df2c2">
+    <animate attributeName="opacity" values="1;0.35;1" dur="1.5s" repeatCount="indefinite" />
   </rect>
 </svg>
