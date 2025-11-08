@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="900"
+  height="220"
+  viewBox="0 0 900 220"
+  role="img"
+  aria-labelledby="title desc"
+>
+  <title id="title">𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ · Quantum Systems Architect &amp; AI Maximalist</title>
+  <desc id="desc">
+    Quantum header banner with glyph, tagline, core vectors, and a subtle particle field.
+  </desc>
+
+  <!-- Background gradient -->
+  <defs>
+    <linearGradient id="header-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#050514" />
+      <stop offset="40%" stop-color="#080a24" />
+      <stop offset="100%" stop-color="#050312" />
+    </linearGradient>
+
+    <radialGradient id="orb" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#6df2c2" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#6df2c2" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <rect x="0" y="0" width="900" height="220" rx="20" ry="20" fill="url(#header-bg)" />
+
+  <!-- Particle field -->
+  <g opacity="0.85">
+    <circle cx="120" cy="50" r="2.5" fill="#6df2c2">
+      <animate attributeName="opacity" values="0;1;0" dur="6s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="260" cy="30" r="3" fill="#9aa5ff">
+      <animate attributeName="opacity" values="0;0.6;0" dur="7s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="320" cy="90" r="2" fill="#ff9cf5">
+      <animate attributeName="opacity" values="0;0.8;0" dur="5.5s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="520" cy="40" r="3.5" fill="#6df2c2">
+      <animate attributeName="opacity" values="0;0.7;0" dur="8s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="700" cy="70" r="2.5" fill="#9aa5ff">
+      <animate attributeName="opacity" values="0;0.9;0" dur="6.8s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="640" cy="130" r="3" fill="#ff9cf5">
+      <animate attributeName="opacity" values="0;0.7;0" dur="7.2s" repeatCount="indefinite" />
+    </circle>
+  </g>
+
+  <!-- Soft orb behind glyph -->
+  <circle cx="150" cy="110" r="90" fill="url(#orb)" opacity="0.4" />
+
+  <!-- Left: Glyph + tagline -->
+  <g
+    transform="translate(60, 65)"
+    font-family="system-ui, -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif"
+    fill="#e8ecff"
+  >
+    <text x="0" y="0" font-size="28" font-weight="600">
+      𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ · 🜂 Lysergic
+    </text>
+
+    <text x="0" y="30" font-size="15" fill="#b4c0ff">
+      Quantum Systems Architect &amp; AI Maximalist
+    </text>
+
+    <text x="0" y="60" font-size="13" fill="#9ba6ff">
+      Auditable, reversible AI systems · automation stacks · security-flavored devops.
+    </text>
+
+    <text x="0" y="88" font-size="12" fill="#6df2c2">
+      MISSION&gt; ensure reversibility across AI + automation surfaces
+    </text>
+    <text x="0" y="108" font-size="12" fill="#8bd7ff">
+      STATE&gt; local-first, observable operator stacks online
+    </text>
+    <text x="0" y="128" font-size="12" fill="#ffbdf5">
+      NEXT&gt; deploy Quantum Autopilot &amp; Smooth Operator at full send
+    </text>
+  </g>
+
+  <!-- Right: Quantum badge stack -->
+  <g
+    transform="translate(520, 80)"
+    font-family="system-ui, -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif"
+    font-size="12"
+  >
+    <!-- Badge 1 -->
+    <g>
+      <rect x="0" y="0" width="160" height="30" rx="15" ry="15" fill="none" stroke="#6df2c2" stroke-width="1" />
+      <text x="18" y="19" fill="#dffdf3">
+        ◇ Auditable AI
+      </text>
+    </g>
+
+    <!-- Badge 2 -->
+    <g transform="translate(0, 40)">
+      <rect x="0" y="0" width="190" height="30" rx="15" ry="15" fill="none" stroke="#9aa5ff" stroke-width="1" />
+      <text x="18" y="19" fill="#e2e6ff">
+        ◎ Operator Stacks
+      </text>
+    </g>
+
+    <!-- Badge 3 -->
+    <g transform="translate(0, 80)">
+      <rect x="0" y="0" width="200" height="30" rx="15" ry="15" fill="none" stroke="#ff9cf5" stroke-width="1" />
+      <text x="18" y="19" fill="#ffe5ff">
+        ● Shadow Ops &amp; Devops
+      </text>
+    </g>
+  </g>
+</svg>
