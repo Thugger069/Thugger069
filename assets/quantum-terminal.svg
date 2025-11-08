@@ -1,122 +1,160 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg
-  xmlns="http://www.w3.org/2000/svg"
   width="720"
-  height="260"
-  viewBox="0 0 720 260"
+  height="280"
+  viewBox="0 0 720 280"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
   role="img"
   aria-labelledby="title desc">
-  <title id="title">Quantum Shell · Smooth Operator · Quantum Autopilot · shadow-scripts</title>
+  <title id="title">Quantum Shell · 🜂 Lysergic</title>
   <desc id="desc">
     macOS-style quantum terminal showing uptime, project listing, TODO, and commands for Smooth Operator, Quantum Autopilot, and shadow-scripts.
   </desc>
 
-  <!-- Background -->
   <defs>
-    <linearGradient id="term-bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#050713" />
-      <stop offset="50%" stop-color="#070b22" />
-      <stop offset="100%" stop-color="#02030a" />
+    <!-- Background + glow -->
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#050514" />
+      <stop offset="100%" stop-color="#15162a" />
     </linearGradient>
 
-    <radialGradient id="term-glow" cx="50%" cy="100%" r="80%">
-      <stop offset="0%" stop-color="#6df2c2" stop-opacity="0.22" />
+    <linearGradient id="glowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00ffff" stop-opacity="0.2" />
+      <stop offset="50%" stop-color="#8a2be2" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#ff00ff" stop-opacity="0.18" />
+    </linearGradient>
+
+    <radialGradient id="plateGlow" cx="50%" cy="0%" r="80%">
+      <stop offset="0%" stop-color="#6df2c2" stop-opacity="0.35" />
       <stop offset="100%" stop-color="#000000" stop-opacity="0" />
     </radialGradient>
+
+    <filter id="innerGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="5" result="blur" />
+      <feFlood flood-color="#8a2be2" flood-opacity="0.35" result="color" />
+      <feComposite in="color" in2="blur" operator="in" result="glow" />
+      <feComposite in="SourceGraphic" in2="glow" operator="over" />
+    </filter>
   </defs>
 
-  <!-- Outer card -->
-  <rect x="0" y="0" width="720" height="260" rx="22" ry="22" fill="#050611" />
-  <rect x="10" y="12" width="700" height="238" rx="18" ry="18" fill="url(#term-bg)" stroke="#171a33" stroke-width="1" />
-  <rect x="10" y="12" width="700" height="238" rx="18" ry="18" fill="url(#term-glow)" />
+  <!-- Outer window -->
+  <rect x="10" y="10" width="700" height="260" rx="18"
+        fill="url(#bgGradient)" stroke="#262842" stroke-width="1.2"
+        filter="url(#innerGlow)" />
+  <!-- Inner edge + subtle top glow -->
+  <rect x="15" y="15" width="690" height="250" rx="14"
+        fill="none" stroke="url(#glowGradient)" stroke-width="1" />
+  <rect x="15" y="15" width="690" height="250" rx="14"
+        fill="url(#plateGlow)" opacity="0.35" />
 
   <!-- Title bar -->
-  <rect x="10" y="12" width="700" height="34" rx="18" ry="18" fill="#090b1c" />
-  <circle cx="32" cy="29" r="6" fill="#ff5f57" />
-  <circle cx="52" cy="29" r="6" fill="#febc2e" />
-  <circle cx="72" cy="29" r="6" fill="#28c840" />
+  <rect x="15" y="15" width="690" height="32" rx="14" fill="#101222" />
+  <circle cx="35" cy="31" r="6" fill="#ff5f56"/>
+  <circle cx="55" cy="31" r="6" fill="#ffbd2e"/>
+  <circle cx="75" cy="31" r="6" fill="#27ca3f"/>
 
-  <text
-    x="720"
-    y="31"
-    text-anchor="end"
-    fill="#8e96d9"
-    font-family="system-ui, -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif"
-    font-size="11">
+  <text x="690" y="33" text-anchor="end"
+        font-family="system-ui, -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif"
+        font-size="12" fill="#a4a9dd">
     quantum-shell · lysergic@cid
   </text>
 
   <!-- Terminal content -->
   <g
-    transform="translate(32, 60)"
     font-family="SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace"
-    font-size="13"
-    fill="#e5ecff">
+    font-size="13" fill="#e5ecff">
 
-    <!-- BLOCK 1: uptime -->
-    <g id="block1">
-      <text x="0" y="0" fill="#6df2c2">$ uptime</text>
-      <text x="0" y="20">up 3 years, 7 months · operator stack online · load: 0.42 0.69 1.01</text>
-      <animate attributeName="opacity"
-               values="0;1;1;0"
-               keyTimes="0;0.08;0.28;0.33"
-               dur="18s"
-               repeatCount="indefinite" />
+    <!-- Block 1: Uptime -->
+    <g id="block1" opacity="1">
+      <text x="30" y="70">
+        <tspan fill="#00ffff">$</tspan>
+        <tspan dx="6">uptime</tspan>
+      </text>
+      <text x="30" y="92">
+        up 3 years, 7 months · operator stack online · load: 0.42 0.69 1.01
+      </text>
     </g>
 
-    <!-- BLOCK 2: ls Projects -->
-    <g id="block2">
-      <text x="0" y="0" fill="#6df2c2">$ ls -la Projects/</text>
-      <text x="0" y="20">drwxr-xr-x   5 lysergic  staff  160  Smooth-Operator/</text>
-      <text x="0" y="38">drwxr-xr-x   7 lysergic  staff  224  Quantum-Autopilot/</text>
-      <text x="0" y="56">drwxr-xr-x  12 lysergic  staff  384  shadow-scripts/</text>
-      <text x="0" y="74">drwxr-xr-x   6 lysergic  staff  192  CryptoVault/</text>
-      <text x="0" y="92">drwxr-xr-x   4 lysergic  staff  128  Brand-Terminal/</text>
-      <animate attributeName="opacity"
-               values="0;0;1;1;0"
-               keyTimes="0;0.25;0.3;0.55;0.6"
-               dur="18s"
-               repeatCount="indefinite" />
+    <!-- Block 2: Project listing (multi-line ls) -->
+    <g id="block2" opacity="0">
+      <text x="30" y="70">
+        <tspan fill="#00ffff">$</tspan>
+        <tspan dx="6">ls -la Projects/</tspan>
+      </text>
+      <text x="30" y="92">drwxr-xr-x   5 lysergic  staff  160  Smooth-Operator/</text>
+      <text x="30" y="110">drwxr-xr-x   7 lysergic  staff  224  Quantum-Autopilot/</text>
+      <text x="30" y="128">drwxr-xr-x  12 lysergic  staff  384  shadow-scripts/</text>
+      <text x="30" y="146">drwxr-xr-x   6 lysergic  staff  192  CryptoVault/</text>
+      <text x="30" y="164">drwxr-xr-x   4 lysergic  staff  128  Brand-Terminal/</text>
     </g>
 
-    <!-- BLOCK 3: TODO aligned with README -->
-    <g id="block3">
-      <text x="0" y="0" fill="#6df2c2">$ cat Projects/TODO.md</text>
-      <text x="0" y="20">- Smooth Operator → full multi-app inbox coverage</text>
-      <text x="0" y="38">- Quantum Autopilot → new modes + richer logging</text>
-      <text x="0" y="56">- shadow-scripts → stealth profiles &amp; DNS hardening</text>
-      <text x="0" y="74">- QPS/v1 surfaces → propagate terminals &amp; meta automation</text>
-      <animate attributeName="opacity"
-               values="0;0;1;1;0"
-               keyTimes="0;0.45;0.5;0.77;0.82"
-               dur="18s"
-               repeatCount="indefinite" />
+    <!-- Block 3: TODO -->
+    <g id="block3" opacity="0">
+      <text x="30" y="70">
+        <tspan fill="#00ffff">$</tspan>
+        <tspan dx="6">cat Projects/TODO.md</tspan>
+      </text>
+      <text x="30" y="92">- Smooth Operator → full multi-app inbox coverage</text>
+      <text x="30" y="112">- Quantum Autopilot → new modes + richer logging</text>
+      <text x="30" y="132">- shadow-scripts → stealth profiles &amp; DNS hardening</text>
+      <text x="30" y="152">- QPS/v1 surfaces → propagate terminals &amp; meta automation</text>
     </g>
 
-    <!-- BLOCK 4: run commands -->
-    <g id="block4">
-      <text x="0" y="0" fill="#6df2c2">$ run smooth-operator --target="inbox/social"</text>
-      <text x="0" y="20">[ok] drafted contextual reply · WhatsApp Business / Telegram</text>
+    <!-- Block 4: Run commands -->
+    <g id="block4" opacity="0">
+      <text x="30" y="70">
+        <tspan fill="#00ffff">$</tspan>
+        <tspan dx="6">run smooth-operator --target="inbox/social"</tspan>
+      </text>
+      <text x="30" y="92">
+        <tspan fill="#00ff88">[ok]</tspan>
+        <tspan dx="6">drafted contextual reply · WhatsApp Business / Telegram</tspan>
+      </text>
 
-      <text x="0" y="48" fill="#6df2c2">$ run quantum-autopilot --mode=ship</text>
-      <text x="0" y="68">[ok] ship routine engaged · focus apps &amp; logging online</text>
+      <text x="30" y="118">
+        <tspan fill="#00ffff">$</tspan>
+        <tspan dx="6">run quantum-autopilot --mode=ship</tspan>
+      </text>
+      <text x="30" y="140">
+        <tspan fill="#00ff88">[ok]</tspan>
+        <tspan dx="6">ship routine engaged · focus apps &amp; logging online</tspan>
+      </text>
 
-      <text x="0" y="96" fill="#6df2c2">$ open shadow-scripts --profile=stealth</text>
-      <text x="0" y="116">[ok] dns · proxies · mitm toolchain loaded · lab ready</text>
-
-      <animate attributeName="opacity"
-               values="0;0;1;1;0"
-               keyTimes="0;0.68;0.73;0.97;1"
-               dur="18s"
-               repeatCount="indefinite" />
+      <text x="30" y="166">
+        <tspan fill="#00ffff">$</tspan>
+        <tspan dx="6">open shadow-scripts --profile=stealth</tspan>
+      </text>
+      <text x="30" y="188">
+        <tspan fill="#00ff88">[ok]</tspan>
+        <tspan dx="6">dns · proxies · mitm toolchain loaded · lab ready</tspan>
+      </text>
     </g>
   </g>
 
-  <!-- Blinking cursor bar at lower left -->
-  <rect x="32" y="222" width="14" height="3" fill="#6df2c2">
-    <animate attributeName="opacity"
-             values="1;0;1"
-             dur="1s"
-             repeatCount="indefinite" />
+  <!-- Status bar -->
+  <rect x="15" y="235" width="690" height="26" rx="0 0 14 14" fill="#0d1020" />
+  <text x="30" y="252"
+        font-family="SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace"
+        font-size="11" fill="#7e86bd">
+    READY · live profile script · Smooth Operator · Quantum Autopilot · shadow-scripts
+  </text>
+
+  <!-- Blinking cursor -->
+  <rect id="cursor" x="30" y="212" width="9" height="15" fill="#00ffff">
+    <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite"/>
   </rect>
-</svg>
+
+  <!-- Animation timeline: calm 20s loop -->
+  <animate xlink:href="#block1" attributeName="opacity"
+           values="1;1;0;0;0;0;1"
+           keyTimes="0;0.18;0.25;0.5;0.75;0.98;1"
+           dur="20s" repeatCount="indefinite"/>
+  <animate xlink:href="#block2" attributeName="opacity"
+           values="0;0;1;1;0;0;0"
+           keyTimes="0;0.18;0.25;0.5;0.75;0.98;1"
+           dur="20s" repeatCount="indefinite"/>
+  <animate xlink:href="#block3" attributeName="opacity"
+           values="0;0;0;0;1;1;0"
+           keyTimes="0;0.18;0.25;0.5;0.75;0.98;1"
+           dur="20s" repeatCount="indefinite"/>
