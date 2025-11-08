@@ -7,26 +7,10 @@
 <!-- qp:section:header:start -->
 # 𖢧ꛅ𖤢ꚽꚳꛈ𖢧ꛕꛅ · 🜂 Lysergic
 
-Quantum Systems Architect & AI Maximalist — auditable, reversible AI systems, iOS automation, security-flavored devops tooling.
+**Quantum Systems Architect & AI Maximalist**  
+Auditable, reversible AI systems · automation stacks · security-flavored DevOps.
 
-I design and ship auditable, reversible AI systems and automation stacks — from iOS operators to full-stack devops and “shadow” tooling. If you’re trying to turn chaotic workflows into something observable, automatable, and hard to break, you’re in my lane.
-
-`MISSION> ensure reversibility across AI + automation surfaces`  
-`STATE> local-first, observable operator stacks online`  
-`NEXT> deploy Quantum Autopilot & Smooth Operator at full send`
-
----
-
-#### Quantum Shell
-
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: light)" srcset="assets/quantum-terminal-light.svg" />
-    <img src="assets/quantum-terminal.svg" alt="Quantum shell — Smooth Operator · Quantum Autopilot · shadow-scripts" />
-  </picture>
-  <br />
-  <sub><em>Dark/light-aware terminal stream for Smooth Operator, Quantum Autopilot, and shadow-scripts (☾ / ☀).</em></sub>
-</p>
+`◇ Auditable AI` `◎ Operator Stacks` `● Shadow Ops & DevOps`
 
 <!-- qp:meta:start -->
 Last updated: 2025-11-07 · Current focus: QPS/v1 surface & Smooth Operator stack.
