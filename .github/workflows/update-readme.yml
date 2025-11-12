@@ -31,7 +31,8 @@ jobs:
       - name: Install system dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y curl jq xvfb libgtk-3-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2
+          sudo apt-get install -y curl jq xvfb libgtk-3-dev libnotify-dev libnss3 libxss1
+          echo "System dependencies installed"
 
       - name: Create output directories
         run: mkdir -p output assets
@@ -45,15 +46,16 @@ jobs:
             output/github-snake-dark.svg?palette=github-dark
 
       - name: Generate terminal animation
+        continue-on-error: true
         run: |
-          chmod +x ./scripts/terminal_commands.sh
+          chmod +x ./scripts/terminal_commands.sh || true
           echo "Recording terminal session..."
-          if command -v pnpm > /dev/null 2>&1; then
-            xvfb-run -a pnpm exec terminalizer record ./assets/terminal-capture.yml -c "./scripts/terminal_commands.sh" --skip-sharing || echo "Terminal recording failed, continuing..."
+          if command -v pnpm > /dev/null 2>&1 && command -v xvfb-run > /dev/null 2>&1; then
+            xvfb-run -a pnpm exec terminalizer record ./assets/terminal-capture.yml -c "./scripts/terminal_commands.sh" --skip-sharing || echo "⚠️ Terminal recording failed, continuing..."
             echo "Rendering GIF from recording..."
-            pnpm exec terminalizer render ./assets/terminal-capture.yml -o ./assets/terminal_animation.gif || echo "Terminal rendering failed, continuing..."
+            pnpm exec terminalizer render ./assets/terminal-capture.yml -o ./assets/terminal_animation.gif || echo "⚠️ Terminal rendering failed, continuing..."
           else
-            echo "pnpm not found, skipping terminal animation step"
+            echo "⚠️ pnpm or xvfb not found, skipping terminal animation step"
           fi
 
       - name: Run README update script
