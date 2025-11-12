@@ -14,16 +14,16 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 9
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'pnpm'
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 9
 
       - name: Install dependencies
         run: pnpm install
@@ -48,9 +48,13 @@ jobs:
         run: |
           chmod +x ./scripts/terminal_commands.sh
           echo "Recording terminal session..."
-          xvfb-run -a pnpm exec terminalizer record ./assets/terminal-capture.yml -c "./scripts/terminal_commands.sh" --skip-sharing
-          echo "Rendering GIF from recording..."
-          pnpm exec terminalizer render ./assets/terminal-capture.yml -o ./assets/terminal_animation.gif
+          if command -v pnpm > /dev/null 2>&1; then
+            xvfb-run -a pnpm exec terminalizer record ./assets/terminal-capture.yml -c "./scripts/terminal_commands.sh" --skip-sharing || echo "Terminal recording failed, continuing..."
+            echo "Rendering GIF from recording..."
+            pnpm exec terminalizer render ./assets/terminal-capture.yml -o ./assets/terminal_animation.gif || echo "Terminal rendering failed, continuing..."
+          else
+            echo "pnpm not found, skipping terminal animation step"
+          fi
 
       - name: Run README update script
         run: |
