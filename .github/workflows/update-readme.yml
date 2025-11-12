@@ -1,3 +1,9 @@
+# This workflow auto-updates dynamic sections of README.md and pushes directly to main.
+# Before pushing, it runs `git pull --rebase origin main` so it can succeed even if
+# new commits land on main while the job is running.
+# The workflow is intentionally allowed to create small README-only commits from the
+# GitHub Actions bot.
+
 name: Autonomous README Update
 
 on:
@@ -48,15 +54,30 @@ jobs:
       - name: Generate terminal animation
         continue-on-error: true
         run: |
-          chmod +x ./scripts/terminal_commands.sh || true
-          echo "Recording terminal session..."
-          if command -v pnpm > /dev/null 2>&1 && command -v xvfb-run > /dev/null 2>&1; then
-            xvfb-run -a pnpm exec terminalizer record ./assets/terminal-capture.yml -c "./scripts/terminal_commands.sh" --skip-sharing || echo "⚠️ Terminal recording failed, continuing..."
-            echo "Rendering GIF from recording..."
-            pnpm exec terminalizer render ./assets/terminal-capture.yml -o ./assets/terminal_animation.gif || echo "⚠️ Terminal rendering failed, continuing..."
-          else
-            echo "⚠️ pnpm or xvfb not found, skipping terminal animation step"
+          # Check if recording file exists or if we should skip
+          if [ ! -f "./assets/terminal-capture.yml" ] && [ ! -f "./config/terminalizer.yml" ]; then
+            echo "No terminal recording found; skipping terminal animation."
+            exit 0
           fi
+          
+          # Check for required tools
+          if ! command -v pnpm > /dev/null 2>&1 || ! command -v xvfb-run > /dev/null 2>&1; then
+            echo "No terminal recording found; skipping terminal animation."
+            exit 0
+          fi
+          
+          # Attempt recording (quietly)
+          chmod +x ./scripts/terminal_commands.sh 2>/dev/null || true
+          xvfb-run -a pnpm exec terminalizer record ./assets/terminal-capture.yml -c "./scripts/terminal_commands.sh" --skip-sharing >/dev/null 2>&1 || {
+            echo "No terminal recording found; skipping terminal animation."
+            exit 0
+          }
+          
+          # Attempt rendering (quietly)
+          pnpm exec terminalizer render ./assets/terminal-capture.yml -o ./assets/terminal_animation.gif >/dev/null 2>&1 || {
+            echo "No terminal recording found; skipping terminal animation."
+            exit 0
+          }
 
       - name: Run README update script
         run: |
@@ -75,5 +96,14 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add README.md output/ assets/
-          git diff --staged --quiet || (git commit -m "chore: Auto-update README with dynamic content" && git push)
+
+          git add README.md output/*.svg || true
+
+          # Only commit if there are changes
+          git commit -m "chore: Auto-update README with dynamic content" || exit 0
+
+          # Rebase on top of the latest main before pushing
+          git pull --rebase origin main
+
+          # Push rebased HEAD back to main
+          git push origin HEAD:main
