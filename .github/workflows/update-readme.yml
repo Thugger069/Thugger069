@@ -55,7 +55,7 @@ jobs:
         continue-on-error: true
         run: |
           # Check if recording file exists or if we should skip
-          if [ ! -f "./assets/terminal-capture.yml" ] && [ ! -f "./config/terminalizer.yml" ]; then
+          if [ ! -f "./assets/terminal-capture.yml" ]; then
             echo "No terminal recording found; skipping terminal animation."
             exit 0
           fi
